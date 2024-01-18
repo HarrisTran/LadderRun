@@ -1,0 +1,43 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "box",
+  "_objFlags": 0,
+  "_native": "",
+  "_duration": 0.16,
+  "sample": 25,
+  "speed": 1,
+  "wrapMode": 1,
+  "curveData": {
+    "comps": {
+      "cc.Sprite": {
+        "spriteFrame": [
+          {
+            "frame": 0,
+            "value": {
+              "__uuid__": "e868ed41-aefb-4f96-82d7-9ed0c5e90805"
+            }
+          },
+          {
+            "frame": 0.04,
+            "value": {
+              "__uuid__": "d9b7f47e-e54c-4a14-a4ff-41178457f304"
+            }
+          },
+          {
+            "frame": 0.08,
+            "value": {
+              "__uuid__": "17052375-fbbc-4009-941e-d38e9e0fccdb"
+            }
+          },
+          {
+            "frame": 0.12,
+            "value": {
+              "__uuid__": "f850b487-344d-4ecf-85cc-b93eb83bb00b"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "events": []
+}
