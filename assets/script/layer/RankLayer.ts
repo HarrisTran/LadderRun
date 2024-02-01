@@ -12,9 +12,9 @@ const {ccclass, property} = cc._decorator;
 export default class RankLayer extends BaseLayer {
 
     onEnable(){
-        SdkManager.instance.showInterstitialAd()
+        //SdkManager.instance.showInterstitialAd()
         // 读取排行榜数据
-        SdkManager.instance.getRank()
+        //SdkManager.instance.getRank()
     }
 
     onCloseClick(){

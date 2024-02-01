@@ -2,6 +2,7 @@
 
 import Block from '../Block';
 import { ENUM_GAME_STATUS, ENUM_GAME_TYPE } from '../Enum';
+import { createLevelDesign } from '../Levels';
 const STORAGE_KEY = 'STAIRWAY_STORAGE_KEY'
 
 export default class DataManager {
@@ -16,10 +17,17 @@ export default class DataManager {
         return this._instance
     }
 
+    constructor(){
+        this.levelList = createLevelDesign(10,20,30);
+    }
+
     static get instance() {
         return this.getInstance<DataManager>()
     }
 
+    public levelList : number[] = [];
+    public lastIndexBlock: number = 0;
+    public isReplayed : boolean = false;
     // 游戏模式
     type: ENUM_GAME_TYPE = ENUM_GAME_TYPE.LOOP
     // 游戏状态
@@ -51,10 +59,12 @@ export default class DataManager {
     blocks: Block[] = []
     // 更多游戏
     games: any[] = [
-        {title: '消了个消3d', icon: 'xiao3d', appid: 'wx5841e5a26082b380', url: 'https://store.cocos.com/app/detail/4148'},
-        {title: '实况足球杯', icon: 'football', appid: 'wx0c16e9d7f9e87dac', url: 'https://store.cocos.com/app/detail/4221'},
-        {title: '消了个消2d', icon: 'xiao2d', appid: 'wxefd5a4ddd8e31b44', url: 'https://store.cocos.com/app/detail/4183'},
+        // {title: '消了个消3d', icon: 'xiao3d', appid: 'wx5841e5a26082b380', url: 'https://store.cocos.com/app/detail/4148'},
+        // {title: '实况足球杯', icon: 'football', appid: 'wx0c16e9d7f9e87dac', url: 'https://store.cocos.com/app/detail/4221'},
+        // {title: '消了个消2d', icon: 'xiao2d', appid: 'wxefd5a4ddd8e31b44', url: 'https://store.cocos.com/app/detail/4183'},
     ]
+
+    _gamedata : any = {};
 
     get level(){
         return this._level
@@ -124,7 +134,7 @@ export default class DataManager {
     }
 
     save(){
-        cc.sys.localStorage.setItem(STORAGE_KEY, JSON.stringify({
+        this._gamedata = {
             level: this.level,
             unlock: this.unlock,
             isSoundOn: this.isSoundOn,
@@ -133,32 +143,50 @@ export default class DataManager {
             coins: this.coins,
             skinIndex: this.skinIndex,
             skinLockInfo: this.skinLockInfo
-        }))
+        }
+        // cc.sys.localStorage.setItem(STORAGE_KEY, JSON.stringify({
+        //     level: this.level,
+        //     unlock: this.unlock,
+        //     isSoundOn: this.isSoundOn,
+        //     isMusicOn: this.isMusicOn,
+        //     maxGoal: this.maxGoal,
+        //     coins: this.coins,
+        //     skinIndex: this.skinIndex,
+        //     skinLockInfo: this.skinLockInfo
+        // }))
     }
 
     restore(){
-        const _data = cc.sys.localStorage.getItem(STORAGE_KEY) as any
-        try {
-            const data = JSON.parse(_data)
-            this.level = data?.level || 1
-            this.unlock = data?.unlock || 1
-            this.isMusicOn = data?.isMusicOn === false ? false : true
-            this.isSoundOn = data?.isSoundOn === false ? false : true
-            this.maxGoal = data?.maxGoal || 1
-            this.coins = data?.coins || 0
-            this.skinIndex = data?.skinIndex || 0
-            if(data.skinLockInfo) this.skinLockInfo = data.skinLockInfo
-            DataManager.instance.save()
-        } catch {
-            this.level = 1
-            this.unlock = 1
-            this.isMusicOn = true
-            this.isSoundOn = true
-            this.maxGoal = 1
-            this.coins = 0
-            this.skinIndex = 0
-            this.reset()
-        }
+        this.level = 1
+        this.unlock = 1
+        this.isMusicOn = true
+        this.isSoundOn = true
+        this.maxGoal = 1
+        this.coins = 0
+        this.skinIndex = 0
+        this.reset()
+        // const _data = cc.sys.localStorage.getItem(STORAGE_KEY) as any
+        // try {
+        //     const data = JSON.parse(_data)
+        //     this.level = data?.level || 1
+        //     this.unlock = data?.unlock || 1
+        //     this.isMusicOn = data?.isMusicOn === false ? false : true
+        //     this.isSoundOn = data?.isSoundOn === false ? false : true
+        //     this.maxGoal = data?.maxGoal || 1
+        //     this.coins = data?.coins || 0
+        //     this.skinIndex = data?.skinIndex || 0
+        //     if(data.skinLockInfo) this.skinLockInfo = data.skinLockInfo
+        //     DataManager.instance.save()
+        // } catch {
+        //     this.level = 1
+        //     this.unlock = 1
+        //     this.isMusicOn = true
+        //     this.isSoundOn = true
+        //     this.maxGoal = 1
+        //     this.coins = 0
+        //     this.skinIndex = 0
+        //     this.reset()
+        // }
     }
 
     getLastBlock(){

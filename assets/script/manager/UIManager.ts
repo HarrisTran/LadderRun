@@ -13,6 +13,7 @@ import LevelLayer from '../layer/LevelLayer';
 import SkinLayer from '../layer/SkinLayer';
 import MoreLayer from '../layer/MoreLayer';
 import RankLayer from '../layer/RankLayer';
+import ConfirmLayer from '../layer/ConfirmLayer';
 
 const {ccclass, property} = cc._decorator;
 
@@ -39,6 +40,8 @@ export default class UIManager extends cc.Component {
     moreLayer: MoreLayer = null
     @property(RankLayer)
     rankLayer: RankLayer = null
+    @property(ConfirmLayer)
+    confirmLayer: ConfirmLayer = null
 
     private uiMap = new Map<ENUM_UI_TYPE, BaseLayer>()
 
@@ -54,6 +57,7 @@ export default class UIManager extends cc.Component {
         this.uiMap.set(ENUM_UI_TYPE.SKIN, this.skinLayer)
         this.uiMap.set(ENUM_UI_TYPE.MORE, this.moreLayer)
         this.uiMap.set(ENUM_UI_TYPE.RANK, this.rankLayer)
+        this.uiMap.set(ENUM_UI_TYPE.CONFIRM, this.confirmLayer)
     }
 
     toggle(key: ENUM_UI_TYPE, status: boolean = true, callback?: () => void) {

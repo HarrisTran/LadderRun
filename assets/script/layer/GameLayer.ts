@@ -38,7 +38,7 @@ export default class GameLayer extends BaseLayer {
 
     setGoal(){
         if(!this.goalLabel) return
-        this.goalLabel.string = `${DataManager.instance.goal}楼`
+        this.goalLabel.string = `${DataManager.instance.goal} floor`
     }
 
     setCoins(){

@@ -22,3 +22,25 @@ export const levels = [
     [17, 4, 9, 2, 11, 10, 9, 16, 3, 14, 5, 10, 7, 6, 13, 12, 7, 20],
     [17, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 1, 18, 19, 20],
 ]
+
+const easyList = [1,6,7,9,11,12,15,17,20]
+const mediumList = [2,4,5,13]
+const hardList = [3,8,10,14,16,18,19]
+
+export function createLevelDesign(numberOfEasy: number, numberOfMedium: number, numberOfHard: number){
+    let stack : number[] = [];
+    for(let i=0; i<numberOfEasy;i++){
+        let index = Math.floor(Math.random()*easyList.length);
+        stack.push(easyList[index]);
+    }
+    for(let i=0; i<numberOfMedium;i++){
+        let index = Math.floor(Math.random()*mediumList.length);
+        stack.push(mediumList[index]);
+    }
+    for(let i=0; i<numberOfHard;i++){
+        let index = Math.floor(Math.random()*hardList.length);
+        stack.push(hardList[index]);
+    }
+    //return stack;
+    return [21,1,21,,15,21,21,17,21,20,20,21]
+}

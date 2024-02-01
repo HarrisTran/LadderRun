@@ -28,6 +28,6 @@ export default class WinLayer extends BaseLayer {
 
     onShareClick(){
         AudioManager.instance.playSound(ENUM_AUDIO_CLIP.CLICK)
-        SdkManager.instance.activeShare()
+        //SdkManager.instance.activeShare()
     }
 }

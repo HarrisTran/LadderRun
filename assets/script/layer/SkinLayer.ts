@@ -66,7 +66,7 @@ export default class SkinLayer extends BaseLayer {
             DataManager.instance.save()
             this.rendorItems(false)
         }else{
-            AlertManager.instance.show('确定解锁？', ()=>{
+            AlertManager.instance.show('Xác nhận mở khóa？', ()=>{ // Translated
                 const info = DataManager.instance.skinLockInfo[index]
                 if(DataManager.instance.coins >= info['coins']){
                     DataManager.instance.coins -= info['coins']
@@ -75,7 +75,7 @@ export default class SkinLayer extends BaseLayer {
                     this.rendorCoins()
                     this.rendorItems(false)
                 }else{
-                    ToastManager.instance.show('金币不足', {gravity: 'BOTTOM', bg_color: cc.color(226, 69, 109, 255)})
+                    ToastManager.instance.show('Tiền không đủ', {gravity: 'BOTTOM', bg_color: cc.color(226, 69, 109, 255)})
                 }
             })
         }

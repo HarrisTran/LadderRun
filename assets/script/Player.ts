@@ -1,7 +1,7 @@
 import { StaticInstance } from './StaticInstance';
 // Created by carolsail 
 
-import { ENUM_COLLIDER_TAG, ENUM_PLAYER_STATUS, ENUM_GAME_EVENT, ENUM_AUDIO_CLIP, ENUM_GAME_STATUS, ENUM_UI_TYPE } from "./Enum";
+import { ENUM_COLLIDER_TAG, ENUM_PLAYER_STATUS, ENUM_GAME_EVENT, ENUM_AUDIO_CLIP, ENUM_GAME_STATUS, ENUM_UI_TYPE} from "./Enum";
 import AudioManager from "./manager/AudioManager";
 import DataManager from "./manager/DataManager";
 import EventManager from "./manager/EventManager";
@@ -18,7 +18,7 @@ export default class Player extends cc.Component {
     // 速度
     speed: cc.Vec2 = cc.v2(0, 0)
     // 行走
-    walk: number = 250
+    walk: number = 200
     // 移动方向
     direction: number = 0
     // 跳跃
@@ -33,6 +33,7 @@ export default class Player extends cc.Component {
     _status: ENUM_PLAYER_STATUS = ENUM_PLAYER_STATUS.JUMP
     // 动画
     anim: cc.Animation = null
+    _enablePowerUp: boolean = false;
 
     get status(){
         return this._status
@@ -103,46 +104,67 @@ export default class Player extends cc.Component {
 
     onCollisionEnter (other: any, self: any) {
         let color = cc.color(243, 175, 197, 255)
-        if(other.tag == ENUM_COLLIDER_TAG.ENDPOINT){
-            AudioManager.instance.playSound(ENUM_AUDIO_CLIP.WIN)
-            EventManager.instance.emit(ENUM_GAME_EVENT.GAME_WIN)
-            for(let i = 0; i < 5; i++){
-                EventManager.instance.emit(ENUM_GAME_EVENT.EFFECT_STAR_PLAY, {pos: self.node.position, color})
+
+        if (!this._enablePowerUp) {
+            switch (other.tag) {
+                case ENUM_COLLIDER_TAG.SPIKE:
+                case ENUM_COLLIDER_TAG.BAT:
+                case ENUM_COLLIDER_TAG.SAW:
+                case ENUM_COLLIDER_TAG.SPIKEBALL:
+                case ENUM_COLLIDER_TAG.PLANT_BULLET:
+                case ENUM_COLLIDER_TAG.PIRANHA_PLANT:
+                    AudioManager.instance.playSound(ENUM_AUDIO_CLIP.DIE)
+                    EventManager.instance.emit(ENUM_GAME_EVENT.GAME_LOSE)
+                    self.node.active = false
+                    color = cc.color(226, 69, 109, 255)
+                    for (let i = 0; i < 5; i++) {
+                        EventManager.instance.emit(ENUM_GAME_EVENT.EFFECT_STAR_PLAY, { pos: self.node.position, color })
+                    }
+                    return
+                case ENUM_COLLIDER_TAG.CHICKEN:
+                    AudioManager.instance.playSound(ENUM_AUDIO_CLIP.CHICKEN)
+                    color = cc.color(255, 255, 255, 255)
+                    for (let i = 0; i < 3; i++) {
+                        EventManager.instance.emit(ENUM_GAME_EVENT.EFFECT_STAR_PLAY, { pos: self.node.position, color })
+                    }
+                    other.node.getComponent(Chicken).onTurn()
+                    this.direction = other.node.getComponent(Chicken).getDir() * -1
+                    this.onTurn()
+                    return
+                default:
+                    break;
             }
-            return
-        }else if(other.tag == ENUM_COLLIDER_TAG.SPIKE 
-            || other.tag == ENUM_COLLIDER_TAG.BAT 
-            || other.tag == ENUM_COLLIDER_TAG.SAW 
-            || other.tag == ENUM_COLLIDER_TAG.SPIKEBALL 
-            || other.tag == ENUM_COLLIDER_TAG.PLANT_BULLET){
-            AudioManager.instance.playSound(ENUM_AUDIO_CLIP.DIE)
-            EventManager.instance.emit(ENUM_GAME_EVENT.GAME_LOSE)
-            self.node.active = false
-            color = cc.color(226, 69, 109, 255)
-            for(let i = 0; i < 5; i++){
-                EventManager.instance.emit(ENUM_GAME_EVENT.EFFECT_STAR_PLAY, {pos: self.node.position, color})
-            }
-            return
-        }else if(other.tag == ENUM_COLLIDER_TAG.CHICKEN){
-            AudioManager.instance.playSound(ENUM_AUDIO_CLIP.CHICKEN)
-            color = cc.color(255, 255, 255, 255)
-            for(let i = 0; i < 3; i++){
-                EventManager.instance.emit(ENUM_GAME_EVENT.EFFECT_STAR_PLAY, {pos: self.node.position, color})
-            }
-            other.node.getComponent(Chicken).onTurn()
-            this.direction = other.node.getComponent(Chicken).getDir() * -1
-            this.onTurn()
-            return
-        }else if(other.tag == ENUM_COLLIDER_TAG.TRAMPOLINE){
-            // 弹跳
-            AudioManager.instance.playSound(ENUM_AUDIO_CLIP.JUMP)
-            color = cc.color(255, 255, 255, 255)
-            for(let i = 0; i < 3; i++){
-                EventManager.instance.emit(ENUM_GAME_EVENT.EFFECT_STAR_PLAY, {pos: self.node.position, color})
-            }
-            this.status = ENUM_PLAYER_STATUS.CLIMB
-            this.speed.y = this.jump * 2
-            return
+        }
+        
+
+        switch (other.tag) {
+            case ENUM_COLLIDER_TAG.ENDPOINT:
+                AudioManager.instance.playSound(ENUM_AUDIO_CLIP.WIN)
+                EventManager.instance.emit(ENUM_GAME_EVENT.GAME_WIN)
+                for(let i = 0; i < 5; i++){
+                    EventManager.instance.emit(ENUM_GAME_EVENT.EFFECT_STAR_PLAY, {pos: self.node.position, color})
+                }
+                return;
+            case ENUM_COLLIDER_TAG.TRAMPOLINE:
+                AudioManager.instance.playSound(ENUM_AUDIO_CLIP.JUMP)
+                color = cc.color(255, 255, 255, 255)
+                for (let i = 0; i < 3; i++) {
+                    EventManager.instance.emit(ENUM_GAME_EVENT.EFFECT_STAR_PLAY, { pos: self.node.position, color })
+                }
+                this.status = ENUM_PLAYER_STATUS.CLIMB
+                this.speed.y = this.jump * 2
+                return
+            case ENUM_COLLIDER_TAG.ANANAS:
+                this.forceSpeedUp();
+                return;
+            case ENUM_COLLIDER_TAG.MELON:
+                this._enablePowerUp = true;
+                this.scheduleOnce(()=>{
+                    this._enablePowerUp = false
+                },5)
+                return;
+            default:
+                break;
         }
 
         if(!(other instanceof cc.BoxCollider)) return
@@ -213,7 +235,7 @@ export default class Player extends cc.Component {
                     this.node.y = (otherPreAabb.yMax - this.canvas.y) + (self.node.height - other.node.height)
                     this.speed.y = 0
                     other.touchingY = true
-                    // 落地星星动画
+                    //落地星星动画
                     // const x = self.node.position.x
                     // const y = self.node.position.y - self.node.height / 2
                     // for(let i = 0; i < 3; i++){
@@ -249,4 +271,19 @@ export default class Player extends cc.Component {
             }
         }
     }
+
+    private forceSpeedUp() {
+        this.walk = 500;
+        let timeOutSpeed = setTimeout(() => {
+            this.walk = 200;
+            clearTimeout(timeOutSpeed);
+        }, 5000);
+    }
+
+    private forceJumpUp()
+    {
+
+    }
+
+
 }

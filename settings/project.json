@@ -36,9 +36,9 @@
     "SafeArea"
   ],
   "preview-port": 7456,
-  "design-resolution-width": 960,
-  "design-resolution-height": 640,
-  "fit-width": false,
+  "design-resolution-width": 750,
+  "design-resolution-height": 1334,
+  "fit-width": true,
   "fit-height": true,
   "use-project-simulator-setting": false,
   "simulator-orientation": false,
@@ -58,6 +58,6 @@
       "enable": false
     }
   },
-  "last-module-event-record-time": 1705466303884,
+  "last-module-event-record-time": 1706169120357,
   "start-scene": "a738f065-fc56-4cca-a623-ac83643451a4"
 }

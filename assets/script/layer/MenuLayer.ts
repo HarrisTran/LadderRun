@@ -6,6 +6,8 @@ import AudioManager from "../manager/AudioManager";
 import BaseLayer from "./Baselayer";
 import DataManager from "../manager/DataManager";
 import EventManager from "../manager/EventManager";
+import BackendConnector from "../BackendConnector";
+import { DEBUG_MODE } from "../manager/GameManager";
 
 const {ccclass, property} = cc._decorator;
 
@@ -18,6 +20,7 @@ export default class MenuLayer extends BaseLayer {
         StaticInstance.uiManager.toggle(ENUM_UI_TYPE.MENU, false)
         StaticInstance.uiManager.toggle(ENUM_UI_TYPE.GAME)
         EventManager.instance.emit(ENUM_GAME_EVENT.GAME_START)
+        if(!DEBUG_MODE) BackendConnector.instance.ticketMinus("auth")
     }
 
     onLevelClick(){

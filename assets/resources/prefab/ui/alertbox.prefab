@@ -383,8 +383,8 @@
     ],
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
-    "_string": "确定提交？",
-    "_N$string": "确定提交？",
+    "_string": "Confirm？",
+    "_N$string": "Confirm？",
     "_fontSize": 32,
     "_lineHeight": 32,
     "_enableWrapText": true,
@@ -611,7 +611,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 80,
+      "width": 131.17,
       "height": 50.4
     },
     "_anchorPoint": {
@@ -663,8 +663,8 @@
     ],
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
-    "_string": "取消",
-    "_N$string": "取消",
+    "_string": "Cancel",
+    "_N$string": "Cancel",
     "_fontSize": 40,
     "_lineHeight": 40,
     "_enableWrapText": true,
@@ -901,7 +901,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 80,
+      "width": 88.93,
       "height": 50.4
     },
     "_anchorPoint": {
@@ -953,8 +953,8 @@
     ],
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
-    "_string": "确定",
-    "_N$string": "确定",
+    "_string": "Sure",
+    "_N$string": "Sure",
     "_fontSize": 40,
     "_lineHeight": 40,
     "_enableWrapText": true,

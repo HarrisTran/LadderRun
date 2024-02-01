@@ -6,6 +6,8 @@ import AudioManager from "./manager/AudioManager";
 import DataManager from './manager/DataManager';
 import ResourceManager from "./manager/ResourceManager";
 import SdkManager from './manager/SdkManager';
+import BackendConnector from './BackendConnector';
+import { DEBUG_MODE } from './manager/GameManager';
 
 const {ccclass, property} = cc._decorator;
 
@@ -31,14 +33,17 @@ export default class Index extends cc.Component {
             // Play Music
             AudioManager.instance.playMusic()
             // Load SDK
-            SdkManager.instance.passiveShare()
-            SdkManager.instance.getRank()
-            SdkManager.instance.initBannerAd()
-            SdkManager.instance.initInterstitialAd()
-            SdkManager.instance.initVideoAd()
+            // SdkManager.instance.passiveShare()
+            // SdkManager.instance.getRank()
+            // SdkManager.instance.initBannerAd()
+            // SdkManager.instance.initInterstitialAd()
+            // SdkManager.instance.initVideoAd()
             // Show UI
             StaticInstance.uiManager.toggle(ENUM_UI_TYPE.LOADING, false)
             StaticInstance.uiManager.toggle(ENUM_UI_TYPE.MENU, true)
+            // Get key from backend
+            
+            if(!DEBUG_MODE) BackendConnector.instance.authenticate();
         })
     }
 }

@@ -33,7 +33,7 @@ export default class MoreLayer extends BaseLayer {
             const url = typeof window['wx'] === 'undefined' ? `${data.url}` : `${data.appid}`
             moreitem.on('click', ()=>{
                 AudioManager.instance.playSound(ENUM_AUDIO_CLIP.CLICK)
-                if(url) SdkManager.instance.turnToApp(url)
+                //if(url) SdkManager.instance.turnToApp(url)
             })
         })
     }

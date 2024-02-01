@@ -16,6 +16,9 @@ export interface IBlock {
 
 @ccclass
 export default class Block extends cc.Component {
+    @property
+    levelType: string = "";
+    
     id: number = -1
     x: number = 0
     y: number = 0

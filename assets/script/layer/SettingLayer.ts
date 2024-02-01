@@ -18,7 +18,7 @@ export default class SettingLayer extends BaseLayer {
     soundNode: cc.Node = null
 
     protected onEnable(): void {
-        SdkManager.instance.showInterstitialAd()
+        //SdkManager.instance.showInterstitialAd()
         this.rendorMusic()
         this.rendorSound()
     }

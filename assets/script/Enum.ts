@@ -53,7 +53,10 @@ export enum ENUM_COLLIDER_TAG {
     TRAMPOLINE = 14,
     PLANT_VIEW = 15,
     PLANT_BULLET = 16,
-    COIN = 17
+    COIN = 17,
+    ANANAS = 18,
+    MELON = 19,
+    PIRANHA_PLANT = 20,
 }
 
 // 事件
@@ -65,7 +68,8 @@ export enum ENUM_GAME_EVENT {
     GAME_WIN = 'GAME_WIN',
     GAME_LOSE = 'GAME_LOSE',
     CAMERA_MOVE = 'CAMERA_MOVE',
-    EFFECT_STAR_PLAY = 'EFFECT_STAR_PLAY'
+    EFFECT_STAR_PLAY = 'EFFECT_STAR_PLAY',
+    GAME_OVER = 'GAME_OVER',
 }
 
 // 资源
@@ -87,6 +91,7 @@ export enum ENUM_UI_TYPE {
     RANK,
     SKIN,
     MORE,
+    CONFIRM,
 }
 
 // 音效

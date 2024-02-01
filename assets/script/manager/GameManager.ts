@@ -10,17 +10,30 @@ import Block from '../Block';
 import PoolManager from "./PoolManager";
 import Player from '../Player';
 import Star from '../Star';
-import SdkManager from './SdkManager';
+import BackendConnector from '../BackendConnector';
 
 const {ccclass, property} = cc._decorator;
 
+export const DEBUG_MODE = true;
 const BLOCK_NUM = 20
+window.addEventListener("message", (data) => {
+    const { data: res } = data
+    const objectRes = JSON.parse(res)
+    const { type, value } = objectRes
+    if(type === "newTicket") {
+        BackendConnector.instance.numberTicket += value
+        // value is ticket ex: 5, 10
+    }
+})
 
 @ccclass
 export default class GameManager extends cc.Component {
 
     @property(cc.Node)
     stageNode: cc.Node = null
+
+    @property(cc.Node)
+    startButtonNode: cc.Node = null
 
     onLoad () {
         // 注册事件
@@ -30,6 +43,7 @@ export default class GameManager extends cc.Component {
         EventManager.instance.on(ENUM_GAME_EVENT.GAME_WIN, this.onGameWin, this)
         EventManager.instance.on(ENUM_GAME_EVENT.GAME_LOSE, this.onGameLose, this)
         EventManager.instance.on(ENUM_GAME_EVENT.EFFECT_STAR_PLAY, this.onEffectStarPlay, this)
+        EventManager.instance.on(ENUM_GAME_EVENT.GAME_OVER,this.onGameOver,this);
     }
 
     // 开始游戏
@@ -41,7 +55,13 @@ export default class GameManager extends cc.Component {
     // 复活游戏
     onGameRelive(){
         DataManager.instance.reset(true)
-        this.initGame()
+        this.initGame();
+        if(!DEBUG_MODE) BackendConnector.instance.ticketMinus("revive")
+        StaticInstance.uiManager.toggle(ENUM_UI_TYPE.LOSE, false);
+    }
+
+    onGameOver(){
+        BackendConnector.instance.postScoreToServer(DataManager.instance.coins)
     }
 
     // 过关
@@ -77,9 +97,11 @@ export default class GameManager extends cc.Component {
         if(!this.stageNode) return
         this.stageNode.removeAllChildren()
         // 生成block
-        let index = random(0, levels.length - 1)
-        if(DataManager.instance.type == ENUM_GAME_TYPE.LEVEL) index = DataManager.instance.level - 1
-        const data = levels[index]
+        //let index = random(0, levels.length - 1)
+        //let index = DataManager.instance.isReplayed ? DataManager.instance.lastIndexBlock : DataManager.instance.levelList.pop();
+        //if(DataManager.instance.type == ENUM_GAME_TYPE.LEVEL) index = DataManager.instance.level - 1
+        //const data = levels[index]
+        const data = [21,1,21,21,15,21,21,17,13,20,4,21]//DataManager.instance.levelList;
         for(let i = 0; i < data.length; i++){
             const blockIndex = data[i]
             const block: cc.Node = PoolManager.instance.getNode(`block${blockIndex}`, this.stageNode)
@@ -133,6 +155,7 @@ export default class GameManager extends cc.Component {
         StaticInstance.uiManager.setGameMaxGoal()
         // 游戏初始化完毕
         DataManager.instance.status = ENUM_GAME_STATUS.RUNING
+
     }
 
     // 设置楼层最高记录
@@ -141,7 +164,7 @@ export default class GameManager extends cc.Component {
             DataManager.instance.maxGoal = DataManager.instance.goal
             DataManager.instance.save()
             // 设置排行榜
-            SdkManager.instance.setRank(DataManager.instance.maxGoal)
+            //SdkManager.instance.setRank(DataManager.instance.maxGoal)
         }
     }
 
@@ -152,7 +175,11 @@ export default class GameManager extends cc.Component {
         DataManager.instance.goal += 1
         StaticInstance.uiManager.setGameGoal()
         if(DataManager.instance.type == ENUM_GAME_TYPE.LOOP){
-            const blockIndex = random(1, BLOCK_NUM)
+            // const blockIndex = random(1, BLOCK_NUM)
+            let blockIndex = DataManager.instance.levelList.pop();
+            console.log(blockIndex);
+            
+            DataManager.instance.lastIndexBlock = blockIndex;
             const block: cc.Node = PoolManager.instance.getNode(`block${blockIndex}`, this.stageNode)
             const lastBlock = DataManager.instance.getLastBlock()
             const ladderCurrent: cc.Node = block.getChildByName('ladder')
@@ -199,5 +226,6 @@ export default class GameManager extends cc.Component {
         EventManager.instance.off(ENUM_GAME_EVENT.GAME_WIN, this.onGameWin)
         EventManager.instance.off(ENUM_GAME_EVENT.GAME_LOSE, this.onGameLose)
         EventManager.instance.off(ENUM_GAME_EVENT.EFFECT_STAR_PLAY, this.onEffectStarPlay)
+        EventManager.instance.off(ENUM_GAME_EVENT.GAME_OVER,this.onGameOver);
     }
 }
