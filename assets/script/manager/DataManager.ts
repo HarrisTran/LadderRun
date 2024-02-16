@@ -18,7 +18,7 @@ export default class DataManager {
     }
 
     constructor(){
-        this.levelList = createLevelDesign(10,20,30);
+        this.levelList = createLevelDesign(2,2,5);
     }
 
     static get instance() {
@@ -198,4 +198,5 @@ export default class DataManager {
         if(this.blocks.length <= 0) return null
         return this.blocks[0]
     }
+
 }

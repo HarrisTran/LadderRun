@@ -22,9 +22,9 @@ export default class Stone extends cc.Component {
 
     vibrateDone(){
         cc.tween(this.rock)
-        .by(0.6,{y:-278},{easing: "sineIn"})
+        .by(0.6,{y:-280},{easing: "sineIn"})
         .call(()=>this.rock.active = false)
-        .to(0,{y :0})
+        .to(0.2,{y :0})
         .call(()=>this.rock.active = true)
         .start();
     }

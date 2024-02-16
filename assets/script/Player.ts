@@ -71,6 +71,7 @@ export default class Player extends cc.Component {
             this.node.x += this.speed.x * dt
         }
         this.node.y += this.speed.y * dt
+        this.survivalVFX.node.active = this._enablePowerUp
     }
 
     setDir(dir: number = 1){
@@ -104,7 +105,16 @@ export default class Player extends cc.Component {
 
     onCollisionEnter (other: any, self: any) {
         let color = cc.color(243, 175, 197, 255)
-
+        if(other.tag == ENUM_COLLIDER_TAG.LAVA){
+            AudioManager.instance.playSound(ENUM_AUDIO_CLIP.DIE)
+            EventManager.instance.emit(ENUM_GAME_EVENT.GAME_LOSE)
+            self.node.active = false
+            color = cc.color(226, 69, 109, 255)
+            for (let i = 0; i < 5; i++) {
+                EventManager.instance.emit(ENUM_GAME_EVENT.EFFECT_STAR_PLAY, { pos: self.node.position, color })
+            }
+            return
+        }
         if (!this._enablePowerUp) {
             switch (other.tag) {
                 case ENUM_COLLIDER_TAG.SPIKE:
@@ -272,7 +282,7 @@ export default class Player extends cc.Component {
         }
     }
 
-    private forceSpeedUp() {
+    forceSpeedUp() {
         this.walk = 500;
         let timeOutSpeed = setTimeout(() => {
             this.walk = 200;
@@ -280,10 +290,6 @@ export default class Player extends cc.Component {
         }, 5000);
     }
 
-    private forceJumpUp()
-    {
-
-    }
 
 
 }

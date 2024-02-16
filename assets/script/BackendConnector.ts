@@ -14,7 +14,7 @@ export default class BackendConnector {
 
     // Ticket infors
     public numberTicket: number;
-    private maxScore: number;
+    public maxScore: number;
     private mileStone: string;
 
     private gameURL: string = "";
@@ -40,7 +40,7 @@ export default class BackendConnector {
         this.deviceInfo = url.get('deviceInfo')
 
         this.numberTicket = parseInt(url.get('numberTicket'));
-        this.maxScore = parseInt(url.get('maxScore'));
+        this.maxScore =  parseInt(url.get('maxScore'));
         this.mileStone = url.get("mileStone");
 
         this.gameURL = ENV_CONFIG[url.get('env')];

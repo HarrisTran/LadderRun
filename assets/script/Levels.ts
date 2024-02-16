@@ -42,5 +42,5 @@ export function createLevelDesign(numberOfEasy: number, numberOfMedium: number, 
         stack.push(hardList[index]);
     }
     //return stack;
-    return [21,1,21,,15,21,21,17,21,20,20,21]
+    return [21,11,18,15,4,11,8,9,21]
 }

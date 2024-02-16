@@ -1,5 +1,4 @@
-// Created by carolsail
-
+import BackendConnector from "../BackendConnector";
 import { ENUM_AUDIO_CLIP, ENUM_GAME_EVENT, ENUM_GAME_STATUS, ENUM_GAME_TYPE, ENUM_UI_TYPE } from "../Enum";
 import AudioManager from "../manager/AudioManager";
 import DataManager from "../manager/DataManager";
@@ -45,6 +44,13 @@ export default class GameLayer extends BaseLayer {
         if(!this.coinsNode) return
         const nums = this.coinsNode.getChildByName('nums')
         nums.getComponent(cc.Label).string = `${DataManager.instance.coins}`
+    }
+
+    setMaxScore()
+    {
+        if(!this.historyNode) return
+        const maxScore = this.historyNode.getChildByName('maxScore')
+        maxScore.getComponent(cc.Label).string = BackendConnector.instance.maxScore.toString();
     }
 
     setMaxGoal(){

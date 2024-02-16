@@ -13,7 +13,7 @@ export default class Plant extends cc.Component {
     _status: ENUM_PLANT_STATUS = ENUM_PLANT_STATUS.IDLE
     animation: cc.Animation = null
     isShoot: boolean = false
-    shootTime: number = 1
+    shootTime: number = 1.5
     bulletpos: cc.Node = null
 
     get status(){

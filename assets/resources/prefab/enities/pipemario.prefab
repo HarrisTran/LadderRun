@@ -194,7 +194,7 @@
     "_offset": {
       "__type__": "cc.Vec2",
       "x": 0,
-      "y": 0
+      "y": -5
     },
     "_size": {
       "__type__": "cc.Size",
@@ -209,7 +209,7 @@
       "__id__": 1
     },
     "asset": {
-      "__id__": 0
+      "__uuid__": "90d69be9-599c-4351-ad80-5a8c8b8bb2fb"
     },
     "fileId": "a6wi5Y8Q9P9ZhvVQsDZjSs",
     "sync": false
@@ -382,7 +382,7 @@
       "__id__": 1
     },
     "asset": {
-      "__id__": 0
+      "__uuid__": "90d69be9-599c-4351-ad80-5a8c8b8bb2fb"
     },
     "fileId": "",
     "sync": false

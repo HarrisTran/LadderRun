@@ -57,6 +57,7 @@ export enum ENUM_COLLIDER_TAG {
     ANANAS = 18,
     MELON = 19,
     PIRANHA_PLANT = 20,
+    LAVA = 21,
 }
 
 // 事件

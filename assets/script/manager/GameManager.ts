@@ -5,12 +5,13 @@ import DataManager from "./DataManager";
 import EventManager from "./EventManager";
 import { ENUM_GAME_TYPE, ENUM_GAME_EVENT, ENUM_GAME_ZINDEX, ENUM_GAME_STATUS, ENUM_UI_TYPE  } from "../Enum";
 import { random } from "../Utils";
-import { levels } from '../Levels';
+import { createLevelDesign, levels } from '../Levels';
 import Block from '../Block';
 import PoolManager from "./PoolManager";
 import Player from '../Player';
 import Star from '../Star';
 import BackendConnector from '../BackendConnector';
+import Lava from '../enemies/Lava';
 
 const {ccclass, property} = cc._decorator;
 
@@ -32,8 +33,8 @@ export default class GameManager extends cc.Component {
     @property(cc.Node)
     stageNode: cc.Node = null
 
-    @property(cc.Node)
-    startButtonNode: cc.Node = null
+    @property(Lava)
+    lavaNode: Lava = null
 
     onLoad () {
         // 注册事件
@@ -77,7 +78,7 @@ export default class GameManager extends cc.Component {
             DataManager.instance.unlock = maxLevel
             DataManager.instance.save()
         }
-        this.setMaxGoal()
+        //this.setMaxGoal()
         this.scheduleOnce(()=>{
             StaticInstance.uiManager.toggle(ENUM_UI_TYPE.WIN)
         }, 0.5)
@@ -86,7 +87,7 @@ export default class GameManager extends cc.Component {
     // 失败
     onGameLose(){
         DataManager.instance.status = ENUM_GAME_STATUS.UNRUNING
-        this.setMaxGoal()
+        //this.setMaxGoal()
         this.scheduleOnce(()=>{
             StaticInstance.uiManager.toggle(ENUM_UI_TYPE.LOSE)
         }, 0.5) 
@@ -96,12 +97,14 @@ export default class GameManager extends cc.Component {
     initGame(){
         if(!this.stageNode) return
         this.stageNode.removeAllChildren()
+        this.lavaNode.node.setPosition(0,-650);
         // 生成block
         //let index = random(0, levels.length - 1)
         //let index = DataManager.instance.isReplayed ? DataManager.instance.lastIndexBlock : DataManager.instance.levelList.pop();
         //if(DataManager.instance.type == ENUM_GAME_TYPE.LEVEL) index = DataManager.instance.level - 1
-        //const data = levels[index]
-        const data = [21,1,21,21,15,21,21,17,13,20,4,21]//DataManager.instance.levelList;
+        //const data = levels[index] [21,1,21,21,15,21,21,17,13,20,4,21]//
+        //const data = createLevelDesign(0,0,0);
+        const data = [17,2,3,4,5];
         for(let i = 0; i < data.length; i++){
             const blockIndex = data[i]
             const block: cc.Node = PoolManager.instance.getNode(`block${blockIndex}`, this.stageNode)
@@ -114,7 +117,11 @@ export default class GameManager extends cc.Component {
             const component = block.getComponent(Block)
             component.init({ id: i + 1, x: 0, y: block.height * i})
             component.rendor()
+            if(i%2){
+                component.flipXHelper();
+            }
         }
+        this.lavaNode.resume(data.length);
         // 关卡模式中，最后一个块梯子替换为终点旗子
         if(DataManager.instance.type == ENUM_GAME_TYPE.LEVEL){
             const lastBlock = DataManager.instance.getLastBlock()
@@ -133,8 +140,6 @@ export default class GameManager extends cc.Component {
         if(firstBlockNode){
             // 移动摄像机
             EventManager.instance.emit(ENUM_GAME_EVENT.CAMERA_MOVE, {block: firstBlockNode, reset: true})
-            // console.log(111)
-            // 角色生成
             this.scheduleOnce(()=>{
                 const ladder = firstBlockNode.getChildByName('ladder')
                 const player: cc.Node = PoolManager.instance.getNode(`player${DataManager.instance.skinIndex}`, this.stageNode)
@@ -145,14 +150,13 @@ export default class GameManager extends cc.Component {
                 }else{
                     player.getComponent(Player).setDir(-1)
                 }
-                // console.log(333)
             })
         }
         // console.log(222)
         // 设置ui
         StaticInstance.uiManager.setGameGoal()
         StaticInstance.uiManager.setGameCoins()
-        StaticInstance.uiManager.setGameMaxGoal()
+        StaticInstance.uiManager.setGameMaxScore()
         // 游戏初始化完毕
         DataManager.instance.status = ENUM_GAME_STATUS.RUNING
 
@@ -177,7 +181,9 @@ export default class GameManager extends cc.Component {
         if(DataManager.instance.type == ENUM_GAME_TYPE.LOOP){
             // const blockIndex = random(1, BLOCK_NUM)
             let blockIndex = DataManager.instance.levelList.pop();
-            console.log(blockIndex);
+            if(!blockIndex){
+                blockIndex = random(1, 20)
+            }
             
             DataManager.instance.lastIndexBlock = blockIndex;
             const block: cc.Node = PoolManager.instance.getNode(`block${blockIndex}`, this.stageNode)

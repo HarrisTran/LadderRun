@@ -4,6 +4,7 @@ import { StaticInstance } from './../StaticInstance';
 import { ENUM_AUDIO_CLIP, ENUM_COLLIDER_TAG } from "../Enum";
 import AudioManager from "../manager/AudioManager";
 import DataManager from "../manager/DataManager";
+import Block from '../Block';
 
 const {ccclass, property} = cc._decorator;
 
@@ -25,6 +26,7 @@ export default class Coin extends cc.Component {
             DataManager.instance.coins += 50
             DataManager.instance.save()
             StaticInstance.uiManager.setGameCoins()
+            self.node.parent.emit("GOT_COIN");
         }
     }
 
