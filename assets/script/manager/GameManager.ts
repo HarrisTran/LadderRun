@@ -190,6 +190,7 @@ export default class GameManager extends cc.Component {
         const spikeball: cc.Node = block.getChildByName('spikeball')
         const trampoline: cc.Node = block.getChildByName('trampoline')
         const plant: cc.Node = block.getChildByName('plant')
+        const brick: cc.Node = block.getChildByName('brick')
         // 处理梯子（敌人初始）位置
         if(ladderCurrent && ladderLast && ladderCurrent.x == ladderLast.x){
             ladderCurrent.x *= -1
@@ -201,6 +202,7 @@ export default class GameManager extends cc.Component {
                 plant.x *= -1
                 plant.scaleX *= -1
             }
+            if(brick) brick.x *= -1
         }
         const component = block.getComponent(Block)
         component.init({
