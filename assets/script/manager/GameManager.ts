@@ -98,22 +98,10 @@ export default class GameManager extends cc.Component {
         if(!this.stageNode) return
         this.stageNode.removeAllChildren()
         this.lavaNode.node.setPosition(0,-650);
-        // 生成block
-        //let index = random(0, levels.length - 1)
-        //let index = DataManager.instance.isReplayed ? DataManager.instance.lastIndexBlock : DataManager.instance.levelList.pop();
-        //if(DataManager.instance.type == ENUM_GAME_TYPE.LEVEL) index = DataManager.instance.level - 1
-        //const data = levels[index] [21,1,21,21,15,21,21,17,13,20,4,21]//
-        //const data = createLevelDesign(0,0,0);
-        const data = [17,2,3,4,5];
+        const data = [21,17,2,3];
         for(let i = 0; i < data.length; i++){
             const blockIndex = data[i]
             const block: cc.Node = PoolManager.instance.getNode(`block${blockIndex}`, this.stageNode)
-            if(DataManager.instance.type == ENUM_GAME_TYPE.LEVEL) {
-                // 关卡模式不需要金币收集
-                block.children.forEach(item=>{
-                    if(item.active) item.active = item.name !== 'coin'
-                })
-            }
             const component = block.getComponent(Block)
             component.init({ id: i + 1, x: 0, y: block.height * i})
             component.rendor()
@@ -121,20 +109,20 @@ export default class GameManager extends cc.Component {
                 component.flipXHelper();
             }
         }
-        this.lavaNode.resume(data.length);
+        //this.lavaNode.resume(data.length);
         // 关卡模式中，最后一个块梯子替换为终点旗子
-        if(DataManager.instance.type == ENUM_GAME_TYPE.LEVEL){
-            const lastBlock = DataManager.instance.getLastBlock()
-            const ladder = lastBlock.node.getChildByName('ladder')
-            if(ladder) {
-                // 隐藏梯子
-                ladder.active = false
-                // 显示终点
-                const endpoint: cc.Node = PoolManager.instance.getNode(`endpoint`, this.stageNode)
-                endpoint.y = (endpoint.height / 2 - (lastBlock.node.height / 2 - 50)) + lastBlock.y - 5
-                endpoint.x = ladder.x
-            }
-        }
+        // if(DataManager.instance.type == ENUM_GAME_TYPE.LEVEL){
+        //     const lastBlock = DataManager.instance.getLastBlock()
+        //     const ladder = lastBlock.node.getChildByName('ladder')
+        //     if(ladder) {
+        //         // 隐藏梯子
+        //         ladder.active = false
+        //         // 显示终点
+        //         const endpoint: cc.Node = PoolManager.instance.getNode(`endpoint`, this.stageNode)
+        //         endpoint.y = (endpoint.height / 2 - (lastBlock.node.height / 2 - 50)) + lastBlock.y - 5
+        //         endpoint.x = ladder.x
+        //     }
+        // }
         // 生成起点和玩家并对焦摄像机
         const firstBlockNode = DataManager.instance.getFirstBlock()?.node
         if(firstBlockNode){
@@ -182,38 +170,45 @@ export default class GameManager extends cc.Component {
             // const blockIndex = random(1, BLOCK_NUM)
             let blockIndex = DataManager.instance.levelList.pop();
             if(!blockIndex){
-                blockIndex = random(1, 20)
+                blockIndex = random(1,21);
+            }
+            this.addNewBlock(blockIndex);
+            if(blockIndex == 21) {
+                this.addNewBlock(22);
             }
             
-            DataManager.instance.lastIndexBlock = blockIndex;
-            const block: cc.Node = PoolManager.instance.getNode(`block${blockIndex}`, this.stageNode)
-            const lastBlock = DataManager.instance.getLastBlock()
-            const ladderCurrent: cc.Node = block.getChildByName('ladder')
-            const ladderLast: cc.Node = lastBlock.node.getChildByName('ladder')
-            const bat: cc.Node = block.getChildByName('bat')
-            const spikeball: cc.Node = block.getChildByName('spikeball')
-            const trampoline: cc.Node = block.getChildByName('trampoline')
-            const plant: cc.Node = block.getChildByName('plant')
-            // 处理梯子（敌人初始）位置
-            if(ladderCurrent.x == ladderLast.x){
-                ladderCurrent.x *= -1
-                ladderCurrent.scaleX *= -1
-                if(bat) bat.x *= -1
-                if(spikeball) spikeball.x *= -1
-                if(trampoline) trampoline.x *= -1
-                if(plant){
-                    plant.x *= -1
-                    plant.scaleX *= -1
-                }
-            }
-            const component = block.getComponent(Block)
-            component.init({
-                id: lastBlock.id + 1,
-                x: 0,
-                y: lastBlock.y + lastBlock.node.height
-            })
-            component.rendor()
         }
+    }
+
+    addNewBlock(blockIndex: number){
+        DataManager.instance.lastIndexBlock = blockIndex;
+        const block: cc.Node = PoolManager.instance.getNode(`block${blockIndex}`, this.stageNode)
+        const lastBlock = DataManager.instance.getLastBlock()
+        const ladderCurrent: cc.Node = block.getChildByName('ladder')
+        const ladderLast: cc.Node = lastBlock.node.getChildByName('ladder')
+        const bat: cc.Node = block.getChildByName('bat')
+        const spikeball: cc.Node = block.getChildByName('spikeball')
+        const trampoline: cc.Node = block.getChildByName('trampoline')
+        const plant: cc.Node = block.getChildByName('plant')
+        // 处理梯子（敌人初始）位置
+        if(ladderCurrent && ladderLast && ladderCurrent.x == ladderLast.x){
+            ladderCurrent.x *= -1
+            ladderCurrent.scaleX *= -1
+            if(bat) bat.x *= -1
+            if(spikeball) spikeball.x *= -1
+            if(trampoline) trampoline.x *= -1
+            if(plant){
+                plant.x *= -1
+                plant.scaleX *= -1
+            }
+        }
+        const component = block.getComponent(Block)
+        component.init({
+            id: lastBlock.id + 1,
+            x: 0,
+            y: lastBlock.y + lastBlock.node.height
+        })
+        component.rendor()
     }
 
     /**

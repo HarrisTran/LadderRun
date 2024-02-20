@@ -13,6 +13,11 @@ export default class Camera extends cc.Component {
 
     onLoad () {
         EventManager.instance.on(ENUM_GAME_EVENT.CAMERA_MOVE, this.onCameraMove, this)
+        let targetColor = new cc.Color();
+        cc.Color.fromHEX(targetColor,'#100179')
+        cc.tween(this.node.getComponent(cc.Camera))
+        .to(240,{backgroundColor : targetColor})
+        .start()
     }
 
     protected onDestroy(): void {

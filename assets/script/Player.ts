@@ -71,7 +71,7 @@ export default class Player extends cc.Component {
             this.node.x += this.speed.x * dt
         }
         this.node.y += this.speed.y * dt
-        this.survivalVFX.node.active = this._enablePowerUp
+        //this.survivalVFX.node.active = this._enablePowerUp
     }
 
     setDir(dir: number = 1){
@@ -168,10 +168,7 @@ export default class Player extends cc.Component {
                 this.forceSpeedUp();
                 return;
             case ENUM_COLLIDER_TAG.MELON:
-                this._enablePowerUp = true;
-                this.scheduleOnce(()=>{
-                    this._enablePowerUp = false
-                },5)
+                this.onPoweredUpVFX();
                 return;
             default:
                 break;
@@ -288,6 +285,22 @@ export default class Player extends cc.Component {
             this.walk = 200;
             clearTimeout(timeOutSpeed);
         }, 5000);
+    }
+
+    onPoweredUpVFX()
+    {
+        this._enablePowerUp = true;
+        let shield = this.node.getChildByName("shield")
+        shield.active = true;
+        shield.scale = 0;
+        cc.tween(shield)
+        .to(0.3,{scale: 1},{easing: "backOut"})
+        .delay(4.7)
+        .call(()=>{
+            this._enablePowerUp = false
+            shield.active = false;
+        })
+        .start();
     }
 
 
