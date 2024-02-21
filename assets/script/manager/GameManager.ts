@@ -5,7 +5,7 @@ import DataManager from "./DataManager";
 import EventManager from "./EventManager";
 import { ENUM_GAME_TYPE, ENUM_GAME_EVENT, ENUM_GAME_ZINDEX, ENUM_GAME_STATUS, ENUM_UI_TYPE  } from "../Enum";
 import { random } from "../Utils";
-import { createLevelDesign, levels } from '../Levels';
+import { createLevelDesign} from '../Levels';
 import Block from '../Block';
 import PoolManager from "./PoolManager";
 import Player from '../Player';
@@ -67,21 +67,21 @@ export default class GameManager extends cc.Component {
 
     // 过关
     onGameWin(){
-        DataManager.instance.status = ENUM_GAME_STATUS.UNRUNING
-        let maxLevel = DataManager.instance.level + 1
-        if(maxLevel > levels.length) maxLevel = levels.length
-        // 当前关卡
-        DataManager.instance.level = maxLevel
-        DataManager.instance.save()
-        // 解锁关卡
-        if(maxLevel > DataManager.instance.unlock){
-            DataManager.instance.unlock = maxLevel
-            DataManager.instance.save()
-        }
-        //this.setMaxGoal()
-        this.scheduleOnce(()=>{
-            StaticInstance.uiManager.toggle(ENUM_UI_TYPE.WIN)
-        }, 0.5)
+        // DataManager.instance.status = ENUM_GAME_STATUS.UNRUNING
+        // let maxLevel = DataManager.instance.level + 1
+        // if(maxLevel > levels.length) maxLevel = levels.length
+        // // 当前关卡
+        // DataManager.instance.level = maxLevel
+        // DataManager.instance.save()
+        // // 解锁关卡
+        // if(maxLevel > DataManager.instance.unlock){
+        //     DataManager.instance.unlock = maxLevel
+        //     DataManager.instance.save()
+        // }
+        // //this.setMaxGoal()
+        // this.scheduleOnce(()=>{
+        //     StaticInstance.uiManager.toggle(ENUM_UI_TYPE.WIN)
+        // }, 0.5)
     }
 
     // 失败
@@ -98,7 +98,7 @@ export default class GameManager extends cc.Component {
         if(!this.stageNode) return
         this.stageNode.removeAllChildren()
         this.lavaNode.node.setPosition(0,-650);
-        const data = [23,23,23,23,23,23,23,23,23,23,23,23,23,23,23];
+        const data = [21,21,21,21]//createLevelDesign(5,6,10)
         for(let i = 0; i < data.length; i++){
             const blockIndex = data[i]
             const block: cc.Node = PoolManager.instance.getNode(`block${blockIndex}`, this.stageNode)
@@ -172,7 +172,7 @@ export default class GameManager extends cc.Component {
             // const blockIndex = random(1, BLOCK_NUM)
             let blockIndex = DataManager.instance.levelList.pop();
             if(!blockIndex){
-                blockIndex = random(1,21);
+                blockIndex = random(22,40);
             }
             this.addNewBlock(blockIndex);
             if(blockIndex == 21) {

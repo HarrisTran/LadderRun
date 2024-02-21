@@ -26,8 +26,8 @@ enum Difficulty {
 @ccclass
 export default class Block extends cc.Component {
 
-    @property({ type: cc.Integer })
-    blockType: number = 0;
+    @property({ type: cc.Enum(Difficulty) })
+    blockType: Difficulty = Difficulty.EASY;
 
     id: number = -1
     x: number = 0

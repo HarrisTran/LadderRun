@@ -18,6 +18,7 @@ export default class PoolManager{
 
     private _dictPool: any = {}
     private _dictPrefab: any = {}
+    private _dictBlockPrefab : any = {}
 
     // 复制节点
     public copyNode(copynode: cc.Node, parent: cc.Node | null): cc.Node {

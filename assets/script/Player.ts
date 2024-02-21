@@ -1,6 +1,3 @@
-import { StaticInstance } from './StaticInstance';
-// Created by carolsail 
-
 import { ENUM_COLLIDER_TAG, ENUM_PLAYER_STATUS, ENUM_GAME_EVENT, ENUM_AUDIO_CLIP, ENUM_GAME_STATUS, ENUM_UI_TYPE} from "./Enum";
 import AudioManager from "./manager/AudioManager";
 import DataManager from "./manager/DataManager";
