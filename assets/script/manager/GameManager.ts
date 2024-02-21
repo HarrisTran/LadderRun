@@ -98,13 +98,14 @@ export default class GameManager extends cc.Component {
         if(!this.stageNode) return
         this.stageNode.removeAllChildren()
         this.lavaNode.node.setPosition(0,-650);
-        const data = [21,17,2,3];
+        const data = [23,23,23,23,23,23,23,23,23,23,23,23,23,23,23];
         for(let i = 0; i < data.length; i++){
             const blockIndex = data[i]
             const block: cc.Node = PoolManager.instance.getNode(`block${blockIndex}`, this.stageNode)
             const component = block.getComponent(Block)
             component.init({ id: i + 1, x: 0, y: block.height * i})
             component.rendor()
+            block.setSiblingIndex(0);
             if(i%2){
                 component.flipXHelper();
             }
@@ -133,6 +134,7 @@ export default class GameManager extends cc.Component {
                 const player: cc.Node = PoolManager.instance.getNode(`player${DataManager.instance.skinIndex}`, this.stageNode)
                 player.zIndex = ENUM_GAME_ZINDEX.PLAYER
                 player.setPosition(cc.v2(-ladder.x, firstBlockNode.y))
+                
                 if(ladder.x > 0){
                     player.getComponent(Player).setDir(1)
                 }else{
@@ -183,6 +185,7 @@ export default class GameManager extends cc.Component {
     addNewBlock(blockIndex: number){
         DataManager.instance.lastIndexBlock = blockIndex;
         const block: cc.Node = PoolManager.instance.getNode(`block${blockIndex}`, this.stageNode)
+        block.setSiblingIndex(0);
         const lastBlock = DataManager.instance.getLastBlock()
         const ladderCurrent: cc.Node = block.getChildByName('ladder')
         const ladderLast: cc.Node = lastBlock.node.getChildByName('ladder')

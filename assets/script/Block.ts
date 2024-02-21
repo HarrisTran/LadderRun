@@ -59,7 +59,7 @@ export default class Block extends cc.Component {
         this.node.zIndex = ENUM_GAME_ZINDEX.BLOCK
         this.node.x = this.x
         this.node.y = this.y
-        this.node.getChildByName("blockInfo").getComponentInChildren(cc.Label).string = this.id.toString();
+        //this.node.getChildByName("blockInfo").getComponentInChildren(cc.Label).string = this.id.toString();
     }
 
     flipXHelper() {
