@@ -8,8 +8,8 @@
   "premultiplyAlpha": false,
   "genMipmaps": false,
   "packable": true,
-  "width": 21,
-  "height": 21,
+  "width": 32,
+  "height": 32,
   "platformSettings": {},
   "subMetas": {
     "rock": {
