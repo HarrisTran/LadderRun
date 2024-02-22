@@ -1840,12 +1840,12 @@
     "_offset": {
       "__type__": "cc.Vec2",
       "x": 0,
-      "y": 0
+      "y": -30
     },
     "_size": {
       "__type__": "cc.Size",
       "width": 10,
-      "height": 282
+      "height": 220
     },
     "_id": ""
   },
@@ -1857,7 +1857,7 @@
     "asset": {
       "__uuid__": "42fa0b57-9a5c-4cc7-a636-28402a543f2c"
     },
-    "fileId": "c2+eCNPKxJqIezf41JcHLP",
+    "fileId": "d5OA1nWH9EP6nzQSOc/T9F",
     "sync": false
   },
   {
@@ -2001,12 +2001,12 @@
     "_offset": {
       "__type__": "cc.Vec2",
       "x": 0,
-      "y": 0
+      "y": -30
     },
     "_size": {
       "__type__": "cc.Size",
       "width": 10,
-      "height": 282
+      "height": 220
     },
     "_id": ""
   },
@@ -2018,7 +2018,7 @@
     "asset": {
       "__uuid__": "42fa0b57-9a5c-4cc7-a636-28402a543f2c"
     },
-    "fileId": "9fNboE+vNMJ4X3XFOuAvRr",
+    "fileId": "b7k4rOumVBa5x27ef/tXXG",
     "sync": false
   },
   {

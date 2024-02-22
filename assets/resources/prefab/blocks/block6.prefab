@@ -1962,12 +1962,12 @@
     "_offset": {
       "__type__": "cc.Vec2",
       "x": 0,
-      "y": 0
+      "y": -30
     },
     "_size": {
       "__type__": "cc.Size",
       "width": 10,
-      "height": 282
+      "height": 220
     },
     "_id": ""
   },
@@ -1979,7 +1979,7 @@
     "asset": {
       "__uuid__": "00e507eb-8146-4036-8dae-7d0977cf04e6"
     },
-    "fileId": "64hMAbScFLjIVHtKFSRi/y",
+    "fileId": "0c0oe/BB5EMLKliMhvF413",
     "sync": false
   },
   {
@@ -2123,12 +2123,12 @@
     "_offset": {
       "__type__": "cc.Vec2",
       "x": 0,
-      "y": 0
+      "y": -30
     },
     "_size": {
       "__type__": "cc.Size",
       "width": 10,
-      "height": 282
+      "height": 220
     },
     "_id": ""
   },
@@ -2140,7 +2140,7 @@
     "asset": {
       "__uuid__": "00e507eb-8146-4036-8dae-7d0977cf04e6"
     },
-    "fileId": "110c3xy5BM/ZweCozV61fh",
+    "fileId": "ccvmKGFnFMtZLN7+qHwIsN",
     "sync": false
   },
   {

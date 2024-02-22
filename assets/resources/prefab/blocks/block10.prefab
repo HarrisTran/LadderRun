@@ -1786,12 +1786,12 @@
     "_offset": {
       "__type__": "cc.Vec2",
       "x": 0,
-      "y": 0
+      "y": -30
     },
     "_size": {
       "__type__": "cc.Size",
       "width": 10,
-      "height": 282
+      "height": 220
     },
     "_id": ""
   },
@@ -1803,7 +1803,7 @@
     "asset": {
       "__uuid__": "467310ea-452e-4575-a368-9a7c40f6eecc"
     },
-    "fileId": "edpgNxZ4NC2Y6lwshmviWg",
+    "fileId": "17oif4S7dPwrAzhl7qFylo",
     "sync": false
   },
   {

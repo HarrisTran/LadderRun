@@ -2000,12 +2000,12 @@
     "_offset": {
       "__type__": "cc.Vec2",
       "x": 0,
-      "y": 0
+      "y": -30
     },
     "_size": {
       "__type__": "cc.Size",
       "width": 10,
-      "height": 282
+      "height": 220
     },
     "_id": ""
   },
@@ -2017,7 +2017,7 @@
     "asset": {
       "__uuid__": "e74710d4-794f-4c2a-b556-b15b421feb90"
     },
-    "fileId": "daxVE5Lf9M4YHzfIGxrEU9",
+    "fileId": "57dGLwrKdBob5pXwjiLGcN",
     "sync": false
   },
   {
@@ -2161,12 +2161,12 @@
     "_offset": {
       "__type__": "cc.Vec2",
       "x": 0,
-      "y": 0
+      "y": -30
     },
     "_size": {
       "__type__": "cc.Size",
       "width": 10,
-      "height": 282
+      "height": 220
     },
     "_id": ""
   },
@@ -2178,7 +2178,7 @@
     "asset": {
       "__uuid__": "e74710d4-794f-4c2a-b556-b15b421feb90"
     },
-    "fileId": "91IZuYZvJJILAu0L8MpfYl",
+    "fileId": "c5Wk2yWsVMsLzAF5Aa90fk",
     "sync": false
   },
   {
