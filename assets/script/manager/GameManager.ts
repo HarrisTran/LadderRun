@@ -5,7 +5,7 @@ import DataManager from "./DataManager";
 import EventManager from "./EventManager";
 import { ENUM_GAME_TYPE, ENUM_GAME_EVENT, ENUM_GAME_ZINDEX, ENUM_GAME_STATUS, ENUM_UI_TYPE  } from "../Enum";
 import { random } from "../Utils";
-import { createLevelDesign} from '../Levels';
+import {createLevelList} from '../Levels';
 import Block from '../Block';
 import PoolManager from "./PoolManager";
 import Player from '../Player';
@@ -36,8 +36,9 @@ export default class GameManager extends cc.Component {
     @property(Lava)
     lavaNode: Lava = null
 
-    private lowerBound : number;
-    private upperBound : number;
+    private _levelList : number[];
+    private _lowerLevelBound : number;
+    private _upperLevelBound : number;
 
     onLoad () {
         // 注册事件
@@ -53,6 +54,9 @@ export default class GameManager extends cc.Component {
     // 开始游戏
     onGameStart(){
         DataManager.instance.reset()
+        this._lowerLevelBound = 0;
+        this._upperLevelBound = 0;
+        this._levelList = createLevelList();
         this.initGame()
     }
 
@@ -99,16 +103,16 @@ export default class GameManager extends cc.Component {
         if(!this.stageNode) return
         this.stageNode.removeAllChildren()
         this.lavaNode.node.setPosition(0,-650);
-        const data = [11,11,11,11,11,11,11,11,11,11,11,11,11,11,11]//createLevelDesign(5,6,10)
+        const data = [1,1,1,1]//createLevelDesign(5,6,10)
         for(let i = 0; i < data.length; i++){
             const blockIndex = data[i]
             const block: cc.Node = PoolManager.instance.getNode(`block${blockIndex}`, this.stageNode)
             const component = block.getComponent(Block)
             component.init({ id: i + 1, x: 0, y: block.height * i})
             component.rendor()
-            block.setSiblingIndex(0);
+            block.setSiblingIndex(0)
             if(i%2){
-                component.flipXHelper();
+                component.flipXHelper()
             }
         }
         const firstBlockNode = DataManager.instance.getFirstBlock()?.node
@@ -119,7 +123,6 @@ export default class GameManager extends cc.Component {
                 const player: cc.Node = PoolManager.instance.getNode(`player${DataManager.instance.skinIndex}`, this.stageNode)
                 player.zIndex = ENUM_GAME_ZINDEX.PLAYER
                 player.setPosition(cc.v2(-ladder.x, firstBlockNode.y))
-                
                 if(ladder.x > 0){
                     player.getComponent(Player).setDir(1)
                 }else{
@@ -144,15 +147,8 @@ export default class GameManager extends cc.Component {
         DataManager.instance.goal += 1
         StaticInstance.uiManager.setGameGoal()
         if(DataManager.instance.type == ENUM_GAME_TYPE.LOOP){
-            // let blockIndex = DataManager.instance.levelList.pop();
-            // if(!blockIndex){
-            //     blockIndex = random(22,40);
-            // }
-            // this.addNewBlock(blockIndex);
-            // if(blockIndex == 21) {
-            //     this.addNewBlock(22);
-            // }
-            
+            let newBlockIndex = this.getRandomBlockIndex();
+            this.addNewBlock(newBlockIndex);
         }
     }
 
@@ -163,24 +159,27 @@ export default class GameManager extends cc.Component {
         const lastBlock = DataManager.instance.getLastBlock()
         const ladderCurrent: cc.Node = block.getChildByName('ladder')
         const ladderLast: cc.Node = lastBlock.node.getChildByName('ladder')
-        const bat: cc.Node = block.getChildByName('bat')
-        const spikeball: cc.Node = block.getChildByName('spikeball')
-        const trampoline: cc.Node = block.getChildByName('trampoline')
-        const plant: cc.Node = block.getChildByName('plant')
-        const brick: cc.Node = block.getChildByName('brick')
-        if(ladderCurrent && ladderLast && ladderCurrent.x == ladderLast.x){
-            ladderCurrent.x *= -1
-            ladderCurrent.scaleX *= -1
-            if(bat) bat.x *= -1
-            if(spikeball) spikeball.x *= -1
-            if(trampoline) trampoline.x *= -1
-            if(plant){
-                plant.x *= -1
-                plant.scaleX *= -1
-            }
-            if(brick) brick.x *= -1
-        }
+        // const bat: cc.Node = block.getChildByName('bat')
+        // const spikeball: cc.Node = block.getChildByName('spikeball')
+        // const trampoline: cc.Node = block.getChildByName('trampoline')
+        // const plant: cc.Node = block.getChildByName('plant')
+        // const brick: cc.Node = block.getChildByName('brick')
         const component = block.getComponent(Block)
+        if(ladderCurrent && ladderLast && ladderCurrent.x == ladderLast.x){
+            component.flipXHelper();
+            // ladderCurrent.x *= -1
+            // ladderCurrent.scaleX *= -1
+            // if(bat) bat.x *= -1
+            // if(spikeball) spikeball.x *= -1
+            // if(trampoline) trampoline.x *= -1
+            // if(plant){
+            //     plant.x *= -1
+            //     plant.scaleX *= -1
+            // }
+            // if(brick) brick.x *= -1
+        }
+        // const component = block.getComponent(Block)
+
         component.init({
             id: lastBlock.id + 1,
             x: 0,
@@ -204,4 +203,17 @@ export default class GameManager extends cc.Component {
         EventManager.instance.off(ENUM_GAME_EVENT.EFFECT_STAR_PLAY, this.onEffectStarPlay)
         EventManager.instance.off(ENUM_GAME_EVENT.GAME_OVER,this.onGameOver);
     }
+
+    private getRandomBlockIndex() {
+        if (this._upperLevelBound < this._levelList.length) {
+            this._upperLevelBound++;
+        }
+        else {
+            if (this._upperLevelBound < this._levelList.length - 5) {
+                this._lowerLevelBound++;
+            }
+        }
+        return this._levelList[random(this._lowerLevelBound, this._upperLevelBound)];
+    }
+
 }

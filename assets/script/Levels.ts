@@ -23,27 +23,16 @@
 //     [17, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 1, 18, 19, 20],
 // ]
 
+import { random } from "./Utils";
+
 // const easyList = [1,6,7,9,11,12,15,17,20]
 // const mediumList = [2,4,5,13]
 // const hardList = [3,8,10,14,16,18,19]
-const easyList = [22,23,24,30,35,40]
-const mediumList = [25,26,27,28,29,31,34,36,39]
-const hardList = [32,33,37,38]
+const easyList = [1,2,3,9,14,19,20,21]
+const mediumList = [4,5,6,7,8,10,13,15,18]
+const hardList = [11,12,16,17]
 
-export function createLevelDesign(numberOfEasy: number, numberOfMedium: number, numberOfHard: number){
-    let stack : number[] = [];
-    for(let i=0; i<numberOfEasy;i++){
-        let index = Math.floor(Math.random()*easyList.length);
-        stack.push(easyList[index]);
-    }
-    for(let i=0; i<numberOfMedium;i++){
-        let index = Math.floor(Math.random()*mediumList.length);
-        stack.push(mediumList[index]);
-    }
-    for(let i=0; i<numberOfHard;i++){
-        let index = Math.floor(Math.random()*hardList.length);
-        stack.push(hardList[index]);
-    }
-    // return stack;
-    return [21,11,18,15,4,11,8,9,21]
+export function createLevelList(){
+    let levels = [easyList,mediumList,hardList].reduce((accumulator,value)=>accumulator.concat(value),[]);
+    return levels;
 }

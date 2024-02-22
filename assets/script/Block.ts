@@ -63,19 +63,29 @@ export default class Block extends cc.Component {
     }
 
     flipXHelper() {
-        let ladder = this.node.getChildByName("ladder");
-        let bat = this.node.getChildByName("bat");
-        let spikeball = this.node.getChildByName("spikeball");
-        let trampoline: cc.Node = this.node.getChildByName('trampoline');
-        let plant: cc.Node = this.node.getChildByName('plant');
-        ladder.x *= -1
-        ladder.scaleX *= -1
-        if (bat) bat.x *= -1
-        if (spikeball) spikeball.x *= -1
-        if (trampoline) trampoline.x *= -1
-        if (plant) {
-            plant.x *= -1
-            plant.scaleX *= -1
+        this.makeSymmetrical("ladder");
+        this.makeSymmetrical("coin");
+        this.makeSymmetrical("box");
+        this.makeSymmetrical("ananas");
+        this.makeSymmetrical("melon");
+        this.makeSymmetrical("bat");
+        this.makeSymmetrical("brick");
+        this.makeSymmetrical("chicken");
+        this.makeSymmetrical("plant");
+        this.makeSymmetrical("spikeball");
+        this.makeSymmetrical("spike");
+    }
+
+    makeSymmetrical(nameOfNode: string){
+        let nodes = this.node.children.filter(node => node.getChildByName(nameOfNode));
+        if(nodes.length > 0){
+            let isSymetrical = nodes.map(o=>o.x).reduce((total,value)=>total + value) == 0;
+            if(!isSymetrical){
+                nodes.map(node => {
+                    node.x *= -1;
+                    node.scaleX *= -1;
+                })
+            }
         }
     }
 }
