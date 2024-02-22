@@ -17,15 +17,10 @@ export default class DataManager {
         return this._instance
     }
 
-    constructor(){
-        this.levelList = createLevelDesign(2,2,5);
-    }
-
     static get instance() {
         return this.getInstance<DataManager>()
     }
 
-    public levelList : number[] = [];
     public lastIndexBlock: number = 0;
     public isReplayed : boolean = false;
     // 游戏模式
