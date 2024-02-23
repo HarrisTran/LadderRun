@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "ee6103ed-e4ba-4ead-a334-c5008231a8d8",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 157,
+  "height": 118,
+  "platformSettings": {},
+  "subMetas": {
+    "anim_bat_fly_1": {
+      "ver": "1.0.6",
+      "uuid": "f9ab4a68-a20b-4eb8-a1ad-b194b3374b78",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "ee6103ed-e4ba-4ead-a334-c5008231a8d8",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 1,
+      "offsetY": -10.5,
+      "trimX": 6,
+      "trimY": 25,
+      "width": 147,
+      "height": 89,
+      "rawWidth": 157,
+      "rawHeight": 118,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "235f6fc8-61b0-4352-a71c-766b2ecb5eae",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 261,
+  "height": 201,
+  "platformSettings": {},
+  "subMetas": {
+    "anim_plant_shoot_3": {
+      "ver": "1.0.6",
+      "uuid": "c0cfbc9c-7837-48f8-8154-a50d87745066",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "235f6fc8-61b0-4352-a71c-766b2ecb5eae",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -60.5,
+      "offsetY": 3,
+      "trimX": 14,
+      "trimY": 2,
+      "width": 112,
+      "height": 191,
+      "rawWidth": 261,
+      "rawHeight": 201,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

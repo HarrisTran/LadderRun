@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "531b5d2e-f1f3-4b0f-ae10-3c4f988d7814",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 210,
+  "height": 101,
+  "platformSettings": {},
+  "subMetas": {
+    "anim_chicken_idle_1": {
+      "ver": "1.0.6",
+      "uuid": "89a57023-192b-4633-ae98-59d2fdd18234",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "531b5d2e-f1f3-4b0f-ae10-3c4f988d7814",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -1.5,
+      "offsetY": -1.5,
+      "trimX": 0,
+      "trimY": 5,
+      "width": 207,
+      "height": 94,
+      "rawWidth": 210,
+      "rawHeight": 101,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

@@ -3,7 +3,7 @@
   "_name": "box",
   "_objFlags": 0,
   "_native": "",
-  "_duration": 0.16,
+  "_duration": 0.2,
   "sample": 25,
   "speed": 1,
   "wrapMode": 1,
@@ -14,29 +14,59 @@
           {
             "frame": 0,
             "value": {
-              "__uuid__": "e868ed41-aefb-4f96-82d7-9ed0c5e90805"
-            }
-          },
-          {
-            "frame": 0.04,
-            "value": {
-              "__uuid__": "d9b7f47e-e54c-4a14-a4ff-41178457f304"
-            }
-          },
-          {
-            "frame": 0.08,
-            "value": {
-              "__uuid__": "17052375-fbbc-4009-941e-d38e9e0fccdb"
-            }
-          },
-          {
-            "frame": 0.12,
-            "value": {
-              "__uuid__": "f850b487-344d-4ecf-85cc-b93eb83bb00b"
+              "__uuid__": "0e053791-63e6-462d-832f-750c1c9c8a66"
             }
           }
         ]
       }
+    },
+    "props": {
+      "color": [
+        {
+          "frame": 0,
+          "value": {
+            "__type__": "cc.Color",
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 255
+          }
+        },
+        {
+          "frame": 0.12,
+          "value": {
+            "__type__": "cc.Color",
+            "r": 255,
+            "g": 0,
+            "b": 163,
+            "a": 255
+          }
+        },
+        {
+          "frame": 0.2,
+          "value": {
+            "__type__": "cc.Color",
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 255
+          }
+        }
+      ],
+      "opacity": [
+        {
+          "frame": 0,
+          "value": 255
+        },
+        {
+          "frame": 0.12,
+          "value": 255
+        },
+        {
+          "frame": 0.2,
+          "value": 0
+        }
+      ]
     }
   },
   "events": []

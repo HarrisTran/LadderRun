@@ -3,7 +3,7 @@
   "_name": "idle",
   "_objFlags": 0,
   "_native": "",
-  "_duration": 0.6,
+  "_duration": 0.05,
   "sample": 20,
   "speed": 1,
   "wrapMode": 2,
@@ -14,73 +14,7 @@
           {
             "frame": 0,
             "value": {
-              "__uuid__": "16a4d7e7-5201-4dff-abdb-86d0066d39eb"
-            }
-          },
-          {
-            "frame": 0.05,
-            "value": {
-              "__uuid__": "f9eb6c7a-1455-4858-99a1-e51b7e048369"
-            }
-          },
-          {
-            "frame": 0.1,
-            "value": {
-              "__uuid__": "de621ef3-73bd-455b-9568-e331149d57da"
-            }
-          },
-          {
-            "frame": 0.15,
-            "value": {
-              "__uuid__": "97a23699-0a1d-496f-b3fe-b62de0f8b5bd"
-            }
-          },
-          {
-            "frame": 0.2,
-            "value": {
-              "__uuid__": "595eb9bb-44b7-46ab-8759-b20f68fe794e"
-            }
-          },
-          {
-            "frame": 0.25,
-            "value": {
-              "__uuid__": "cd28c902-f2af-4c6c-9867-1210a9c03764"
-            }
-          },
-          {
-            "frame": 0.3,
-            "value": {
-              "__uuid__": "a1d25f97-6ca9-41f1-ae2a-0d1ee1a7328d"
-            }
-          },
-          {
-            "frame": 0.35,
-            "value": {
-              "__uuid__": "f8ef5066-4695-42d1-977c-65e54565e1ce"
-            }
-          },
-          {
-            "frame": 0.4,
-            "value": {
-              "__uuid__": "90a75204-c840-4c56-90ee-2861f1c30a8b"
-            }
-          },
-          {
-            "frame": 0.45,
-            "value": {
-              "__uuid__": "dbaf2a43-8518-4291-bf2f-70b426443233"
-            }
-          },
-          {
-            "frame": 0.5,
-            "value": {
-              "__uuid__": "ef250ed8-13f6-4c34-b42b-da957038b042"
-            }
-          },
-          {
-            "frame": 0.55,
-            "value": {
-              "__uuid__": "4643f0bf-af8f-4e98-8fa1-c98d770a0382"
+              "__uuid__": "60bdec88-0853-4eab-84f8-ca3ed6a59490"
             }
           }
         ]
