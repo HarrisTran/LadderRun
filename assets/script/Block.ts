@@ -77,15 +77,12 @@ export default class Block extends cc.Component {
     }
 
     makeSymmetrical(nameOfNode: string){
-        let nodes = this.node.children.filter(node => node.getChildByName(nameOfNode));
+        let nodes = this.node.children.filter(node => node.name == nameOfNode);
         if(nodes.length > 0){
-            let isSymetrical = nodes.map(o=>o.x).reduce((total,value)=>total + value) == 0;
-            if(!isSymetrical){
-                nodes.map(node => {
-                    node.x *= -1;
-                    node.scaleX *= -1;
-                })
-            }
+            nodes.map(node => {
+                node.x *= -1;
+                node.scaleX *= -1;
+            })
         }
     }
 }

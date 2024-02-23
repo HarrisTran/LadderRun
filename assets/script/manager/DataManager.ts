@@ -2,7 +2,6 @@
 
 import Block from '../Block';
 import { ENUM_GAME_STATUS, ENUM_GAME_TYPE } from '../Enum';
-import { createLevelDesign } from '../Levels';
 const STORAGE_KEY = 'STAIRWAY_STORAGE_KEY'
 
 export default class DataManager {

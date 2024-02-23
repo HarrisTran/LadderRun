@@ -2127,7 +2127,7 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        219.996,
+        220,
         71.952,
         12,
         0,
@@ -2223,12 +2223,12 @@
     "_offset": {
       "__type__": "cc.Vec2",
       "x": 0,
-      "y": -10
+      "y": -25
     },
     "_size": {
       "__type__": "cc.Size",
-      "width": 10,
-      "height": 180
+      "width": 20,
+      "height": 200
     },
     "_id": ""
   },
@@ -2240,7 +2240,7 @@
     "asset": {
       "__uuid__": "528117de-f21f-4928-a54b-fa23e9e22201"
     },
-    "fileId": "ab8kSN3npMRL+FUZrCgK59",
+    "fileId": "16XhJhWptEtb8P9aHy2SuI",
     "sync": false
   },
   {

@@ -16,14 +16,13 @@ import Lava from '../enemies/Lava';
 const {ccclass, property} = cc._decorator;
 
 export const DEBUG_MODE = true;
-const BLOCK_NUM = 20
 window.addEventListener("message", (data) => {
     const { data: res } = data
     const objectRes = JSON.parse(res)
     const { type, value } = objectRes
     if(type === "newTicket") {
         BackendConnector.instance.numberTicket += value
-        // value is ticket ex: 5, 10
+        EventManager.instance.emit(ENUM_GAME_EVENT.GAME_RELIVE)
     }
 })
 
@@ -103,7 +102,7 @@ export default class GameManager extends cc.Component {
         if(!this.stageNode) return
         this.stageNode.removeAllChildren()
         this.lavaNode.node.setPosition(0,-650);
-        const data = [3,3,5,3,3,8,9]//createLevelDesign(5,6,10)
+        const data = [1,15,1,15,1,15]//createLevelDesign(5,6,10)
         for(let i = 0; i < data.length; i++){
             const blockIndex = data[i]
             const block: cc.Node = PoolManager.instance.getNode(`block${blockIndex}`, this.stageNode)
@@ -147,7 +146,7 @@ export default class GameManager extends cc.Component {
         DataManager.instance.goal += 1
         StaticInstance.uiManager.setGameGoal()
         if(DataManager.instance.type == ENUM_GAME_TYPE.LOOP){
-            let newBlockIndex = random(1,21);//this.getRandomBlockIndex();
+            let newBlockIndex = this.getRandomBlockIndex();
             this.addNewBlock(newBlockIndex);
         }
     }
@@ -159,26 +158,26 @@ export default class GameManager extends cc.Component {
         const lastBlock = DataManager.instance.getLastBlock()
         const ladderCurrent: cc.Node = block.getChildByName('ladder')
         const ladderLast: cc.Node = lastBlock.node.getChildByName('ladder')
-        const bat: cc.Node = block.getChildByName('bat')
-        const spikeball: cc.Node = block.getChildByName('spikeball')
-        const trampoline: cc.Node = block.getChildByName('trampoline')
-        const plant: cc.Node = block.getChildByName('plant')
-        const brick: cc.Node = block.getChildByName('brick')
-        const component = block.getComponent(Block)
+        // const bat: cc.Node = block.getChildByName('bat')
+        // const spikeball: cc.Node = block.getChildByName('spikeball')
+        // const trampoline: cc.Node = block.getChildByName('trampoline')
+        // const plant: cc.Node = block.getChildByName('plant')
+        // const brick: cc.Node = block.getChildByName('brick')
         if(ladderCurrent && ladderLast && ladderCurrent.x == ladderLast.x){
-            //component.flipXHelper();
-            ladderCurrent.x *= -1
-            ladderCurrent.scaleX *= -1
-            if(bat) bat.x *= -1
-            if(spikeball) spikeball.x *= -1
-            if(trampoline) trampoline.x *= -1
-            if(plant){
-                plant.x *= -1
-                plant.scaleX *= -1
-            }
-            if(brick) brick.x *= -1
+            block.getComponent(Block).flipXHelper();
+            // ladderCurrent.x *= -1
+            // ladderCurrent.scaleX *= -1
+            // if(bat) bat.x *= -1
+            // if(spikeball) spikeball.x *= -1
+            // if(trampoline) trampoline.x *= -1
+            // if(plant){
+            //     plant.x *= -1
+            //     plant.scaleX *= -1
+            // }
+            // if(brick) brick.x *= -1
         }
-        // const component = block.getComponent(Block)
+
+        const component = block.getComponent(Block)
 
         component.init({
             id: lastBlock.id + 1,

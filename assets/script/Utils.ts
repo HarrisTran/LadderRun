@@ -4,6 +4,13 @@ export function random(lower: number, upper:number): number {
     return Math.floor(Math.random() * (upper - lower+1)) + lower;
 }
 
+
+export function randomInList(lst: number[]){
+    let length = lst.length;
+    let index = random(0,length-1);
+    return lst[index];
+}
+
 export function shuffle(arr: any[]){
     let length: number = arr.length,
         randomIndex: number,

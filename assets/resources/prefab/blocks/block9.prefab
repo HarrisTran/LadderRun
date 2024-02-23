@@ -776,7 +776,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "coin copy",
+    "_name": "coin",
     "_objFlags": 0,
     "_parent": {
       "__id__": 1
@@ -1056,7 +1056,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "coin copy",
+    "_name": "coin",
     "_objFlags": 0,
     "_parent": {
       "__id__": 1
@@ -1336,7 +1336,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "coin copy",
+    "_name": "coin",
     "_objFlags": 0,
     "_parent": {
       "__id__": 1
@@ -1616,7 +1616,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "coin copy",
+    "_name": "coin",
     "_objFlags": 0,
     "_parent": {
       "__id__": 1
@@ -2627,7 +2627,7 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        219.996,
+        220,
         71.952,
         12,
         0,
@@ -2723,12 +2723,12 @@
     "_offset": {
       "__type__": "cc.Vec2",
       "x": 0,
-      "y": -10
+      "y": -20
     },
     "_size": {
       "__type__": "cc.Size",
-      "width": 10,
-      "height": 180
+      "width": 20,
+      "height": 200
     },
     "_id": ""
   },
@@ -2740,7 +2740,7 @@
     "asset": {
       "__uuid__": "fdccf4ba-a8da-40c2-a95c-2bb7e9260206"
     },
-    "fileId": "6emKG3m/dO2pG7Hbw4CPTr",
+    "fileId": "d5bPN1JNRM2pFtrKjBozR9",
     "sync": false
   },
   {

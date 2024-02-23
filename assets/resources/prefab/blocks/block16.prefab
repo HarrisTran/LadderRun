@@ -1368,7 +1368,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "brick copy",
+    "_name": "brick",
     "_objFlags": 0,
     "_parent": {
       "__id__": 1
@@ -1542,7 +1542,7 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        219.996,
+        220,
         71.952,
         12,
         0,
@@ -1638,12 +1638,12 @@
     "_offset": {
       "__type__": "cc.Vec2",
       "x": 0,
-      "y": -10
+      "y": -20
     },
     "_size": {
       "__type__": "cc.Size",
-      "width": 10,
-      "height": 180
+      "width": 20,
+      "height": 200
     },
     "_id": ""
   },
@@ -1655,7 +1655,7 @@
     "asset": {
       "__uuid__": "ba30eb0f-3542-42cf-b6ac-6fb95ff21d6f"
     },
-    "fileId": "09HPTt7IZC/aRUBMnxRitr",
+    "fileId": "85CO/wck5CuJ+0x3pe3v7g",
     "sync": false
   },
   {

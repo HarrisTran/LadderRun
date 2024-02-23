@@ -1,5 +1,7 @@
 import * as CryptoES from "crypto-js";
 import DataManager from './manager/DataManager';
+import { ENUM_GAME_EVENT } from "./Enum";
+import EventManager from "./manager/EventManager";
 const {ccclass, property} = cc._decorator;
 
 @ccclass
@@ -16,6 +18,7 @@ export default class BackendConnector {
     public numberTicket: number;
     public maxScore: number;
     private mileStone: string;
+    public currentScore : number ;
 
     private gameURL: string = "";
 
@@ -39,8 +42,10 @@ export default class BackendConnector {
         this.tournamentId = url.get('tournamentId')
         this.deviceInfo = url.get('deviceInfo')
 
+
         this.numberTicket = parseInt(url.get('numberTicket'));
         this.maxScore =  parseInt(url.get('maxScore'));
+        this.currentScore = parseInt(url.get('currentScore')) || 100000;
         this.mileStone = url.get("mileStone");
 
         this.gameURL = ENV_CONFIG[url.get('env')];
@@ -121,9 +126,7 @@ export default class BackendConnector {
     }
 
     public postMessage()
-    {
-        console.log("post message, call to paypal");
-        
+    {   
         window.parent.postMessage(
             JSON.stringify({
                 error: false,
@@ -133,11 +136,17 @@ export default class BackendConnector {
             }),
             "*"
         );
-        
+
+        setTimeout(() => {
+            BackendConnector.instance.numberTicket += 2
+            EventManager.instance.emit(ENUM_GAME_EVENT.GAME_RELIVE)
+        }, 2000);
     }
 
     public postScoreToServer(score: number)
     {
+        console.log(score);
+        
         let dataEncrypted : string = this.getDataEncrypted({Score: score,TournamentId: this.tournamentId, SkinId: this.skinId});
 
         fetch(`${this.gameURL}/promotions/store-score-tournament?tournamentId=${this.tournamentId}&skinId=${this.skinId}&cocos=1`,{
@@ -156,7 +165,7 @@ export default class BackendConnector {
             JSON.stringify({
                 error: false,
                 message: "Hello World",
-                score: score,
+                score: score + this.currentScore,
                 type: "game_tournament",
             }),
             "*"

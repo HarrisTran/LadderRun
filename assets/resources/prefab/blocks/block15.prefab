@@ -1598,7 +1598,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "coin copy",
+    "_name": "coin",
     "_objFlags": 0,
     "_parent": {
       "__id__": 1
@@ -1878,7 +1878,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "coin copy",
+    "_name": "coin",
     "_objFlags": 0,
     "_parent": {
       "__id__": 1
@@ -2201,7 +2201,7 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        219.996,
+        220,
         71.952,
         12,
         0,
@@ -2297,11 +2297,11 @@
     "_offset": {
       "__type__": "cc.Vec2",
       "x": 0,
-      "y": -10
+      "y": -15
     },
     "_size": {
       "__type__": "cc.Size",
-      "width": 10,
+      "width": 20,
       "height": 180
     },
     "_id": ""
@@ -2314,7 +2314,7 @@
     "asset": {
       "__uuid__": "911e4d34-4130-47af-996f-1022ee88afb2"
     },
-    "fileId": "57ZgAvOe9B9Zqqp/sDyfJU",
+    "fileId": "8dXALD0rlLhacN71p+rWIo",
     "sync": false
   },
   {
