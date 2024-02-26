@@ -97,15 +97,35 @@ export enum ENUM_UI_TYPE {
 
 // 音效
 export enum ENUM_AUDIO_CLIP {
-    BGM = 'bgm',
-    CLICK = 'click',
-    COLLECT = 'collect',
-    DIE = 'die',
-    GOAL = 'goal',
-    JUMP = 'jump',
-    WIN = 'win',
-    CHICKEN = 'chicken',
-    BOX = 'box'
+    BGM = 'bgm_ingame',
+
+    POWER_UP = 'ananas',
+    SPEED_UP = 'melon',
+
+    BOX = 'box',
+    CLICK = 'button_click',
+    PLAY = 'button_play',
+    COLLECT = 'coin',
+
+    CHICKEN_HIT = 'chicken_hit',
+    CHICKEN_RUN = 'chicken_run',
+
+    BAT_HIT = 'bat_hit',
+    BAT_FLY = 'bat_fly',
+
+    PIRANHA_PLANT = 'piranha_plant',
+
+    PLANT_SHOOT = 'PLANT_SHOOT',
+
+    DIE = 'player_hit',
+    JUMP = 'player_jump',
+    CLIMB = 'player_climb',
+
+    SAW = 'saw',
+
+    STONE = 'stone',
+
+    TRAMPOLINE = 'trampoline',
 }
 
 // 游戏模式

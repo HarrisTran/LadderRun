@@ -13,7 +13,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "pipe",
+    "_name": "pipemario",
     "_objFlags": 0,
     "_parent": null,
     "_children": [
@@ -59,7 +59,7 @@
       "ctor": "Float64Array",
       "array": [
         0,
-        -105.617,
+        -125.617,
         0,
         0,
         0,
@@ -194,7 +194,7 @@
     "_offset": {
       "__type__": "cc.Vec2",
       "x": 0,
-      "y": -5
+      "y": 0
     },
     "_size": {
       "__type__": "cc.Size",

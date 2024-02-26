@@ -129,7 +129,7 @@ export default class Player extends cc.Component {
                     }
                     return
                 case ENUM_COLLIDER_TAG.CHICKEN:
-                    AudioManager.instance.playSound(ENUM_AUDIO_CLIP.CHICKEN)
+                    //AudioManager.instance.playSound(ENUM_AUDIO_CLIP.CHICKEN)
                     color = cc.color(255, 255, 255, 255)
                     for (let i = 0; i < 3; i++) {
                         EventManager.instance.emit(ENUM_GAME_EVENT.EFFECT_STAR_PLAY, { pos: self.node.position, color })
@@ -146,7 +146,7 @@ export default class Player extends cc.Component {
 
         switch (other.tag) {
             case ENUM_COLLIDER_TAG.ENDPOINT:
-                AudioManager.instance.playSound(ENUM_AUDIO_CLIP.WIN)
+                //AudioManager.instance.playSound(ENUM_AUDIO_CLIP.WIN)
                 EventManager.instance.emit(ENUM_GAME_EVENT.GAME_WIN)
                 for(let i = 0; i < 5; i++){
                     EventManager.instance.emit(ENUM_GAME_EVENT.EFFECT_STAR_PLAY, {pos: self.node.position, color})
@@ -252,7 +252,7 @@ export default class Player extends cc.Component {
                     this.node.getPosition(v3)
                     v3.y = (otherPreAabb.yMin - this.canvas.y) + self.node.height
                     cc.tween(this.node).to(0.4, {position: v3}).call(()=>{
-                        AudioManager.instance.playSound(ENUM_AUDIO_CLIP.GOAL)
+                        //AudioManager.instance.playSound(ENUM_AUDIO_CLIP.GOAL)
                         EventManager.instance.emit(ENUM_GAME_EVENT.PLAYER_CLIMB_END)
                         EventManager.instance.emit(ENUM_GAME_EVENT.CAMERA_MOVE, {block: other.node.parent})
                         this.status  = ENUM_PLAYER_STATUS.WALK

@@ -63,6 +63,10 @@ export default class ResourceManager {
     }
 
     public getClip(name: string) {
+        console.log(this.clipMap);
+        console.log(name);
+        
+        
         return this.clipMap[name]
     }
 

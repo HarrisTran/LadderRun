@@ -13,7 +13,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "levelItem",
+    "_name": "levelitem",
     "_objFlags": 0,
     "_parent": null,
     "_children": [
@@ -285,8 +285,8 @@
     "_opacity": 100,
     "_color": {
       "__type__": "cc.Color",
-      "r": 0,
-      "g": 0,
+      "r": 245,
+      "g": 255,
       "b": 0,
       "a": 255
     },
