@@ -35,9 +35,9 @@
     "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
-      "r": 255,
-      "g": 255,
-      "b": 255,
+      "r": 167,
+      "g": 114,
+      "b": 247,
       "a": 255
     },
     "_contentSize": {
@@ -61,8 +61,8 @@
         0,
         0,
         1,
-        2,
-        2,
+        1,
+        1,
         1
       ]
     },
@@ -95,7 +95,7 @@
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
     "_spriteFrame": {
-      "__uuid__": "865308d7-ec88-4f6b-a688-7977dfac0509"
+      "__uuid__": "1799e69f-e30c-42dc-acc6-617d3fa89158"
     },
     "_type": 0,
     "_sizeMode": 0,
@@ -108,7 +108,9 @@
     "_fillStart": 0,
     "_fillRange": 0,
     "_isTrimmedMode": true,
-    "_atlas": null,
+    "_atlas": {
+      "__uuid__": "1228c238-7fbb-41ab-a971-4c908c82bf27"
+    },
     "_id": ""
   },
   {
@@ -135,7 +137,7 @@
       "x": 0,
       "y": 0
     },
-    "_radius": 4,
+    "_radius": 3,
     "_id": ""
   },
   {

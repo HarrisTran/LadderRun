@@ -3,7 +3,7 @@
   "_name": "hit",
   "_objFlags": 0,
   "_native": "",
-  "_duration": 0.25,
+  "_duration": 0.05,
   "sample": 20,
   "speed": 1,
   "wrapMode": 1,
@@ -14,31 +14,7 @@
           {
             "frame": 0,
             "value": {
-              "__uuid__": "d23fcb69-fb8d-427c-a9ac-41ec9634f85f"
-            }
-          },
-          {
-            "frame": 0.05,
-            "value": {
-              "__uuid__": "5efea911-2208-4185-9bfc-87a467083ade"
-            }
-          },
-          {
-            "frame": 0.1,
-            "value": {
-              "__uuid__": "25d6e7a8-e925-4edc-ba63-f1aa7b453121"
-            }
-          },
-          {
-            "frame": 0.15,
-            "value": {
-              "__uuid__": "f10a05ee-8fa1-48bf-9f2c-a66afc7710d1"
-            }
-          },
-          {
-            "frame": 0.2,
-            "value": {
-              "__uuid__": "f29b0a86-c35d-4633-a98f-994b0c059d81"
+              "__uuid__": "1eaa8643-18f5-4e20-ac63-6000b3558194"
             }
           }
         ]
