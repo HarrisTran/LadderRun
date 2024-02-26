@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "7b8845be-a91d-4ea0-b238-9e08987d0dbd",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 127,
+  "height": 138,
+  "platformSettings": {},
+  "subMetas": {
+    "anim_piranhaplant_idle_5": {
+      "ver": "1.0.6",
+      "uuid": "e448ab35-1b49-424b-9c2f-42b129a650cc",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "7b8845be-a91d-4ea0-b238-9e08987d0dbd",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -4.5,
+      "offsetY": -0.5,
+      "trimX": 2,
+      "trimY": 1,
+      "width": 114,
+      "height": 137,
+      "rawWidth": 127,
+      "rawHeight": 138,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}
