@@ -118,8 +118,9 @@ export default class Player extends cc.Component {
                 case ENUM_COLLIDER_TAG.BAT:
                 case ENUM_COLLIDER_TAG.SAW:
                 case ENUM_COLLIDER_TAG.SPIKEBALL:
-                case ENUM_COLLIDER_TAG.PLANT_BULLET:
                 case ENUM_COLLIDER_TAG.PIRANHA_PLANT:
+                    AudioManager.instance.playSound(ENUM_AUDIO_CLIP.PIRANHA_PLANT)
+                case ENUM_COLLIDER_TAG.PLANT_BULLET:
                     AudioManager.instance.playSound(ENUM_AUDIO_CLIP.DIE)
                     EventManager.instance.emit(ENUM_GAME_EVENT.GAME_LOSE)
                     self.node.active = false
@@ -129,7 +130,7 @@ export default class Player extends cc.Component {
                     }
                     return
                 case ENUM_COLLIDER_TAG.CHICKEN:
-                    //AudioManager.instance.playSound(ENUM_AUDIO_CLIP.CHICKEN)
+                    AudioManager.instance.playSound(ENUM_AUDIO_CLIP.CHICKEN_HIT)
                     color = cc.color(255, 255, 255, 255)
                     for (let i = 0; i < 3; i++) {
                         EventManager.instance.emit(ENUM_GAME_EVENT.EFFECT_STAR_PLAY, { pos: self.node.position, color })
@@ -153,7 +154,7 @@ export default class Player extends cc.Component {
                 }
                 return;
             case ENUM_COLLIDER_TAG.TRAMPOLINE:
-                AudioManager.instance.playSound(ENUM_AUDIO_CLIP.JUMP)
+                AudioManager.instance.playSound(ENUM_AUDIO_CLIP.TRAMPOLINE)
                 color = cc.color(255, 255, 255, 255)
                 for (let i = 0; i < 3; i++) {
                     EventManager.instance.emit(ENUM_GAME_EVENT.EFFECT_STAR_PLAY, { pos: self.node.position, color })
@@ -162,9 +163,11 @@ export default class Player extends cc.Component {
                 this.speed.y = this.jump * 2
                 return
             case ENUM_COLLIDER_TAG.ANANAS:
+                AudioManager.instance.playSound(ENUM_AUDIO_CLIP.SPEED_UP);
                 this.forceSpeedUp();
                 return;
             case ENUM_COLLIDER_TAG.MELON:
+                AudioManager.instance.playSound(ENUM_AUDIO_CLIP.POWER_UP);
                 this.onPoweredUpVFX();
                 return;
             default:
@@ -221,6 +224,7 @@ export default class Player extends cc.Component {
                 this.node.getPosition(v3)
                 v3 = v3.add(cc.v3(x, 0, 0))
                 cc.tween(this.node).to(0.05, {position: v3}).call(()=>{
+                    AudioManager.instance.playSound(ENUM_AUDIO_CLIP.CLIMB)
                     this.speed.y = this.jump * 0.5
                 }).start()
             break

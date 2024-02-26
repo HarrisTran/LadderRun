@@ -15,7 +15,7 @@ const {ccclass, property} = cc._decorator;
 export default class MenuLayer extends BaseLayer {
 
     onStartClick(){
-        AudioManager.instance.playSound(ENUM_AUDIO_CLIP.CLICK)
+        AudioManager.instance.playSound(ENUM_AUDIO_CLIP.PLAY)
         DataManager.instance.type = ENUM_GAME_TYPE.LOOP
         StaticInstance.uiManager.toggle(ENUM_UI_TYPE.MENU, false)
         StaticInstance.uiManager.toggle(ENUM_UI_TYPE.GAME)

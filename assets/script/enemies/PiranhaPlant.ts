@@ -5,7 +5,8 @@
 // Learn life-cycle callbacks:
 //  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
 
-import { ENUM_COLLIDER_TAG } from "../Enum";
+import { ENUM_AUDIO_CLIP, ENUM_COLLIDER_TAG } from "../Enum";
+import AudioManager from "../manager/AudioManager";
 
 const {ccclass, property} = cc._decorator;
 
@@ -21,9 +22,10 @@ export default class PiranhaPlant extends cc.Component {
     onCollisionEnter (other: cc.BoxCollider, self: cc.BoxCollider) {
         if(other.tag == ENUM_COLLIDER_TAG.PLAYER && self.tag == ENUM_COLLIDER_TAG.PLANT_VIEW){
             this.actionPlant = cc.tween(this.piranhaPlant).sequence(
-                cc.tween(this.piranhaPlant).to(1,{y: 0}),
-                cc.tween().delay(2),
-                cc.tween(this.piranhaPlant).to(1,{y: 40}),
+                cc.tween(this.piranhaPlant).to(0.25,{y: 40}),
+                cc.tween().delay(0.25),
+                cc.tween(this.piranhaPlant).to(0.5,{y: 0}),
+                cc.tween().delay(1.5),
             )
             .repeat(20)
             this.actionPlant.start();
@@ -32,12 +34,11 @@ export default class PiranhaPlant extends cc.Component {
 
     onCollisionEnd (other: cc.BoxCollider, self: cc.BoxCollider) {
         if(other.tag == ENUM_COLLIDER_TAG.PLAYER && self.tag == ENUM_COLLIDER_TAG.PLANT_VIEW){
-            this.onDestroy();
+            this.actionPlant.stop();
         }
     }
 
     protected onDestroy(): void {
-        this.unscheduleAllCallbacks();
         this.actionPlant.stop();
     }
 }

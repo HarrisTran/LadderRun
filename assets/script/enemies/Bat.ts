@@ -1,7 +1,8 @@
 // Created by carolsail
 
+import AudioManager from '../manager/AudioManager';
 import DataManager from '../manager/DataManager';
-import { ENUM_COLLIDER_TAG, ENUM_BAT_STATUS, ENUM_GAME_STATUS } from './../Enum';
+import { ENUM_COLLIDER_TAG, ENUM_BAT_STATUS, ENUM_GAME_STATUS, ENUM_AUDIO_CLIP } from './../Enum';
 const {ccclass, property} = cc._decorator;
 
 @ccclass
@@ -28,6 +29,7 @@ export default class Bat extends cc.Component {
     onCollisionEnter (other: cc.BoxCollider, self: cc.BoxCollider) {
         if(other.tag == ENUM_COLLIDER_TAG.PLAYER && self.tag == ENUM_COLLIDER_TAG.BAT_VIEW && this.status == ENUM_BAT_STATUS.IDLE){
             this.status = ENUM_BAT_STATUS.WALL_OUT
+            AudioManager.instance.playSound(ENUM_AUDIO_CLIP.BAT_FLY)
             // 速度随机性
             this.speed += Math.random() * 80
             // 坠落

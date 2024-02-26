@@ -1,7 +1,8 @@
 
 import BackendConnector from "../BackendConnector";
-import { ENUM_GAME_EVENT, ENUM_UI_TYPE } from "../Enum";
+import { ENUM_AUDIO_CLIP, ENUM_GAME_EVENT, ENUM_UI_TYPE } from "../Enum";
 import { StaticInstance } from "../StaticInstance";
+import AudioManager from "../manager/AudioManager";
 import DataManager from "../manager/DataManager";
 import EventManager from "../manager/EventManager";
 import { DEBUG_MODE } from "../manager/GameManager";
@@ -36,9 +37,10 @@ export default class ConfirmLayer extends BaseLayer {
         `Top 1 player: ${BackendConnector.instance.maxScore}`+"\n"+
         `Do you want to continue playing with your current score?`
     }
+
     onContinueButton()
     {
-        console.log("continue button");
+        AudioManager.instance.playSound(ENUM_AUDIO_CLIP.CLICK);
         if(DEBUG_MODE){
             this.continueButton.active = false;
         }
@@ -50,7 +52,7 @@ export default class ConfirmLayer extends BaseLayer {
 
     onDeductedButton()
     {
-        console.log("deducted button");
+        AudioManager.instance.playSound(ENUM_AUDIO_CLIP.CLICK);
         if(DEBUG_MODE){
             EventManager.instance.emit(ENUM_GAME_EVENT.GAME_RELIVE)
             return;
@@ -74,6 +76,7 @@ export default class ConfirmLayer extends BaseLayer {
     }
 
     onCancelClick(){
+        AudioManager.instance.playSound(ENUM_AUDIO_CLIP.CLICK);
         this.hide();
         this.style1.active = true;
         EventManager.instance.emit(ENUM_GAME_EVENT.GAME_OVER);

@@ -115,7 +115,7 @@ export enum ENUM_AUDIO_CLIP {
 
     PIRANHA_PLANT = 'piranha_plant',
 
-    PLANT_SHOOT = 'PLANT_SHOOT',
+    PLANT_SHOOT = 'plant_shoot',
 
     DIE = 'player_hit',
     JUMP = 'player_jump',

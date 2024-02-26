@@ -388,9 +388,9 @@
     "_clearFlags": 7,
     "_backgroundColor": {
       "__type__": "cc.Color",
-      "r": 200,
-      "g": 232,
-      "b": 241,
+      "r": 0,
+      "g": 0,
+      "b": 0,
       "a": 255
     },
     "_depth": -1,
@@ -4681,7 +4681,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 44.44,
+      "width": 44.48,
       "height": 50.4
     },
     "_anchorPoint": {
@@ -4763,7 +4763,7 @@
     "_target": null,
     "_alignFlags": 36,
     "_left": 0,
-    "_right": 20.02,
+    "_right": 20,
     "_top": 0,
     "_bottom": 20,
     "_verticalCenter": 0,

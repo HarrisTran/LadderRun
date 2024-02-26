@@ -1,6 +1,7 @@
 // Created by carolsail
 
-import { ENUM_PLANT_STATUS, ENUM_COLLIDER_TAG, ENUM_GAME_STATUS } from "../Enum";
+import { ENUM_PLANT_STATUS, ENUM_COLLIDER_TAG, ENUM_GAME_STATUS, ENUM_AUDIO_CLIP } from "../Enum";
+import AudioManager from "../manager/AudioManager";
 import DataManager from "../manager/DataManager";
 import PoolManager from "../manager/PoolManager";
 import Plantbullet from "./Plantbullet";
@@ -15,6 +16,8 @@ export default class Plant extends cc.Component {
     isShoot: boolean = false
     shootTime: number = 1.5
     bulletpos: cc.Node = null
+
+    attackSoundId: number = 0;
 
     get status(){
         return this._status
@@ -40,9 +43,18 @@ export default class Plant extends cc.Component {
         }
     }
 
+    onCollisionExit (other: cc.BoxCollider, self: cc.BoxCollider) {
+        if(other.tag == ENUM_COLLIDER_TAG.PLAYER && self.tag == ENUM_COLLIDER_TAG.PLANT_VIEW){
+            this.isShoot = false;
+            this.unschedule(this.onBulletBuild);
+            AudioManager.instance.stopSound(this.attackSoundId);
+        }
+    }
+
     onBulletBuild(){
         if(DataManager.instance.status != ENUM_GAME_STATUS.RUNING) return
         this.status = ENUM_PLANT_STATUS.ATTACK
+        AudioManager.instance.playSound(ENUM_AUDIO_CLIP.PLANT_SHOOT).then(v=>this.attackSoundId=v);
         const bullet = PoolManager.instance.getNode('plantbullet', this.bulletpos)
         const dir = this.node.scaleX == 1 ? -this.node.scaleX : this.node.scaleX 
         bullet.getComponent(Plantbullet).setDir(dir)

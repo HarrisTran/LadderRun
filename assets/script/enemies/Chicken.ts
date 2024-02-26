@@ -1,6 +1,7 @@
 // Created by carolsail
 
-import { ENUM_CHICKEN_STATUS, ENUM_COLLIDER_TAG, ENUM_GAME_STATUS } from "../Enum";
+import { ENUM_AUDIO_CLIP, ENUM_CHICKEN_STATUS, ENUM_COLLIDER_TAG, ENUM_GAME_STATUS } from "../Enum";
+import AudioManager from "../manager/AudioManager";
 import DataManager from "../manager/DataManager";
 
 const {ccclass, property} = cc._decorator;
@@ -12,6 +13,8 @@ export default class Chicken extends cc.Component {
     anim: cc.Animation = null
     dir: number = 0
     speed: number = 300
+
+    runSoundId: number = 0;
 
     get status(){
         return this._status
@@ -27,9 +30,11 @@ export default class Chicken extends cc.Component {
     }
 
     onCollisionEnter (other: cc.BoxCollider, self: cc.BoxCollider) {
+        if(other.tag == ENUM_COLLIDER_TAG.PLAYER && self.tag == ENUM_COLLIDER_TAG.CHICKEN_VIEW){
+            AudioManager.instance.playSound(ENUM_AUDIO_CLIP.CHICKEN_RUN,true).then((v)=>this.runSoundId=v);
+        }
         if(other.tag == ENUM_COLLIDER_TAG.PLAYER && self.tag == ENUM_COLLIDER_TAG.CHICKEN_VIEW && this.status == ENUM_CHICKEN_STATUS.IDLE){
             this.status = ENUM_CHICKEN_STATUS.RUN
-            // 速度随机性
             this.speed += Math.random() * 80
             this.dir = 1
             this.node.scaleX = this.dir * -1
@@ -38,6 +43,13 @@ export default class Chicken extends cc.Component {
         }
     }
 
+    onCollisionExit (other: cc.BoxCollider, self: cc.BoxCollider) {
+        if(other.tag == ENUM_COLLIDER_TAG.PLAYER && self.tag == ENUM_COLLIDER_TAG.CHICKEN_VIEW){
+            AudioManager.instance.stopSound(this.runSoundId);
+        }
+    }
+
+    
     getDir(){
         return this.dir
     }
