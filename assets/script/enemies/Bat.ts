@@ -38,7 +38,7 @@ export default class Bat extends cc.Component {
                 // 飞行
                 this.status = ENUM_BAT_STATUS.FLY
                 this.dir = this.node.x < 0 ? 1 : -1
-                this.node.scaleX *= -this.dir
+                //this.node.scaleX *= -this.dir
             }).start()
         }
     }
