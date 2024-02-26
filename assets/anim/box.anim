@@ -8,18 +8,6 @@
   "speed": 1,
   "wrapMode": 1,
   "curveData": {
-    "comps": {
-      "cc.Sprite": {
-        "spriteFrame": [
-          {
-            "frame": 0,
-            "value": {
-              "__uuid__": "0e053791-63e6-462d-832f-750c1c9c8a66"
-            }
-          }
-        ]
-      }
-    },
     "props": {
       "color": [
         {
