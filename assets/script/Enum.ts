@@ -97,7 +97,7 @@ export enum ENUM_UI_TYPE {
 
 // 音效
 export enum ENUM_AUDIO_CLIP {
-    BGM = 'bgm_ingame',
+    BGM = 'ingame_bgm',
 
     POWER_UP = 'ananas',
     SPEED_UP = 'melon',

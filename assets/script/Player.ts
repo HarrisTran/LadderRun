@@ -117,6 +117,7 @@ export default class Player extends cc.Component {
                 case ENUM_COLLIDER_TAG.SPIKE:
                 case ENUM_COLLIDER_TAG.BAT:
                 case ENUM_COLLIDER_TAG.SAW:
+                    AudioManager.instance.playSound(ENUM_AUDIO_CLIP.STONE)
                 case ENUM_COLLIDER_TAG.SPIKEBALL:
                 case ENUM_COLLIDER_TAG.PIRANHA_PLANT:
                     AudioManager.instance.playSound(ENUM_AUDIO_CLIP.PIRANHA_PLANT)
