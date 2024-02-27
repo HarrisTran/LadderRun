@@ -45,7 +45,7 @@ export default class BackendConnector {
 
         this.numberTicket = parseInt(url.get('numberTicket'));
         this.maxScore =  parseInt(url.get('maxScore'));
-        this.currentScore = parseInt(url.get('currentScore')) || 100000;
+        this.currentScore = parseInt(url.get('currentScore')) || 0;
         this.mileStone = url.get("mileStone");
 
         this.gameURL = ENV_CONFIG[url.get('env')];
@@ -137,10 +137,6 @@ export default class BackendConnector {
             "*"
         );
 
-        setTimeout(() => {
-            BackendConnector.instance.numberTicket += 2
-            EventManager.instance.emit(ENUM_GAME_EVENT.GAME_RELIVE)
-        }, 2000);
     }
 
     public postScoreToServer(score: number)

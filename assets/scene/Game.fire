@@ -7085,8 +7085,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 16,
-      "height": 16
+      "width": 26,
+      "height": 24
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -7312,19 +7312,19 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 80,
-      "height": 40
+      "width": 18.2,
+      "height": 45.36
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
-      "x": 0.5,
+      "x": 0,
       "y": 0.5
     },
     "_trs": {
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        45.88000000000001,
+        6.986,
         0,
         0,
         0,
@@ -7380,7 +7380,7 @@
     "_N$horizontalAlign": 0,
     "_N$verticalAlign": 1,
     "_N$fontFamily": "Arial",
-    "_N$overflow": 2,
+    "_N$overflow": 0,
     "_N$cacheMode": 0,
     "_id": "b32tkA/zZNB7yBA+4b7aM6"
   },
@@ -7391,7 +7391,7 @@
     "node": {
       "__id__": 160
     },
-    "_enabled": true,
+    "_enabled": false,
     "_layoutSize": {
       "__type__": "cc.Size",
       "width": 171.76,
@@ -14497,7 +14497,7 @@
         "__id__": 336
       }
     ],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 357
@@ -14583,7 +14583,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 500,
-      "height": 100
+      "height": 170
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -14595,7 +14595,7 @@
       "ctor": "Float64Array",
       "array": [
         0,
-        74.094,
+        114,
         0,
         0,
         0,
@@ -14634,10 +14634,10 @@
     ],
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
-    "_string": "DO YOU WANT TO CONTINUE PLAYING WITH YOUR CURRENT SCORE?",
-    "_N$string": "DO YOU WANT TO CONTINUE PLAYING WITH YOUR CURRENT SCORE?",
-    "_fontSize": 30,
-    "_lineHeight": 40,
+    "_string": "Coming soon",
+    "_N$string": "Coming soon",
+    "_fontSize": 50,
+    "_lineHeight": 60,
     "_enableWrapText": true,
     "_N$file": {
       "__uuid__": "bb48075c-13e7-45de-9519-9f57dba9e6d3"
@@ -14651,7 +14651,7 @@
     "_N$verticalAlign": 0,
     "_N$fontFamily": "Arial",
     "_N$overflow": 2,
-    "_N$cacheMode": 0,
+    "_N$cacheMode": 1,
     "_id": "a6YNiwCbpA8pFUJJ+PHEhg"
   },
   {
@@ -14667,7 +14667,7 @@
     "_alignFlags": 17,
     "_left": 0,
     "_right": 0,
-    "_top": 150.906,
+    "_top": 111,
     "_bottom": 0,
     "_verticalCenter": 0,
     "_horizontalCenter": 0,

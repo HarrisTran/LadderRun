@@ -61,8 +61,9 @@ export default class GameManager extends cc.Component {
 
     // 复活游戏
     onGameRelive(){
-        DataManager.instance.reset(true)
+        DataManager.instance.reset()
         this.initGame();
+        //this.reviveGame();
         if(!DEBUG_MODE) BackendConnector.instance.ticketMinus("revive")
         StaticInstance.uiManager.toggle(ENUM_UI_TYPE.LOSE, false);
     }
@@ -94,9 +95,39 @@ export default class GameManager extends cc.Component {
     onGameLose(){
         DataManager.instance.status = ENUM_GAME_STATUS.UNRUNING
         this.scheduleOnce(()=>{
-            StaticInstance.uiManager.toggle(ENUM_UI_TYPE.LOSE)
+            StaticInstance.uiManager.toggle(ENUM_UI_TYPE.LOSE) 
         }, 0.5) 
     }
+
+    // reviveGame(){
+    //     if(!this.stageNode) return
+       
+    //     const currentBlockNode = this.stageNode.children.find(node => node.getComponent(Block).id === DataManager.instance.currentFloor)
+    //     if(currentBlockNode){
+    //         EventManager.instance.emit(ENUM_GAME_EVENT.CAMERA_MOVE, {block: currentBlockNode, reset: true})
+    //         currentBlockNode.children.map(node=>{
+    //             node.active = false;
+    //             if(node.name == "ladder" || node.name == "coin"){
+    //                 node.active = true;
+    //             }
+    //         })
+    //         this.scheduleOnce(()=>{
+    //             const ladder = currentBlockNode.getChildByName('ladder')
+    //             const player: cc.Node = PoolManager.instance.getNode(`player${DataManager.instance.skinIndex}`, this.stageNode)
+    //             player.zIndex = ENUM_GAME_ZINDEX.PLAYER
+    //             player.setPosition(cc.v2(-ladder.x, currentBlockNode.y))
+    //             if(ladder.x > 0){
+    //                 player.getComponent(Player).setDir(1)
+    //             }else{
+    //                 player.getComponent(Player).setDir(-1)
+    //             }
+    //         })
+    //     }
+    //     StaticInstance.uiManager.setGameGoal()
+    //     StaticInstance.uiManager.setGameCoins()
+    //     StaticInstance.uiManager.setGameMaxScore()
+    //     DataManager.instance.status = ENUM_GAME_STATUS.RUNING
+    // }
 
     initGame(){
         if(!this.stageNode) return
@@ -144,6 +175,7 @@ export default class GameManager extends cc.Component {
 
     onPlayerClimbEnd(){
         DataManager.instance.goal += 1
+        DataManager.instance.currentFloor++;
         StaticInstance.uiManager.setGameGoal()
         if(DataManager.instance.type == ENUM_GAME_TYPE.LOOP){
             let newBlockIndex = this.getRandomBlockIndex();

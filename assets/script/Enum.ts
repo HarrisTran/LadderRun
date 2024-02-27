@@ -34,6 +34,7 @@ export enum ENUM_PLANT_STATUS {
     ATTACK = 'attack'
 }
 
+
 // 碰撞类型
 export enum ENUM_COLLIDER_TAG {
     PLAYER = 0,
