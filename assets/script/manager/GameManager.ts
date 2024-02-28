@@ -175,7 +175,6 @@ export default class GameManager extends cc.Component {
 
     onPlayerClimbEnd(){
         DataManager.instance.goal += 1
-        DataManager.instance.currentFloor++;
         StaticInstance.uiManager.setGameGoal()
         if(DataManager.instance.type == ENUM_GAME_TYPE.LOOP){
             let newBlockIndex = this.getRandomBlockIndex();
@@ -195,7 +194,7 @@ export default class GameManager extends cc.Component {
         // const trampoline: cc.Node = block.getChildByName('trampoline')
         // const plant: cc.Node = block.getChildByName('plant')
         // const brick: cc.Node = block.getChildByName('brick')
-        if(ladderCurrent && ladderLast && ladderCurrent.x == ladderLast.x){
+        if(ladderCurrent.x == ladderLast.x){
             block.getComponent(Block).flipXHelper();
             // ladderCurrent.x *= -1
             // ladderCurrent.scaleX *= -1

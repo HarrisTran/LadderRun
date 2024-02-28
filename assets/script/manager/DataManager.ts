@@ -40,7 +40,7 @@ export default class DataManager {
     // 皮肤
     _skinIndex: number = 0
 
-    _currentFloor: number = 0;
+    //_currentFloor: number = 0;
     // 皮肤锁定信息
     skinLockInfo: any[] = [
         {locked: false, coins: 0},
@@ -118,13 +118,13 @@ export default class DataManager {
         this._skinIndex = data
     }
 
-    get currentFloor(){
-        return this._currentFloor
-    }
+    // get currentFloor(){
+    //     return this._currentFloor
+    // }
 
-    set currentFloor(data: number){
-        this._currentFloor = data
-    }
+    // set currentFloor(data: number){
+    //     this._currentFloor = data
+    // }
     
     setSkinLockInfo(index: number, locked: boolean){
         this.skinLockInfo[index]['locked'] = locked
@@ -151,7 +151,7 @@ export default class DataManager {
             coins: this.coins,
             skinIndex: this.skinIndex,
             skinLockInfo: this.skinLockInfo,
-            currentFloor: this.currentFloor
+            //currentFloor: this.currentFloor
         }
         // cc.sys.localStorage.setItem(STORAGE_KEY, JSON.stringify({
         //     level: this.level,
@@ -173,7 +173,7 @@ export default class DataManager {
         this.maxGoal = 1
         this.coins = 0
         this.skinIndex = 0
-        this.currentFloor = 1;
+        //this.currentFloor = 1;
         this.reset()
         // const _data = cc.sys.localStorage.getItem(STORAGE_KEY) as any
         // try {
