@@ -22,6 +22,7 @@ export default class DataManager {
 
     public lastIndexBlock: number = 0;
     public isReplayed : boolean = false;
+    public currentIndexBlock: number = 0;
     // 游戏模式
     type: ENUM_GAME_TYPE = ENUM_GAME_TYPE.LOOP
     // 游戏状态
@@ -137,9 +138,6 @@ export default class DataManager {
         if(!keepGoal) this.goal = 1
     }
 
-    revive(){
-        this.status = ENUM_GAME_STATUS.UNRUNING
-    }
 
     save(){
         this._gamedata = {
@@ -207,6 +205,12 @@ export default class DataManager {
     getFirstBlock(){
         if(this.blocks.length <= 0) return null
         return this.blocks[0]
+    }
+
+    getBlockIndex(ith: number)
+    {
+        if(this.blocks.length <= 0) return null;
+        return this.blocks[ith];
     }
 
 }

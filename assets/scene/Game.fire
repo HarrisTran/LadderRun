@@ -388,9 +388,9 @@
     "_clearFlags": 7,
     "_backgroundColor": {
       "__type__": "cc.Color",
-      "r": 200,
-      "g": 232,
-      "b": 241,
+      "r": 0,
+      "g": 0,
+      "b": 0,
       "a": 255
     },
     "_depth": -1,
@@ -457,7 +457,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 269.98,
+      "width": 219.28,
       "height": 36
     },
     "_anchorPoint": {
@@ -512,14 +512,14 @@
     "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
-      "r": 121,
-      "g": 210,
-      "b": 208,
+      "r": 0,
+      "g": 0,
+      "b": 0,
       "a": 255
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 180.6,
+      "width": 147,
       "height": 31.5
     },
     "_anchorPoint": {
@@ -531,7 +531,7 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        -44.69000000000001,
+        -36.14,
         -23.131,
         0,
         0,
@@ -576,8 +576,10 @@
     "_fontSize": 25,
     "_lineHeight": 25,
     "_enableWrapText": true,
-    "_N$file": null,
-    "_isSystemFontUsed": true,
+    "_N$file": {
+      "__uuid__": "bb48075c-13e7-45de-9519-9f57dba9e6d3"
+    },
+    "_isSystemFontUsed": false,
     "_spacingX": 0,
     "_batchAsBitmap": false,
     "_styleFlags": 1,
@@ -607,15 +609,15 @@
     "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
-      "r": 121,
-      "g": 210,
-      "b": 208,
+      "r": 0,
+      "g": 0,
+      "b": 0,
       "a": 255
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 84.38,
-      "height": 20
+      "width": 67.28,
+      "height": 37.8
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -626,7 +628,7 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        92.79999999999998,
+        76,
         -21,
         0,
         0,
@@ -668,11 +670,11 @@
     "_dstBlendFactor": 771,
     "_string": "1069",
     "_N$string": "1069",
-    "_fontSize": 12,
-    "_lineHeight": 20,
+    "_fontSize": 40,
+    "_lineHeight": 30,
     "_enableWrapText": true,
     "_N$file": {
-      "__uuid__": "681a471b-cc60-4c3e-b6a0-0271839bc016"
+      "__uuid__": "bb48075c-13e7-45de-9519-9f57dba9e6d3"
     },
     "_isSystemFontUsed": false,
     "_spacingX": 0,
@@ -696,7 +698,7 @@
     "_enabled": true,
     "_layoutSize": {
       "__type__": "cc.Size",
-      "width": 269.98,
+      "width": 219.28,
       "height": 36
     },
     "_resize": 1,

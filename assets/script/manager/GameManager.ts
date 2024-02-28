@@ -52,6 +52,7 @@ export default class GameManager extends cc.Component {
 
     // 开始游戏
     onGameStart(){
+        DataManager.instance.currentIndexBlock = 1;
         DataManager.instance.reset()
         this._lowerLevelBound = 0;
         this._upperLevelBound = 0;
@@ -99,35 +100,30 @@ export default class GameManager extends cc.Component {
         }, 0.5) 
     }
 
-    // reviveGame(){
-    //     if(!this.stageNode) return
-       
-    //     const currentBlockNode = this.stageNode.children.find(node => node.getComponent(Block).id === DataManager.instance.currentFloor)
-    //     if(currentBlockNode){
-    //         EventManager.instance.emit(ENUM_GAME_EVENT.CAMERA_MOVE, {block: currentBlockNode, reset: true})
-    //         currentBlockNode.children.map(node=>{
-    //             node.active = false;
-    //             if(node.name == "ladder" || node.name == "coin"){
-    //                 node.active = true;
-    //             }
-    //         })
-    //         this.scheduleOnce(()=>{
-    //             const ladder = currentBlockNode.getChildByName('ladder')
-    //             const player: cc.Node = PoolManager.instance.getNode(`player${DataManager.instance.skinIndex}`, this.stageNode)
-    //             player.zIndex = ENUM_GAME_ZINDEX.PLAYER
-    //             player.setPosition(cc.v2(-ladder.x, currentBlockNode.y))
-    //             if(ladder.x > 0){
-    //                 player.getComponent(Player).setDir(1)
-    //             }else{
-    //                 player.getComponent(Player).setDir(-1)
-    //             }
-    //         })
-    //     }
-    //     StaticInstance.uiManager.setGameGoal()
-    //     StaticInstance.uiManager.setGameCoins()
-    //     StaticInstance.uiManager.setGameMaxScore()
-    //     DataManager.instance.status = ENUM_GAME_STATUS.RUNING
-    // }
+    reviveGame() {
+        const currentBlockNode = DataManager.instance.getBlockIndex(DataManager.instance.currentIndexBlock).node;
+        const currentPositionLava = this.lavaNode.node.getPosition();
+        this.lavaNode.node.setPosition(currentPositionLava.x, currentPositionLava.y - 300);
+        if (currentBlockNode) {
+            currentBlockNode.children.map(node => {
+                node.active = false;
+                if (["ground","wall","block","ladder"].includes(node.name)) {
+                    node.active = true;
+                }
+            })
+            const ladder = currentBlockNode.getChildByName('ladder')
+            const player: cc.Node = this.stageNode.children.find(node => node.name == "player0")
+            player.zIndex = ENUM_GAME_ZINDEX.PLAYER
+            player.setPosition(cc.v2(-ladder.x, currentBlockNode.y))
+            player.active = true;
+            if (ladder.x > 0) {
+                player.getComponent(Player).setDir(1)
+            } else {
+                player.getComponent(Player).setDir(-1)
+            }
+        }
+        DataManager.instance.status = ENUM_GAME_STATUS.RUNING
+    }
 
     initGame(){
         if(!this.stageNode) return
@@ -174,6 +170,7 @@ export default class GameManager extends cc.Component {
     }
 
     onPlayerClimbEnd(){
+        DataManager.instance.currentIndexBlock++;
         DataManager.instance.goal += 1
         StaticInstance.uiManager.setGameGoal()
         if(DataManager.instance.type == ENUM_GAME_TYPE.LOOP){
