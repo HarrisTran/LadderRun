@@ -15,7 +15,7 @@ import Lava from '../enemies/Lava';
 
 const {ccclass, property} = cc._decorator;
 
-export const DEBUG_MODE = true;
+export const DEBUG_MODE = false;
 window.addEventListener("message", (data) => {
     const { data: res } = data
     const objectRes = JSON.parse(res)
@@ -129,11 +129,16 @@ export default class GameManager extends cc.Component {
         DataManager.instance.status = ENUM_GAME_STATUS.RUNING
     }
 
+    protected update(dt: number): void {
+        console.log("curent ticket",BackendConnector.instance.numberTicket);
+        
+    }
+
     initGame(){
         if(!this.stageNode) return
         this.stageNode.removeAllChildren()
         this.lavaNode.node.setPosition(0,-650);
-        const data = [1,14,14,20,1,2,14,14,20]//createLevelDesign(5,6,10)
+        const data = [1,2,3,4,1,2,3,4]//createLevelDesign(5,6,10)
         for(let i = 0; i < data.length; i++){
             const blockIndex = data[i]
             const block: cc.Node = PoolManager.instance.getNode(`block${blockIndex}`, this.stageNode)
@@ -161,7 +166,7 @@ export default class GameManager extends cc.Component {
             })
         }
         StaticInstance.uiManager.setGameGoal()
-        StaticInstance.uiManager.setGameCoins()
+        StaticInstance.uiManager.setGameScore()
         StaticInstance.uiManager.setGameMaxScore()
         DataManager.instance.status = ENUM_GAME_STATUS.RUNING
     }

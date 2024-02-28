@@ -12638,7 +12638,7 @@
       "ctor": "Float64Array",
       "array": [
         0,
-        0,
+        -23.363,
         0,
         0,
         0,
@@ -14499,7 +14499,7 @@
         "__id__": 336
       }
     ],
-    "_active": false,
+    "_active": true,
     "_components": [
       {
         "__id__": 357
@@ -14532,7 +14532,7 @@
       "ctor": "Float64Array",
       "array": [
         0,
-        0,
+        -23.363,
         0,
         0,
         0,

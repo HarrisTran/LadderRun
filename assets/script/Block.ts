@@ -43,7 +43,7 @@ export default class Block extends cc.Component {
         if (this.ncoins == 0) {
             DataManager.instance.score += 100;
             DataManager.instance.save()
-            StaticInstance.uiManager.setGameCoins()
+            StaticInstance.uiManager.setGameScore()
         }
     }
 

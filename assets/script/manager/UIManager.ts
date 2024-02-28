@@ -85,10 +85,10 @@ export default class UIManager extends cc.Component {
         layer.setGoal()  
     }
 
-    setGameCoins(){
-        const layer: GameLayer = this.uiMap.get(ENUM_UI_TYPE.GAME) as GameLayer
-        layer.setCoins()
-    }
+    // setGameCoins(){
+    //     const layer: GameLayer = this.uiMap.get(ENUM_UI_TYPE.GAME) as GameLayer
+    //     layer.setCoins()
+    // }
 
     setGameScore(){
         const layer: GameLayer = this.uiMap.get(ENUM_UI_TYPE.GAME) as GameLayer

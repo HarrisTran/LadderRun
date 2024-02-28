@@ -63,7 +63,6 @@ export default class BackendConnector {
         .then(data=>{
             if(data.ResultCode == 1) {
                 this.key = data.Data.Key;
-                console.log("authen success",this.key);
             }
             else{
                 throw new Error("");
@@ -87,7 +86,6 @@ export default class BackendConnector {
         })
         .then(()=>{
             this.numberTicket -= numberTicket;
-            console.log("ticket minus: ",this.numberTicket);
         })
     }
 
@@ -136,6 +134,11 @@ export default class BackendConnector {
             }),
             "*"
         );
+
+        setTimeout(() => {
+            BackendConnector.instance.numberTicket += 5
+            EventManager.instance.emit(ENUM_GAME_EVENT.GAME_RELIVE)
+        }, 1000);
 
     }
 
