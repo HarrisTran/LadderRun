@@ -169,6 +169,10 @@ export default class Player extends cc.Component {
             case ENUM_COLLIDER_TAG.MELON:
                 AudioManager.instance.playSound(ENUM_AUDIO_CLIP.POWER_UP);
                 this.onPoweredUpVFX();
+
+                setTimeout(() => {
+                    this.onPoweredUpVFX()
+                }, 500);
                 return;
             default:
                 break;
@@ -284,7 +288,7 @@ export default class Player extends cc.Component {
         this.walk = 500;
         let timeOutSpeed = setTimeout(() => {
             this.walk = 200;
-            clearTimeout(timeOutSpeed);
+            // clearTimeout(timeOutSpeed);
         }, 5000);
     }
 
@@ -297,7 +301,7 @@ export default class Player extends cc.Component {
         let timeOutPowerUp = setTimeout(() => {
             this._enablePowerUp = false;
             shield.active = false;
-            clearTimeout(timeOutPowerUp);
+            // clearTimeout(timeOutPowerUp);
         }, 5000);
     }
 

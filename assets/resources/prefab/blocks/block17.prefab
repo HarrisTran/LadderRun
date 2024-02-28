@@ -586,7 +586,7 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        114.507,
+        90.351,
         101.024,
         0,
         0,
@@ -632,8 +632,8 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        227.971,
-        35.948,
+        200,
+        68,
         0,
         0,
         0,
@@ -658,9 +658,9 @@
       "__id__": 20
     },
     "asset": {
-      "__uuid__": "52a88a6b-5a3a-47da-85e1-c29849248d00"
+      "__uuid__": "2c773ebb-003d-4ffe-bf6f-f9ef5dde714a"
     },
-    "fileId": "b9bMws88pHMIp7AwB4aptE",
+    "fileId": "20EPiIrzNPCbcPce29Tz2Y",
     "sync": true
   },
   {
