@@ -32,6 +32,9 @@ export default class Player extends cc.Component {
     anim: cc.Animation = null
     _enablePowerUp: boolean = false;
 
+    timeOutPowerUp: any = null;
+    timeOutSpeedUp: any = null;
+
     get status(){
         return this._status
     }
@@ -286,10 +289,12 @@ export default class Player extends cc.Component {
 
     forceSpeedUp() {
         this.walk = 500;
-        let timeOutSpeed = setTimeout(() => {
+        if(this.timeOutSpeedUp){
+            clearTimeout(this.timeOutSpeedUp);
+        }
+        this.timeOutSpeedUp = setTimeout(() => {
             this.walk = 200;
-            // clearTimeout(timeOutSpeed);
-        }, 5000);
+        },5000)
     }
 
     onPoweredUpVFX()
@@ -298,11 +303,16 @@ export default class Player extends cc.Component {
 
         this._enablePowerUp = true;
         shield.active = true;
-        let timeOutPowerUp = setTimeout(() => {
+
+        if(this.timeOutPowerUp){
+            clearTimeout(this.timeOutPowerUp);
+        }
+
+        this.timeOutPowerUp = setTimeout(() => {
             this._enablePowerUp = false;
             shield.active = false;
-            // clearTimeout(timeOutPowerUp);
-        }, 5000);
+        },5000)
+
     }
 
 
