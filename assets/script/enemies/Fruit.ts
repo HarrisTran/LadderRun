@@ -11,6 +11,8 @@ export default class Fruit extends cc.Component {
 
     protected onLoad(): void {
         this.animation = this.node.getComponent(cc.Animation);
+        this.animation.on('play', this.onPlay, this);
+        this.animation.on('finished', this.onFinished, this);
     }
 
     onCollisionEnter (other: cc.BoxCollider, self: cc.BoxCollider) {
@@ -28,5 +30,10 @@ export default class Fruit extends cc.Component {
 
     onFinished(){
         this.node.active = false
+    }
+
+    protected onDestroy(): void {
+        this.animation.off('play', this.onFinished, this)
+        this.animation.off('finished', this.onFinished, this)
     }
 }
