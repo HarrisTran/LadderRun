@@ -32,27 +32,11 @@ export default class Block extends cc.Component {
     id: number = -1
     x: number = 0
     y: number = 0
-    ncoins: number = 0
 
-    protected onLoad(): void {
-        this.node.on("GOT_COIN", this.gotCoinEvent, this);
-    }
-
-    gotCoinEvent() {
-        if (this.ncoins > 0) this.ncoins--;
-        if (this.ncoins == 0) {
-            DataManager.instance.score += 100;
-            DataManager.instance.save()
-            StaticInstance.uiManager.setGameScore()
-        }
-    }
 
     init(data: IBlock) {
         Object.assign(this, data)
         DataManager.instance.blocks.push(this)
-        this.node.children.forEach(c => {
-            if (c.name == "coin") this.ncoins++;
-        })
     }
 
     rendor() {
@@ -73,6 +57,7 @@ export default class Block extends cc.Component {
         this.makeSymmetrical("plant");
         this.makeSymmetrical("spikeball");
         this.makeSymmetrical("spike");
+        this.makeSymmetrical("stone");
     }
 
     makeSymmetrical(nameOfNode: string){
