@@ -90,7 +90,7 @@ export enum ENUM_UI_TYPE {
     SETTING,
     LOSE,
     WIN,
-    RANK,
+    GAME_OVER,
     SKIN,
     MORE,
     CONFIRM,

@@ -290,18 +290,15 @@ export default class Player extends cc.Component {
 
     onPoweredUpVFX()
     {
-        this._enablePowerUp = true;
         let shield = this.node.getChildByName("shield")
+
+        this._enablePowerUp = true;
         shield.active = true;
-        shield.scale = 0;
-        cc.tween(shield)
-        .to(0.3,{scale: 1},{easing: "backOut"})
-        .delay(4.7)
-        .call(()=>{
-            this._enablePowerUp = false
+        let timeOutPowerUp = setTimeout(() => {
+            this._enablePowerUp = false;
             shield.active = false;
-        })
-        .start();
+            clearTimeout(timeOutPowerUp);
+        }, 5000);
     }
 
 

@@ -46,6 +46,12 @@ export default class GameLayer extends BaseLayer {
         nums.getComponent(cc.Label).string = `${DataManager.instance.coins}`
     }
 
+    setScore(){
+        if(!this.coinsNode) return
+        const nums = this.coinsNode.getChildByName('nums')
+        nums.getComponent(cc.Label).string = `${DataManager.instance.score}`
+    }
+
     setMaxScore()
     {
         if(!this.historyNode) return

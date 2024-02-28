@@ -30,7 +30,7 @@ export default class MenuLayer extends BaseLayer {
 
     onRankClick(){
         AudioManager.instance.playSound(ENUM_AUDIO_CLIP.CLICK)
-        StaticInstance.uiManager.toggle(ENUM_UI_TYPE.RANK)
+        // StaticInstance.uiManager.toggle(ENUM_UI_TYPE.RANK)
     }
 
     onSettingClick(){

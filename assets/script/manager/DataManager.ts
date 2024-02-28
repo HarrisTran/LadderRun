@@ -38,6 +38,7 @@ export default class DataManager {
     _maxGoal: number = 1
     // 收集金币
     _coins: number = 0
+    _score: number = 0
     // 皮肤
     _skinIndex: number = 0
 
@@ -111,6 +112,14 @@ export default class DataManager {
         this._coins = data
     }
 
+    get score(){
+        return this._score
+    }
+
+    set score(data: number){
+        this._score = data
+    }
+
     get skinIndex(){
         return this._skinIndex
     }
@@ -147,6 +156,7 @@ export default class DataManager {
             isMusicOn: this.isMusicOn,
             maxGoal: this.maxGoal,
             coins: this.coins,
+            score: this.score,
             skinIndex: this.skinIndex,
             skinLockInfo: this.skinLockInfo,
             //currentFloor: this.currentFloor
@@ -170,6 +180,7 @@ export default class DataManager {
         this.isSoundOn = true
         this.maxGoal = 1
         this.coins = 0
+        this.score = 0
         this.skinIndex = 0
         //this.currentFloor = 1;
         this.reset()

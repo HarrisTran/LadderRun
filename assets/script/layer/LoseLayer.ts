@@ -45,7 +45,7 @@ export default class LoseLayer extends BaseLayer {
     onReliveClick(){
         AudioManager.instance.playSound(ENUM_AUDIO_CLIP.CLICK)
         
-        BackendConnector.instance.postScoreToServer(DataManager.instance.coins)
+        BackendConnector.instance.postScoreToServer(DataManager.instance.score)
         // if(DataManager.instance.coins >= this.cost){
         //     DataManager.instance.coins -= this.cost
         //     DataManager.instance.save()
@@ -84,7 +84,6 @@ export default class LoseLayer extends BaseLayer {
     }
 
     onShareClick(){
-        console.log("game over");
         AudioManager.instance.playSound(ENUM_AUDIO_CLIP.CLICK)
         EventManager.instance.emit(ENUM_GAME_EVENT.GAME_OVER)
         //SdkManager.instance.activeShare()

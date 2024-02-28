@@ -63,14 +63,17 @@ export default class GameManager extends cc.Component {
     // 复活游戏
     onGameRelive(){
         DataManager.instance.reset()
-        this.initGame();
+        this.initGame()
         //this.reviveGame();
         if(!DEBUG_MODE) BackendConnector.instance.ticketMinus("revive")
         StaticInstance.uiManager.toggle(ENUM_UI_TYPE.LOSE, false);
     }
 
     onGameOver(){
-        BackendConnector.instance.postScoreToServer(DataManager.instance.coins)
+        StaticInstance.uiManager.toggle(ENUM_UI_TYPE.GAME_OVER, true);
+        setTimeout(() => {
+            BackendConnector.instance.postScoreToServer(DataManager.instance.score)
+        },1000);
     }
 
     // 过关
@@ -114,8 +117,9 @@ export default class GameManager extends cc.Component {
             const ladder = currentBlockNode.getChildByName('ladder')
             const player: cc.Node = this.stageNode.children.find(node => node.name == "player0")
             player.zIndex = ENUM_GAME_ZINDEX.PLAYER
-            player.setPosition(cc.v2(-ladder.x, currentBlockNode.y))
+            player.getComponent(Player).onJump();
             player.active = true;
+            EventManager.instance.emit(ENUM_GAME_EVENT.PLAYER_JUMP);
             if (ladder.x > 0) {
                 player.getComponent(Player).setDir(1)
             } else {
@@ -129,7 +133,7 @@ export default class GameManager extends cc.Component {
         if(!this.stageNode) return
         this.stageNode.removeAllChildren()
         this.lavaNode.node.setPosition(0,-650);
-        const data = [1,2,3,4,5,6,7,8,9]//createLevelDesign(5,6,10)
+        const data = [1,14,14,20,1,2,14,14,20]//createLevelDesign(5,6,10)
         for(let i = 0; i < data.length; i++){
             const blockIndex = data[i]
             const block: cc.Node = PoolManager.instance.getNode(`block${blockIndex}`, this.stageNode)

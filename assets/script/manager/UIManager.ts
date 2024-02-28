@@ -12,8 +12,8 @@ import WinLayer from '../layer/WinLayer';
 import LevelLayer from '../layer/LevelLayer';
 import SkinLayer from '../layer/SkinLayer';
 import MoreLayer from '../layer/MoreLayer';
-import RankLayer from '../layer/RankLayer';
 import ConfirmLayer from '../layer/ConfirmLayer';
+import GameOverLayer from '../layer/GameOverLayer';
 
 const {ccclass, property} = cc._decorator;
 
@@ -38,10 +38,10 @@ export default class UIManager extends cc.Component {
     skinLayer: SkinLayer = null
     @property(MoreLayer)
     moreLayer: MoreLayer = null
-    @property(RankLayer)
-    rankLayer: RankLayer = null
     @property(ConfirmLayer)
     confirmLayer: ConfirmLayer = null
+    @property(GameOverLayer)
+    gameOverLayer: GameOverLayer = null
 
     private uiMap = new Map<ENUM_UI_TYPE, BaseLayer>()
 
@@ -56,7 +56,7 @@ export default class UIManager extends cc.Component {
         this.uiMap.set(ENUM_UI_TYPE.LEVEL, this.levelLayer)
         this.uiMap.set(ENUM_UI_TYPE.SKIN, this.skinLayer)
         this.uiMap.set(ENUM_UI_TYPE.MORE, this.moreLayer)
-        this.uiMap.set(ENUM_UI_TYPE.RANK, this.rankLayer)
+        this.uiMap.set(ENUM_UI_TYPE.GAME_OVER, this.gameOverLayer)
         this.uiMap.set(ENUM_UI_TYPE.CONFIRM, this.confirmLayer)
     }
 
@@ -90,6 +90,11 @@ export default class UIManager extends cc.Component {
         layer.setCoins()
     }
 
+    setGameScore(){
+        const layer: GameLayer = this.uiMap.get(ENUM_UI_TYPE.GAME) as GameLayer
+        layer.setScore()
+    }
+
     setGameMaxGoal(){
         const layer: GameLayer = this.uiMap.get(ENUM_UI_TYPE.GAME) as GameLayer
         layer.setMaxGoal()
@@ -99,4 +104,5 @@ export default class UIManager extends cc.Component {
         const layer: GameLayer = this.uiMap.get(ENUM_UI_TYPE.GAME) as GameLayer
         layer.setMaxScore();
     }
+
 }

@@ -41,7 +41,7 @@ export default class Block extends cc.Component {
     gotCoinEvent() {
         if (this.ncoins > 0) this.ncoins--;
         if (this.ncoins == 0) {
-            DataManager.instance.coins += 100;
+            DataManager.instance.score += 100;
             DataManager.instance.save()
             StaticInstance.uiManager.setGameCoins()
         }
