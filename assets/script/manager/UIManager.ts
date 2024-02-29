@@ -1,4 +1,3 @@
-// Created by carolsail
 
 import { ENUM_UI_TYPE } from './../Enum';
 import { StaticInstance } from './../StaticInstance';
