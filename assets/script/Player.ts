@@ -32,6 +32,9 @@ export default class Player extends cc.Component {
     anim: cc.Animation = null
     _enablePowerUp: boolean = false;
 
+    timeOutPowerUp: any = null;
+    timeOutSpeedUp: any = null;
+
     get status(){
         return this._status
     }
@@ -117,7 +120,6 @@ export default class Player extends cc.Component {
                 case ENUM_COLLIDER_TAG.SPIKE:
                 case ENUM_COLLIDER_TAG.BAT:
                 case ENUM_COLLIDER_TAG.SAW:
-                    AudioManager.instance.playSound(ENUM_AUDIO_CLIP.STONE)
                 case ENUM_COLLIDER_TAG.SPIKEBALL:
                 case ENUM_COLLIDER_TAG.PIRANHA_PLANT:
                     AudioManager.instance.playSound(ENUM_AUDIO_CLIP.PIRANHA_PLANT)
@@ -170,6 +172,10 @@ export default class Player extends cc.Component {
             case ENUM_COLLIDER_TAG.MELON:
                 AudioManager.instance.playSound(ENUM_AUDIO_CLIP.POWER_UP);
                 this.onPoweredUpVFX();
+
+                setTimeout(() => {
+                    this.onPoweredUpVFX()
+                }, 500);
                 return;
             default:
                 break;
@@ -283,26 +289,30 @@ export default class Player extends cc.Component {
 
     forceSpeedUp() {
         this.walk = 500;
-        let timeOutSpeed = setTimeout(() => {
+        if(this.timeOutSpeedUp){
+            clearTimeout(this.timeOutSpeedUp);
+        }
+        this.timeOutSpeedUp = setTimeout(() => {
             this.walk = 200;
-            clearTimeout(timeOutSpeed);
-        }, 5000);
+        },5000)
     }
 
     onPoweredUpVFX()
     {
-        this._enablePowerUp = true;
         let shield = this.node.getChildByName("shield")
+
+        this._enablePowerUp = true;
         shield.active = true;
-        shield.scale = 0;
-        cc.tween(shield)
-        .to(0.3,{scale: 1},{easing: "backOut"})
-        .delay(4.7)
-        .call(()=>{
-            this._enablePowerUp = false
+
+        if(this.timeOutPowerUp){
+            clearTimeout(this.timeOutPowerUp);
+        }
+
+        this.timeOutPowerUp = setTimeout(() => {
+            this._enablePowerUp = false;
             shield.active = false;
-        })
-        .start();
+        },5000)
+
     }
 
 

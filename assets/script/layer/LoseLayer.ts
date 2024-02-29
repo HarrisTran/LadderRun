@@ -13,9 +13,6 @@ const {ccclass, property} = cc._decorator;
 
 @ccclass
 export default class LoseLayer extends BaseLayer {
-    @property(cc.Label)
-    costNumLabel: cc.Label = null!;
-    private cost: number = 5
 
     protected onEnable(): void {
         if(DEBUG_MODE) return;
@@ -27,7 +24,6 @@ export default class LoseLayer extends BaseLayer {
 
         this.node.getChildByName('style1').active = true;
         this.node.getChildByName('style2').active = false;
-        this.costNumLabel.string = `${this.cost}`
         // 动画
         let style = this.node.getChildByName('style1')
         if(DataManager.instance.type == ENUM_GAME_TYPE.LEVEL) style = this.node.getChildByName('style2')

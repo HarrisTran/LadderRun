@@ -30,8 +30,6 @@ export default class ConfirmLayer extends BaseLayer {
     protected onEnable(): void {
         this.style1.active = false;
         if(DEBUG_MODE) return;
-        let ticket = BackendConnector.instance.getTicketCanBeMinus();
-        this.ticketWarning.string = `To continue playing, you will be deducted ${ticket} ticket`;
         this.ticketWarning.string = 
         `Your score: ${DataManager.instance.coins + BackendConnector.instance.currentScore}`+"\n"+
         `Top 1 player: ${BackendConnector.instance.maxScore}`+"\n"+

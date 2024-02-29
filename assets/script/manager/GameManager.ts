@@ -130,7 +130,7 @@ export default class GameManager extends cc.Component {
             })
         }
         StaticInstance.uiManager.setGameGoal()
-        StaticInstance.uiManager.setGameCoins()
+        StaticInstance.uiManager.setGameScore()
         StaticInstance.uiManager.setGameMaxScore()
         DataManager.instance.status = ENUM_GAME_STATUS.RUNING
     }
