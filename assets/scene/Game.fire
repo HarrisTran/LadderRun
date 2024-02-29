@@ -78,13 +78,13 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 576
-      },
-      {
         "__id__": 577
       },
       {
         "__id__": 578
+      },
+      {
+        "__id__": 579
       }
     ],
     "_prefab": null,
@@ -25425,7 +25425,7 @@
     "_id": "bbWoeocIxJurmogxypRwUU"
   },
   {
-    "__type__": "ff3dfosH4dNrKRhe/JIchhH",
+    "__type__": "2e300eKXyNDy4hDSrpCZhoP",
     "_name": "",
     "_objFlags": 0,
     "node": {
@@ -25438,7 +25438,7 @@
     "flowerNumber": {
       "__id__": 568
     },
-    "_id": "0cLhXjvExC1IhbY+XSBvDP"
+    "_id": "488AXBgLVJxbmOSz0bU9ZN"
   },
   {
     "__type__": "cc.Widget",
@@ -25506,9 +25506,25 @@
       "__id__": 348
     },
     "gameOverLayer": {
-      "__id__": 573
+      "__id__": 576
     },
     "_id": "72Jfaw4n9OboVupyWGwUMS"
+  },
+  {
+    "__type__": "ff3dfosH4dNrKRhe/JIchhH",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 552
+    },
+    "_enabled": true,
+    "score": {
+      "__id__": 562
+    },
+    "flowerNumber": {
+      "__id__": 568
+    },
+    "_id": "0cLhXjvExC1IhbY+XSBvDP"
   },
   {
     "__type__": "cc.Canvas",
