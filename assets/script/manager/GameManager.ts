@@ -71,7 +71,7 @@ export default class GameManager extends cc.Component {
     onGameOver(){
         StaticInstance.uiManager.toggle(ENUM_UI_TYPE.GAME_OVER,true);
         setTimeout(() => {
-            BackendConnector.instance.postScoreToServer(DataManager.instance.coins)
+            BackendConnector.instance.postScoreToServer(DataManager.instance.score)
         }, 1000);
     }
 

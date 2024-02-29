@@ -41,7 +41,7 @@ export default class LoseLayer extends BaseLayer {
     onReliveClick(){
         AudioManager.instance.playSound(ENUM_AUDIO_CLIP.CLICK)
         
-        BackendConnector.instance.postScoreToServer(DataManager.instance.coins)
+        BackendConnector.instance.postScoreToServer(DataManager.instance.score)
         // if(DataManager.instance.coins >= this.cost){
         //     DataManager.instance.coins -= this.cost
         //     DataManager.instance.save()
