@@ -112,7 +112,7 @@ export default class BackendConnector {
     }
     
     public async checkGameScoreTicket(){
-        let dataEncrypted : string = this.getDataEncrypted({score: DataManager.instance.coins, ticket: this.getTicketCanBeMinus()})
+        let dataEncrypted : string = this.getDataEncrypted({score: DataManager.instance.score, ticket: this.getTicketCanBeMinus()})
 
         await fetch(`${this.gameURL}/promotions/check-game-score-ticket/${this.tournamentId}/${this.skinId}?cocos=1`,{
             headers: {
@@ -131,11 +131,16 @@ export default class BackendConnector {
             JSON.stringify({
                 error: false,
                 message: "Hello World",
-                score: DataManager.instance.coins,
+                score: DataManager.instance.score,
                 type: "paypal_modal",
             }),
             "*"
         );
+        
+        // setTimeout(() => {
+        //     BackendConnector.instance.numberTicket += 5
+        //     EventManager.instance.emit(ENUM_GAME_EVENT.GAME_RELIVE)
+        // }, 1000);
     }
 
     public postScoreToServer(score: number)
@@ -179,7 +184,7 @@ export default class BackendConnector {
     public getTicketCanBeMinus()
     {
         let mileStone = JSON.parse(this.mileStone);
-        let currentScore = DataManager.instance.coins;
+        let currentScore = DataManager.instance.score;
         let total = this.calculatingTicketToContinue(mileStone,currentScore);
         return total;
     }

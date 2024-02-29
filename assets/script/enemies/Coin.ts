@@ -23,9 +23,10 @@ export default class Coin extends cc.Component {
         if(other.tag == ENUM_COLLIDER_TAG.PLAYER && self.tag == ENUM_COLLIDER_TAG.COIN){
             this.animation.play('collected')
             AudioManager.instance.playSound(ENUM_AUDIO_CLIP.COLLECT)
-            DataManager.instance.coins += 50
+            DataManager.instance.coins += 1;
+            DataManager.instance.score += 50
             DataManager.instance.save()
-            StaticInstance.uiManager.setGameCoins()
+            StaticInstance.uiManager.setGameScore()
             self.node.parent.emit("GOT_COIN");
         }
     }

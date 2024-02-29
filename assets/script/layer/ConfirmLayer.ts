@@ -31,7 +31,7 @@ export default class ConfirmLayer extends BaseLayer {
         this.style1.active = false;
         if(DEBUG_MODE) return;
         this.ticketWarning.string = 
-        `Your score: ${DataManager.instance.coins + BackendConnector.instance.currentScore}`+"\n"+
+        `Your score: ${DataManager.instance.score + BackendConnector.instance.currentScore}`+"\n"+
         `Top 1 player: ${BackendConnector.instance.maxScore}`+"\n"+
         `Do you want to continue playing with your current score?`
     }

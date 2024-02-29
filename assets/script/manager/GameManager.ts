@@ -15,7 +15,7 @@ import Lava from '../enemies/Lava';
 
 const {ccclass, property} = cc._decorator;
 
-export const DEBUG_MODE = true;
+export const DEBUG_MODE = false;
 window.addEventListener("message", (data) => {
     const { data: res } = data
     const objectRes = JSON.parse(res)
@@ -52,6 +52,7 @@ export default class GameManager extends cc.Component {
 
     // 开始游戏
     onGameStart(){
+        DataManager.instance.currentIndexBlock = 1;
         DataManager.instance.reset()
         this._lowerLevelBound = 0;
         this._upperLevelBound = 0;
@@ -68,7 +69,10 @@ export default class GameManager extends cc.Component {
     }
 
     onGameOver(){
-        BackendConnector.instance.postScoreToServer(DataManager.instance.coins)
+        StaticInstance.uiManager.toggle(ENUM_UI_TYPE.GAME_OVER,true);
+        setTimeout(() => {
+            BackendConnector.instance.postScoreToServer(DataManager.instance.coins)
+        }, 1000);
     }
 
     // 过关
@@ -143,6 +147,7 @@ export default class GameManager extends cc.Component {
     }
 
     onPlayerClimbEnd(){
+        DataManager.instance.currentIndexBlock++;
         DataManager.instance.goal += 1
         StaticInstance.uiManager.setGameGoal()
         if(DataManager.instance.type == ENUM_GAME_TYPE.LOOP){
