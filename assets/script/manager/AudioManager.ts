@@ -27,6 +27,14 @@ export default class AudioManager {
         this.audioSource.volume = 0.3
     }
 
+    public turnOn(){
+        cc.audioEngine.setEffectsVolume(1);
+    }
+
+    public turnOff(){
+        cc.audioEngine.setEffectsVolume(0);
+    }
+
     async playMusic(){
         if(!DataManager.instance.isMusicOn) return
         if(this.audioSource.clip){

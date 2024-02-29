@@ -241,6 +241,7 @@ export default class Player extends cc.Component {
     onCollisionEnterY(other: any, self: any, otherAabb:any, selfAabb: any, otherPreAabb: any, selfPreAabb: any){
         switch(other.tag){
             case ENUM_COLLIDER_TAG.GROUND:
+                DataManager.instance.status = ENUM_GAME_STATUS.RUNING
             case ENUM_COLLIDER_TAG.BRICK:
             case ENUM_COLLIDER_TAG.BOX:
                 if (this.speed.y < 0 && (selfPreAabb.yMax > otherPreAabb.yMax)){

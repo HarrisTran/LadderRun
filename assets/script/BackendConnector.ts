@@ -62,6 +62,7 @@ export default class BackendConnector {
         })
         .then(data=>{
             if(data.ResultCode == 1) {
+                console.log("authentication successful");
                 this.key = data.Data.Key;
             }
             else{

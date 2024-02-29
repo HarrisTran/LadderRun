@@ -4737,8 +4737,8 @@
     ],
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
-    "_string": "0.6.3",
-    "_N$string": "0.6.3",
+    "_string": "0.6.4",
+    "_N$string": "0.6.4",
     "_fontSize": 20,
     "_lineHeight": 40,
     "_enableWrapText": true,
@@ -15330,7 +15330,7 @@
         "__id__": 350
       }
     ],
-    "_active": false,
+    "_active": true,
     "_components": [
       {
         "__id__": 352
@@ -15389,7 +15389,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "return",
+    "_name": "YES",
     "_objFlags": 0,
     "_parent": {
       "__id__": 349
@@ -15405,15 +15405,15 @@
     "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
-      "r": 40,
-      "g": 39,
-      "b": 39,
+      "r": 255,
+      "g": 255,
+      "b": 255,
       "a": 255
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 31,
-      "height": 28
+      "width": 51.48,
+      "height": 50.4
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -15447,10 +15447,10 @@
     "_is3DNode": false,
     "_groupIndex": 0,
     "groupIndex": 0,
-    "_id": "efoAMVAupHlLGd7ZRLPJjI"
+    "_id": "ab6S9X3GRD6aOXKAwzcAgm"
   },
   {
-    "__type__": "cc.Sprite",
+    "__type__": "cc.Label",
     "_name": "",
     "_objFlags": 0,
     "node": {
@@ -15464,22 +15464,25 @@
     ],
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
-    "_spriteFrame": {
-      "__uuid__": "1d969119-3cd8-40e8-b20c-1a507e5e623a"
+    "_string": "YES",
+    "_N$string": "YES",
+    "_fontSize": 40,
+    "_lineHeight": 40,
+    "_enableWrapText": true,
+    "_N$file": {
+      "__uuid__": "bb48075c-13e7-45de-9519-9f57dba9e6d3"
     },
-    "_type": 0,
-    "_sizeMode": 1,
-    "_fillType": 0,
-    "_fillCenter": {
-      "__type__": "cc.Vec2",
-      "x": 0,
-      "y": 0
-    },
-    "_fillStart": 0,
-    "_fillRange": 0,
-    "_isTrimmedMode": true,
-    "_atlas": null,
-    "_id": "913PPnsDFNYqSZ+bla4bzr"
+    "_isSystemFontUsed": false,
+    "_spacingX": 0,
+    "_batchAsBitmap": false,
+    "_styleFlags": 0,
+    "_underlineHeight": 0,
+    "_N$horizontalAlign": 1,
+    "_N$verticalAlign": 1,
+    "_N$fontFamily": "Arial",
+    "_N$overflow": 0,
+    "_N$cacheMode": 0,
+    "_id": "4dKWJ8UcxMzYN5QpemKaC5"
   },
   {
     "__type__": "cc.Sprite",

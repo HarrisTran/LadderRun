@@ -42,6 +42,11 @@ export default class SettingLayer extends BaseLayer {
     onSoundClick(){
         AudioManager.instance.playSound(ENUM_AUDIO_CLIP.CLICK)
         DataManager.instance.isSoundOn = !DataManager.instance.isSoundOn
+        if(DataManager.instance.isSoundOn){
+            AudioManager.instance.turnOn()
+        }else{
+            AudioManager.instance.turnOff()
+        }
         DataManager.instance.save()
         this.rendorSound()
     }

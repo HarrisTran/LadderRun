@@ -31,8 +31,9 @@ export default class ConfirmLayer extends BaseLayer {
         this.style1.active = false;
         if(DEBUG_MODE) return;
         this.ticketWarning.string = 
-        `Your score: ${DataManager.instance.score + BackendConnector.instance.currentScore}`+"\n"+
         `Top 1 player: ${BackendConnector.instance.maxScore}`+"\n"+
+        `Current Score + Previous Score = Final Score`+"\n"+
+        `${BackendConnector.instance.currentScore}+${DataManager.instance.score}=${DataManager.instance.score+BackendConnector.instance.currentScore}`+"\n"+
         `Do you want to continue playing with your current score?`
     }
 
@@ -50,6 +51,8 @@ export default class ConfirmLayer extends BaseLayer {
 
     onDeductedButton()
     {
+        let button = this.deductedButton.getComponent(cc.Button);
+        button.interactable = false;
         AudioManager.instance.playSound(ENUM_AUDIO_CLIP.CLICK);
         if(DEBUG_MODE){
             EventManager.instance.emit(ENUM_GAME_EVENT.GAME_RELIVE)
@@ -61,12 +64,14 @@ export default class ConfirmLayer extends BaseLayer {
             if (BackendConnector.instance.canRelive()) {
                 BackendConnector.instance.checkGameScoreTicket()
                     .then(() => {
+                        button.interactable = true;
                         EventManager.instance.emit(ENUM_GAME_EVENT.GAME_RELIVE)
                     })
                     .catch(() => {
                         EventManager.instance.emit(ENUM_GAME_EVENT.GAME_OVER)
                     })
             } else {
+                button.interactable = true;
                 this._isLackTicket = true;
                 this.ticketWarning.string = `You don't have enough extras to continue playing, would you like to buy more tickets?\n Need ${BackendConnector.instance.getTicketCanBeMinus()} extras`;
             }
