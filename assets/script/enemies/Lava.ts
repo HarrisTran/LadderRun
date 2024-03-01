@@ -1,3 +1,5 @@
+import { ENUM_GAME_STATUS } from "../Enum";
+import DataManager from "../manager/DataManager";
 
 const {ccclass, property} = cc._decorator;
 
@@ -20,6 +22,7 @@ export default class Lava extends cc.Component {
 
     protected update(dt: number): void {
         if(!this._isStarted) return;
+        if(DataManager.instance.status !== ENUM_GAME_STATUS.RUNING) return;
         if(this.node.position.y > this._cameraNode.position.y) return;
         let currenty = this.node.position.y;
         this.node.setPosition(0,currenty+dt*100);

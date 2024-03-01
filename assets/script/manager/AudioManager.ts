@@ -27,6 +27,8 @@ export default class AudioManager {
         this.audioSource.volume = 0.3
     }
 
+
+
     async playMusic(){
         if(!DataManager.instance.isMusicOn) return
         if(this.audioSource.clip){
@@ -35,17 +37,27 @@ export default class AudioManager {
         }
         const clip = await ResourceManager.instance.getClip(ENUM_AUDIO_CLIP.BGM)
         this.audioSource.clip = clip
-        this.audioSource.play()
+        //this.audioSource.play()
+        cc.audioEngine.playMusic(clip,true);
     }
 
     stopMusic(){
-        this.audioSource.stop()
+        cc.audioEngine.stopMusic();
+        //this.audioSource.stop()
     }
 
     async playSound(name: ENUM_AUDIO_CLIP, isLoop: boolean = false){
         if(!DataManager.instance.isSoundOn) return
         const clip = await ResourceManager.instance.getClip(name)
         return cc.audioEngine.playEffect(clip, isLoop)
+    }
+
+    stopAllEffect(){
+        cc.audioEngine.stopAllEffects();
+    }
+
+    resumeAllEffect(){
+        cc.audioEngine.resumeAllEffects();
     }
 
     stopSound(audioId: number){

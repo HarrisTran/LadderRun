@@ -14,7 +14,7 @@ export default class Chicken extends cc.Component {
     dir: number = 0
     speed: number = 300
 
-    //runSoundId: number = 0;
+    runSoundId: number = 0;
 
     get status(){
         return this._status
@@ -30,9 +30,9 @@ export default class Chicken extends cc.Component {
     }
 
     onCollisionEnter (other: cc.BoxCollider, self: cc.BoxCollider) {
-        // if(other.tag == ENUM_COLLIDER_TAG.PLAYER && self.tag == ENUM_COLLIDER_TAG.CHICKEN_VIEW){
-        //     AudioManager.instance.playSound(ENUM_AUDIO_CLIP.CHICKEN_RUN,true).then((v)=>this.runSoundId=v);
-        // }
+        if(other.tag == ENUM_COLLIDER_TAG.PLAYER && self.tag == ENUM_COLLIDER_TAG.CHICKEN_VIEW){
+            AudioManager.instance.playSound(ENUM_AUDIO_CLIP.CHICKEN_RUN,true).then((v)=>this.runSoundId=v);
+        }
         if(other.tag == ENUM_COLLIDER_TAG.PLAYER && self.tag == ENUM_COLLIDER_TAG.CHICKEN_VIEW && this.status == ENUM_CHICKEN_STATUS.IDLE){
             this.status = ENUM_CHICKEN_STATUS.RUN
             this.speed += Math.random() * 80
@@ -40,6 +40,12 @@ export default class Chicken extends cc.Component {
             this.node.scaleX = this.dir * -1
         }else if((other.tag == ENUM_COLLIDER_TAG.WALL || other.tag == ENUM_COLLIDER_TAG.BRICK) && self.tag == ENUM_COLLIDER_TAG.CHICKEN && this.status == ENUM_CHICKEN_STATUS.RUN){
             this.onTurn()
+        }
+    }
+
+    onCollisionExit(other: cc.BoxCollider, self: cc.BoxCollider) {
+        if(other.tag == ENUM_COLLIDER_TAG.PLAYER && self.tag == ENUM_COLLIDER_TAG.CHICKEN_VIEW){
+            AudioManager.instance.stopSound(this.runSoundId);
         }
     }
 
