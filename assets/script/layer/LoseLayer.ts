@@ -19,6 +19,7 @@ export default class LoseLayer extends BaseLayer {
 
     protected onEnable(): void {
         if(DEBUG_MODE) return;
+        StaticInstance.uiManager.toggle(ENUM_UI_TYPE.SETTING,false) 
         if(DataManager.instance.isReplayed) {
             this.endGame();
             return;
