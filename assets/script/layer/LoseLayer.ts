@@ -25,12 +25,12 @@ export default class LoseLayer extends BaseLayer {
         }
         DataManager.instance.isReplayed = true;
 
-        this.node.getChildByName('style1').active = true;
-        this.node.getChildByName('style2').active = false;
+        this.node.getChildByName('style1').active = false;
+        this.node.getChildByName('style2').active = true;
         this.costNumLabel.string = `${this.cost}`
         // 动画
-        let style = this.node.getChildByName('style1')
-        if(DataManager.instance.type == ENUM_GAME_TYPE.LEVEL) style = this.node.getChildByName('style2')
+        let style = this.node.getChildByName('style2')
+        //if(DataManager.instance.type == ENUM_GAME_TYPE.LEVEL) style = this.node.getChildByName('style2')
         style.children.forEach(node=>{
             cc.tween(node).to(0.15, {scale: 0.8}).to(0.15, {scale: 1}).start()
         })
@@ -69,7 +69,10 @@ export default class LoseLayer extends BaseLayer {
         // })
     }
 
-    onRestartClick(){
+    onRestartClick(){ 
+        
+        /* dont need this*/
+
         AudioManager.instance.playSound(ENUM_AUDIO_CLIP.CLICK)
         StaticInstance.uiManager.toggle(ENUM_UI_TYPE.CONFIRM, true);
         
@@ -83,7 +86,10 @@ export default class LoseLayer extends BaseLayer {
         
     }
 
-    onShareClick(){
+    onShareClick(){ 
+        
+        /* dont need this*/
+
         AudioManager.instance.playSound(ENUM_AUDIO_CLIP.CLICK)
         EventManager.instance.emit(ENUM_GAME_EVENT.GAME_OVER)
         //SdkManager.instance.activeShare()
