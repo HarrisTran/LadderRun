@@ -27,13 +27,13 @@ export default class AudioManager {
         this.audioSource.volume = 0.3
     }
 
-    public turnOn(){
-        cc.audioEngine.setEffectsVolume(1);
-    }
+    // public turnOn(){
+    //     cc.audioEngine.setEffectsVolume(1);
+    // }
 
-    public turnOff(){
-        cc.audioEngine.setEffectsVolume(0);
-    }
+    // public turnOff(){
+    //     cc.audioEngine.setEffectsVolume(0);
+    // }
 
     async playMusic(){
         if(!DataManager.instance.isMusicOn) return
@@ -43,11 +43,13 @@ export default class AudioManager {
         }
         const clip = await ResourceManager.instance.getClip(ENUM_AUDIO_CLIP.BGM)
         this.audioSource.clip = clip
-        this.audioSource.play()
+        // this.audioSource.play()
+        cc.audioEngine.playMusic(clip,true)
     }
 
     stopMusic(){
-        this.audioSource.stop()
+        cc.audioEngine.stopMusic();
+        //this.audioSource.stop()
     }
 
     async playSound(name: ENUM_AUDIO_CLIP, isLoop: boolean = false){
@@ -56,7 +58,17 @@ export default class AudioManager {
         return cc.audioEngine.playEffect(clip, isLoop)
     }
 
+    stopAllEffect(){
+        cc.audioEngine.stopAllEffects();
+    }
+
+    resumeAllEffect(){
+        //cc.audioEngine.stopAllEffects();
+        cc.audioEngine.resumeAllEffects()
+    }
+
     stopSound(audioId: number){
+        //cc.audioEngine.stopAllEffects();
         cc.audioEngine.stopEffect(audioId)
     }
 }
