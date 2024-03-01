@@ -98,12 +98,13 @@ export default class GameManager extends cc.Component {
     // 失败
     onGameLose(){
         DataManager.instance.status = ENUM_GAME_STATUS.UNRUNING
+        StaticInstance.uiManager.toggle(ENUM_UI_TYPE.SETTING,false) 
         this.scheduleOnce(()=>{
             StaticInstance.uiManager.toggle(ENUM_UI_TYPE.LOSE) 
         }, 0.5) 
     }
 
-    reviveGame() {
+    reviveGame() { // dang bao tri
         const currentBlockNode = DataManager.instance.getBlockIndex(DataManager.instance.currentIndexBlock).node;
         const currentPositionLava = this.lavaNode.node.getPosition();
         this.lavaNode.node.setPosition(currentPositionLava.x, currentPositionLava.y - 300);
