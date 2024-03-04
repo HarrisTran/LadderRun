@@ -44,7 +44,6 @@ export default class GameManager extends cc.Component {
         EventManager.instance.on(ENUM_GAME_EVENT.GAME_START, this.onGameStart, this)
         EventManager.instance.on(ENUM_GAME_EVENT.GAME_RELIVE, this.onGameRelive, this)
         EventManager.instance.on(ENUM_GAME_EVENT.PLAYER_CLIMB_END, this.onPlayerClimbEnd, this)
-        EventManager.instance.on(ENUM_GAME_EVENT.GAME_WIN, this.onGameWin, this)
         EventManager.instance.on(ENUM_GAME_EVENT.GAME_LOSE, this.onGameLose, this)
         EventManager.instance.on(ENUM_GAME_EVENT.EFFECT_STAR_PLAY, this.onEffectStarPlay, this)
         EventManager.instance.on(ENUM_GAME_EVENT.GAME_OVER,this.onGameOver,this);
@@ -76,24 +75,6 @@ export default class GameManager extends cc.Component {
         },1000);
     }
 
-    // 过关
-    onGameWin(){
-        // DataManager.instance.status = ENUM_GAME_STATUS.UNRUNING
-        // let maxLevel = DataManager.instance.level + 1
-        // if(maxLevel > levels.length) maxLevel = levels.length
-        // // 当前关卡
-        // DataManager.instance.level = maxLevel
-        // DataManager.instance.save()
-        // // 解锁关卡
-        // if(maxLevel > DataManager.instance.unlock){
-        //     DataManager.instance.unlock = maxLevel
-        //     DataManager.instance.save()
-        // }
-        // //this.setMaxGoal()
-        // this.scheduleOnce(()=>{
-        //     StaticInstance.uiManager.toggle(ENUM_UI_TYPE.WIN)
-        // }, 0.5)
-    }
 
     // 失败
     onGameLose(){
@@ -234,7 +215,6 @@ export default class GameManager extends cc.Component {
         EventManager.instance.off(ENUM_GAME_EVENT.GAME_START, this.onGameStart)
         EventManager.instance.off(ENUM_GAME_EVENT.GAME_RELIVE, this.onGameRelive)
         EventManager.instance.off(ENUM_GAME_EVENT.PLAYER_CLIMB_END, this.onPlayerClimbEnd)
-        EventManager.instance.off(ENUM_GAME_EVENT.GAME_WIN, this.onGameWin)
         EventManager.instance.off(ENUM_GAME_EVENT.GAME_LOSE, this.onGameLose)
         EventManager.instance.off(ENUM_GAME_EVENT.EFFECT_STAR_PLAY, this.onEffectStarPlay)
         EventManager.instance.off(ENUM_GAME_EVENT.GAME_OVER,this.onGameOver);

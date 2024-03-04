@@ -40,12 +40,6 @@ export default class GameLayer extends BaseLayer {
         this.goalLabel.string = `${DataManager.instance.goal} floor`
     }
 
-    // setCoins(){
-    //     if(!this.coinsNode) return
-    //     const nums = this.coinsNode.getChildByName('nums')
-    //     nums.getComponent(cc.Label).string = `${DataManager.instance.coins}`
-    // }
-
     setScore(){
         if(!this.coinsNode) return
         const nums = this.coinsNode.getChildByName('nums')

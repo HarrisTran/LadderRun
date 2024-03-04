@@ -13,8 +13,6 @@ const {ccclass, property} = cc._decorator;
 
 @ccclass
 export default class LoseLayer extends BaseLayer {
-    @property(cc.Label)
-    costNumLabel: cc.Label = null!;
     private cost: number = 5
 
     protected onEnable(): void {
@@ -28,10 +26,7 @@ export default class LoseLayer extends BaseLayer {
 
         this.node.getChildByName('style1').active = false;
         this.node.getChildByName('style2').active = true;
-        this.costNumLabel.string = `${this.cost}`
-        // 动画
         let style = this.node.getChildByName('style2')
-        //if(DataManager.instance.type == ENUM_GAME_TYPE.LEVEL) style = this.node.getChildByName('style2')
         style.children.forEach(node=>{
             cc.tween(node).to(0.15, {scale: 0.8}).to(0.15, {scale: 1}).start()
         })
@@ -45,56 +40,9 @@ export default class LoseLayer extends BaseLayer {
 
     onReliveClick(){
         AudioManager.instance.playSound(ENUM_AUDIO_CLIP.CLICK)
-        
         BackendConnector.instance.postScoreToServer(DataManager.instance.score)
-        // if(DataManager.instance.coins >= this.cost){
-        //     DataManager.instance.coins -= this.cost
-        //     DataManager.instance.save()
-        //     ToastManager.instance.show('Reborn Succeed', {gravity: 'BOTTOM', bg_color: cc.color(102, 202, 28, 255)})  // Translated
-        //     StaticInstance.uiManager.toggle(ENUM_UI_TYPE.LOSE, false) 
-        //     EventManager.instance.emit(ENUM_GAME_EVENT.GAME_RELIVE)
-        // }else{
-        //     ToastManager.instance.show('Reborn Failed', {gravity: 'BOTTOM', bg_color: cc.color(226, 69, 109, 255)})  // Translated
-        // }
     }
 
-    onReliveADClick(){
-
-        /* dont need this*/
-
-        // AudioManager.instance.playSound(ENUM_AUDIO_CLIP.CLICK)
-        // SdkManager.instance.showVideoAd(()=>{
-        //     ToastManager.instance.show('发放奖励，复活成功', {gravity: 'BOTTOM', bg_color: cc.color(102, 202, 28, 255)})
-        //     StaticInstance.uiManager.toggle(ENUM_UI_TYPE.LOSE, false) 
-        //     EventManager.instance.emit(ENUM_GAME_EVENT.GAME_RELIVE)
-        // })
-    }
-
-    onRestartClick(){ 
-        
-        /* dont need this*/
-
-        AudioManager.instance.playSound(ENUM_AUDIO_CLIP.CLICK)
-        StaticInstance.uiManager.toggle(ENUM_UI_TYPE.CONFIRM, true);
-        
-        //StaticInstance.uiManager.toggle(ENUM_UI_TYPE.CONFIRM, true) 
-        // if(BackendConnector.instance.canRelive()){
-        //     EventManager.instance.emit(ENUM_GAME_EVENT.GAME_RELIVE)
-        //     StaticInstance.uiManager.toggle(ENUM_UI_TYPE.LOSE, false)
-        // }else{
-        //     StaticInstance.uiManager.toggle(ENUM_UI_TYPE.CONFIRM, true);
-        // }
-        
-    }
-
-    onShareClick(){ 
-        
-        /* dont need this*/
-
-        AudioManager.instance.playSound(ENUM_AUDIO_CLIP.CLICK)
-        EventManager.instance.emit(ENUM_GAME_EVENT.GAME_OVER)
-        //SdkManager.instance.activeShare()
-    }
 
     protected onDisable(): void {
         this.unschedule(this.endGame);

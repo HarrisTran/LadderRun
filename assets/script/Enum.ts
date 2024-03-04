@@ -86,13 +86,9 @@ export enum ENUM_UI_TYPE {
     LOADING,
     MENU,
     GAME,
-    LEVEL,
     SETTING,
     LOSE,
-    WIN,
     GAME_OVER,
-    SKIN,
-    MORE,
     CONFIRM,
 }
 

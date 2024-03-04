@@ -149,13 +149,6 @@ export default class Player extends cc.Component {
         
 
         switch (other.tag) {
-            case ENUM_COLLIDER_TAG.ENDPOINT:
-                //AudioManager.instance.playSound(ENUM_AUDIO_CLIP.WIN)
-                EventManager.instance.emit(ENUM_GAME_EVENT.GAME_WIN)
-                for(let i = 0; i < 5; i++){
-                    EventManager.instance.emit(ENUM_GAME_EVENT.EFFECT_STAR_PLAY, {pos: self.node.position, color})
-                }
-                return;
             case ENUM_COLLIDER_TAG.TRAMPOLINE:
                 AudioManager.instance.playSound(ENUM_AUDIO_CLIP.TRAMPOLINE)
                 color = cc.color(255, 255, 255, 255)
