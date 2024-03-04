@@ -7,10 +7,6 @@ import MenuLayer from "../layer/MenuLayer";
 import GameLayer from '../layer/GameLayer';
 import SettingLayer from '../layer/SettingLayer';
 import LoseLayer from '../layer/LoseLayer';
-import WinLayer from '../layer/WinLayer';
-import LevelLayer from '../layer/LevelLayer';
-import SkinLayer from '../layer/SkinLayer';
-import MoreLayer from '../layer/MoreLayer';
 import ConfirmLayer from '../layer/ConfirmLayer';
 import GameOverLayer from '../layer/GameOverLayer';
 
@@ -29,14 +25,6 @@ export default class UIManager extends cc.Component {
     settingLayer: SettingLayer = null
     @property(LoseLayer)
     loseLayer: LoseLayer = null
-    @property(WinLayer)
-    winLayer: WinLayer = null
-    @property(LevelLayer)
-    levelLayer: LevelLayer = null
-    @property(SkinLayer)
-    skinLayer: SkinLayer = null
-    @property(MoreLayer)
-    moreLayer: MoreLayer = null
     @property(ConfirmLayer)
     confirmLayer: ConfirmLayer = null
     @property(GameOverLayer)
@@ -51,10 +39,6 @@ export default class UIManager extends cc.Component {
         this.uiMap.set(ENUM_UI_TYPE.GAME, this.gameLayer)
         this.uiMap.set(ENUM_UI_TYPE.SETTING, this.settingLayer)
         this.uiMap.set(ENUM_UI_TYPE.LOSE, this.loseLayer)
-        this.uiMap.set(ENUM_UI_TYPE.WIN, this.winLayer)
-        this.uiMap.set(ENUM_UI_TYPE.LEVEL, this.levelLayer)
-        this.uiMap.set(ENUM_UI_TYPE.SKIN, this.skinLayer)
-        this.uiMap.set(ENUM_UI_TYPE.MORE, this.moreLayer)
         this.uiMap.set(ENUM_UI_TYPE.GAME_OVER, this.gameOverLayer)
         this.uiMap.set(ENUM_UI_TYPE.CONFIRM, this.confirmLayer)
     }
