@@ -2318,7 +2318,7 @@
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
     "_spriteFrame": {
-      "__uuid__": "191e260b-efa5-46d9-84b0-ad436528ea7c"
+      "__uuid__": "9cb36be9-e4b9-46c9-86fb-3422c01388c9"
     },
     "_type": 0,
     "_sizeMode": 1,
@@ -2649,7 +2649,7 @@
       "__id__": 47
     },
     "_children": [],
-    "_active": false,
+    "_active": true,
     "_components": [
       {
         "__id__": 62
@@ -2721,8 +2721,8 @@
     ],
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
-    "_string": "0.6.5",
-    "_N$string": "0.6.5",
+    "_string": "0.6.6",
+    "_N$string": "0.6.6",
     "_fontSize": 20,
     "_lineHeight": 40,
     "_enableWrapText": true,

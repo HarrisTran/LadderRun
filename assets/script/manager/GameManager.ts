@@ -110,16 +110,11 @@ export default class GameManager extends cc.Component {
         DataManager.instance.status = ENUM_GAME_STATUS.RUNING
     }
 
-    // protected update(dt: number): void {
-    //     console.log("curent ticket",BackendConnector.instance.numberTicket);
-        
-    // }
-
     initGame(){
         if(!this.stageNode) return
         this.stageNode.removeAllChildren()
         this.lavaNode.node.setPosition(0,-650);
-        const data = [1,2,3,4,2,1,2,3,5]//createLevelDesign(5,6,10)
+        const data = [1,1,1,2,1,1]//createLevelDesign(5,6,10)
         for(let i = 0; i < data.length; i++){
             const blockIndex = data[i]
             const block: cc.Node = PoolManager.instance.getNode(`block${blockIndex}`, this.stageNode)
@@ -159,8 +154,19 @@ export default class GameManager extends cc.Component {
         }
     }
 
+    addBonusOnLevel(idx: number){
+        DataManager.instance.score += Math.round(idx/10);
+        DataManager.instance.save()
+        StaticInstance.uiManager.setGameScore();
+    }
+
+    // protected update(dt: number): void {
+    //     console.log(DataManager.instance.currentIndexBlock);
+    // }
+
     onPlayerClimbEnd(){
-        DataManager.instance.currentIndexBlock++;
+        let currentIndexBlock = DataManager.instance.currentIndexBlock++;
+        this.addBonusOnLevel(currentIndexBlock);
         DataManager.instance.goal += 1
         StaticInstance.uiManager.setGameGoal()
         if(DataManager.instance.type == ENUM_GAME_TYPE.LOOP){

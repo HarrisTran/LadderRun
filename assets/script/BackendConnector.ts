@@ -44,7 +44,7 @@ export default class BackendConnector {
 
 
         this.numberTicket = parseInt(url.get('numberTicket'));
-        this.maxScore =  parseInt(url.get('maxScore'));
+        this.maxScore =  parseInt(url.get('maxScore')) || 0;
         this.currentScore = parseInt(url.get('currentScore')) || 0;
         this.mileStone = url.get("mileStone");
 

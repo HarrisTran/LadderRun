@@ -27,7 +27,6 @@ export default class Coin extends cc.Component {
             DataManager.instance.score += 50
             DataManager.instance.save()
             StaticInstance.uiManager.setGameScore();
-            self.node.parent.emit("GOT_COIN");
         }
     }
 

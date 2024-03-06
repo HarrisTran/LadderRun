@@ -573,7 +573,7 @@
       "__id__": 18
     },
     "_name": "box",
-    "_active": true,
+    "_active": false,
     "_trs": {
       "__type__": "TypedArray",
       "ctor": "Float64Array",
@@ -709,7 +709,7 @@
       "__id__": 1
     },
     "_children": [],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 24
