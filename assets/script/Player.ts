@@ -172,10 +172,6 @@ export default class Player extends cc.Component {
             case ENUM_COLLIDER_TAG.MELON:
                 AudioManager.instance.playSound(ENUM_AUDIO_CLIP.POWER_UP);
                 this.onPoweredUpVFX();
-
-                setTimeout(() => {
-                    this.onPoweredUpVFX()
-                }, 500);
                 return;
             default:
                 break;
