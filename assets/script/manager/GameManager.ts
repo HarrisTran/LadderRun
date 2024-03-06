@@ -15,7 +15,7 @@ import Lava from '../enemies/Lava';
 
 const {ccclass, property} = cc._decorator;
 
-export const DEBUG_MODE = false;
+export const DEBUG_MODE = true;
 window.addEventListener("message", (data) => {
     const { data: res } = data
     const objectRes = JSON.parse(res)
@@ -34,6 +34,9 @@ export default class GameManager extends cc.Component {
 
     @property(Lava)
     lavaNode: Lava = null
+
+    @property({type: [cc.Integer]})
+    beginLevelForTestGame: number[] = []
 
     private _levelList : number[];
 
@@ -107,7 +110,7 @@ export default class GameManager extends cc.Component {
         if(!this.stageNode) return
         this.stageNode.removeAllChildren()
         this.lavaNode.node.setPosition(0,-650);
-        const data = [1,2,3,4,5,1]//createLevelDesign(5,6,10)
+        const data = this.beginLevelForTestGame || [1,2,3,4,5]//createLevelDesign(5,6,10)
         for(let i = 0; i < data.length; i++){
             const blockIndex = data[i]
             const block: cc.Node = PoolManager.instance.getNode(`block${blockIndex}`, this.stageNode)

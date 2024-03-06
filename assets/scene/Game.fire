@@ -1131,6 +1131,13 @@
     "lavaNode": {
       "__id__": 23
     },
+    "beginLevelForTestGame": [
+      1,
+      2,
+      3,
+      4,
+      13
+    ],
     "_id": "22WHV8pc1MBZU92WBkJ+wi"
   },
   {
