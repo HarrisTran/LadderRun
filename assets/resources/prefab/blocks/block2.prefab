@@ -598,8 +598,8 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        132.137,
-        -122.166,
+        0,
+        -122.015,
         0,
         0,
         0,
@@ -626,7 +626,7 @@
     "asset": {
       "__uuid__": "9397b88e-5c3f-476e-8c51-ef258c05fb63"
     },
-    "fileId": "bb3OVTP7pDcZ/hX8O5e7Pk",
+    "fileId": "f4IqgiLIdLf55FnlxtTYlc",
     "sync": true
   },
   {
@@ -638,14 +638,14 @@
     "_prefab": {
       "__id__": 21
     },
-    "_name": "coin",
+    "_name": "box",
     "_active": true,
     "_trs": {
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        -150,
-        0,
+        132.137,
+        -122.166,
         0,
         0,
         0,
@@ -670,9 +670,9 @@
       "__id__": 20
     },
     "asset": {
-      "__uuid__": "e5f26918-4a4c-4109-b5da-0bd2d71f5809"
+      "__uuid__": "9397b88e-5c3f-476e-8c51-ef258c05fb63"
     },
-    "fileId": "a7FyoT/AZD06qMLdsRycbs",
+    "fileId": "bb3OVTP7pDcZ/hX8O5e7Pk",
     "sync": true
   },
   {
@@ -690,7 +690,7 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        0,
+        -80,
         0,
         0,
         0,
@@ -736,7 +736,7 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        150,
+        80,
         0,
         0,
         0,

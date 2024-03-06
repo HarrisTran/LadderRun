@@ -32,7 +32,6 @@ export default class Player extends cc.Component {
     anim: cc.Animation = null
     _enablePowerUp: boolean = false;
 
-    timeOutPowerUp: any = null;
     timeOutSpeedUp: any = null;
 
     get status(){
@@ -171,7 +170,8 @@ export default class Player extends cc.Component {
                 return;
             case ENUM_COLLIDER_TAG.MELON:
                 AudioManager.instance.playSound(ENUM_AUDIO_CLIP.POWER_UP);
-                this.onPoweredUpVFX();
+                this._enablePowerUp = true;
+                this.node.getComponent(cc.Animation).play("shield");
                 return;
             default:
                 break;
@@ -294,22 +294,9 @@ export default class Player extends cc.Component {
         },5000)
     }
 
-    onPoweredUpVFX()
-    {
-        let shield = this.node.getChildByName("shield")
 
-        this._enablePowerUp = true;
-        shield.active = true;
-
-        if(this.timeOutPowerUp){
-            clearTimeout(this.timeOutPowerUp);
-        }
-
-        this.timeOutPowerUp = setTimeout(() => {
-            this._enablePowerUp = false;
-            shield.active = false;
-        },5000)
-
+    onShieldEnd(){
+        this._enablePowerUp = false;
     }
 
 

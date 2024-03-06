@@ -4618,7 +4618,7 @@
       "__id__": 46
     },
     "_children": [],
-    "_active": false,
+    "_active": true,
     "_components": [
       {
         "__id__": 106
@@ -4690,8 +4690,8 @@
     ],
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
-    "_string": "0.6.3",
-    "_N$string": "0.6.3",
+    "_string": "0.6.4",
+    "_N$string": "0.6.4",
     "_fontSize": 20,
     "_lineHeight": 40,
     "_enableWrapText": true,
