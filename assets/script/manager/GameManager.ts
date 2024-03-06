@@ -106,7 +106,7 @@ export default class GameManager extends cc.Component {
         if(!this.stageNode) return
         this.stageNode.removeAllChildren()
         this.lavaNode.node.setPosition(0,-650);
-        const data = [1,2,3,4,5,6,7,8,9]//createLevelDesign(5,6,10)
+        const data = [1,1,1,1,2,1]//createLevelDesign(5,6,10)
         for(let i = 0; i < data.length; i++){
             const blockIndex = data[i]
             const block: cc.Node = PoolManager.instance.getNode(`block${blockIndex}`, this.stageNode)
@@ -146,8 +146,15 @@ export default class GameManager extends cc.Component {
         }
     }
 
+    addBonusOnLevel(idx: number) {
+        DataManager.instance.score += Math.round(idx/10);
+        DataManager.instance.save()
+        StaticInstance.uiManager.setGameScore()
+    }
+
     onPlayerClimbEnd(){
-        DataManager.instance.currentIndexBlock++;
+        let currentIndexBlock = DataManager.instance.currentIndexBlock++;
+        this.addBonusOnLevel(currentIndexBlock);
         DataManager.instance.goal += 1
         StaticInstance.uiManager.setGameGoal()
         if(DataManager.instance.type == ENUM_GAME_TYPE.LOOP){
