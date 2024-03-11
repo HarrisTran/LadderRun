@@ -1129,14 +1129,15 @@
       "__id__": 16
     },
     "lavaNode": {
-      "__id__": 23
+      "__id__": 18
     },
     "beginLevelForTestGame": [
       1,
-      2,
+      13,
+      24,
       3,
       4,
-      13
+      5
     ],
     "_id": "22WHV8pc1MBZU92WBkJ+wi"
   },
@@ -4697,8 +4698,8 @@
     ],
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
-    "_string": "0.6.4",
-    "_N$string": "0.6.4",
+    "_string": "0.6.5",
+    "_N$string": "0.6.5",
     "_fontSize": 20,
     "_lineHeight": 40,
     "_enableWrapText": true,

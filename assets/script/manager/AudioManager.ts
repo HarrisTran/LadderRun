@@ -30,11 +30,11 @@ export default class AudioManager {
 
 
     async playMusic(){
-        if(!DataManager.instance.isMusicOn) return
-        if(this.audioSource.clip){
-            this.audioSource.play()
-            return
-        }
+        // if(!DataManager.instance.isMusicOn) return
+        // if(this.audioSource.clip){
+        //     this.audioSource.play()
+        //     return
+        // }
         const clip = await ResourceManager.instance.getClip(ENUM_AUDIO_CLIP.BGM)
         this.audioSource.clip = clip
         //this.audioSource.play()
