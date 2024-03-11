@@ -1,0 +1,67 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "Tree3",
+  "_objFlags": 0,
+  "_native": "",
+  "_duration": 1,
+  "sample": 8,
+  "speed": 1,
+  "wrapMode": 2,
+  "curveData": {
+    "comps": {
+      "cc.Sprite": {
+        "spriteFrame": [
+          {
+            "frame": 0,
+            "value": {
+              "__uuid__": "897d9509-125b-44c3-bf6e-39e62ef78c4d"
+            }
+          },
+          {
+            "frame": 0.125,
+            "value": {
+              "__uuid__": "c657e2a9-953d-4642-8616-1c2be6dd5ad6"
+            }
+          },
+          {
+            "frame": 0.25,
+            "value": {
+              "__uuid__": "2bb29d4d-1520-4185-b0ff-3a148238627a"
+            }
+          },
+          {
+            "frame": 0.375,
+            "value": {
+              "__uuid__": "1f3f4a7b-8055-4b75-b0da-1a0deb06b7cc"
+            }
+          },
+          {
+            "frame": 0.5,
+            "value": {
+              "__uuid__": "1db2ea20-d8bd-4ee1-a084-9620d17ff481"
+            }
+          },
+          {
+            "frame": 0.625,
+            "value": {
+              "__uuid__": "c5e7281b-df97-4307-b88f-1d866fa6d826"
+            }
+          },
+          {
+            "frame": 0.75,
+            "value": {
+              "__uuid__": "a49f0445-186b-457f-9b04-df0d449458f7"
+            }
+          },
+          {
+            "frame": 0.875,
+            "value": {
+              "__uuid__": "141b26e5-47a3-4f36-bf0b-1df4ace76cce"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "events": []
+}

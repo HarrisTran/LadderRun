@@ -18,7 +18,6 @@ export default class Index extends cc.Component {
     progressBar: cc.ProgressBar = null;
 
     protected onLoad() {
-        
         cc.resources.preloadDir("/", (current: number, total: number)=>{
             this.progressBar.progress = current / 300
         }, async ()=>{

@@ -41,8 +41,7 @@ export default class ConfirmLayer extends BaseLayer {
     {
         AudioManager.instance.playSound(ENUM_AUDIO_CLIP.CLICK);
         if(DEBUG_MODE){
-            EventManager.instance.emit(ENUM_GAME_EVENT.GAME_RELIVE)
-            return;
+            this.continueButton.active = false;
         }
         this.ticketWarning.string = 
         `To continue playing, you will be deducted ${BackendConnector.instance.getTicketCanBeMinus()} extras. Do you want to proceed?`+"\n"+

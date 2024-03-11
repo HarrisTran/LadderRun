@@ -37,7 +37,3 @@ export function sort(arr: any[] | unknown, key: any, flag: boolean = true){
         })
     }
 }
-
-export function delay(delay: number){
-    return new Promise((resolve) => setTimeout(resolve, delay));
-}

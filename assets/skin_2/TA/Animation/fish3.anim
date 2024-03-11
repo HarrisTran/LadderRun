@@ -1,0 +1,33 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "fish3",
+  "_objFlags": 0,
+  "_native": "",
+  "_duration": 20,
+  "sample": 60,
+  "speed": 1,
+  "wrapMode": 2,
+  "curveData": {
+    "props": {
+      "position": [
+        {
+          "frame": 0,
+          "value": [
+            -1339.581,
+            795.282,
+            0
+          ]
+        },
+        {
+          "frame": 20,
+          "value": [
+            -187.481,
+            417.296,
+            0
+          ]
+        }
+      ]
+    }
+  },
+  "events": []
+}

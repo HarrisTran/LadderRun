@@ -166,11 +166,12 @@ export default class Player extends cc.Component {
                 return
             case ENUM_COLLIDER_TAG.ANANAS:
                 AudioManager.instance.playSound(ENUM_AUDIO_CLIP.SPEED_UP);
-                this.awakeSpeedUp();
+                this.forceSpeedUp();
                 return;
             case ENUM_COLLIDER_TAG.MELON:
                 AudioManager.instance.playSound(ENUM_AUDIO_CLIP.POWER_UP);
-                this.awakePowerUp()
+                this._enablePowerUp = true;
+                this.node.getComponent(cc.Animation).play("shield");
                 return;
             default:
                 break;
@@ -236,6 +237,7 @@ export default class Player extends cc.Component {
     onCollisionEnterY(other: any, self: any, otherAabb:any, selfAabb: any, otherPreAabb: any, selfPreAabb: any){
         switch(other.tag){
             case ENUM_COLLIDER_TAG.GROUND:
+                DataManager.instance.status = ENUM_GAME_STATUS.RUNING
             case ENUM_COLLIDER_TAG.BRICK:
             case ENUM_COLLIDER_TAG.BOX:
                 if (this.speed.y < 0 && (selfPreAabb.yMax > otherPreAabb.yMax)){
@@ -269,7 +271,6 @@ export default class Player extends cc.Component {
                     // 修复卡电梯下的情况
                     // 此时保持climb状态，this.speed.y = this.jump * 0.5
                 }
-                DataManager.instance.status = ENUM_GAME_STATUS.RUNING
             break
         }
     }
@@ -283,7 +284,7 @@ export default class Player extends cc.Component {
         }
     }
 
-    awakeSpeedUp() {
+    forceSpeedUp() {
         this.walk = 500;
         if(this.timeOutSpeedUp){
             clearTimeout(this.timeOutSpeedUp);
@@ -291,11 +292,6 @@ export default class Player extends cc.Component {
         this.timeOutSpeedUp = setTimeout(() => {
             this.walk = 200;
         },5000)
-    }
-
-    public awakePowerUp(){
-        this._enablePowerUp = true;
-        this.node.getComponent(cc.Animation).play("shield");
     }
 
 
