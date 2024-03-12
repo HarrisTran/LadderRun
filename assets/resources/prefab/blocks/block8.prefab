@@ -40,22 +40,25 @@
       },
       {
         "__id__": 25
+      },
+      {
+        "__id__": 27
       }
     ],
     "_active": true,
     "_components": [
       {
-        "__id__": 27
-      },
-      {
-        "__id__": 28
-      },
-      {
         "__id__": 29
+      },
+      {
+        "__id__": 30
+      },
+      {
+        "__id__": 31
       }
     ],
     "_prefab": {
-      "__id__": 30
+      "__id__": 32
     },
     "_opacity": 255,
     "_color": {
@@ -650,7 +653,7 @@
       "__id__": 20
     },
     "_name": "melon",
-    "_active": true,
+    "_active": false,
     "_trs": {
       "__type__": "TypedArray",
       "ctor": "Float64Array",
@@ -695,6 +698,52 @@
     "_prefab": {
       "__id__": 22
     },
+    "_name": "melon2",
+    "_active": true,
+    "_trs": {
+      "__type__": "TypedArray",
+      "ctor": "Float64Array",
+      "array": [
+        -1.25,
+        -13.132,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    "_eulerAngles": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "_id": ""
+  },
+  {
+    "__type__": "cc.PrefabInfo",
+    "root": {
+      "__id__": 21
+    },
+    "asset": {
+      "__uuid__": "0e6badb7-12d1-44d9-b06a-22c3824bc6a7"
+    },
+    "fileId": "b2XT2ZgulA0qufll+EgLUv",
+    "sync": true
+  },
+  {
+    "__type__": "cc.Node",
+    "_objFlags": 0,
+    "_parent": {
+      "__id__": 1
+    },
+    "_prefab": {
+      "__id__": 24
+    },
     "_name": "brick",
     "_active": true,
     "_trs": {
@@ -724,7 +773,7 @@
   {
     "__type__": "cc.PrefabInfo",
     "root": {
-      "__id__": 21
+      "__id__": 23
     },
     "asset": {
       "__uuid__": "8b2abefe-6104-490d-96b9-abb538d261b0"
@@ -739,7 +788,7 @@
       "__id__": 1
     },
     "_prefab": {
-      "__id__": 24
+      "__id__": 26
     },
     "_name": "spike",
     "_active": true,
@@ -770,7 +819,7 @@
   {
     "__type__": "cc.PrefabInfo",
     "root": {
-      "__id__": 23
+      "__id__": 25
     },
     "asset": {
       "__uuid__": "9c3be634-efd9-4575-bc2f-84a07197bfea"
@@ -785,7 +834,7 @@
       "__id__": 1
     },
     "_prefab": {
-      "__id__": 26
+      "__id__": 28
     },
     "_name": "ladder",
     "_active": true,
@@ -816,7 +865,7 @@
   {
     "__type__": "cc.PrefabInfo",
     "root": {
-      "__id__": 25
+      "__id__": 27
     },
     "asset": {
       "__uuid__": "2c773ebb-003d-4ffe-bf6f-f9ef5dde714a"

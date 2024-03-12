@@ -8,9 +8,13 @@ const {ccclass, property} = cc._decorator;
 export default class Fruit extends cc.Component {
 
     animation: cc.Animation = null
-    
+    // animation2: cc.Animation = null
+
+
     protected onLoad(): void {
         this.animation = this.node.getComponent(cc.Animation);
+        // this.animation2 = this.node.parent.getComponent(cc.Animation);
+        // this.animation2.playOnLoad = true;
         this.animation.on('play', this.onPlay, this);
         this.animation.on('finished', this.onFinished, this);
     }
@@ -29,8 +33,8 @@ export default class Fruit extends cc.Component {
     }
 
     onFinished(){
-        this.node.active = false
-        // this.node.parent.active = false;
+        // this.node.active = false
+        this.node.parent.active = false;
     }
 
     protected onDestroy(): void {

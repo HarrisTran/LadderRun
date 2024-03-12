@@ -46,22 +46,25 @@
       },
       {
         "__id__": 29
+      },
+      {
+        "__id__": 31
       }
     ],
     "_active": true,
     "_components": [
       {
-        "__id__": 31
-      },
-      {
-        "__id__": 32
-      },
-      {
         "__id__": 33
+      },
+      {
+        "__id__": 34
+      },
+      {
+        "__id__": 35
       }
     ],
     "_prefab": {
-      "__id__": 34
+      "__id__": 36
     },
     "_opacity": 255,
     "_color": {
@@ -701,8 +704,54 @@
     "_prefab": {
       "__id__": 22
     },
-    "_name": "melon",
+    "_name": "melon2",
     "_active": true,
+    "_trs": {
+      "__type__": "TypedArray",
+      "ctor": "Float64Array",
+      "array": [
+        129.995,
+        -15.052,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    "_eulerAngles": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "_id": ""
+  },
+  {
+    "__type__": "cc.PrefabInfo",
+    "root": {
+      "__id__": 21
+    },
+    "asset": {
+      "__uuid__": "0e6badb7-12d1-44d9-b06a-22c3824bc6a7"
+    },
+    "fileId": "2cgW3f+qFGnYtZ1LwCM86h",
+    "sync": true
+  },
+  {
+    "__type__": "cc.Node",
+    "_objFlags": 0,
+    "_parent": {
+      "__id__": 1
+    },
+    "_prefab": {
+      "__id__": 24
+    },
+    "_name": "melon",
+    "_active": false,
     "_trs": {
       "__type__": "TypedArray",
       "ctor": "Float64Array",
@@ -730,7 +779,7 @@
   {
     "__type__": "cc.PrefabInfo",
     "root": {
-      "__id__": 21
+      "__id__": 23
     },
     "asset": {
       "__uuid__": "94d6f674-e2a5-43ad-8791-8b2e2f4f8ae4"
@@ -745,7 +794,7 @@
       "__id__": 1
     },
     "_prefab": {
-      "__id__": 24
+      "__id__": 26
     },
     "_name": "coin",
     "_active": true,
@@ -776,7 +825,7 @@
   {
     "__type__": "cc.PrefabInfo",
     "root": {
-      "__id__": 23
+      "__id__": 25
     },
     "asset": {
       "__uuid__": "e5f26918-4a4c-4109-b5da-0bd2d71f5809"
@@ -791,7 +840,7 @@
       "__id__": 1
     },
     "_prefab": {
-      "__id__": 26
+      "__id__": 28
     },
     "_name": "coin",
     "_active": true,
@@ -822,7 +871,7 @@
   {
     "__type__": "cc.PrefabInfo",
     "root": {
-      "__id__": 25
+      "__id__": 27
     },
     "asset": {
       "__uuid__": "e5f26918-4a4c-4109-b5da-0bd2d71f5809"
@@ -837,7 +886,7 @@
       "__id__": 1
     },
     "_prefab": {
-      "__id__": 28
+      "__id__": 30
     },
     "_name": "coin",
     "_active": true,
@@ -868,7 +917,7 @@
   {
     "__type__": "cc.PrefabInfo",
     "root": {
-      "__id__": 27
+      "__id__": 29
     },
     "asset": {
       "__uuid__": "e5f26918-4a4c-4109-b5da-0bd2d71f5809"
@@ -883,7 +932,7 @@
       "__id__": 1
     },
     "_prefab": {
-      "__id__": 30
+      "__id__": 32
     },
     "_name": "ladder",
     "_active": true,
@@ -914,7 +963,7 @@
   {
     "__type__": "cc.PrefabInfo",
     "root": {
-      "__id__": 29
+      "__id__": 31
     },
     "asset": {
       "__uuid__": "2c773ebb-003d-4ffe-bf6f-f9ef5dde714a"

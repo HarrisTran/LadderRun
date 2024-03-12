@@ -18,11 +18,15 @@ const {ccclass, property} = cc._decorator;
 export const DEBUG_MODE = true;
 window.addEventListener("message", (data) => {
     const { data: res } = data
-    const objectRes = JSON.parse(res)
-    const { type, value } = objectRes
-    if(type === "newTicket") {
-        BackendConnector.instance.numberTicket += value
-        EventManager.instance.emit(ENUM_GAME_EVENT.GAME_RELIVE)
+    try {
+        const objectRes = JSON.parse(res)
+        const { type, value } = objectRes
+        if(type === "newTicket") {
+            BackendConnector.instance.numberTicket += value
+            EventManager.instance.emit(ENUM_GAME_EVENT.GAME_RELIVE)
+        } 
+    } catch (error) {
+        
     }
 })
 

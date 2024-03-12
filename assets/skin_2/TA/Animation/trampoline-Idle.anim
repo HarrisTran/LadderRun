@@ -1,26 +1,15 @@
 {
   "__type__": "cc.AnimationClip",
-  "_name": "melon",
+  "_name": "trampoline-Idle",
   "_objFlags": 0,
   "_native": "",
-  "_duration": 0.6666666666666666,
+  "_duration": 1,
   "sample": 60,
-  "speed": 0.5,
+  "speed": 1,
   "wrapMode": 2,
   "curveData": {
-    "comps": {
-      "cc.Sprite": {
-        "spriteFrame": [
-          {
-            "frame": 0,
-            "value": {
-              "__uuid__": "b04e50ad-0146-45d8-ba34-6f716fd6fe69"
-            }
-          }
-        ]
-      }
-    },
     "props": {
+      "position": [],
       "scale": [
         {
           "frame": 0,
@@ -31,15 +20,15 @@
           }
         },
         {
-          "frame": 0.3333333333333333,
+          "frame": 0.5,
           "value": {
             "__type__": "cc.Vec2",
-            "x": 0.85,
-            "y": 0.75
+            "x": 0.8,
+            "y": 1.5
           }
         },
         {
-          "frame": 0.6666666666666666,
+          "frame": 1,
           "value": {
             "__type__": "cc.Vec2",
             "x": 1,
