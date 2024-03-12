@@ -3,7 +3,7 @@
   "_name": "collected",
   "_objFlags": 0,
   "_native": "",
-  "_duration": 0.3,
+  "_duration": 0.4,
   "sample": 20,
   "speed": 1,
   "wrapMode": 1,
@@ -14,37 +14,49 @@
           {
             "frame": 0,
             "value": {
-              "__uuid__": "82be59d3-00b6-4b61-91a0-42a07b192d19"
+              "__uuid__": "5a9314ae-c3cf-4d47-a92d-a290ba2c8d15"
             }
           },
           {
             "frame": 0.05,
             "value": {
-              "__uuid__": "aa1872c0-8afd-46c9-b331-4499da5388df"
+              "__uuid__": "55b40706-31f0-4f3b-a33b-ff31e4aa6176"
             }
           },
           {
             "frame": 0.1,
             "value": {
-              "__uuid__": "c11bbb29-84bb-4123-ac29-3d1a6d4d8c53"
+              "__uuid__": "5a32ce3b-af7d-434c-af1f-8794ac4f4250"
             }
           },
           {
             "frame": 0.15,
             "value": {
-              "__uuid__": "192f219e-c94f-446f-99dd-d3037fd2501b"
+              "__uuid__": "e3bf958f-3c9c-4a52-97f7-066ca870632d"
             }
           },
           {
             "frame": 0.2,
             "value": {
-              "__uuid__": "b4e82c3c-6c7c-4612-8ee4-60df8c57c43b"
+              "__uuid__": "75e2b785-667e-4202-a62a-29805658b0d5"
             }
           },
           {
             "frame": 0.25,
             "value": {
-              "__uuid__": "e1fa6c1b-5eb2-4d0b-82ee-89b4572b8de4"
+              "__uuid__": "16ac2907-2413-45e8-ae43-9187754936f8"
+            }
+          },
+          {
+            "frame": 0.3,
+            "value": {
+              "__uuid__": "cd424545-25dc-4bce-a474-b9d1be2acc4f"
+            }
+          },
+          {
+            "frame": 0.35,
+            "value": {
+              "__uuid__": "6a367a74-c530-4422-b4c1-f6826bb0bbd9"
             }
           }
         ]
@@ -56,21 +68,31 @@
           "frame": 0,
           "value": {
             "__type__": "cc.Color",
-            "r": 254,
-            "g": 228,
-            "b": 129,
+            "r": 255,
+            "g": 255,
+            "b": 255,
             "a": 255
           }
         },
         {
-          "frame": 0.3,
+          "frame": 0.4,
           "value": {
             "__type__": "cc.Color",
-            "r": 254,
-            "g": 228,
-            "b": 129,
+            "r": 255,
+            "g": 255,
+            "b": 255,
             "a": 255
           }
+        }
+      ],
+      "opacity": [
+        {
+          "frame": 0,
+          "value": 255
+        },
+        {
+          "frame": 0.4,
+          "value": 0
         }
       ]
     }
