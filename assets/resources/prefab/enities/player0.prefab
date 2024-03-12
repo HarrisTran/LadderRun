@@ -420,10 +420,10 @@
     "_custom": true,
     "_file": null,
     "_spriteFrame": {
-      "__uuid__": "673fc831-1922-4d82-9afe-781bcaadb9b8"
+      "__uuid__": "1a428976-ed26-4181-bc0d-42d378fec873"
     },
     "_texture": null,
-    "_stopped": true,
+    "_stopped": false,
     "playOnLoad": true,
     "autoRemoveOnFinish": false,
     "totalParticles": 200,

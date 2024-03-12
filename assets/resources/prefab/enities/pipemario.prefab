@@ -115,7 +115,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 70,
-      "height": 50
+      "height": 70
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -197,7 +197,7 @@
       "ctor": "Float64Array",
       "array": [
         0,
-        -64,
+        -84,
         0,
         0,
         0,
