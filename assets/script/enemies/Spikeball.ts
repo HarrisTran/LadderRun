@@ -10,7 +10,7 @@ const {ccclass, property} = cc._decorator;
 export default class Spikeball extends cc.Component {
 
     dir: number = 1
-    speed: number = 300
+    speed: number = 225
 
     onLoad(){
         this.speed = random(300, 650)

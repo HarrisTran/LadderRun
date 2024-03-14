@@ -4,8 +4,7 @@ import { StaticInstance } from './../StaticInstance';
 import DataManager from "./DataManager";
 import EventManager from "./EventManager";
 import { ENUM_GAME_TYPE, ENUM_GAME_EVENT, ENUM_GAME_ZINDEX, ENUM_GAME_STATUS, ENUM_UI_TYPE  } from "../Enum";
-import { random } from "../Utils";
-import {createLevelList} from '../Levels';
+import {createCycleBlockList, createLevelList} from '../Levels';
 import Block from '../Block';
 import PoolManager from "./PoolManager";
 import Player from '../Player';
@@ -15,18 +14,15 @@ import Lava from '../enemies/Lava';
 
 const {ccclass, property} = cc._decorator;
 
-export const DEBUG_MODE = true;
+export const DEBUG_MODE = false;
+// export const DEBUG_MODE = false;
 window.addEventListener("message", (data) => {
     const { data: res } = data
-    try {
-        const objectRes = JSON.parse(res)
-        const { type, value } = objectRes
-        if(type === "newTicket") {
-            BackendConnector.instance.numberTicket += value
-            EventManager.instance.emit(ENUM_GAME_EVENT.GAME_RELIVE)
-        } 
-    } catch (error) {
-        
+    const objectRes = JSON.parse(res)
+    const { type, value } = objectRes
+    if(type === "newTicket") {
+        BackendConnector.instance.numberTicket += value
+        EventManager.instance.emit(ENUM_GAME_EVENT.GAME_RELIVE)
     }
 })
 
@@ -36,16 +32,16 @@ export default class GameManager extends cc.Component {
     @property(cc.Node)
     stageNode: cc.Node = null
 
-    @property(Lava)
-    lavaNode: Lava = null
+    @property(cc.Node)
+    lavaNode: cc.Node = null
 
     @property({type: [cc.Integer]})
     beginLevelForTestGame: number[] = []
 
-    private _levelList : number[];
+    private _levelList : number[] ;
 
-    private _lowerLevelBound : number;
-    private _upperLevelBound : number;
+    // private _lowerLevelBound : number;
+    // private _upperLevelBound : number;
 
     onLoad () {
         // 注册事件
@@ -62,18 +58,32 @@ export default class GameManager extends cc.Component {
     onGameStart(){
         DataManager.instance.currentIndexBlock = 1;
         DataManager.instance.reset()
-        this._lowerLevelBound = 0;
-        this._upperLevelBound = 0;
-        this._levelList = createLevelList();
+        // this._lowerLevelBound = 0;
+        // this._upperLevelBound = 0;
+        this._levelList = createCycleBlockList(5,3,2,1)
         this.initGame()
     }
 
     // 复活游戏
     onGameRelive(){
-        DataManager.instance.reset(true)
-        this.initGame();
+        DataManager.instance.status = ENUM_GAME_STATUS.UNRUNING
+        // DataManager.instance.reset(true)
+        //this.initGame();
         if(!DEBUG_MODE) BackendConnector.instance.ticketMinus("revive")
         StaticInstance.uiManager.toggle(ENUM_UI_TYPE.LOSE, false);
+        this.scheduleOnce(()=>{
+            let lavaPosition = this.lavaNode.getPosition();
+            this.lavaNode.setPosition(lavaPosition.x,lavaPosition.y-400)
+
+            let currentIndex = DataManager.instance.currentIndexBlock;
+            let block = DataManager.instance.blocks[currentIndex-1];
+            const player: cc.Node = PoolManager.instance.getNode(`player${DataManager.instance.skinIndex}`, this.stageNode)
+            player.zIndex = ENUM_GAME_ZINDEX.PLAYER
+            player.setPosition(cc.v2(0, block.y+20))
+            let playerCmp = player.getComponent(Player);
+            playerCmp.setDir(1)
+            playerCmp.awakePowerUp();
+        },0.25)
     }
 
     onGameOver(){
@@ -85,21 +95,7 @@ export default class GameManager extends cc.Component {
 
     // 过关
     onGameWin(){
-        // DataManager.instance.status = ENUM_GAME_STATUS.UNRUNING
-        // let maxLevel = DataManager.instance.level + 1
-        // if(maxLevel > levels.length) maxLevel = levels.length
-        // // 当前关卡
-        // DataManager.instance.level = maxLevel
-        // DataManager.instance.save()
-        // // 解锁关卡
-        // if(maxLevel > DataManager.instance.unlock){
-        //     DataManager.instance.unlock = maxLevel
-        //     DataManager.instance.save()
-        // }
-        // //this.setMaxGoal()
-        // this.scheduleOnce(()=>{
-        //     StaticInstance.uiManager.toggle(ENUM_UI_TYPE.WIN)
-        // }, 0.5)
+        
     }
 
     // 失败
@@ -113,8 +109,8 @@ export default class GameManager extends cc.Component {
     initGame(){
         if(!this.stageNode) return
         this.stageNode.removeAllChildren()
-        this.lavaNode.node.setPosition(0,-650);
-        const data = this.beginLevelForTestGame || [1,2,3,4,5]//createLevelDesign(5,6,10)
+        this.lavaNode.setPosition(0,-650);
+        const data = [1,2,3,4,5]//createLevelDesign(5,6,10)
         for(let i = 0; i < data.length; i++){
             const blockIndex = data[i]
             const block: cc.Node = PoolManager.instance.getNode(`block${blockIndex}`, this.stageNode)
@@ -153,22 +149,34 @@ export default class GameManager extends cc.Component {
             DataManager.instance.save()
         }
     }
+    
 
-    addBonusOnLevel(idx: number) {
-        DataManager.instance.score += Math.round(idx/10);
-        DataManager.instance.save()
-        StaticInstance.uiManager.setGameScore()
-    }
+    // addBonusOnLevel(idx: number) {
+    //     DataManager.instance.score += Math.round(idx/10)*100;
+    //     DataManager.instance.save()
+    //     StaticInstance.uiManager.setGameScore()
+    // }
 
     onPlayerClimbEnd(){
-        let currentIndexBlock = DataManager.instance.currentIndexBlock++;
-        this.addBonusOnLevel(currentIndexBlock);
-        DataManager.instance.goal += 1
-        StaticInstance.uiManager.setGameGoal()
-        if(DataManager.instance.type == ENUM_GAME_TYPE.LOOP){
-            let newBlockIndex = this.getRandomBlockIndex();
-            this.addNewBlock(newBlockIndex);
+        let currentIndexBlock = ++DataManager.instance.currentIndexBlock;
+        // if(currentIndexBlock>5){
+        //     const firstBlock = DataManager.instance.blocks.shift();
+        //     firstBlock.node.removeFromParent(true);
+        // }
+        
+        // this.addBonusOnLevel(currentIndexBlock);
+
+        if(currentIndexBlock>=6)
+        {
+            if(currentIndexBlock % 10 == 0) {
+                DataManager.instance.score += Math.round(currentIndexBlock/10)*100;
+                DataManager.instance.save()
+                StaticInstance.uiManager.setGameScore()
+                this._levelList = createCycleBlockList(5,3,2,1);
+            }
         }
+        
+        this.addNewBlock(this._levelList[(currentIndexBlock-2)%10]);
     }
 
     addNewBlock(blockIndex: number){
@@ -223,16 +231,16 @@ export default class GameManager extends cc.Component {
         EventManager.instance.off(ENUM_GAME_EVENT.GAME_OVER,this.onGameOver);
     }
 
-    private getRandomBlockIndex() {
-        if (this._upperLevelBound < this._levelList.length) {
-            this._upperLevelBound++;
-        }
-        else {
-            if (this._upperLevelBound < this._levelList.length - 5) {
-                this._lowerLevelBound++;
-            }
-        }
-        return this._levelList[random(this._lowerLevelBound, this._upperLevelBound)];
-    }
+    // private getRandomBlockIndex() {
+    //     if (this._upperLevelBound < this._levelList.length) {
+    //         this._upperLevelBound++;
+    //     }
+    //     else {
+    //         if (this._upperLevelBound < this._levelList.length - 5) {
+    //             this._lowerLevelBound++;
+    //         }
+    //     }
+    //     return this._levelList[random(this._lowerLevelBound, this._upperLevelBound)];
+    // }
 
 }

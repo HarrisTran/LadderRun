@@ -137,10 +137,6 @@ export default class BackendConnector {
             "*"
         );
         
-        // setTimeout(() => {
-        //     BackendConnector.instance.numberTicket += 5
-        //     EventManager.instance.emit(ENUM_GAME_EVENT.GAME_RELIVE)
-        // }, 1000);
     }
 
     public postScoreToServer(score: number)
@@ -190,7 +186,7 @@ export default class BackendConnector {
     }
 
     public canRelive(){
-        return this.numberTicket > this.getTicketCanBeMinus();
+        return this.numberTicket >= this.getTicketCanBeMinus();
     }
 }
 
