@@ -182,7 +182,7 @@ export default class BackendConnector {
     }
 
     public canRelive(){
-        return this.numberTicket > this.getTicketCanBeMinus();
+        return this.numberTicket >= this.getTicketCanBeMinus();
     }
 }
 
