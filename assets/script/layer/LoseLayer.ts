@@ -14,6 +14,20 @@ const {ccclass, property} = cc._decorator;
 @ccclass
 export default class LoseLayer extends BaseLayer {
 
+    @property(cc.Label)
+    currentNumberExtra : cc.Label = null;
+
+    @property(cc.Node)
+    showScorePanel : cc.Node = null;
+
+    @property(cc.Node)
+    retryPanel : cc.Node = null;
+
+    @property(cc.Button)
+    retryBtn: cc.Button = null;
+
+    private _isLackTicket :  boolean = false;
+
     protected onEnable(): void {
         if(DEBUG_MODE) return;
         StaticInstance.uiManager.toggle(ENUM_UI_TYPE.SETTING,false)
@@ -22,17 +36,17 @@ export default class LoseLayer extends BaseLayer {
             return;
         }
         DataManager.instance.isReplayed = true;
-
-        this.node.getChildByName('style1').active = false;
-        this.node.getChildByName('style2').active = true;
         // 动画
-        let style = this.node.getChildByName('style2')
-        //if(DataManager.instance.type == ENUM_GAME_TYPE.LEVEL) style = this.node.getChildByName('style2')
-        style.children.forEach(node=>{
-            cc.tween(node).to(0.15, {scale: 0.8}).to(0.15, {scale: 1}).start()
-        })
-
+        // let style = this.node.getChildByName('style2')
+        // //if(DataManager.instance.type == ENUM_GAME_TYPE.LEVEL) style = this.node.getChildByName('style2')
+        // style.children.forEach(node=>{
+        //     cc.tween(node).to(0.15, {scale: 0.8}).to(0.15, {scale: 1}).start()
+        // })
         this.scheduleOnce(this.endGame,60);
+    }
+
+    private initializeUI(){
+        
     }
 
     private endGame(){
@@ -54,17 +68,52 @@ export default class LoseLayer extends BaseLayer {
         // }
     }
 
-    onReliveADClick(){
-
-        /* dont need this*/
-
-        // AudioManager.instance.playSound(ENUM_AUDIO_CLIP.CLICK)
-        // SdkManager.instance.showVideoAd(()=>{
-        //     ToastManager.instance.show('发放奖励，复活成功', {gravity: 'BOTTOM', bg_color: cc.color(102, 202, 28, 255)})
-        //     StaticInstance.uiManager.toggle(ENUM_UI_TYPE.LOSE, false) 
-        //     EventManager.instance.emit(ENUM_GAME_EVENT.GAME_RELIVE)
-        // })
+    onContinueButton()
+    {
+        AudioManager.instance.playSound(ENUM_AUDIO_CLIP.CLICK);
+        if(DEBUG_MODE){
+            EventManager.instance.emit(ENUM_GAME_EVENT.GAME_RELIVE)
+            return;
+        }
+        this.currentNumberExtra.string = BackendConnector.instance.numberTicket.toString();
+        this.showScorePanel.active = false;
     }
+
+    onDeductedButton()
+    {
+        // let button = this.deductedButton.getComponent(cc.Button);
+        this.retryBtn.interactable = false;
+        AudioManager.instance.playSound(ENUM_AUDIO_CLIP.CLICK);
+        if(DEBUG_MODE){
+            EventManager.instance.emit(ENUM_GAME_EVENT.GAME_RELIVE)
+            return;
+        }
+        if(this._isLackTicket){
+            BackendConnector.instance.postMessage();
+        }else{
+            if (BackendConnector.instance.canRelive()) {
+                BackendConnector.instance.checkGameScoreTicket()
+                    .then(() => {
+                        EventManager.instance.emit(ENUM_GAME_EVENT.GAME_RELIVE)
+                    })
+                    .catch(() => {
+                        EventManager.instance.emit(ENUM_GAME_EVENT.GAME_OVER)
+                    })
+            } else {
+                this.retryBtn.interactable = true;
+                this._isLackTicket = true;
+                this.retryPanel.active = false;
+            }
+        }
+    }
+
+    onCancelButton(){
+        AudioManager.instance.playSound(ENUM_AUDIO_CLIP.CLICK);
+        this.hide();
+        EventManager.instance.emit(ENUM_GAME_EVENT.GAME_OVER);
+
+    }
+
 
     onRestartClick(){
         AudioManager.instance.playSound(ENUM_AUDIO_CLIP.CLICK)
