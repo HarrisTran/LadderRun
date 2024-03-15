@@ -21,6 +21,10 @@
               "value": 255
             },
             {
+              "frame": 2.2,
+              "value": 255
+            },
+            {
               "frame": 3,
               "value": 255
             },
@@ -74,6 +78,14 @@
             },
             {
               "frame": 0.25,
+              "value": {
+                "__type__": "cc.Vec2",
+                "x": 1,
+                "y": 1
+              }
+            },
+            {
+              "frame": 2.2,
               "value": {
                 "__type__": "cc.Vec2",
                 "x": 1,

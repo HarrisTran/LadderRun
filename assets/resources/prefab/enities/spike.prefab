@@ -67,8 +67,8 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        -107.937,
-        -138.934,
+        -160,
+        -144.112,
         0,
         0,
         0,
@@ -119,8 +119,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 12,
-      "height": 24
+      "width": 18,
+      "height": 40
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -132,7 +132,7 @@
       "ctor": "Float64Array",
       "array": [
         0,
-        1,
+        -12,
         0,
         0,
         0,
@@ -228,8 +228,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 12,
-      "height": 24
+      "width": 18,
+      "height": 40
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -240,8 +240,8 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        -20.066,
-        1,
+        -36,
+        -12,
         0,
         0,
         0,
@@ -337,8 +337,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 12,
-      "height": 24
+      "width": 18,
+      "height": 40
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -349,8 +349,8 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        19.6,
-        1,
+        36,
+        -12,
         0,
         0,
         0,
@@ -446,8 +446,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 12,
-      "height": 24
+      "width": 18,
+      "height": 40
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -458,8 +458,8 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        9.925,
-        1,
+        18,
+        -12,
         0,
         0,
         0,
@@ -555,8 +555,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 12,
-      "height": 24
+      "width": 18,
+      "height": 40
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -567,8 +567,8 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        -10.672,
-        1,
+        -18,
+        -12,
         0,
         0,
         0,
@@ -649,12 +649,12 @@
     "_offset": {
       "__type__": "cc.Vec2",
       "x": 0,
-      "y": 0
+      "y": -11
     },
     "_size": {
       "__type__": "cc.Size",
-      "width": 40,
-      "height": 20
+      "width": 76,
+      "height": 36
     },
     "_id": ""
   },

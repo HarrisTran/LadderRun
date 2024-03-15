@@ -17,7 +17,7 @@ export default class Lava extends cc.Component {
     // }
     protected onLoad(): void {
         this._cameraNode = cc.find("Canvas/MAIN/camera");
-        this.scheduleOnce(()=>this._isStarted=true,5);
+        this.scheduleOnce(()=>this._isStarted=true,10);
     }
 
     protected update(dt: number): void {
@@ -25,7 +25,7 @@ export default class Lava extends cc.Component {
         if(DataManager.instance.status !== ENUM_GAME_STATUS.RUNING) return;
         if(this.node.position.y > this._cameraNode.position.y) return;
         let currenty = this.node.position.y;
-        this.node.setPosition(0,currenty+dt*100);
+        this.node.setPosition(0,currenty+dt*80);
     }
 
 

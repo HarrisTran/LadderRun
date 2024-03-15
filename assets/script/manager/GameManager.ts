@@ -14,7 +14,7 @@ import Lava from '../enemies/Lava';
 
 const {ccclass, property} = cc._decorator;
 
-export const DEBUG_MODE = false;
+export const DEBUG_MODE = true;
 // export const DEBUG_MODE = false;
 window.addEventListener("message", (data) => {
     const { data: res } = data
@@ -110,7 +110,7 @@ export default class GameManager extends cc.Component {
         if(!this.stageNode) return
         this.stageNode.removeAllChildren()
         this.lavaNode.setPosition(0,-650);
-        const data = [1,2,3,4,5]//createLevelDesign(5,6,10)
+        const data = [28,28,26,27,26,27,1,26,21,25,26,27,28,29,30,9,31,26,27,1,32,8,20,27,28,26,32,33,34,35,36,37,38,39,40,6,9,25]//createLevelDesign(5,6,10)
         for(let i = 0; i < data.length; i++){
             const blockIndex = data[i]
             const block: cc.Node = PoolManager.instance.getNode(`block${blockIndex}`, this.stageNode)

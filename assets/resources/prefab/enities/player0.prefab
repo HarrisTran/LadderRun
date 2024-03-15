@@ -55,8 +55,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 72,
-      "height": 88
+      "width": 78,
+      "height": 98
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -119,8 +119,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 120,
-      "height": 120
+      "width": 168,
+      "height": 168
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -131,8 +131,8 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
+        8,
         0,
-        -0.451,
         0,
         0,
         0,
@@ -231,8 +231,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 65,
-      "height": 90
+      "width": 78,
+      "height": 108
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -423,7 +423,7 @@
       "__uuid__": "1a428976-ed26-4181-bc0d-42d378fec873"
     },
     "_texture": null,
-    "_stopped": false,
+    "_stopped": true,
     "playOnLoad": true,
     "autoRemoveOnFinish": false,
     "totalParticles": 200,
@@ -557,13 +557,13 @@
     "tag": 0,
     "_offset": {
       "__type__": "cc.Vec2",
-      "x": 0,
-      "y": 0
+      "x": 7.5,
+      "y": -3.73
     },
     "_size": {
       "__type__": "cc.Size",
-      "width": 50,
-      "height": 88
+      "width": 57.7,
+      "height": 90.56
     },
     "_id": ""
   },

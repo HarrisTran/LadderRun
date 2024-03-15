@@ -20,11 +20,26 @@ export default class LoseLayer extends BaseLayer {
     @property(cc.Node)
     showScorePanel : cc.Node = null;
 
+    @property(cc.Label)
+    topText: cc.Label = null;
+
+    @property(cc.Label)
+    lastScoreText: cc.Label = null;
+
+    @property(cc.Label)
+    currentScoreText: cc.Label = null;
+
     @property(cc.Node)
     retryPanel : cc.Node = null;
 
+    @property(cc.Label)
+    retryWarning: cc.Label = null;
+
     @property(cc.Button)
     retryBtn: cc.Button = null;
+
+    @property(cc.Node)
+    buyMorePanel : cc.Node = null;
 
     private _isLackTicket :  boolean = false;
 
@@ -36,6 +51,7 @@ export default class LoseLayer extends BaseLayer {
             return;
         }
         DataManager.instance.isReplayed = true;
+        this.initializeUI();
         // 动画
         // let style = this.node.getChildByName('style2')
         // //if(DataManager.instance.type == ENUM_GAME_TYPE.LEVEL) style = this.node.getChildByName('style2')
@@ -46,7 +62,9 @@ export default class LoseLayer extends BaseLayer {
     }
 
     private initializeUI(){
-        
+        this.topText.string = BackendConnector.instance.maxScore.toString();
+        this.lastScoreText.string = BackendConnector.instance.currentScore.toString();
+        this.currentScoreText.string = DataManager.instance.score.toString();
     }
 
     private endGame(){
@@ -76,6 +94,7 @@ export default class LoseLayer extends BaseLayer {
             return;
         }
         this.currentNumberExtra.string = BackendConnector.instance.numberTicket.toString();
+        this.retryWarning.string = `Used ${BackendConnector.instance.getTicketCanBeMinus()} extra to replay!`
         this.showScorePanel.active = false;
     }
 
@@ -88,48 +107,51 @@ export default class LoseLayer extends BaseLayer {
             EventManager.instance.emit(ENUM_GAME_EVENT.GAME_RELIVE)
             return;
         }
-        if(this._isLackTicket){
-            BackendConnector.instance.postMessage();
-        }else{
-            if (BackendConnector.instance.canRelive()) {
-                BackendConnector.instance.checkGameScoreTicket()
-                    .then(() => {
-                        EventManager.instance.emit(ENUM_GAME_EVENT.GAME_RELIVE)
-                    })
-                    .catch(() => {
-                        EventManager.instance.emit(ENUM_GAME_EVENT.GAME_OVER)
-                    })
-            } else {
-                this.retryBtn.interactable = true;
-                this._isLackTicket = true;
-                this.retryPanel.active = false;
-            }
+        // if(this._isLackTicket){
+        //     BackendConnector.instance.postMessage();
+        // }else{
+        //     if (BackendConnector.instance.canRelive()) {
+        //         BackendConnector.instance.checkGameScoreTicket()
+        //             .then(() => {
+        //                 EventManager.instance.emit(ENUM_GAME_EVENT.GAME_RELIVE)
+        //             })
+        //             .catch(() => {
+        //                 EventManager.instance.emit(ENUM_GAME_EVENT.GAME_OVER)
+        //             })
+        //     } else {
+        //         this.retryBtn.interactable = true;
+        //         this._isLackTicket = true;
+        //         this.retryPanel.active = false;
+        //     }
+        // }
+
+        if (BackendConnector.instance.canRelive()) {
+            BackendConnector.instance.checkGameScoreTicket()
+                .then(() => {
+                    EventManager.instance.emit(ENUM_GAME_EVENT.GAME_RELIVE)
+                })
+                .catch(() => {
+                    EventManager.instance.emit(ENUM_GAME_EVENT.GAME_OVER)
+                })
+        } else {
+            this.retryBtn.interactable = true;
+            this._isLackTicket = true;
+            this.retryPanel.active = false;
         }
+    }
+
+    onBuyMoreButton(){
+        BackendConnector.instance.postMessage();
     }
 
     onCancelButton(){
         AudioManager.instance.playSound(ENUM_AUDIO_CLIP.CLICK);
         this.hide();
         EventManager.instance.emit(ENUM_GAME_EVENT.GAME_OVER);
-
     }
 
 
-    onRestartClick(){
-        AudioManager.instance.playSound(ENUM_AUDIO_CLIP.CLICK)
-        StaticInstance.uiManager.toggle(ENUM_UI_TYPE.CONFIRM, true);
-        
-        //StaticInstance.uiManager.toggle(ENUM_UI_TYPE.CONFIRM, true) 
-        // if(BackendConnector.instance.canRelive()){
-        //     EventManager.instance.emit(ENUM_GAME_EVENT.GAME_RELIVE)
-        //     StaticInstance.uiManager.toggle(ENUM_UI_TYPE.LOSE, false)
-        // }else{
-        //     StaticInstance.uiManager.toggle(ENUM_UI_TYPE.CONFIRM, true);
-        // }
-        
-    }
-
-    onShareClick(){
+    onQuit(){
         AudioManager.instance.playSound(ENUM_AUDIO_CLIP.CLICK)
         EventManager.instance.emit(ENUM_GAME_EVENT.GAME_OVER)
         //SdkManager.instance.activeShare()

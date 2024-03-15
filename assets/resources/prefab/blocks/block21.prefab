@@ -704,8 +704,8 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        -100.441,
-        0,
+        48.165,
+        80,
         0,
         0,
         0,
@@ -732,7 +732,7 @@
     "asset": {
       "__uuid__": "e5f26918-4a4c-4109-b5da-0bd2d71f5809"
     },
-    "fileId": "a61GzH0d1Krp3ju9HcFw8z",
+    "fileId": "530xOBO91CnbriHH+4sm1r",
     "sync": true
   },
   {
@@ -750,8 +750,8 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        13.81,
-        0,
+        157.394,
+        60,
         0,
         0,
         0,
@@ -778,52 +778,6 @@
     "asset": {
       "__uuid__": "e5f26918-4a4c-4109-b5da-0bd2d71f5809"
     },
-    "fileId": "530xOBO91CnbriHH+4sm1r",
-    "sync": true
-  },
-  {
-    "__type__": "cc.Node",
-    "_objFlags": 0,
-    "_parent": {
-      "__id__": 1
-    },
-    "_prefab": {
-      "__id__": 26
-    },
-    "_name": "coin",
-    "_active": true,
-    "_trs": {
-      "__type__": "TypedArray",
-      "ctor": "Float64Array",
-      "array": [
-        123.039,
-        0,
-        0,
-        0,
-        0,
-        0,
-        1,
-        1,
-        1,
-        1
-      ]
-    },
-    "_eulerAngles": {
-      "__type__": "cc.Vec3",
-      "x": 0,
-      "y": 0,
-      "z": 0
-    },
-    "_id": ""
-  },
-  {
-    "__type__": "cc.PrefabInfo",
-    "root": {
-      "__id__": 25
-    },
-    "asset": {
-      "__uuid__": "e5f26918-4a4c-4109-b5da-0bd2d71f5809"
-    },
     "fileId": "5dTT9egk9CjL2kMJ+qld7u",
     "sync": true
   },
@@ -834,7 +788,7 @@
       "__id__": 1
     },
     "_prefab": {
-      "__id__": 28
+      "__id__": 26
     },
     "_name": "ladder",
     "_active": true,
@@ -865,12 +819,58 @@
   {
     "__type__": "cc.PrefabInfo",
     "root": {
-      "__id__": 27
+      "__id__": 25
     },
     "asset": {
       "__uuid__": "2c773ebb-003d-4ffe-bf6f-f9ef5dde714a"
     },
     "fileId": "3a8HDs5U1ByKDmeiA3+6SY",
+    "sync": true
+  },
+  {
+    "__type__": "cc.Node",
+    "_objFlags": 0,
+    "_parent": {
+      "__id__": 1
+    },
+    "_prefab": {
+      "__id__": 28
+    },
+    "_name": "brick",
+    "_active": true,
+    "_trs": {
+      "__type__": "TypedArray",
+      "ctor": "Float64Array",
+      "array": [
+        -56,
+        -129.115,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    "_eulerAngles": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "_id": ""
+  },
+  {
+    "__type__": "cc.PrefabInfo",
+    "root": {
+      "__id__": 27
+    },
+    "asset": {
+      "__uuid__": "8b2abefe-6104-490d-96b9-abb538d261b0"
+    },
+    "fileId": "b6dfFRnRtPqZJCb5QdAeFr",
     "sync": true
   },
   {

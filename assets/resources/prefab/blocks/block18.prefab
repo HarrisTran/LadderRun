@@ -45,7 +45,7 @@
         "__id__": 27
       },
       {
-        "__id__": 37
+        "__id__": 29
       }
     ],
     "_active": true,
@@ -832,6 +832,52 @@
   },
   {
     "__type__": "cc.Node",
+    "_objFlags": 0,
+    "_parent": {
+      "__id__": 1
+    },
+    "_prefab": {
+      "__id__": 28
+    },
+    "_name": "ladder",
+    "_active": true,
+    "_trs": {
+      "__type__": "TypedArray",
+      "ctor": "Float64Array",
+      "array": [
+        250,
+        68,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    "_eulerAngles": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "_id": ""
+  },
+  {
+    "__type__": "cc.PrefabInfo",
+    "root": {
+      "__id__": 27
+    },
+    "asset": {
+      "__uuid__": "2c773ebb-003d-4ffe-bf6f-f9ef5dde714a"
+    },
+    "fileId": "26HOw6u0hBgrBl4+18Udt5",
+    "sync": true
+  },
+  {
+    "__type__": "cc.Node",
     "_name": "plant",
     "_objFlags": 0,
     "_parent": {
@@ -839,23 +885,23 @@
     },
     "_children": [
       {
-        "__id__": 28
+        "__id__": 30
       },
       {
-        "__id__": 32
+        "__id__": 34
       }
     ],
     "_active": true,
     "_components": [
       {
-        "__id__": 34
+        "__id__": 36
       },
       {
-        "__id__": 35
+        "__id__": 37
       }
     ],
     "_prefab": {
-      "__id__": 36
+      "__id__": 38
     },
     "_opacity": 255,
     "_color": {
@@ -879,8 +925,8 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        271.525,
-        -144.596,
+        290,
+        -148,
         0,
         0,
         0,
@@ -909,20 +955,20 @@
     "_name": "body",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 27
+      "__id__": 29
     },
     "_children": [],
     "_active": true,
     "_components": [
       {
-        "__id__": 29
+        "__id__": 31
       },
       {
-        "__id__": 30
+        "__id__": 32
       }
     ],
     "_prefab": {
-      "__id__": 31
+      "__id__": 33
     },
     "_opacity": 255,
     "_color": {
@@ -976,7 +1022,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 28
+      "__id__": 30
     },
     "_enabled": true,
     "_materials": [
@@ -1010,7 +1056,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 28
+      "__id__": 30
     },
     "_enabled": true,
     "_defaultClip": {
@@ -1030,7 +1076,7 @@
   {
     "__type__": "cc.PrefabInfo",
     "root": {
-      "__id__": 27
+      "__id__": 29
     },
     "asset": {
       "__uuid__": "bc965ee6-c044-4c91-971a-805f78448dd3"
@@ -1043,13 +1089,13 @@
     "_name": "bulletpos",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 27
+      "__id__": 29
     },
     "_children": [],
     "_active": true,
     "_components": [],
     "_prefab": {
-      "__id__": 33
+      "__id__": 35
     },
     "_opacity": 255,
     "_color": {
@@ -1101,7 +1147,7 @@
   {
     "__type__": "cc.PrefabInfo",
     "root": {
-      "__id__": 27
+      "__id__": 29
     },
     "asset": {
       "__uuid__": "bc965ee6-c044-4c91-971a-805f78448dd3"
@@ -1114,7 +1160,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 27
+      "__id__": 29
     },
     "_enabled": true,
     "tag": 15,
@@ -1135,7 +1181,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 27
+      "__id__": 29
     },
     "_enabled": true,
     "_id": ""
@@ -1143,59 +1189,13 @@
   {
     "__type__": "cc.PrefabInfo",
     "root": {
-      "__id__": 27
+      "__id__": 29
     },
     "asset": {
       "__uuid__": "bc965ee6-c044-4c91-971a-805f78448dd3"
     },
-    "fileId": "8eTjhIs9JMQ5oafxhmPu5D",
+    "fileId": "9c+a0uW1NHwoSrhojDSbz7",
     "sync": false
-  },
-  {
-    "__type__": "cc.Node",
-    "_objFlags": 0,
-    "_parent": {
-      "__id__": 1
-    },
-    "_prefab": {
-      "__id__": 38
-    },
-    "_name": "ladder",
-    "_active": true,
-    "_trs": {
-      "__type__": "TypedArray",
-      "ctor": "Float64Array",
-      "array": [
-        250,
-        68,
-        0,
-        0,
-        0,
-        0,
-        1,
-        1,
-        1,
-        1
-      ]
-    },
-    "_eulerAngles": {
-      "__type__": "cc.Vec3",
-      "x": 0,
-      "y": 0,
-      "z": 0
-    },
-    "_id": ""
-  },
-  {
-    "__type__": "cc.PrefabInfo",
-    "root": {
-      "__id__": 37
-    },
-    "asset": {
-      "__uuid__": "2c773ebb-003d-4ffe-bf6f-f9ef5dde714a"
-    },
-    "fileId": "26HOw6u0hBgrBl4+18Udt5",
-    "sync": true
   },
   {
     "__type__": "cc.Widget",
