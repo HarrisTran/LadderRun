@@ -1,0 +1,31 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "bubble-plant",
+  "_objFlags": 0,
+  "_native": "",
+  "_duration": 5,
+  "sample": 60,
+  "speed": 1,
+  "wrapMode": 2,
+  "curveData": {
+    "props": {
+      "y": [
+        {
+          "frame": 0,
+          "value": -381.734,
+          "curve": "cubicInOut"
+        },
+        {
+          "frame": 2.5,
+          "value": -254.687,
+          "curve": "cubicInOut"
+        },
+        {
+          "frame": 5,
+          "value": -381.734
+        }
+      ]
+    }
+  },
+  "events": []
+}

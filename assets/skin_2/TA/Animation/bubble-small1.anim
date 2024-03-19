@@ -1,0 +1,31 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "bubble-small1",
+  "_objFlags": 0,
+  "_native": "",
+  "_duration": 4,
+  "sample": 60,
+  "speed": 1,
+  "wrapMode": 2,
+  "curveData": {
+    "props": {
+      "y": [
+        {
+          "frame": 0,
+          "value": 754.232,
+          "curve": "cubicInOut"
+        },
+        {
+          "frame": 2.0166666666666666,
+          "value": 683.085,
+          "curve": "linear"
+        },
+        {
+          "frame": 4,
+          "value": 754.232
+        }
+      ]
+    }
+  },
+  "events": []
+}
