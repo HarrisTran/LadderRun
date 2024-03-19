@@ -19,6 +19,12 @@ export default class GameLayer extends BaseLayer {
     @property(cc.Node)
     historyNode: cc.Node = null
 
+    coinWorldPoint: cc.Vec2 = new cc.Vec2();
+
+    protected start(): void {
+        this.coinWorldPoint = this.node.convertToWorldSpaceAR(this.coinsLabel.node.getPosition());
+    }
+
     onEnable(){
         this.node.on(cc.Node.EventType.TOUCH_START, this.onTouchStart, this)
         // this.historyNode.active = DataManager.instance.type == ENUM_GAME_TYPE.LOOP
@@ -39,12 +45,6 @@ export default class GameLayer extends BaseLayer {
         if(!this.goalLabel) return
         this.goalLabel.string = `${DataManager.instance.goal} floor`
     }
-
-    // setCoins(){
-    //     if(!this.coinsNode) return
-    //     const nums = this.coinsNode.getChildByName('nums')
-    //     nums.getComponent(cc.Label).string = `${DataManager.instance.coins}`
-    // }
 
     setScore(){
         this.coinsLabel.string = `${DataManager.instance.score}`

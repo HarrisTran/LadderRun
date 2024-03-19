@@ -9817,8 +9817,8 @@
     "_color": {
       "__type__": "cc.Color",
       "r": 255,
-      "g": 255,
-      "b": 255,
+      "g": 184,
+      "b": 0,
       "a": 255
     },
     "_contentSize": {
@@ -9914,13 +9914,13 @@
     "_color": {
       "__type__": "cc.Color",
       "r": 255,
-      "g": 255,
-      "b": 255,
+      "g": 184,
+      "b": 0,
       "a": 255
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 22.25,
+      "width": 25.56,
       "height": 50.4
     },
     "_anchorPoint": {
@@ -9932,7 +9932,7 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        35.8,
+        40,
         0,
         0,
         0,
@@ -9977,14 +9977,16 @@
     "_fontSize": 40,
     "_lineHeight": 40,
     "_enableWrapText": true,
-    "_N$file": null,
-    "_isSystemFontUsed": true,
+    "_N$file": {
+      "__uuid__": "5191b05c-b3d8-42e1-acaf-1de9faa98273"
+    },
+    "_isSystemFontUsed": false,
     "_spacingX": 0,
     "_batchAsBitmap": false,
     "_styleFlags": 0,
     "_underlineHeight": 0,
     "_N$horizontalAlign": 0,
-    "_N$verticalAlign": 0,
+    "_N$verticalAlign": 2,
     "_N$fontFamily": "Arial",
     "_N$overflow": 0,
     "_N$cacheMode": 0,

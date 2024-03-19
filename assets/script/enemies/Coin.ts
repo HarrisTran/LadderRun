@@ -10,11 +10,13 @@ const {ccclass, property} = cc._decorator;
 
 @ccclass
 export default class Coin extends cc.Component {
+    @property(cc.Animation)
+    animation : cc.Animation = null;
 
-    animation: cc.Animation = null
+    @property(cc.Node)
+    floatText: cc.Node = null;
 
     protected onLoad(): void {
-        this.animation = this.node.getComponent(cc.Animation);
         this.animation.on('play', this.onPlay, this);
         this.animation.on('finished', this.onFinished, this);
     }
@@ -35,7 +37,12 @@ export default class Coin extends cc.Component {
     }
 
     onFinished(){
-        this.node.active = false
+        //this.node.active = false
+        
+        let position = this.node.parent.convertToNodeSpaceAR(StaticInstance.uiManager.getGameLayer().coinWorldPoint)
+        cc.tween(this.floatText)
+        .to(1,{position: cc.v3(position.x,position.y,0)})
+        .start();
     }
 
     protected onDestroy(): void {

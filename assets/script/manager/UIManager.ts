@@ -82,4 +82,9 @@ export default class UIManager extends cc.Component {
         const layer: GameLayer = this.uiMap.get(ENUM_UI_TYPE.GAME) as GameLayer
         layer.setMaxScore();
     }
+
+    getGameLayer(){
+        const layer: GameLayer = this.uiMap.get(ENUM_UI_TYPE.GAME) as GameLayer
+        return layer
+    }
 }

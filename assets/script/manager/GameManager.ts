@@ -14,7 +14,7 @@ import Lava from '../enemies/Lava';
 
 const {ccclass, property} = cc._decorator;
 
-export const DEBUG_MODE = false;
+export const DEBUG_MODE = true;
 // export const DEBUG_MODE = false;
 window.addEventListener("message", (data) => {
     const { data: res } = data

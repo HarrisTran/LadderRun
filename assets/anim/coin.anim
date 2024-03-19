@@ -3,56 +3,24 @@
   "_name": "coin",
   "_objFlags": 0,
   "_native": "",
-  "_duration": 1.25,
-  "sample": 8,
+  "_duration": 1,
+  "sample": 60,
   "speed": 1,
   "wrapMode": 2,
   "curveData": {
-    "paths": {
-      "Glow": {
-        "props": {
-          "scale": [
-            {
-              "frame": 0,
-              "value": {
-                "__type__": "cc.Vec2",
-                "x": 1,
-                "y": 1
-              }
-            },
-            {
-              "frame": 0.625,
-              "value": {
-                "__type__": "cc.Vec2",
-                "x": 1.5,
-                "y": 1.5
-              }
-            },
-            {
-              "frame": 1.25,
-              "value": {
-                "__type__": "cc.Vec2",
-                "x": 1,
-                "y": 1
-              }
-            }
-          ]
-        }
-      }
-    },
     "props": {
-      "skewX": [
+      "y": [
         {
           "frame": 0,
-          "value": -5
+          "value": 0
         },
         {
-          "frame": 0.625,
-          "value": 5
+          "frame": 0.5,
+          "value": 2
         },
         {
-          "frame": 1.25,
-          "value": -5
+          "frame": 1,
+          "value": 0
         }
       ]
     }
