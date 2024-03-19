@@ -3,6 +3,7 @@ import { ENUM_AUDIO_CLIP, ENUM_GAME_EVENT, ENUM_GAME_STATUS, ENUM_GAME_TYPE, ENU
 import AudioManager from "../manager/AudioManager";
 import DataManager from "../manager/DataManager";
 import EventManager from "../manager/EventManager";
+import NumberAnimation from "../NumberAnimation";
 import { StaticInstance } from "../StaticInstance";
 import BaseLayer from "./Baselayer";
 
@@ -13,14 +14,13 @@ export default class GameLayer extends BaseLayer {
 
     @property(cc.Label)
     goalLabel: cc.Label = null
-    @property(cc.Node)
-    coinsNode: cc.Node = null
+    @property(NumberAnimation)
+    coinsLabel: NumberAnimation = null
     @property(cc.Node)
     historyNode: cc.Node = null
 
     onEnable(){
         this.node.on(cc.Node.EventType.TOUCH_START, this.onTouchStart, this)
-        this.coinsNode.active = DataManager.instance.type == ENUM_GAME_TYPE.LOOP
         // this.historyNode.active = DataManager.instance.type == ENUM_GAME_TYPE.LOOP
     }
 
@@ -47,9 +47,7 @@ export default class GameLayer extends BaseLayer {
     // }
 
     setScore(){
-        if(!this.coinsNode) return
-        const nums = this.coinsNode.getChildByName('nums')
-        nums.getComponent(cc.Label).string = `${DataManager.instance.score}`
+        this.coinsLabel.string = `${DataManager.instance.score}`
     }
 
     setMaxScore()
@@ -63,6 +61,14 @@ export default class GameLayer extends BaseLayer {
         if(!this.historyNode) return
         const maxGoal = this.historyNode.getChildByName('maxGoal')
         maxGoal.getComponent(cc.Label).string = `${DataManager.instance.maxGoal}`
+    }
+
+    async playCoinCountingDown(){
+        let tempScore : number = DataManager.instance.score;
+        while (tempScore>0) {
+            await this.coinsLabel.playDiscreteResize(tempScore)
+            tempScore -= 50;
+        }
     }
 
     protected onDisable(): void {

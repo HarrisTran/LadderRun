@@ -7,8 +7,8 @@ import Chicken from './enemies/Chicken';
 const {ccclass, property} = cc._decorator;
 
 let v3 = new cc.Vec3()
-const normalSpeed: number = 150;
-const speedUp: number = 350;
+const normalSpeed: number = 200;
+const speedUp: number = 360;
 
 @ccclass
 export default class Player extends cc.Component {
@@ -17,7 +17,7 @@ export default class Player extends cc.Component {
     // 速度
     speed: cc.Vec2 = cc.v2(0, 0)
     // 行走
-    walk: number = 200
+    walk: number = 150
     // 移动方向
     direction: number = 0
     // 跳跃
@@ -27,7 +27,7 @@ export default class Player extends cc.Component {
     // 跳跃限制数
     jumpLimit: number = 1
     // 重力
-    gravity: number = -1900
+    gravity: number = -1600
     // 状态
     _status: ENUM_PLAYER_STATUS = ENUM_PLAYER_STATUS.JUMP
     // 动画
