@@ -12,17 +12,17 @@
       "y": [
         {
           "frame": 0,
-          "value": -650.136,
+          "value": -608.234,
           "curve": "cubicInOut"
         },
         {
-          "frame": 2,
-          "value": -698.414,
+          "frame": 2.0166666666666666,
+          "value": -661.066,
           "curve": "cubicInOut"
         },
         {
           "frame": 4,
-          "value": -650.136
+          "value": -608.234
         }
       ]
     }
