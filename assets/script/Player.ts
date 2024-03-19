@@ -7,6 +7,8 @@ import Chicken from './enemies/Chicken';
 const {ccclass, property} = cc._decorator;
 
 let v3 = new cc.Vec3()
+const normalSpeed: number = 150;
+const speedUp: number = 350;
 
 @ccclass
 export default class Player extends cc.Component {
@@ -25,7 +27,7 @@ export default class Player extends cc.Component {
     // 跳跃限制数
     jumpLimit: number = 1
     // 重力
-    gravity: number = -2000
+    gravity: number = -1900
     // 状态
     _status: ENUM_PLAYER_STATUS = ENUM_PLAYER_STATUS.JUMP
     // 动画
@@ -240,6 +242,7 @@ export default class Player extends cc.Component {
             case ENUM_COLLIDER_TAG.BOX:
                 if (this.speed.y < 0 && (selfPreAabb.yMax > otherPreAabb.yMax)){
                     // 向下落地
+
                     this.jumpCount = 0
                     this.status = ENUM_PLAYER_STATUS.WALK
                     this.node.y = (otherPreAabb.yMax - this.canvas.y) + (self.node.height - other.node.height)
@@ -284,12 +287,12 @@ export default class Player extends cc.Component {
     }
 
     awakeSpeedUp() {
-        this.walk = 500;
+        this.walk = speedUp;
         if(this.timeOutSpeedUp){
             clearTimeout(this.timeOutSpeedUp);
         }
         this.timeOutSpeedUp = setTimeout(() => {
-            this.walk = 200;
+            this.walk = normalSpeed;
         },5000)
     }
 

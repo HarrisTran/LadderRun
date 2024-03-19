@@ -17,10 +17,10 @@ export default class Index extends cc.Component {
     @property(cc.ProgressBar)
     progressBar: cc.ProgressBar = null;
 
+
     protected onLoad() {
-        
         cc.resources.preloadDir("/", (current: number, total: number)=>{
-            this.progressBar.progress = current / 300
+            this.progressBar.progress = cc.misc.lerp(0,1,current / 380);
         }, async ()=>{
             // Collision Manager
             const collisionManager = cc.director.getCollisionManager()
