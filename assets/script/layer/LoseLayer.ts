@@ -8,6 +8,7 @@ import DataManager from "../manager/DataManager";
 import BackendConnector from "../BackendConnector";
 import EventManager from "../manager/EventManager";
 import { DEBUG_MODE } from "../manager/GameManager";
+import UIManager from "../manager/UIManager";
 
 const {ccclass, property} = cc._decorator;
 
@@ -52,12 +53,6 @@ export default class LoseLayer extends BaseLayer {
         }
         DataManager.instance.isReplayed = true;
         this.initializeUI();
-        // 动画
-        // let style = this.node.getChildByName('style2')
-        // //if(DataManager.instance.type == ENUM_GAME_TYPE.LEVEL) style = this.node.getChildByName('style2')
-        // style.children.forEach(node=>{
-        //     cc.tween(node).to(0.15, {scale: 0.8}).to(0.15, {scale: 1}).start()
-        // })
         this.scheduleOnce(this.endGame,60);
     }
 
@@ -88,6 +83,7 @@ export default class LoseLayer extends BaseLayer {
 
     onContinueButton()
     {
+        //StaticInstance.uiManager.test();
         AudioManager.instance.playSound(ENUM_AUDIO_CLIP.CLICK);
         if(DEBUG_MODE){
             EventManager.instance.emit(ENUM_GAME_EVENT.GAME_RELIVE)

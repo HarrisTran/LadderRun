@@ -5385,7 +5385,7 @@
     "_offset": {
       "__type__": "cc.Vec2",
       "x": 0,
-      "y": -5000
+      "y": -5100
     },
     "_size": {
       "__type__": "cc.Size",
@@ -5476,33 +5476,42 @@
       26,
       27,
       26,
-      27,
-      1,
-      26,
-      21,
+      28,
+      33,
+      29,
+      28,
+      31,
+      32,
+      29,
+      32,
+      33,
+      9,
+      8,
+      22,
       25,
       26,
-      27,
-      28,
+      24,
       29,
-      30,
-      9,
+      40,
+      27,
+      53,
       31,
       26,
       27,
-      1,
-      32,
-      8,
-      20,
-      27,
-      28,
-      26,
-      32,
-      33,
       34,
-      6,
-      9,
-      25
+      35,
+      38,
+      39,
+      30,
+      31,
+      52,
+      48,
+      20,
+      26,
+      34,
+      35,
+      27,
+      51
     ],
     "_id": "22WHV8pc1MBZU92WBkJ+wi"
   },
@@ -9911,8 +9920,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 25.56,
-      "height": 45.36
+      "width": 22.25,
+      "height": 50.4
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -9949,7 +9958,7 @@
     "_id": "deLZg5VGhKSrDITVeTAw0Z"
   },
   {
-    "__type__": "cc.Label",
+    "__type__": "0f522/evj1FuZTZrepR9pFs",
     "_name": "",
     "_objFlags": 0,
     "node": {
@@ -9966,22 +9975,20 @@
     "_string": "0",
     "_N$string": "0",
     "_fontSize": 40,
-    "_lineHeight": 36,
+    "_lineHeight": 40,
     "_enableWrapText": true,
-    "_N$file": {
-      "__uuid__": "5191b05c-b3d8-42e1-acaf-1de9faa98273"
-    },
-    "_isSystemFontUsed": false,
+    "_N$file": null,
+    "_isSystemFontUsed": true,
     "_spacingX": 0,
     "_batchAsBitmap": false,
-    "_styleFlags": 1,
+    "_styleFlags": 0,
     "_underlineHeight": 0,
     "_N$horizontalAlign": 0,
-    "_N$verticalAlign": 1,
+    "_N$verticalAlign": 0,
     "_N$fontFamily": "Arial",
     "_N$overflow": 0,
     "_N$cacheMode": 0,
-    "_id": "b32tkA/zZNB7yBA+4b7aM6"
+    "_id": "4cr7EpmgxD/7AdlFqIKqEX"
   },
   {
     "__type__": "cc.Layout",
@@ -10109,8 +10116,8 @@
     "goalLabel": {
       "__id__": 206
     },
-    "coinsNode": {
-      "__id__": 213
+    "coinsLabel": {
+      "__id__": 219
     },
     "historyNode": {
       "__id__": 96
@@ -13881,7 +13888,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 155.05,
+      "width": 138.43,
       "height": 50.4
     },
     "_anchorPoint": {
