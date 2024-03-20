@@ -5,6 +5,8 @@ import { ENUM_AUDIO_CLIP, ENUM_COLLIDER_TAG } from "../Enum";
 import AudioManager from "../manager/AudioManager";
 import DataManager from "../manager/DataManager";
 import Block from '../Block';
+import Camera from '../Camera';
+import { Vec2ToVec3, Vec3ToVec2, delay } from '../Utils';
 
 const {ccclass, property} = cc._decorator;
 
@@ -36,13 +38,15 @@ export default class Coin extends cc.Component {
         if(this.animation.getAnimationState('collected').isPlaying) this.node.removeComponent(cc.Collider)
     }
 
-    onFinished(){
-        //this.node.active = false
-        
-        let position = this.node.parent.convertToNodeSpaceAR(StaticInstance.uiManager.getGameLayer().coinWorldPoint)
+    async onFinished(){
         cc.tween(this.floatText)
-        .to(1,{position: cc.v3(position.x,position.y,0)})
-        .start();
+        .by(0.4,{y:20})
+        .call(()=>{
+            this.node.active = false;
+        })
+        .start()
+        await delay(500);
+        StaticInstance.uiManager.spawnCoinAtPosition(this.node.position.clone());
     }
 
     protected onDestroy(): void {

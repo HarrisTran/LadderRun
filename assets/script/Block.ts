@@ -65,7 +65,7 @@ export default class Block extends cc.Component {
         if(nodes.length > 0){
             nodes.map(node => {
                 node.x *= -1;
-                node.scaleX *= -1;
+                //node.scaleX *= -1;
             })
         }
     }

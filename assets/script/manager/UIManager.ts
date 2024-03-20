@@ -83,8 +83,8 @@ export default class UIManager extends cc.Component {
         layer.setMaxScore();
     }
 
-    getGameLayer(){
+    spawnCoinAtPosition(position: cc.Vec3){
         const layer: GameLayer = this.uiMap.get(ENUM_UI_TYPE.GAME) as GameLayer
-        return layer
+        return layer.spawnCoinAtPosition(position)
     }
 }

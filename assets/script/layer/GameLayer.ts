@@ -3,8 +3,10 @@ import { ENUM_AUDIO_CLIP, ENUM_GAME_EVENT, ENUM_GAME_STATUS, ENUM_GAME_TYPE, ENU
 import AudioManager from "../manager/AudioManager";
 import DataManager from "../manager/DataManager";
 import EventManager from "../manager/EventManager";
+import PoolManager from "../manager/PoolManager";
 import NumberAnimation from "../NumberAnimation";
 import { StaticInstance } from "../StaticInstance";
+import { Vec2ToVec3, Vec3ToVec2 } from "../Utils";
 import BaseLayer from "./Baselayer";
 
 const {ccclass, property} = cc._decorator;
@@ -19,11 +21,9 @@ export default class GameLayer extends BaseLayer {
     @property(cc.Node)
     historyNode: cc.Node = null
 
-    coinWorldPoint: cc.Vec2 = new cc.Vec2();
+    @property(cc.Node)
+    pickupTarget: cc.Node = null;
 
-    protected start(): void {
-        this.coinWorldPoint = this.node.convertToWorldSpaceAR(this.coinsLabel.node.getPosition());
-    }
 
     onEnable(){
         this.node.on(cc.Node.EventType.TOUCH_START, this.onTouchStart, this)
@@ -73,5 +73,13 @@ export default class GameLayer extends BaseLayer {
 
     protected onDisable(): void {
         this.node.off(cc.Node.EventType.TOUCH_START, this.onTouchStart, this)
+    }
+
+    public spawnCoinAtPosition(position: cc.Vec3){ // world to local
+        const pos = position.add(new cc.Vec3(0, -200, 0))
+        const coin = PoolManager.instance.getNode('coin', this.node, pos);
+        cc.tween(coin)
+        .to(1.2,{position: this.pickupTarget.position},{easing: "sineOut"})
+        .start();
     }
 }
