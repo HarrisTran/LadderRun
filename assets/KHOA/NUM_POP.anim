@@ -3,10 +3,10 @@
   "_name": "NUM_POP",
   "_objFlags": 0,
   "_native": "",
-  "_duration": 0.5,
+  "_duration": 0.5166666666666667,
   "sample": 60,
   "speed": 1,
-  "wrapMode": 2,
+  "wrapMode": 0,
   "curveData": {
     "paths": {
       "NUM": {
@@ -75,6 +75,20 @@
             {
               "frame": 0.5,
               "value": 135.352
+            }
+          ],
+          "opacity": [
+            {
+              "frame": 0,
+              "value": 254
+            },
+            {
+              "frame": 0.5,
+              "value": 255
+            },
+            {
+              "frame": 0.5166666666666667,
+              "value": 0
             }
           ]
         }

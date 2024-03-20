@@ -63,13 +63,13 @@ export default class GameLayer extends BaseLayer {
         maxGoal.getComponent(cc.Label).string = `${DataManager.instance.maxGoal}`
     }
 
-    async playCoinCountingDown(){
-        let tempScore : number = DataManager.instance.score;
-        while (tempScore>0) {
-            await this.coinsLabel.playDiscreteResize(tempScore)
-            tempScore -= 50;
-        }
-    }
+    // async playCoinCountingDown(){
+    //     let tempScore : number = DataManager.instance.score;
+    //     while (tempScore>0) {
+    //         await this.coinsLabel.playDiscreteResize(tempScore)
+    //         tempScore -= 50;
+    //     }
+    // }
 
     protected onDisable(): void {
         this.node.off(cc.Node.EventType.TOUCH_START, this.onTouchStart, this)
@@ -79,7 +79,7 @@ export default class GameLayer extends BaseLayer {
         const pos = position.add(new cc.Vec3(0, -200, 0))
         const coin = PoolManager.instance.getNode('coin', this.node, pos);
         cc.tween(coin)
-        .to(1.2,{position: this.pickupTarget.position},{easing: "sineOut"})
+        .to(1,{position: this.pickupTarget.position},{easing: "sineOut"})
         .start();
     }
 }

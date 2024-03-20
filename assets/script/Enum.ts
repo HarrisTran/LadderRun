@@ -6,6 +6,8 @@ export enum ENUM_GAME_STATUS {
     RUNING = 'RUNING'
 }
 
+export const COIN_VALUE = 50;
+
 // 玩家状态
 export enum ENUM_PLAYER_STATUS {
     WALK = 'walk',

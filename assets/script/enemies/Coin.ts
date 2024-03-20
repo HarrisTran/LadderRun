@@ -1,7 +1,7 @@
 import { StaticInstance } from './../StaticInstance';
 // Created by carolsail
 
-import { ENUM_AUDIO_CLIP, ENUM_COLLIDER_TAG } from "../Enum";
+import { COIN_VALUE, ENUM_AUDIO_CLIP, ENUM_COLLIDER_TAG } from "../Enum";
 import AudioManager from "../manager/AudioManager";
 import DataManager from "../manager/DataManager";
 import Block from '../Block';
@@ -28,7 +28,7 @@ export default class Coin extends cc.Component {
             this.animation.play('collected')
             AudioManager.instance.playSound(ENUM_AUDIO_CLIP.COLLECT)
             DataManager.instance.coins += 1;
-            DataManager.instance.score += 50
+            DataManager.instance.score += COIN_VALUE;
             DataManager.instance.save()
             StaticInstance.uiManager.setGameScore()
         }
@@ -45,7 +45,7 @@ export default class Coin extends cc.Component {
             this.node.active = false;
         })
         .start()
-        await delay(500);
+        await delay(200);
         StaticInstance.uiManager.spawnCoinAtPosition(this.node.position.clone());
     }
 
