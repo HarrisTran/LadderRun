@@ -1,0 +1,31 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "bubble-chicken",
+  "_objFlags": 0,
+  "_native": "",
+  "_duration": 4,
+  "sample": 60,
+  "speed": 1,
+  "wrapMode": 2,
+  "curveData": {
+    "props": {
+      "y": [
+        {
+          "frame": 0,
+          "value": -608.234,
+          "curve": "cubicInOut"
+        },
+        {
+          "frame": 2.0166666666666666,
+          "value": -661.066,
+          "curve": "cubicInOut"
+        },
+        {
+          "frame": 4,
+          "value": -608.234
+        }
+      ]
+    }
+  },
+  "events": []
+}

@@ -1,0 +1,31 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "bubble-player",
+  "_objFlags": 0,
+  "_native": "",
+  "_duration": 6.016666666666667,
+  "sample": 60,
+  "speed": 1,
+  "wrapMode": 2,
+  "curveData": {
+    "props": {
+      "y": [
+        {
+          "frame": 0,
+          "value": 31.525,
+          "curve": "cubicInOut"
+        },
+        {
+          "frame": 3.0166666666666666,
+          "value": -67.714,
+          "curve": "cubicInOut"
+        },
+        {
+          "frame": 6.016666666666667,
+          "value": 31.525
+        }
+      ]
+    }
+  },
+  "events": []
+}
