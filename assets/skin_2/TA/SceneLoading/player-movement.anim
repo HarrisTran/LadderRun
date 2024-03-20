@@ -1,0 +1,51 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "player-movement",
+  "_objFlags": 0,
+  "_native": "",
+  "_duration": 5.5,
+  "sample": 60,
+  "speed": 1,
+  "wrapMode": 1,
+  "curveData": {
+    "props": {
+      "x": [
+        {
+          "frame": 0,
+          "value": -270
+        },
+        {
+          "frame": 5,
+          "value": 270.089,
+          "curve": "linear"
+        },
+        {
+          "frame": 5.166666666666667,
+          "value": 369.751,
+          "curve": "linear"
+        },
+        {
+          "frame": 5.5,
+          "value": 444.881
+        }
+      ],
+      "y": [
+        {
+          "frame": 5,
+          "value": 0,
+          "curve": "linear"
+        },
+        {
+          "frame": 5.166666666666667,
+          "value": 39.279,
+          "curve": "linear"
+        },
+        {
+          "frame": 5.5,
+          "value": -274.954
+        }
+      ]
+    }
+  },
+  "events": []
+}
