@@ -27,8 +27,8 @@ export default class UIManager extends cc.Component {
     loseLayer: LoseLayer = null
     @property(ConfirmLayer)
     confirmLayer: ConfirmLayer = null
-    @property(GameOverLayer)
-    gameOverLayer: GameOverLayer = null
+    // @property(GameOverLayer)
+    // gameOverLayer: GameOverLayer = null
 
     private uiMap = new Map<ENUM_UI_TYPE, BaseLayer>()
 
@@ -39,7 +39,7 @@ export default class UIManager extends cc.Component {
         this.uiMap.set(ENUM_UI_TYPE.GAME, this.gameLayer)
         this.uiMap.set(ENUM_UI_TYPE.SETTING, this.settingLayer)
         this.uiMap.set(ENUM_UI_TYPE.LOSE, this.loseLayer)
-        this.uiMap.set(ENUM_UI_TYPE.GAME_OVER, this.gameOverLayer)
+        // this.uiMap.set(ENUM_UI_TYPE.GAME_OVER, this.gameOverLayer)
         this.uiMap.set(ENUM_UI_TYPE.CONFIRM, this.confirmLayer)
     }
 

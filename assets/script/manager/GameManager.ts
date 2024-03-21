@@ -11,6 +11,7 @@ import Player from '../Player';
 import Star from '../Star';
 import BackendConnector from '../BackendConnector';
 import Lava from '../enemies/Lava';
+import { delay } from '../Utils';
 
 const {ccclass, property} = cc._decorator;
 
@@ -86,11 +87,9 @@ export default class GameManager extends cc.Component {
         },0.25)
     }
 
-    onGameOver(){
-        StaticInstance.uiManager.toggle(ENUM_UI_TYPE.GAME_OVER,true);
-        setTimeout(() => {
-            BackendConnector.instance.postScoreToServer(DataManager.instance.score)
-        }, 1000);
+    async onGameOver(){
+        await delay(1000);
+        BackendConnector.instance.postScoreToServer(DataManager.instance.score)
     }
 
     // 过关
@@ -102,7 +101,7 @@ export default class GameManager extends cc.Component {
     onGameLose(){
         DataManager.instance.status = ENUM_GAME_STATUS.UNRUNING
         this.scheduleOnce(()=>{
-            StaticInstance.uiManager.toggle(ENUM_UI_TYPE.LOSE)
+            StaticInstance.uiManager.toggle(ENUM_UI_TYPE.LOSE,true)
         }, 0.5) 
     }
 

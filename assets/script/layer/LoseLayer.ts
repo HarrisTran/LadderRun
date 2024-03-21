@@ -53,38 +53,68 @@ export default class LoseLayer extends BaseLayer {
     @property(cc.Label)
     topScoreLabel: cc.Label = null;
 
+    @property(cc.Label)
+    ticketCanMinus: cc.Label = null;
+
     @property(cc.Animation)
     animation1: cc.Animation = null;
 
     @property(cc.Animation)
     animation2: cc.Animation = null;
 
+    @property(cc.Animation)
+    animation3: cc.Animation = null;
 
-    private _isLackTicket :  boolean = false;
+    @property(cc.Sprite)
+    ticketButton : cc.Sprite = null;
+
+    @property(cc.Button)
+    bgshadeButton : cc.Button = null;
+
+    @property(cc.SpriteFrame)
+    redButton: cc.SpriteFrame = null;
+
+    @property(cc.SpriteFrame)
+    yellowButton: cc.SpriteFrame = null;
+
+    // private _isLackTicket :  boolean = false;
     private _sendScore : number = 0;
+
+    protected onLoad(): void {
+        this.animation3.on('finished',this.onFinished,this);
+    }
+
+    private onFinished()
+    {
+        this.ticketButton.getComponent(cc.Button).interactable = !DataManager.instance.isReplayed
+        if(DataManager.instance.isReplayed) {
+            this.onQuit();
+        }
+        DataManager.instance.isReplayed = true;
+    }
 
     protected onEnable(): void {
         //if(DEBUG_MODE) return;
         StaticInstance.uiManager.toggle(ENUM_UI_TYPE.SETTING,false)
-        if(DataManager.instance.isReplayed) {
-            this.endGame();
-            return;
-        }
-        DataManager.instance.isReplayed = true;
+        
         this.initializeUI();
         this.initializeAnimation();
-        this.scheduleOnce(this.endGame,60);
-    }
+        
+        this.scheduleOnce(this.onQuit,60);
+    } // ok
 
     private initializeUI(){
         // this.topText.string = BackendConnector.instance.maxScore.toString();
         // this.lastScoreText.string = BackendConnector.instance.currentScore.toString();
         // this.currentScoreText.string = DataManager.instance.score.toString();
         //new 
+        let ticket : number = BackendConnector.instance.getTicketCanBeMinus();
         this.topScoreLabel.string = BackendConnector.instance.maxScore.toString();
         this.popScoreLabel.string = DataManager.instance.score.toString();
         this.receivedScoreLabel.string = BackendConnector.instance.currentScore.toString();
-    }
+        this.ticketCanMinus.string = `-${ticket}`
+        this.ticketButton.spriteFrame = BackendConnector.instance.canRelive() ? this.yellowButton : this.redButton
+    } 
 
     
     private async initializeAnimation()
@@ -95,31 +125,52 @@ export default class LoseLayer extends BaseLayer {
             this.animation1.play("NUM_POP")
             this._sendScore -= COIN_VALUE;
             this.popScoreLabel.string = this._sendScore.toString();
-            await delay(300);
-            this.animation2.play("NUM_REVEIVE")
+            await delay(240);
+            this.animation2.play("NUM_RECEIVE")
             this.receivedScoreLabel.string = (totalScore-this._sendScore).toString();
+        }
+        DataManager.instance.isReplayed ? this.animation3.play("NUM_RESULT_END") : this.animation3.play("NUM_RESULT")
+
+    }
+
+    private onClickTicketButton()
+    {
+        AudioManager.instance.playSound(ENUM_AUDIO_CLIP.CLICK);
+        if(BackendConnector.instance.canRelive())
+        {
+            BackendConnector.instance.checkGameScoreTicket()
+            .then(() => {
+                EventManager.instance.emit(ENUM_GAME_EVENT.GAME_RELIVE)
+            })
+            .catch(() => {
+                //EventManager.instance.emit(ENUM_GAME_EVENT.GAME_OVER)
+                EventManager.instance.emit(ENUM_GAME_EVENT.GAME_RELIVE)
+            })
+        }
+        else{
+            BackendConnector.instance.postMessage();
         }
     }
 
 
-    private endGame(){
-        EventManager.instance.emit(ENUM_GAME_EVENT.GAME_OVER)
-    }
+    // private endGame(){
+    //     EventManager.instance.emit(ENUM_GAME_EVENT.GAME_OVER)
+    // }
 
-    onReliveClick(){
-        AudioManager.instance.playSound(ENUM_AUDIO_CLIP.CLICK)
+    // onReliveClick(){
+    //     AudioManager.instance.playSound(ENUM_AUDIO_CLIP.CLICK)
         
-        BackendConnector.instance.postScoreToServer(DataManager.instance.score)
-        // if(DataManager.instance.coins >= this.cost){
-        //     DataManager.instance.coins -= this.cost
-        //     DataManager.instance.save()
-        //     ToastManager.instance.show('Reborn Succeed', {gravity: 'BOTTOM', bg_color: cc.color(102, 202, 28, 255)})  // Translated
-        //     StaticInstance.uiManager.toggle(ENUM_UI_TYPE.LOSE, false) 
-        //     EventManager.instance.emit(ENUM_GAME_EVENT.GAME_RELIVE)
-        // }else{
-        //     ToastManager.instance.show('Reborn Failed', {gravity: 'BOTTOM', bg_color: cc.color(226, 69, 109, 255)})  // Translated
-        // }
-    }
+    //     BackendConnector.instance.postScoreToServer(DataManager.instance.score)
+    //     // if(DataManager.instance.coins >= this.cost){
+    //     //     DataManager.instance.coins -= this.cost
+    //     //     DataManager.instance.save()
+    //     //     ToastManager.instance.show('Reborn Succeed', {gravity: 'BOTTOM', bg_color: cc.color(102, 202, 28, 255)})  // Translated
+    //     //     StaticInstance.uiManager.toggle(ENUM_UI_TYPE.LOSE, false) 
+    //     //     EventManager.instance.emit(ENUM_GAME_EVENT.GAME_RELIVE)
+    //     // }else{
+    //     //     ToastManager.instance.show('Reborn Failed', {gravity: 'BOTTOM', bg_color: cc.color(226, 69, 109, 255)})  // Translated
+    //     // }
+    // }
 
     onContinueButton()
     {
@@ -134,66 +185,65 @@ export default class LoseLayer extends BaseLayer {
         // this.showScorePanel.active = false;
     }
 
-    onDeductedButton()
-    {
-        // let button = this.deductedButton.getComponent(cc.Button);
-        //this.retryBtn.interactable = false;
-        AudioManager.instance.playSound(ENUM_AUDIO_CLIP.CLICK);
-        if(DEBUG_MODE){
-            EventManager.instance.emit(ENUM_GAME_EVENT.GAME_RELIVE)
-            return;
-        }
-        // if(this._isLackTicket){
-        //     BackendConnector.instance.postMessage();
-        // }else{
-        //     if (BackendConnector.instance.canRelive()) {
-        //         BackendConnector.instance.checkGameScoreTicket()
-        //             .then(() => {
-        //                 EventManager.instance.emit(ENUM_GAME_EVENT.GAME_RELIVE)
-        //             })
-        //             .catch(() => {
-        //                 EventManager.instance.emit(ENUM_GAME_EVENT.GAME_OVER)
-        //             })
-        //     } else {
-        //         this.retryBtn.interactable = true;
-        //         this._isLackTicket = true;
-        //         this.retryPanel.active = false;
-        //     }
-        // }
+    // onDeductedButton()
+    // {
+    //     // let button = this.deductedButton.getComponent(cc.Button);
+    //     //this.retryBtn.interactable = false;
+    //     AudioManager.instance.playSound(ENUM_AUDIO_CLIP.CLICK);
+    //     if(DEBUG_MODE){
+    //         EventManager.instance.emit(ENUM_GAME_EVENT.GAME_RELIVE)
+    //         return;
+    //     }
+    //     // if(this._isLackTicket){
+    //     //     BackendConnector.instance.postMessage();
+    //     // }else{
+    //     //     if (BackendConnector.instance.canRelive()) {
+    //     //         BackendConnector.instance.checkGameScoreTicket()
+    //     //             .then(() => {
+    //     //                 EventManager.instance.emit(ENUM_GAME_EVENT.GAME_RELIVE)
+    //     //             })
+    //     //             .catch(() => {
+    //     //                 EventManager.instance.emit(ENUM_GAME_EVENT.GAME_OVER)
+    //     //             })
+    //     //     } else {
+    //     //         this.retryBtn.interactable = true;
+    //     //         this._isLackTicket = true;
+    //     //         this.retryPanel.active = false;
+    //     //     }
+    //     // }
 
-        if (BackendConnector.instance.canRelive()) {
-            BackendConnector.instance.checkGameScoreTicket()
-                .then(() => {
-                    EventManager.instance.emit(ENUM_GAME_EVENT.GAME_RELIVE)
-                })
-                .catch(() => {
-                    EventManager.instance.emit(ENUM_GAME_EVENT.GAME_OVER)
-                })
-        } else {
-            // this.retryBtn.interactable = true;
-            // this._isLackTicket = true;
-            // this.retryPanel.active = false;
-        }
-    }
+    //     if (BackendConnector.instance.canRelive()) {
+    //         BackendConnector.instance.checkGameScoreTicket()
+    //             .then(() => {
+    //                 EventManager.instance.emit(ENUM_GAME_EVENT.GAME_RELIVE)
+    //             })
+    //             .catch(() => {
+    //                 EventManager.instance.emit(ENUM_GAME_EVENT.GAME_OVER)
+    //             })
+    //     } else {
+    //         // this.retryBtn.interactable = true;
+    //         // this._isLackTicket = true;
+    //         // this.retryPanel.active = false;
+    //     }
+    // }
 
-    onBuyMoreButton(){
-        BackendConnector.instance.postMessage();
-    }
+    // onBuyMoreButton(){
+    //     BackendConnector.instance.postMessage();
+    // }
 
-    onCancelButton(){
-        AudioManager.instance.playSound(ENUM_AUDIO_CLIP.CLICK);
-        this.hide();
-        EventManager.instance.emit(ENUM_GAME_EVENT.GAME_OVER);
-    }
+    // onCancelButton(){
+    //     AudioManager.instance.playSound(ENUM_AUDIO_CLIP.CLICK);
+    //     this.hide();
+    //     EventManager.instance.emit(ENUM_GAME_EVENT.GAME_OVER);
+    // }
 
 
     onQuit(){
-        AudioManager.instance.playSound(ENUM_AUDIO_CLIP.CLICK)
+        this.bgshadeButton.interactable = false;
         EventManager.instance.emit(ENUM_GAME_EVENT.GAME_OVER)
-        //SdkManager.instance.activeShare()
-    }
+    } // ok
 
     protected onDisable(): void {
-        this.unschedule(this.endGame);
+        this.unschedule(this.onQuit);
     }
 }

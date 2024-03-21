@@ -80,6 +80,9 @@ export default class GameLayer extends BaseLayer {
         const coin = PoolManager.instance.getNode('coin', this.node, pos);
         cc.tween(coin)
         .to(1,{position: this.pickupTarget.position},{easing: "sineOut"})
+        .call(()=>{
+            coin.removeFromParent();
+        })
         .start();
     }
 }

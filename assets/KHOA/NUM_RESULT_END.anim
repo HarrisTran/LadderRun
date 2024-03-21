@@ -1,6 +1,6 @@
 {
   "__type__": "cc.AnimationClip",
-  "_name": "NUM_RESULT",
+  "_name": "NUM_RESULT_END",
   "_objFlags": 0,
   "_native": "",
   "_duration": 1,
@@ -41,12 +41,8 @@
               "value": 0
             },
             {
-              "frame": 0.8333333333333334,
-              "value": 170
-            },
-            {
               "frame": 1,
-              "value": 255
+              "value": 0
             }
           ]
         }
