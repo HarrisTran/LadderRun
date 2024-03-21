@@ -7,7 +7,7 @@ import Chicken from './enemies/Chicken';
 const {ccclass, property} = cc._decorator;
 
 let v3 = new cc.Vec3()
-const normalSpeed: number = 200;
+const normalSpeed: number = 150;
 const speedUp: number = 360;
 
 @ccclass

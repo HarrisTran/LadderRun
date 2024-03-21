@@ -1,0 +1,235 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "layout_loading",
+  "_objFlags": 0,
+  "_native": "",
+  "_duration": 5.5,
+  "sample": 60,
+  "speed": 1,
+  "wrapMode": 1,
+  "curveData": {
+    "paths": {
+      "player": {
+        "props": {
+          "x": [
+            {
+              "frame": 0,
+              "value": -270
+            },
+            {
+              "frame": 5,
+              "value": 270.089,
+              "curve": "linear"
+            },
+            {
+              "frame": 5.166666666666667,
+              "value": 369.751,
+              "curve": "linear"
+            },
+            {
+              "frame": 5.5,
+              "value": 444.881
+            }
+          ],
+          "y": [
+            {
+              "frame": 5,
+              "value": 0,
+              "curve": "linear"
+            },
+            {
+              "frame": 5.166666666666667,
+              "value": 39.279,
+              "curve": "linear"
+            },
+            {
+              "frame": 5.5,
+              "value": -274.954
+            }
+          ]
+        }
+      },
+      "box/pearl1": {
+        "comps": {
+          "cc.Sprite": {
+            "spriteFrame": [
+              {
+                "frame": 0.48333333333333334,
+                "value": {
+                  "__uuid__": "b55fc155-b73e-460f-b814-b7700bc1e904"
+                }
+              },
+              {
+                "frame": 0.8166666666666667,
+                "value": {
+                  "__uuid__": "c3efcd1f-1052-4f85-8fba-23eb6d490bc0"
+                }
+              }
+            ]
+          }
+        },
+        "props": {
+          "scaleY": [
+            {
+              "frame": 0.48333333333333334,
+              "value": 1
+            },
+            {
+              "frame": 0.8166666666666667,
+              "value": 1.15
+            }
+          ]
+        }
+      },
+      "box/pearl2": {
+        "comps": {
+          "cc.Sprite": {
+            "spriteFrame": [
+              {
+                "frame": 2.3,
+                "value": {
+                  "__uuid__": "b55fc155-b73e-460f-b814-b7700bc1e904"
+                }
+              },
+              {
+                "frame": 2.6333333333333333,
+                "value": {
+                  "__uuid__": "c3efcd1f-1052-4f85-8fba-23eb6d490bc0"
+                }
+              }
+            ]
+          }
+        },
+        "props": {
+          "scaleY": [
+            {
+              "frame": 2.283333333333333,
+              "value": 1
+            },
+            {
+              "frame": 2.6333333333333333,
+              "value": 1.15
+            }
+          ]
+        }
+      },
+      "box/pearl3": {
+        "comps": {
+          "cc.Sprite": {
+            "spriteFrame": [
+              {
+                "frame": 3.8666666666666667,
+                "value": {
+                  "__uuid__": "b55fc155-b73e-460f-b814-b7700bc1e904"
+                }
+              },
+              {
+                "frame": 4.2,
+                "value": {
+                  "__uuid__": "c3efcd1f-1052-4f85-8fba-23eb6d490bc0"
+                }
+              }
+            ]
+          }
+        },
+        "props": {
+          "scaleY": [
+            {
+              "frame": 3.8666666666666667,
+              "value": 1
+            },
+            {
+              "frame": 4.2,
+              "value": 1.15
+            }
+          ]
+        }
+      },
+      "algae/algae1": {
+        "props": {
+          "scaleY": [
+            {
+              "frame": 0,
+              "value": 0
+            },
+            {
+              "frame": 0.25,
+              "value": 0.6
+            }
+          ]
+        }
+      },
+      "algae/algae2": {
+        "props": {
+          "scaleY": [
+            {
+              "frame": 0.5833333333333334,
+              "value": 0
+            },
+            {
+              "frame": 0.8333333333333334,
+              "value": 1
+            }
+          ]
+        }
+      },
+      "algae/algae3": {
+        "props": {
+          "scaleY": [
+            {
+              "frame": 1.4166666666666667,
+              "value": 0
+            },
+            {
+              "frame": 1.7,
+              "value": 0.6
+            }
+          ]
+        }
+      },
+      "algae/algae4": {
+        "props": {
+          "scaleY": [
+            {
+              "frame": 2,
+              "value": 0
+            },
+            {
+              "frame": 2.25,
+              "value": 0.7
+            }
+          ]
+        }
+      },
+      "algae/algae5": {
+        "props": {
+          "scaleY": [
+            {
+              "frame": 3,
+              "value": 0
+            },
+            {
+              "frame": 3.2666666666666666,
+              "value": 0.6
+            }
+          ]
+        }
+      },
+      "algae/algae6": {
+        "props": {
+          "scaleY": [
+            {
+              "frame": 4.166666666666667,
+              "value": 0
+            },
+            {
+              "frame": 4.416666666666667,
+              "value": 1
+            }
+          ]
+        }
+      }
+    }
+  },
+  "events": []
+}

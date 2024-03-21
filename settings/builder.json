@@ -3,7 +3,8 @@
   "packageName": "org.cocos2d.demo",
   "startScene": "a738f065-fc56-4cca-a623-ac83643451a4",
   "excludeScenes": [
-    "b2564601-1b10-49bf-8c1b-23cd518931ac"
+    "b2564601-1b10-49bf-8c1b-23cd518931ac",
+    "9cbfd1ef-a1e5-4907-9b14-ceccb4e6d0d3"
   ],
   "orientation": {
     "landscapeRight": true,

@@ -20,7 +20,7 @@ export default class Stone extends cc.Component {
 
     vibrateDone(){
         cc.tween(this.rock)
-        .by(0.8,{y:-280},{easing: "sineIn"})
+        .by(0.9,{y:-280},{easing: "sineIn"})
         .call(()=>this.rock.active = false)
         .to(0.2,{y :0})
         .call(()=>this.rock.active = true)

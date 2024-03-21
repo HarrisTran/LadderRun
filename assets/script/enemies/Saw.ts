@@ -19,7 +19,7 @@ export default class Saw extends cc.Component {
     circleCenter: cc.Vec2 = cc.v2(0, 0)
 
     onLoad () {
-        this.speed = random(200, 400)
+        this.speed = 150//random(200, 400)
         this.dir =  random(-1, 1)
         if(this.dir != 0) this.schedule(this.circleMove, 0.01);
     }
