@@ -1,0 +1,245 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "layout-loading",
+  "_objFlags": 0,
+  "_native": "",
+  "_duration": 5.5,
+  "sample": 60,
+  "speed": 1,
+  "wrapMode": 1,
+  "curveData": {
+    "paths": {
+      "player": {
+        "props": {
+          "x": [
+            {
+              "frame": 0,
+              "value": -263.142
+            },
+            {
+              "frame": 5,
+              "value": 287.811,
+              "curve": "cubicInOut"
+            },
+            {
+              "frame": 5.166666666666667,
+              "value": 356.337
+            },
+            {
+              "frame": 5.5,
+              "value": 468.721
+            }
+          ],
+          "y": [
+            {
+              "frame": 5,
+              "value": 85.885,
+              "curve": "cubicInOut"
+            },
+            {
+              "frame": 5.166666666666667,
+              "value": 117.864
+            },
+            {
+              "frame": 5.5,
+              "value": -274.565
+            }
+          ]
+        }
+      },
+      "flower/flowerbuds1": {
+        "comps": {
+          "cc.Sprite": {
+            "spriteFrame": [
+              {
+                "frame": 0.7666666666666667,
+                "value": {
+                  "__uuid__": "c7b65c7f-fd8a-4680-8292-191473624c1f"
+                }
+              },
+              {
+                "frame": 0.7833333333333333,
+                "value": {
+                  "__uuid__": "d99100aa-a23f-4a94-8d88-df7047a2e352"
+                }
+              }
+            ]
+          }
+        },
+        "props": {
+          "scale": [
+            {
+              "frame": 0.75,
+              "value": {
+                "__type__": "cc.Vec2",
+                "x": 1,
+                "y": 1
+              }
+            },
+            {
+              "frame": 0.7666666666666667,
+              "value": {
+                "__type__": "cc.Vec2",
+                "x": 0,
+                "y": 0
+              }
+            },
+            {
+              "frame": 0.9166666666666666,
+              "value": {
+                "__type__": "cc.Vec2",
+                "x": 1,
+                "y": 1
+              }
+            }
+          ]
+        }
+      },
+      "flower/flowerbuds2": {
+        "props": {
+          "scale": [
+            {
+              "frame": 2.533333333333333,
+              "value": {
+                "__type__": "cc.Vec2",
+                "x": 1,
+                "y": 1
+              }
+            },
+            {
+              "frame": 2.55,
+              "value": {
+                "__type__": "cc.Vec2",
+                "x": 0,
+                "y": 0
+              }
+            },
+            {
+              "frame": 2.7,
+              "value": {
+                "__type__": "cc.Vec2",
+                "x": 1,
+                "y": 1
+              }
+            }
+          ]
+        },
+        "comps": {
+          "cc.Sprite": {
+            "spriteFrame": [
+              {
+                "frame": 2.55,
+                "value": {
+                  "__uuid__": "c7b65c7f-fd8a-4680-8292-191473624c1f"
+                }
+              },
+              {
+                "frame": 2.566666666666667,
+                "value": {
+                  "__uuid__": "d99100aa-a23f-4a94-8d88-df7047a2e352"
+                }
+              }
+            ]
+          }
+        }
+      },
+      "flower/flowerbuds3": {
+        "props": {
+          "scale": [
+            {
+              "frame": 4.2,
+              "value": {
+                "__type__": "cc.Vec2",
+                "x": 1,
+                "y": 1
+              }
+            },
+            {
+              "frame": 4.216666666666667,
+              "value": {
+                "__type__": "cc.Vec2",
+                "x": 0,
+                "y": 0
+              }
+            },
+            {
+              "frame": 4.366666666666666,
+              "value": {
+                "__type__": "cc.Vec2",
+                "x": 1,
+                "y": 1
+              }
+            }
+          ]
+        },
+        "comps": {
+          "cc.Sprite": {
+            "spriteFrame": [
+              {
+                "frame": 4.216666666666667,
+                "value": {
+                  "__uuid__": "c7b65c7f-fd8a-4680-8292-191473624c1f"
+                }
+              },
+              {
+                "frame": 4.233333333333333,
+                "value": {
+                  "__uuid__": "d99100aa-a23f-4a94-8d88-df7047a2e352"
+                }
+              }
+            ]
+          }
+        }
+      },
+      "firefly/firefly1": {
+        "comps": {
+          "cc.ParticleSystem": {
+            "emissionRate": [
+              {
+                "frame": 0.75,
+                "value": 0
+              },
+              {
+                "frame": 0.8,
+                "value": 50
+              }
+            ]
+          }
+        }
+      },
+      "firefly/firefly2": {
+        "comps": {
+          "cc.ParticleSystem": {
+            "emissionRate": [
+              {
+                "frame": 2.55,
+                "value": 0
+              },
+              {
+                "frame": 2.6,
+                "value": 50
+              }
+            ]
+          }
+        }
+      },
+      "firefly/firefly3": {
+        "comps": {
+          "cc.ParticleSystem": {
+            "emissionRate": [
+              {
+                "frame": 4.216666666666667,
+                "value": 0
+              },
+              {
+                "frame": 4.266666666666667,
+                "value": 50
+              }
+            ]
+          }
+        }
+      }
+    }
+  },
+  "events": []
+}
