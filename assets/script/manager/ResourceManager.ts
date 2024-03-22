@@ -48,8 +48,6 @@ export default class ResourceManager {
                 if(type == ENUM_RESOURCE_TYPE.PREFAB){
                     for (let i = 0; i < assets.length; i++) {
                         asset = assets[i];
-                        console.log(asset.data.name);
-                        
                         PoolManager.instance.setPrefab(asset.data.name, asset)
                     }
                 }

@@ -46,27 +46,15 @@ export default class Block extends cc.Component {
     }
 
     flipXHelper() {
-        this.makeSymmetrical("ladder");
-        this.makeSymmetrical("coin");
-        this.makeSymmetrical("box");
-        this.makeSymmetrical("ananas");
-        this.makeSymmetrical("melon");
-        this.makeSymmetrical("bat");
-        this.makeSymmetrical("brick");
-        this.makeSymmetrical("chicken");
-        this.makeSymmetrical("plant");
-        this.makeSymmetrical("spikeball");
-        this.makeSymmetrical("spike");
-        this.makeSymmetrical("stone")
-    }
-
-    makeSymmetrical(nameOfNode: string){
-        let nodes = this.node.children.filter(node => node.name == nameOfNode);
-        if(nodes.length > 0){
-            nodes.map(node => {
-                node.x *= -1;
-                //node.scaleX *= -1;
-            })
-        }
+        let objectList = ["ladder","coin","box","ananas","melon2","bat","brick","chicken","plant","spikeball","spike","stone"];
+        objectList.forEach(name => {
+            let nodes = this.node.children.filter(node => node.name == name);
+            if (nodes.length > 0) {
+                nodes.map(node => {
+                    node.x *= -1;
+                    if(["plant","bat"].includes(name)) node.scaleX *= -1;
+                })
+            }
+        })
     }
 }

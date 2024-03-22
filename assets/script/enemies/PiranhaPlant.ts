@@ -19,7 +19,6 @@ export default class PiranhaPlant extends cc.Component {
     protected onLoad(): void {
         this.piranhaPlantTemp = this.node.getChildByName("mask");
         this.piranhaPlant = this.piranhaPlantTemp.getChildByName("piranha_plant");
-        console.log(this.piranhaPlant.name);
     }
 
     onCollisionEnter (other: cc.BoxCollider, self: cc.BoxCollider) {

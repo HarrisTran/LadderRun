@@ -10,6 +10,8 @@ import EventManager from "../manager/EventManager";
 import { DEBUG_MODE } from "../manager/GameManager";
 import UIManager from "../manager/UIManager";
 import { delay } from "../Utils";
+import PoolManager from "../manager/PoolManager";
+import NumberAnimation from "../NumberAnimation";
 
 const {ccclass, property} = cc._decorator;
 
@@ -44,14 +46,18 @@ export default class LoseLayer extends BaseLayer {
     // buyMorePanel : cc.Node = null;
 
     // new properties
+
+    @property(cc.Node)
+    coinFlyContainer: cc.Node = null;
+
     @property(cc.Label)
     popScoreLabel : cc.Label = null;
 
     @property(cc.Label)
     receivedScoreLabel : cc.Label = null;
 
-    @property(cc.Label)
-    topScoreLabel: cc.Label = null;
+    @property(NumberAnimation)
+    topScoreLabel: NumberAnimation = null;
 
     @property(cc.Label)
     ticketCanMinus: cc.Label = null;
@@ -77,8 +83,12 @@ export default class LoseLayer extends BaseLayer {
     @property(cc.SpriteFrame)
     yellowButton: cc.SpriteFrame = null;
 
+    @property(cc.Prefab)
+    coinFlyPrefab : cc.Prefab = null;
+
     // private _isLackTicket :  boolean = false;
     private _sendScore : number = 0;
+    private _totalScore : number = 0;
 
     protected onLoad(): void {
         this.animation3.on('finished',this.onFinished,this);
@@ -119,18 +129,36 @@ export default class LoseLayer extends BaseLayer {
     
     private async initializeAnimation()
     {
+        await delay(200);
         this._sendScore =  DataManager.instance.score;
-        let totalScore = this._sendScore + BackendConnector.instance.currentScore;
-        while (this._sendScore > 0) {
-            this.animation1.play("NUM_POP")
+        this._totalScore = this._sendScore + BackendConnector.instance.currentScore;
+
+        let coinNo = Math.round(this._sendScore/50);
+        let delayTimer : number = 100;
+        this.coinFlyContainer.removeAllChildren();
+        for(let i = 0; i < coinNo; i++) {
+            let node = cc.instantiate(this.coinFlyPrefab);
+            node.parent = this.coinFlyContainer;
+        }
+        for (let index = 0; index < this.coinFlyContainer.children.length; index++) {
+            let element = this.coinFlyContainer.children[index];
+            let animation = element.getComponent(cc.Animation)
+            animation.play("COIN_FLY")
             this._sendScore -= COIN_VALUE;
             this.popScoreLabel.string = this._sendScore.toString();
-            await delay(240);
+            await delay(delayTimer);
             this.animation2.play("NUM_RECEIVE")
-            this.receivedScoreLabel.string = (totalScore-this._sendScore).toString();
+            this.receivedScoreLabel.string = (this._totalScore-this._sendScore).toString();
         }
+        // this.topScoreLabel.playLinearIncrease(BackendConnector.instance.maxScore)
         DataManager.instance.isReplayed ? this.animation3.play("NUM_RESULT_END") : this.animation3.play("NUM_RESULT")
+        this.coinFlyContainer.removeAllChildren();
+    }
 
+    private numPopPlayDone()
+    {
+        //this.animation2.play("NUM_RECEIVE")
+        //this.receivedScoreLabel.string = (DataManager.instance.score+BackendConnector.instance.currentScore).toString();
     }
 
     private onClickTicketButton()
@@ -140,6 +168,7 @@ export default class LoseLayer extends BaseLayer {
         {
             BackendConnector.instance.checkGameScoreTicket()
             .then(() => {
+                this.ticketButton.node.active = false;
                 EventManager.instance.emit(ENUM_GAME_EVENT.GAME_RELIVE)
             })
             .catch(() => {
