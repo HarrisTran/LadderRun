@@ -48,17 +48,17 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 40
+        "__id__": 37
       },
       {
-        "__id__": 41
+        "__id__": 38
       },
       {
-        "__id__": 42
+        "__id__": 39
       }
     ],
     "_prefab": {
-      "__id__": 43
+      "__id__": 40
     },
     "_opacity": 255,
     "_color": {
@@ -1135,45 +1135,15 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "spikeball",
     "_objFlags": 0,
     "_parent": {
       "__id__": 1
     },
-    "_children": [],
-    "_active": true,
-    "_components": [
-      {
-        "__id__": 36
-      },
-      {
-        "__id__": 37
-      },
-      {
-        "__id__": 38
-      }
-    ],
     "_prefab": {
-      "__id__": 39
+      "__id__": 36
     },
-    "_opacity": 255,
-    "_color": {
-      "__type__": "cc.Color",
-      "r": 255,
-      "g": 255,
-      "b": 255,
-      "a": 255
-    },
-    "_contentSize": {
-      "__type__": "cc.Size",
-      "width": 76,
-      "height": 76
-    },
-    "_anchorPoint": {
-      "__type__": "cc.Vec2",
-      "x": 0.5,
-      "y": 0.5
-    },
+    "_name": "spikeball",
+    "_active": true,
     "_trs": {
       "__type__": "TypedArray",
       "ctor": "Float64Array",
@@ -1196,72 +1166,6 @@
       "y": 0,
       "z": 0
     },
-    "_skewX": 0,
-    "_skewY": 0,
-    "_is3DNode": false,
-    "_groupIndex": 0,
-    "groupIndex": 0,
-    "_id": ""
-  },
-  {
-    "__type__": "cc.Sprite",
-    "_name": "",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 35
-    },
-    "_enabled": true,
-    "_materials": [
-      {
-        "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
-      }
-    ],
-    "_srcBlendFactor": 770,
-    "_dstBlendFactor": 771,
-    "_spriteFrame": {
-      "__uuid__": "a6aa7704-7b64-4e5a-b4c7-07d4362d1134"
-    },
-    "_type": 0,
-    "_sizeMode": 0,
-    "_fillType": 0,
-    "_fillCenter": {
-      "__type__": "cc.Vec2",
-      "x": 0,
-      "y": 0
-    },
-    "_fillStart": 0,
-    "_fillRange": 0,
-    "_isTrimmedMode": true,
-    "_atlas": {
-      "__uuid__": "b0e51c59-4c00-466f-93ae-2dc64d3cf63a"
-    },
-    "_id": ""
-  },
-  {
-    "__type__": "7a664UgPoJBPZIkbgZkByfe",
-    "_name": "",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 35
-    },
-    "_enabled": true,
-    "_id": ""
-  },
-  {
-    "__type__": "cc.CircleCollider",
-    "_name": "",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 35
-    },
-    "_enabled": true,
-    "tag": 12,
-    "_offset": {
-      "__type__": "cc.Vec2",
-      "x": -2.6,
-      "y": 0.4
-    },
-    "_radius": 26,
     "_id": ""
   },
   {
@@ -1272,8 +1176,8 @@
     "asset": {
       "__uuid__": "97a9d182-3ca1-4f22-98a5-7c021369b9b4"
     },
-    "fileId": "7cHZlaUg9D0pp+NLU3x6D/",
-    "sync": false
+    "fileId": "11FEWhtBxI1Yyq6Ea6ylVq",
+    "sync": true
   },
   {
     "__type__": "cc.Widget",
