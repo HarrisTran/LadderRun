@@ -458,7 +458,7 @@
       "__id__": 10
     },
     "_enabled": true,
-    "tag": 13,
+    "tag": 2,
     "_offset": {
       "__type__": "cc.Vec2",
       "x": 0,
@@ -635,7 +635,7 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        -160,
+        -100,
         -137.293,
         0,
         0,
@@ -681,7 +681,7 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        160,
+        100,
         -137.293,
         0,
         0,

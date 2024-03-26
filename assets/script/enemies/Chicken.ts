@@ -37,7 +37,7 @@ export default class Chicken extends cc.Component {
             this.speed += Math.random() * 80
             this.dir = 1
             this.node.scaleX = this.dir * -1
-        }else if((other.tag == ENUM_COLLIDER_TAG.WALL || other.tag == ENUM_COLLIDER_TAG.BRICK) && self.tag == ENUM_COLLIDER_TAG.CHICKEN && this.status == ENUM_CHICKEN_STATUS.RUN){
+        }else if((other.tag == ENUM_COLLIDER_TAG.WALL || other.tag == ENUM_COLLIDER_TAG.BRICK || other.tag == ENUM_COLLIDER_TAG.BOX) && self.tag == ENUM_COLLIDER_TAG.CHICKEN && this.status == ENUM_CHICKEN_STATUS.RUN){
             this.onTurn()
         }
     }

@@ -342,12 +342,12 @@
     "_offset": {
       "__type__": "cc.Vec2",
       "x": 0,
-      "y": 0
+      "y": -12
     },
     "_size": {
       "__type__": "cc.Size",
       "width": 50,
-      "height": 300
+      "height": 325
     },
     "_id": ""
   },
@@ -464,16 +464,16 @@
       "__id__": 10
     },
     "_enabled": true,
-    "tag": 13,
+    "tag": 2,
     "_offset": {
       "__type__": "cc.Vec2",
       "x": 0,
-      "y": 0
+      "y": -12
     },
     "_size": {
       "__type__": "cc.Size",
       "width": 50,
-      "height": 300
+      "height": 325
     },
     "_id": ""
   },

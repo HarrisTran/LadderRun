@@ -24,10 +24,10 @@ export default class PiranhaPlant extends cc.Component {
     onCollisionEnter (other: cc.BoxCollider, self: cc.BoxCollider) {
         if(other.tag == ENUM_COLLIDER_TAG.PLAYER && self.tag == ENUM_COLLIDER_TAG.PLANT_VIEW){
             this.actionPlant = cc.tween(this.piranhaPlant).sequence(
-                cc.tween(this.piranhaPlant).to(0.25,{y: 0}),
-                cc.tween().delay(0.25),
+                cc.tween(this.piranhaPlant).to(0.5,{y: 0}),
+                cc.tween().delay(1),
                 cc.tween(this.piranhaPlant).to(0.5,{y: -80}),
-                cc.tween().delay(1.5),
+                cc.tween().delay(2),
             )
             .repeat(20)
             this.actionPlant.start();
