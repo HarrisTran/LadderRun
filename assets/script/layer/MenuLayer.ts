@@ -25,7 +25,6 @@ export default class MenuLayer extends BaseLayer {
 
     onLevelClick(){
         AudioManager.instance.playSound(ENUM_AUDIO_CLIP.CLICK)
-        StaticInstance.uiManager.toggle(ENUM_UI_TYPE.LEVEL)
     }
 
     onRankClick(){
@@ -41,11 +40,9 @@ export default class MenuLayer extends BaseLayer {
 
     onSkinClick(){
         AudioManager.instance.playSound(ENUM_AUDIO_CLIP.CLICK)
-        StaticInstance.uiManager.toggle(ENUM_UI_TYPE.SKIN)
     }
 
     onMoreClick(){
         AudioManager.instance.playSound(ENUM_AUDIO_CLIP.CLICK)
-        StaticInstance.uiManager.toggle(ENUM_UI_TYPE.MORE)
     }
 }

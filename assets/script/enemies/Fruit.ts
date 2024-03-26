@@ -8,7 +8,7 @@ const {ccclass, property} = cc._decorator;
 export default class Fruit extends cc.Component {
 
     animation: cc.Animation = null
-
+    
     protected onLoad(): void {
         this.animation = this.node.getComponent(cc.Animation);
         this.animation.on('play', this.onPlay, this);
@@ -30,6 +30,7 @@ export default class Fruit extends cc.Component {
 
     onFinished(){
         this.node.active = false
+        // this.node.parent.active = false;
     }
 
     protected onDestroy(): void {

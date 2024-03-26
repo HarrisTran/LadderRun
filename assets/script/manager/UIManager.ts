@@ -1,4 +1,3 @@
-// Created by carolsail
 
 import { ENUM_UI_TYPE } from './../Enum';
 import { StaticInstance } from './../StaticInstance';
@@ -8,8 +7,6 @@ import MenuLayer from "../layer/MenuLayer";
 import GameLayer from '../layer/GameLayer';
 import SettingLayer from '../layer/SettingLayer';
 import LoseLayer from '../layer/LoseLayer';
-import ConfirmLayer from '../layer/ConfirmLayer';
-import GameOverLayer from '../layer/GameOverLayer';
 
 const {ccclass, property} = cc._decorator;
 
@@ -26,10 +23,6 @@ export default class UIManager extends cc.Component {
     settingLayer: SettingLayer = null
     @property(LoseLayer)
     loseLayer: LoseLayer = null
-    @property(ConfirmLayer)
-    confirmLayer: ConfirmLayer = null
-    @property(GameOverLayer)
-    gameOverLayer: GameOverLayer = null
 
     private uiMap = new Map<ENUM_UI_TYPE, BaseLayer>()
 
@@ -40,8 +33,6 @@ export default class UIManager extends cc.Component {
         this.uiMap.set(ENUM_UI_TYPE.GAME, this.gameLayer)
         this.uiMap.set(ENUM_UI_TYPE.SETTING, this.settingLayer)
         this.uiMap.set(ENUM_UI_TYPE.LOSE, this.loseLayer)
-        this.uiMap.set(ENUM_UI_TYPE.GAME_OVER, this.gameOverLayer)
-        this.uiMap.set(ENUM_UI_TYPE.CONFIRM, this.confirmLayer)
     }
 
     toggle(key: ENUM_UI_TYPE, status: boolean = true, callback?: () => void) {
@@ -64,19 +55,9 @@ export default class UIManager extends cc.Component {
         layer.setStyle(index)
     }
 
-    setGameGoal(){
-        const layer: GameLayer = this.uiMap.get(ENUM_UI_TYPE.GAME) as GameLayer
-        layer.setGoal()  
-    }
-
-    // setGameCoins(){
-    //     const layer: GameLayer = this.uiMap.get(ENUM_UI_TYPE.GAME) as GameLayer
-    //     layer.setCoins()
-    // }
-
     setGameScore(){
-        const layer: GameLayer = this.uiMap.get(ENUM_UI_TYPE.GAME) as GameLayer
-        layer.setScore()
+        const layer: GameLayer = this.uiMap.get(ENUM_UI_TYPE.GAME) as GameLayer;
+        layer.setScore();
     }
 
     setGameMaxGoal(){
@@ -89,4 +70,8 @@ export default class UIManager extends cc.Component {
         layer.setMaxScore();
     }
 
+    spawnCoinAtPosition(position: cc.Vec3){
+        const layer: GameLayer = this.uiMap.get(ENUM_UI_TYPE.GAME) as GameLayer
+        return layer.spawnCoinAtPosition(position)
+    }
 }

@@ -37,3 +37,16 @@ export function sort(arr: any[] | unknown, key: any, flag: boolean = true){
         })
     }
 }
+
+export function  Vec3ToVec2(vec3:cc.Vec3): cc.Vec2 {
+    return new cc.Vec2(vec3.x, vec3.y)
+}
+
+export function  Vec2ToVec3(vec2:cc.Vec2): cc.Vec3 {
+    return new cc.Vec3(vec2.x, vec2.y)
+}
+
+
+export function delay(delay: number){
+    return new Promise((resolve) => setTimeout(resolve, delay));
+}

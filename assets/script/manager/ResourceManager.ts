@@ -59,6 +59,7 @@ export default class ResourceManager {
                 }
                 resolve && resolve()
             })
+            
         })
     }
 

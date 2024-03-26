@@ -20,11 +20,6 @@ export default class Trampoline extends cc.Component {
     onCollisionEnter (other: cc.BoxCollider, self: cc.BoxCollider) {
         if(other.tag == ENUM_COLLIDER_TAG.PLAYER && self.tag == ENUM_COLLIDER_TAG.TRAMPOLINE){
             self.node.getComponent(cc.Animation).play('trampoline')
-            // 弹跳
-            // AudioManager.instance.playSound(ENUM_AUDIO_CLIP.JUMP)
-            // const player = other.node.getComponent(Player)
-            // player.status = ENUM_PLAYER_STATUS.CLIMB
-            // player.speed.y = player.jump * 2
         }
     }
 

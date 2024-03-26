@@ -37,9 +37,9 @@ export default class BackendConnector {
     public getGameData() {
         let url = new URLSearchParams(window.location.search);
 
-        this.token = url.get('token')
-        this.skinId = url.get('skinId')
-        this.tournamentId = url.get('tournamentId')
+        this.token = url.get('token');
+        this.skinId = url.get('skinId');
+        this.tournamentId = url.get('tournamentId');
         this.deviceInfo = url.get('deviceInfo')
 
 
@@ -62,8 +62,8 @@ export default class BackendConnector {
         })
         .then(data=>{
             if(data.ResultCode == 1) {
-                console.log("authentication successful");
                 this.key = data.Data.Key;
+                console.log("authen success",this.key);
             }
             else{
                 throw new Error("");
@@ -87,11 +87,13 @@ export default class BackendConnector {
         })
         .then(()=>{
             this.numberTicket -= numberTicket;
+            console.log("ticket minus: ",this.numberTicket);
         })
     }
 
     public calculatingTicketToContinue(scoreRange: object, yourScore: number)
     {   
+        //scoreRange = {"0":1,"2000":2,"4000":3} // to test
         let closestMilestone;
 
         for (const milestone in scoreRange) {
@@ -139,6 +141,8 @@ export default class BackendConnector {
 
     public postScoreToServer(score: number)
     {
+        console.log("End game",score);
+        
         let dataEncrypted : string = this.getDataEncrypted({Score: score,TournamentId: this.tournamentId, SkinId: this.skinId});
 
         fetch(`${this.gameURL}/promotions/store-score-tournament?tournamentId=${this.tournamentId}&skinId=${this.skinId}&cocos=1`,{
@@ -182,7 +186,7 @@ export default class BackendConnector {
     }
 
     public canRelive(){
-        return this.numberTicket > this.getTicketCanBeMinus();
+        return this.numberTicket >= this.getTicketCanBeMinus();
     }
 }
 

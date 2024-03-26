@@ -1,4 +1,3 @@
-// Created by carolsail
 
 import { ENUM_AUDIO_CLIP, ENUM_CHICKEN_STATUS, ENUM_COLLIDER_TAG, ENUM_GAME_STATUS } from "../Enum";
 import AudioManager from "../manager/AudioManager";
@@ -34,7 +33,6 @@ export default class Chicken extends cc.Component {
             AudioManager.instance.playSound(ENUM_AUDIO_CLIP.CHICKEN_RUN,true).then((v)=>this.runSoundId=v);
         }
         if(other.tag == ENUM_COLLIDER_TAG.PLAYER && self.tag == ENUM_COLLIDER_TAG.CHICKEN_VIEW && this.status == ENUM_CHICKEN_STATUS.IDLE){
-            //AudioManager.instance.playSound(ENUM_AUDIO_CLIP.CHICKEN_RUN,true).then((v)=>this.runSoundId=v);
             this.status = ENUM_CHICKEN_STATUS.RUN
             this.speed += Math.random() * 80
             this.dir = 1
@@ -44,11 +42,12 @@ export default class Chicken extends cc.Component {
         }
     }
 
-    onCollisionExit (other: cc.BoxCollider, self: cc.BoxCollider) {
+    onCollisionExit(other: cc.BoxCollider, self: cc.BoxCollider) {
         if(other.tag == ENUM_COLLIDER_TAG.PLAYER && self.tag == ENUM_COLLIDER_TAG.CHICKEN_VIEW){
             AudioManager.instance.stopSound(this.runSoundId);
         }
     }
+
 
     
     getDir(){

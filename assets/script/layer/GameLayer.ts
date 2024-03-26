@@ -3,7 +3,9 @@ import { ENUM_AUDIO_CLIP, ENUM_GAME_EVENT, ENUM_GAME_STATUS, ENUM_GAME_TYPE, ENU
 import AudioManager from "../manager/AudioManager";
 import DataManager from "../manager/DataManager";
 import EventManager from "../manager/EventManager";
+import PoolManager from "../manager/PoolManager";
 import { StaticInstance } from "../StaticInstance";
+import { Vec2ToVec3, Vec3ToVec2 } from "../Utils";
 import BaseLayer from "./Baselayer";
 
 const {ccclass, property} = cc._decorator;
@@ -12,15 +14,16 @@ const {ccclass, property} = cc._decorator;
 export default class GameLayer extends BaseLayer {
 
     @property(cc.Label)
-    goalLabel: cc.Label = null
-    @property(cc.Node)
-    coinsNode: cc.Node = null
+    coinsLabel: cc.Label = null
     @property(cc.Node)
     historyNode: cc.Node = null
 
+    @property(cc.Node)
+    pickupTarget: cc.Node = null;
+
+
     onEnable(){
         this.node.on(cc.Node.EventType.TOUCH_START, this.onTouchStart, this)
-        this.coinsNode.active = DataManager.instance.type == ENUM_GAME_TYPE.LOOP
         // this.historyNode.active = DataManager.instance.type == ENUM_GAME_TYPE.LOOP
     }
 
@@ -35,15 +38,9 @@ export default class GameLayer extends BaseLayer {
         DataManager.instance.status = ENUM_GAME_STATUS.UNRUNING
     }
 
-    setGoal(){
-        if(!this.goalLabel) return
-        this.goalLabel.string = `${DataManager.instance.goal} floor`
-    }
 
     setScore(){
-        if(!this.coinsNode) return
-        const nums = this.coinsNode.getChildByName('nums')
-        nums.getComponent(cc.Label).string = `${DataManager.instance.score}`
+        this.coinsLabel.string = `${DataManager.instance.score}`
     }
 
     setMaxScore()
@@ -61,5 +58,16 @@ export default class GameLayer extends BaseLayer {
 
     protected onDisable(): void {
         this.node.off(cc.Node.EventType.TOUCH_START, this.onTouchStart, this)
+    }
+
+    public spawnCoinAtPosition(position: cc.Vec3){ // world to local
+        const pos = position.add(new cc.Vec3(0, -200, 0))
+        const coin = PoolManager.instance.getNode('coin', this.node, pos);
+        cc.tween(coin)
+        .to(1,{position: this.pickupTarget.position},{easing: "sineOut"})
+        .call(()=>{
+            coin.removeFromParent();
+        })
+        .start();
     }
 }

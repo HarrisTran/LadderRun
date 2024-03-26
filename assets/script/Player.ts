@@ -7,6 +7,8 @@ import Chicken from './enemies/Chicken';
 const {ccclass, property} = cc._decorator;
 
 let v3 = new cc.Vec3()
+const normalSpeed: number = 150;
+const speedUp: number = 360;
 
 @ccclass
 export default class Player extends cc.Component {
@@ -15,7 +17,7 @@ export default class Player extends cc.Component {
     // 速度
     speed: cc.Vec2 = cc.v2(0, 0)
     // 行走
-    walk: number = 200
+    walk: number = 150
     // 移动方向
     direction: number = 0
     // 跳跃
@@ -25,14 +27,13 @@ export default class Player extends cc.Component {
     // 跳跃限制数
     jumpLimit: number = 1
     // 重力
-    gravity: number = -2000
+    gravity: number = -1600
     // 状态
     _status: ENUM_PLAYER_STATUS = ENUM_PLAYER_STATUS.JUMP
     // 动画
     anim: cc.Animation = null
     _enablePowerUp: boolean = false;
 
-    timeOutPowerUp: any = null;
     timeOutSpeedUp: any = null;
 
     get status(){
@@ -149,6 +150,13 @@ export default class Player extends cc.Component {
         
 
         switch (other.tag) {
+            case ENUM_COLLIDER_TAG.ENDPOINT:
+                //AudioManager.instance.playSound(ENUM_AUDIO_CLIP.WIN)
+                EventManager.instance.emit(ENUM_GAME_EVENT.GAME_WIN)
+                for(let i = 0; i < 5; i++){
+                    EventManager.instance.emit(ENUM_GAME_EVENT.EFFECT_STAR_PLAY, {pos: self.node.position, color})
+                }
+                return;
             case ENUM_COLLIDER_TAG.TRAMPOLINE:
                 AudioManager.instance.playSound(ENUM_AUDIO_CLIP.TRAMPOLINE)
                 color = cc.color(255, 255, 255, 255)
@@ -160,15 +168,11 @@ export default class Player extends cc.Component {
                 return
             case ENUM_COLLIDER_TAG.ANANAS:
                 AudioManager.instance.playSound(ENUM_AUDIO_CLIP.SPEED_UP);
-                this.forceSpeedUp();
+                this.awakeSpeedUp();
                 return;
             case ENUM_COLLIDER_TAG.MELON:
                 AudioManager.instance.playSound(ENUM_AUDIO_CLIP.POWER_UP);
-                this.onPoweredUpVFX();
-
-                setTimeout(() => {
-                    this.onPoweredUpVFX()
-                }, 500);
+                this.awakePowerUp()
                 return;
             default:
                 break;
@@ -234,11 +238,11 @@ export default class Player extends cc.Component {
     onCollisionEnterY(other: any, self: any, otherAabb:any, selfAabb: any, otherPreAabb: any, selfPreAabb: any){
         switch(other.tag){
             case ENUM_COLLIDER_TAG.GROUND:
-                DataManager.instance.status = ENUM_GAME_STATUS.RUNING
             case ENUM_COLLIDER_TAG.BRICK:
             case ENUM_COLLIDER_TAG.BOX:
                 if (this.speed.y < 0 && (selfPreAabb.yMax > otherPreAabb.yMax)){
                     // 向下落地
+
                     this.jumpCount = 0
                     this.status = ENUM_PLAYER_STATUS.WALK
                     this.node.y = (otherPreAabb.yMax - this.canvas.y) + (self.node.height - other.node.height)
@@ -268,6 +272,7 @@ export default class Player extends cc.Component {
                     // 修复卡电梯下的情况
                     // 此时保持climb状态，this.speed.y = this.jump * 0.5
                 }
+                DataManager.instance.status = ENUM_GAME_STATUS.RUNING
             break
         }
     }
@@ -281,32 +286,24 @@ export default class Player extends cc.Component {
         }
     }
 
-    forceSpeedUp() {
-        this.walk = 500;
+    awakeSpeedUp() {
+        this.walk = speedUp;
         if(this.timeOutSpeedUp){
             clearTimeout(this.timeOutSpeedUp);
         }
         this.timeOutSpeedUp = setTimeout(() => {
-            this.walk = 200;
+            this.walk = normalSpeed;
         },5000)
     }
 
-    onPoweredUpVFX()
-    {
-        let shield = this.node.getChildByName("shield")
-
+    public awakePowerUp(){
         this._enablePowerUp = true;
-        shield.active = true;
+        this.node.getComponent(cc.Animation).play("shield");
+    }
 
-        if(this.timeOutPowerUp){
-            clearTimeout(this.timeOutPowerUp);
-        }
 
-        this.timeOutPowerUp = setTimeout(() => {
-            this._enablePowerUp = false;
-            shield.active = false;
-        },5000)
-
+    onShieldEnd(){
+        this._enablePowerUp = false;
     }
 
 

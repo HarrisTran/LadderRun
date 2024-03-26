@@ -1,4 +1,3 @@
-// Created by carolsail
 
 import { ENUM_AUDIO_CLIP, ENUM_COLLIDER_TAG } from "../Enum";
 import AudioManager from "../manager/AudioManager";
@@ -13,7 +12,7 @@ export default class Box extends cc.Component {
     protected onLoad(): void {
         this.animation = this.node.getComponent(cc.Animation);
         this.animation.on('play', this.onPlay, this);
-        //this.animation.on('finished', this.onFinished, this);
+        this.animation.on('finished', this.onFinished, this);
     }
 
     onCollisionEnter (other: cc.BoxCollider, self: cc.BoxCollider) {
@@ -33,6 +32,6 @@ export default class Box extends cc.Component {
 
     protected onDestroy(): void {
         this.animation.off('play', this.onFinished, this)
-        //this.animation.off('finished', this.onFinished, this)
+        this.animation.off('finished', this.onFinished, this)
     }
 }

@@ -13,18 +13,20 @@ const {ccclass, property} = cc._decorator;
 @ccclass
 export default class PiranhaPlant extends cc.Component {
     piranhaPlant: cc.Node = null;
+    piranhaPlantTemp: cc.Node = null;
     actionPlant : cc.Tween<cc.Node> = null;
 
     protected onLoad(): void {
-        this.piranhaPlant = this.node.getChildByName("piranha_plant");
+        this.piranhaPlantTemp = this.node.getChildByName("mask");
+        this.piranhaPlant = this.piranhaPlantTemp.getChildByName("piranha_plant");
     }
 
     onCollisionEnter (other: cc.BoxCollider, self: cc.BoxCollider) {
         if(other.tag == ENUM_COLLIDER_TAG.PLAYER && self.tag == ENUM_COLLIDER_TAG.PLANT_VIEW){
             this.actionPlant = cc.tween(this.piranhaPlant).sequence(
-                cc.tween(this.piranhaPlant).to(0.25,{y: 40}),
+                cc.tween(this.piranhaPlant).to(0.25,{y: 0}),
                 cc.tween().delay(0.25),
-                cc.tween(this.piranhaPlant).to(0.5,{y: 0}),
+                cc.tween(this.piranhaPlant).to(0.5,{y: -80}),
                 cc.tween().delay(1.5),
             )
             .repeat(20)

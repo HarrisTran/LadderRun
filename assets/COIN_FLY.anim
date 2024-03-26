@@ -1,0 +1,45 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "COIN_FLY",
+  "_objFlags": 0,
+  "_native": "",
+  "_duration": 0.21666666666666667,
+  "sample": 60,
+  "speed": 1,
+  "wrapMode": 1,
+  "curveData": {
+    "props": {
+      "x": [
+        {
+          "frame": 0,
+          "value": -3.294
+        },
+        {
+          "frame": 0.16666666666666666,
+          "value": 84.007
+        }
+      ],
+      "y": [
+        {
+          "frame": 0,
+          "value": -1.647
+        },
+        {
+          "frame": 0.16666666666666666,
+          "value": -395.324
+        }
+      ],
+      "opacity": [
+        {
+          "frame": 0.16666666666666666,
+          "value": 255
+        },
+        {
+          "frame": 0.21666666666666667,
+          "value": 0
+        }
+      ]
+    }
+  },
+  "events": []
+}

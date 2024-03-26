@@ -6,6 +6,8 @@ export enum ENUM_GAME_STATUS {
     RUNING = 'RUNING'
 }
 
+export const COIN_VALUE = 50;
+
 // 玩家状态
 export enum ENUM_PLAYER_STATUS {
     WALK = 'walk',
@@ -33,7 +35,6 @@ export enum ENUM_PLANT_STATUS {
     IDLE = 'idle',
     ATTACK = 'attack'
 }
-
 
 // 碰撞类型
 export enum ENUM_COLLIDER_TAG {
@@ -86,9 +87,13 @@ export enum ENUM_UI_TYPE {
     LOADING,
     MENU,
     GAME,
+    LEVEL,
     SETTING,
     LOSE,
+    WIN,
     GAME_OVER,
+    SKIN,
+    MORE,
     CONFIRM,
 }
 
