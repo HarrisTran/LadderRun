@@ -27,7 +27,7 @@ export default class Player extends cc.Component {
     // 跳跃限制数
     jumpLimit: number = 1
     // 重力
-    gravity: number = -2000
+    gravity: number = -1750
     // 状态
     _status: ENUM_PLAYER_STATUS = ENUM_PLAYER_STATUS.JUMP
     // 动画

@@ -736,15 +736,15 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        64.955,
-        -17.047,
+        65,
+        21,
         0,
         0,
         0,
         0,
         1,
         1,
-        1,
+        0.7,
         1
       ]
     },
@@ -822,7 +822,7 @@
     "asset": {
       "__uuid__": "2c773ebb-003d-4ffe-bf6f-f9ef5dde714a"
     },
-    "fileId": "60fWPRu11CUKl3UqGvxs4H",
+    "fileId": "52Pd6cGhNG0aiQWqNBLLmX",
     "sync": false
   },
   {
@@ -863,13 +863,13 @@
     "tag": 3,
     "_offset": {
       "__type__": "cc.Vec2",
-      "x": 0,
-      "y": -12
+      "x": -3,
+      "y": -3.8
     },
     "_size": {
       "__type__": "cc.Size",
-      "width": 24,
-      "height": 227
+      "width": 20,
+      "height": 159.4
     },
     "_id": ""
   },

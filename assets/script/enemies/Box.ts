@@ -1,5 +1,6 @@
 
 import { ENUM_AUDIO_CLIP, ENUM_COLLIDER_TAG } from "../Enum";
+import { delay } from "../Utils";
 import AudioManager from "../manager/AudioManager";
 
 const {ccclass, property} = cc._decorator;
@@ -26,7 +27,8 @@ export default class Box extends cc.Component {
         if(this.animation.getAnimationState('box').isPlaying) this.node.removeComponent(cc.Collider)
     }
 
-    onFinished(){
+    async onFinished(){
+        await delay(100)
         this.node.active = false
     }
 

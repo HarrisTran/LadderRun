@@ -109,7 +109,7 @@ export default class GameManager extends cc.Component {
         if(!this.stageNode) return
         this.stageNode.removeAllChildren()
         this.lavaNode.setPosition(0,-650);
-        const data = [26,29,63,27,26,3,36,28,26,33,29,28,31,32]
+        const data = [26,29,40,27,26,3,36,28,26,33,29,28,31,32]
         for(let i = 0; i < data.length; i++){
             const blockIndex = data[i]
             const block: cc.Node = PoolManager.instance.getNode(`block${blockIndex}`, this.stageNode)
@@ -156,11 +156,14 @@ export default class GameManager extends cc.Component {
                 DataManager.instance.score += Math.round(currentIndexBlock/10)*100;
                 DataManager.instance.save()
                 StaticInstance.uiManager.setGameScore()
+                // this._levelList = createCycleBlockList();
+            }
+            if(currentIndexBlock % 12 == 1){
                 this._levelList = createCycleBlockList();
             }
         }
         
-        this.addNewBlock(this._levelList[(currentIndexBlock-2)%10]);
+        this.addNewBlock(this._levelList[(currentIndexBlock-2)%12]);
     }
 
     addNewBlock(blockIndex: number){

@@ -782,15 +782,15 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        64.955,
-        -17.047,
+        65,
+        21,
         0,
         0,
         0,
         0,
         1,
         1,
-        1,
+        0.7,
         1
       ]
     },
@@ -909,13 +909,13 @@
     "tag": 3,
     "_offset": {
       "__type__": "cc.Vec2",
-      "x": 0,
-      "y": -15
+      "x": -3.2,
+      "y": 2
     },
     "_size": {
       "__type__": "cc.Size",
       "width": 20,
-      "height": 180
+      "height": 160
     },
     "_id": ""
   },
