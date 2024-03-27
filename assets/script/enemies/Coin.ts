@@ -40,7 +40,8 @@ export default class Coin extends cc.Component {
 
     async onFinished(){
         cc.tween(this.floatText)
-        .by(0.4,{y:20})
+        .by(0.46,{y:48})
+        .delay(0.2)
         .call(()=>{
             this.node.active = false;
         })

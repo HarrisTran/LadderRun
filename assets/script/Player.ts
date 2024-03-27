@@ -21,7 +21,7 @@ export default class Player extends cc.Component {
     // 移动方向
     direction: number = 0
     // 跳跃
-    jump: number = 700
+    jump: number = 600
     // 跳跃累计数
     jumpCount:number = 0
     // 跳跃限制数
