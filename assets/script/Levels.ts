@@ -26,7 +26,6 @@ export function createCycleBlockList()
     result.push(...getRandomElements(middleLadder,1))
     result.push(...getRandomElements(bonusList,1))
     result.push(...getRandomElements(spikeball,1))
-    console.log(result);
     
     return result;
 }
