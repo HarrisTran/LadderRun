@@ -1,0 +1,101 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "collected",
+  "_objFlags": 0,
+  "_native": "",
+  "_duration": 0.4,
+  "sample": 20,
+  "speed": 1,
+  "wrapMode": 1,
+  "curveData": {
+    "comps": {
+      "cc.Sprite": {
+        "spriteFrame": [
+          {
+            "frame": 0,
+            "value": {
+              "__uuid__": "5a9314ae-c3cf-4d47-a92d-a290ba2c8d15"
+            }
+          },
+          {
+            "frame": 0.05,
+            "value": {
+              "__uuid__": "55b40706-31f0-4f3b-a33b-ff31e4aa6176"
+            }
+          },
+          {
+            "frame": 0.1,
+            "value": {
+              "__uuid__": "5a32ce3b-af7d-434c-af1f-8794ac4f4250"
+            }
+          },
+          {
+            "frame": 0.15,
+            "value": {
+              "__uuid__": "e3bf958f-3c9c-4a52-97f7-066ca870632d"
+            }
+          },
+          {
+            "frame": 0.2,
+            "value": {
+              "__uuid__": "75e2b785-667e-4202-a62a-29805658b0d5"
+            }
+          },
+          {
+            "frame": 0.25,
+            "value": {
+              "__uuid__": "16ac2907-2413-45e8-ae43-9187754936f8"
+            }
+          },
+          {
+            "frame": 0.3,
+            "value": {
+              "__uuid__": "cd424545-25dc-4bce-a474-b9d1be2acc4f"
+            }
+          },
+          {
+            "frame": 0.35,
+            "value": {
+              "__uuid__": "6a367a74-c530-4422-b4c1-f6826bb0bbd9"
+            }
+          }
+        ]
+      }
+    },
+    "props": {
+      "color": [
+        {
+          "frame": 0,
+          "value": {
+            "__type__": "cc.Color",
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 255
+          }
+        },
+        {
+          "frame": 0.4,
+          "value": {
+            "__type__": "cc.Color",
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 255
+          }
+        }
+      ],
+      "opacity": [
+        {
+          "frame": 0,
+          "value": 255
+        },
+        {
+          "frame": 0.4,
+          "value": 0
+        }
+      ]
+    }
+  },
+  "events": []
+}

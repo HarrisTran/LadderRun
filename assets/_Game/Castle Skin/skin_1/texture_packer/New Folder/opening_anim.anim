@@ -1,0 +1,221 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "opening_anim",
+  "_objFlags": 0,
+  "_native": "",
+  "_duration": 2,
+  "sample": 24,
+  "speed": 1,
+  "wrapMode": 2,
+  "curveData": {
+    "paths": {
+      "point": {
+        "props": {
+          "position": [
+            {
+              "frame": 0,
+              "value": [
+                -59.222,
+                84.927,
+                0
+              ]
+            },
+            {
+              "frame": 0.5,
+              "value": [
+                -135.188,
+                84.992,
+                0
+              ]
+            },
+            {
+              "frame": 1.5,
+              "value": [
+                17.951,
+                79.213,
+                0
+              ]
+            },
+            {
+              "frame": 2,
+              "value": [
+                -59.222,
+                84.927,
+                0
+              ]
+            }
+          ]
+        }
+      },
+      "point/leg_left": {
+        "props": {
+          "angle": [
+            {
+              "frame": 0,
+              "value": 9.499
+            },
+            {
+              "frame": 0.625,
+              "value": -48.341
+            },
+            {
+              "frame": 1.5,
+              "value": -12.471999999999998
+            },
+            {
+              "frame": 2,
+              "value": 9.499
+            }
+          ]
+        }
+      },
+      "point/head": {
+        "props": {
+          "scaleX": [
+            {
+              "frame": 0,
+              "value": 1
+            },
+            {
+              "frame": 0.9166666666666666,
+              "value": 1.05
+            },
+            {
+              "frame": 2,
+              "value": 1
+            }
+          ],
+          "scaleY": [
+            {
+              "frame": 0,
+              "value": 1
+            },
+            {
+              "frame": 0.9166666666666666,
+              "value": 0.95
+            },
+            {
+              "frame": 2,
+              "value": 1
+            }
+          ],
+          "position": [
+            {
+              "frame": 0,
+              "value": [
+                61.138,
+                35.069,
+                0
+              ]
+            },
+            {
+              "frame": 0.9166666666666666,
+              "value": [
+                67.505,
+                33.939,
+                0
+              ]
+            },
+            {
+              "frame": 2,
+              "value": [
+                61.138,
+                35.069,
+                0
+              ]
+            }
+          ]
+        }
+      },
+      "tree": {
+        "props": {
+          "angle": [
+            {
+              "frame": 0,
+              "value": 0
+            },
+            {
+              "frame": 0.5,
+              "value": -4
+            },
+            {
+              "frame": 1.5,
+              "value": 4.239
+            },
+            {
+              "frame": 2,
+              "value": 0
+            }
+          ]
+        }
+      },
+      "point/leg_right": {
+        "props": {
+          "angle": [
+            {
+              "frame": 0,
+              "value": 2.894069124423968
+            },
+            {
+              "frame": 0.4166666666666667,
+              "value": 29.06306912442397
+            },
+            {
+              "frame": 1.3333333333333333,
+              "value": 45.65188491389766
+            },
+            {
+              "frame": 2,
+              "value": 2.894069124423968
+            }
+          ]
+        }
+      },
+      "point/arm": {
+        "props": {
+          "angle": [
+            {
+              "frame": 0,
+              "value": 17.814
+            },
+            {
+              "frame": 0.375,
+              "value": -12.277000000000001
+            },
+            {
+              "frame": 0.875,
+              "value": 28.20176923076923
+            },
+            {
+              "frame": 1.375,
+              "value": -2.3600170940170955
+            },
+            {
+              "frame": 2,
+              "value": 17.814
+            }
+          ]
+        }
+      },
+      "lava": {
+        "props": {
+          "y": [
+            {
+              "frame": 0,
+              "value": -1093.27
+            },
+            {
+              "frame": 0.9583333333333334,
+              "value": -1178.059
+            },
+            {
+              "frame": 2,
+              "value": -1093.27
+            }
+          ]
+        }
+      }
+    }
+  },
+  "events": []
+}

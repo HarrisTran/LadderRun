@@ -1,0 +1,13 @@
+{
+  "ver": "1.1.3",
+  "uuid": "9caf150f-262f-4109-a723-7c57291f1256",
+  "importer": "folder",
+  "isBundle": true,
+  "bundleName": "Pyramid",
+  "priority": 1,
+  "compressionType": {},
+  "optimizeHotUpdate": {},
+  "inlineSpriteFrames": {},
+  "isRemoteBundle": {},
+  "subMetas": {}
+}

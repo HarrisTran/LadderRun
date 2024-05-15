@@ -1,0 +1,13 @@
+{
+  "ver": "1.1.3",
+  "uuid": "e8dd0504-b758-4166-ae0f-a8a968456acb",
+  "importer": "folder",
+  "isBundle": true,
+  "bundleName": "Alien",
+  "priority": 1,
+  "compressionType": {},
+  "optimizeHotUpdate": {},
+  "inlineSpriteFrames": {},
+  "isRemoteBundle": {},
+  "subMetas": {}
+}
