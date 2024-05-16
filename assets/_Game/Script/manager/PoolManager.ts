@@ -17,7 +17,7 @@ export default class PoolManager{
     }
 
     private _dictPool: any = {}
-    private _dictPrefab: any = {}
+    public _dictPrefab: any = {}
 
     public copyNode(copynode: cc.Node, parent: cc.Node | null): cc.Node {
         let name = copynode.name;

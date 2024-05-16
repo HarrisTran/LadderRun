@@ -3,6 +3,7 @@ import LoadingLayer from '../layer/LoadingLayer';
 import MenuLayer from "../layer/MenuLayer";
 import GameLayer from '../layer/GameLayer';
 import LoseLayer from '../layer/LoseLayer';
+import { GameState } from '../Enum';
 
 const {ccclass, property} = cc._decorator;
 
@@ -15,6 +16,30 @@ export default class UIManager extends cc.Component {
     @property(LoseLayer) loseLayer: LoseLayer = null
 
 
+    public changeState(state : GameState)
+    {
+        this.loadingLayer.hide();
+        this.menuLayer.hide();
+        this.gameLayer.hide();
+        this.loseLayer.hide();
+
+        switch (state) {
+            case GameState.LOADING:
+                this.loadingLayer.show();
+                break;
+            case GameState.MAIN_MENU:
+                this.menuLayer.show();
+                break;
+            case GameState.PLAYING:
+                this.gameLayer.show();
+                break;
+            case GameState.REPLAY:
+                
+                break;
+            case GameState.ENDGAME:
+                break;
+        }
+    }
     // protected onLoad(): void {
     //     StaticInstance.setUIManager(this)
     //     this.uiMap.set(ENUM_UI_TYPE.LOADING, this.loadingLayer)

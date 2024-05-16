@@ -12,11 +12,11 @@ export default class Camera extends cc.Component {
     offsetY: number = 300
 
     onLoad () {
-        EventManager.instance.on(ENUM_GAME_EVENT.CAMERA_MOVE, this.onCameraMove, this)
+        cc.game.on(ENUM_GAME_EVENT.CAMERA_MOVE, this.onCameraMove, this)
     }
 
     protected onDestroy(): void {
-        EventManager.instance.off(ENUM_GAME_EVENT.CAMERA_MOVE, this.onCameraMove)
+        cc.game.off(ENUM_GAME_EVENT.CAMERA_MOVE, this.onCameraMove)
     }
 
     onCameraMove({block, reset}){

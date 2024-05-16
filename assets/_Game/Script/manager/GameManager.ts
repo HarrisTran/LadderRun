@@ -15,6 +15,7 @@ import { delay } from '../Utils';
 import { IManager } from './IManager';
 import ResourceManager from './ResourceManager';
 import UIManager from './UIManager';
+import AudioManager from './AudioManager';
 
 const {ccclass, property} = cc._decorator;
 
@@ -25,9 +26,10 @@ export default class GameManager extends cc.Component {
         return GameManager._instance;
     }
 
-    @property({ type: cc.Enum(GameState) , visible : false}) public CurrentGameState: GameState = GameState.MainMenu;
+    @property({ type: cc.Enum(GameState) , visible : false}) public CurrentGameState: GameState = GameState.MAIN_MENU;
 
     @property(UIManager) public UIManager: UIManager = null;
+    @property(AudioManager) public audioManager : AudioManager = null;
     @property(cc.Node) private stageNode: cc.Node = null
     // @property(cc.Node) private lavaNode: cc.Node = null
 
@@ -37,10 +39,18 @@ export default class GameManager extends cc.Component {
 
     private _levelList : number[] ;
 
+    private _previousBlockNode: cc.Node;
+
     onLoad () {
         GameManager._instance = this;
+        this._initializePhysicsManager();
         this._initializeGameEvents();
-        this.ChangeState(GameState.Loading);
+        this.ChangeState(GameState.LOADING);
+    }
+
+    private _initializePhysicsManager(){
+        const physics = cc.director.getCollisionManager();
+        physics.enabled = true;
     }
 
     private _initializeGameEvents(): void {
@@ -58,22 +68,25 @@ export default class GameManager extends cc.Component {
         if (this.CurrentGameState == newState) return;
 
         this.CurrentGameState = newState;  
+
+        this.UIManager.changeState(newState);
         switch (this.CurrentGameState) {
-            case GameState.Loading:
+            case GameState.LOADING:
                 this._initializeAllManagers();
                 break;
-            case GameState.MainMenu:
+            case GameState.MAIN_MENU:
                 //this.UiController.LoadingDone();
                 break;
-            case GameState.Playing:
+            case GameState.PLAYING:
+                this.initGame()
                 // this.APIManager.ticketMinus("auth");
                 // this.UiController.StartGame();
                 break;
-            case GameState.Replay:
+            case GameState.REPLAY:
                 // this.APIManager.ticketMinus("revive");
                 // this.UiController.StartGame();
                 break;
-            case GameState.EndGame:
+            case GameState.ENDGAME:
                 // this.UiController.ShowEndGameUI();
                 break;
         }
@@ -85,27 +98,29 @@ export default class GameManager extends cc.Component {
         this.resourcesManager = new ResourceManager();
 
         this._allManagers.push(this.resourcesManager);
+        this._allManagers.push(this.audioManager);
 
         this.resourcesManager.initialize();
+        this.audioManager.initialize();
     }
 
-    onGameStart(){
+    private onGameStart(){
+        this.ChangeState(GameState.PLAYING)
         // DataManager.instance.currentIndexBlock = 1;
         // DataManager.instance.reset()
         // // this._lowerLevelBound = 0;
         // // this._upperLevelBound = 0;
         // this._levelList = createCycleBlockList()
-        this.initGame()
     }
 
     protected update(dt: number): void {
-        if(this.CurrentGameState == GameState.Loading){
+        if(this.CurrentGameState == GameState.LOADING){
             let total = this._allManagers.reduce((acc,manager)=>{
                 return acc + manager.progress();
             },0)
             this.UIManager.loadingLayer.setProgressBar(total/this._allManagers.length);
-            if(-this._allManagers.every(manager => manager.initializationCompleted()) && this.CurrentGameState == GameState.Loading){
-                this.ChangeState(GameState.MainMenu);
+            if(-this._allManagers.every(manager => manager.initializationCompleted()) && this.CurrentGameState == GameState.LOADING){
+                this.ChangeState(GameState.MAIN_MENU);
             }
         }
     }
@@ -116,20 +131,20 @@ export default class GameManager extends cc.Component {
         // DataManager.instance.reset(true)
         //this.initGame();
         // if(!DEBUG_MODE) BackendConnector.instance.ticketMinus("revive")
-        StaticInstance.uiManager.toggle(ENUM_UI_TYPE.LOSE, false);
-        this.scheduleOnce(()=>{
-            let lavaPosition = this.lavaNode.getPosition();
-            this.lavaNode.setPosition(lavaPosition.x,lavaPosition.y-400)
+        // StaticInstance.uiManager.toggle(ENUM_UI_TYPE.LOSE, false);
+        // this.scheduleOnce(()=>{
+        //     let lavaPosition = this.lavaNode.getPosition();
+        //     this.lavaNode.setPosition(lavaPosition.x,lavaPosition.y-400)
 
-            let currentIndex = DataManager.instance.currentIndexBlock;
-            let block = DataManager.instance.blocks[currentIndex-1];
-            const player: cc.Node = PoolManager.instance.getNode(`player${DataManager.instance.skinIndex}`, this.stageNode)
-            player.zIndex = ENUM_GAME_ZINDEX.PLAYER
-            player.setPosition(cc.v2(0, block.y+20))
-            let playerCmp = player.getComponent(Player);
-            playerCmp.setDir(1)
-            playerCmp.awakePowerUp();
-        },0.25)
+        //     let currentIndex = DataManager.instance.currentIndexBlock;
+        //     let block = DataManager.instance.blocks[currentIndex-1];
+        //     const player: cc.Node = PoolManager.instance.getNode(`player${DataManager.instance.skinIndex}`, this.stageNode)
+        //     player.zIndex = ENUM_GAME_ZINDEX.PLAYER
+        //     player.setPosition(cc.v2(0, block.y+20))
+        //     let playerCmp = player.getComponent(Player);
+        //     playerCmp.setDir(1)
+        //     playerCmp.awakePowerUp();
+        // },0.25)
     }
 
     async onGameOver(){
@@ -144,46 +159,78 @@ export default class GameManager extends cc.Component {
 
     // 失败
     onGameLose(){
-        DataManager.instance.status = ENUM_GAME_STATUS.UNRUNING
-        this.scheduleOnce(()=>{
-            StaticInstance.uiManager.toggle(ENUM_UI_TYPE.LOSE,true)
-        }, 0.5) 
+        // DataManager.instance.status = ENUM_GAME_STATUS.UNRUNING
+        // this.scheduleOnce(()=>{
+        //     StaticInstance.uiManager.toggle(ENUM_UI_TYPE.LOSE,true)
+        // }, 0.5) 
     }
 
     initGame(){
         if(!this.stageNode) return
         this.stageNode.removeAllChildren()
-        // this.lavaNode.setPosition(0,-650);
-        const data = [26,29,40,27,26,3,36,28,26,33,29,28,31,32]
-        for(let i = 0; i < data.length; i++){
-            const blockIndex = data[i]
-            const block: cc.Node = PoolManager.instance.getNode(`block${blockIndex}`, this.stageNode)
-            const component = block.getComponent(Block)
-            component.init({ id: i + 1, x: 0, y: block.height * i})
-            component.rendor()
-            block.setSiblingIndex(0)
-            if(i%2){
-                component.flipXHelper()
+        const canvasHeight = cc.find('Canvas').height;
+
+        for (let i = 0; i < 10; i++) {
+            let block: cc.Node = PoolManager.instance.getNode('block',this.stageNode);
+            if (i == 0) {
+                block.setPosition(0,(block.height-canvasHeight)/2);
+            }else{
+                let offset = (this._previousBlockNode.height + block.height)/2;
+                block.setPosition(0,this._previousBlockNode.y + offset);
             }
+            let cpn = block.getComponent(Block);
+            cpn.init({
+                id : 1,
+                dataInstance: this.resourcesManager.blockMap[Math.random() < 0.5 ? "Block1" : "Block0"].data
+            });
+            cpn.rendor();
+            block.setSiblingIndex(0);
+            this._previousBlockNode = block;
         }
-        const firstBlockNode = DataManager.instance.getFirstBlock()?.node
-        if(firstBlockNode){
-            EventManager.instance.emit(ENUM_GAME_EVENT.CAMERA_MOVE, {block: firstBlockNode, reset: true})
-            this.scheduleOnce(()=>{
-                const ladder = firstBlockNode.getChildByName('ladder')
-                const player: cc.Node = PoolManager.instance.getNode(`player${DataManager.instance.skinIndex}`, this.stageNode)
-                player.zIndex = ENUM_GAME_ZINDEX.PLAYER
-                player.setPosition(cc.v2(-ladder.x, firstBlockNode.y))
-                if(ladder.x > 0){
-                    player.getComponent(Player).setDir(1)
-                }else{
-                    player.getComponent(Player).setDir(-1)
-                }
-            })
-        }
-        StaticInstance.uiManager.setGameScore()
-        StaticInstance.uiManager.setGameMaxScore()
+
+
+
+
+
+
+        // this.lavaNode.setPosition(0,-650);
+        // const data = [26,29,40,27,26,3,36,28,26,33,29,28,31,32]
+        // for(let i = 0; i < data.length; i++){
+        //     const blockIndex = data[i]
+        //     const block: cc.Node = PoolManager.instance.getNode(`block${blockIndex}`, this.stageNode)
+        //     const component = block.getComponent(Block)
+        //     component.init({ id: i + 1, x: 0, y: block.height * i})
+        //     component.rendor()
+        //     block.setSiblingIndex(0)
+        //     if(i%2){
+        //         component.flipXHelper()
+        //     }
+        // }
+        // const firstBlockNode = DataManager.instance.getFirstBlock()?.node
+        // if(firstBlockNode){
+        //     EventManager.instance.emit(ENUM_GAME_EVENT.CAMERA_MOVE, {block: firstBlockNode, reset: true})
+        //     this.scheduleOnce(()=>{
+        //         const ladder = firstBlockNode.getChildByName('ladder')
+        //         const player: cc.Node = PoolManager.instance.getNode(`player${DataManager.instance.skinIndex}`, this.stageNode)
+        //         player.zIndex = ENUM_GAME_ZINDEX.PLAYER
+        //         player.setPosition(cc.v2(-ladder.x, firstBlockNode.y))
+        //         if(ladder.x > 0){
+        //             player.getComponent(Player).setDir(1)
+        //         }else{
+        //             player.getComponent(Player).setDir(-1)
+        //         }
+        //     })
+        // }
+        // StaticInstance.uiManager.setGameScore()
+        // StaticInstance.uiManager.setGameMaxScore()
         //DataManager.instance.status = ENUM_GAME_STATUS.RUNING
+        
+        setTimeout(() => {
+            const player: cc.Node = PoolManager.instance.getNode(`player`, this.stageNode)
+            player.zIndex = ENUM_GAME_ZINDEX.PLAYER
+            player.setPosition(this.stageNode.children[10].position)
+            player.getComponent(Player).setDir(1) 
+        }, 2000);
     }
 
     setMaxGoal(){
@@ -200,7 +247,7 @@ export default class GameManager extends cc.Component {
             if(currentIndexBlock % 10 == 0) {
                 DataManager.instance.score += Math.round(currentIndexBlock/10)*100;
                 DataManager.instance.save()
-                StaticInstance.uiManager.setGameScore()
+                // StaticInstance.uiManager.setGameScore()
                 // this._levelList = createCycleBlockList();
             }
             if(currentIndexBlock % 12 == 1){
@@ -212,24 +259,24 @@ export default class GameManager extends cc.Component {
     }
 
     addNewBlock(blockIndex: number){
-        DataManager.instance.lastIndexBlock = blockIndex;
-        const block: cc.Node = PoolManager.instance.getNode(`block${blockIndex}`, this.stageNode)
-        block.setSiblingIndex(0);
-        const lastBlock = DataManager.instance.getLastBlock()
-        const ladderCurrent: cc.Node = block.getChildByName('ladder')
-        const ladderLast: cc.Node = lastBlock.node.getChildByName('ladder')
-        if(ladderCurrent && ladderLast && ladderCurrent.x == ladderLast.x){
-            block.getComponent(Block).flipXHelper();
-        }
+        // DataManager.instance.lastIndexBlock = blockIndex;
+        // const block: cc.Node = PoolManager.instance.getNode(`block${blockIndex}`, this.stageNode)
+        // block.setSiblingIndex(0);
+        // const lastBlock = DataManager.instance.getLastBlock()
+        // const ladderCurrent: cc.Node = block.getChildByName('ladder')
+        // const ladderLast: cc.Node = lastBlock.node.getChildByName('ladder')
+        // if(ladderCurrent && ladderLast && ladderCurrent.x == ladderLast.x){
+        //     block.getComponent(Block).flipXHelper();
+        // }
 
-        const component = block.getComponent(Block)
+        // const component = block.getComponent(Block)
 
-        component.init({
-            id: lastBlock.id + 1,
-            x: 0,
-            y: lastBlock.y + lastBlock.node.height
-        })
-        component.rendor()
+        // component.init({
+        //     id: lastBlock.id + 1,
+        //     x: 0,
+        //     y: lastBlock.y + lastBlock.node.height
+        // })
+        // component.rendor()
     }
 
     onEffectStarPlay(data: any){

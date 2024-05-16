@@ -1,10 +1,10 @@
 
 export enum GameState {
-    Loading,
-    MainMenu,
-    Playing,
-    Replay,
-    EndGame
+    LOADING,
+    MAIN_MENU,
+    PLAYING,
+    REPLAY,
+    ENDGAME
 }
 
 export const SCENE_TO_RESOURCES_MAPPING : {[key:string]:string} = {
@@ -55,24 +55,24 @@ export enum ENUM_COLLIDER_TAG {
     GROUND = 1,
     WALL = 2,
     LADDER = 3,
-    ENDPOINT = 4,
-    BAT = 5,
-    SPIKE = 6,
-    BAT_VIEW = 7,
-    CHICKEN = 8,
-    CHICKEN_VIEW = 9,
+    // ENDPOINT = 4,
+    // BAT = 5,
+    // SPIKE = 6,
+    // BAT_VIEW = 7,
+    // CHICKEN = 8,
+    // CHICKEN_VIEW = 9,
     BRICK = 10,
-    SAW = 11,
-    SPIKEBALL = 12,
+    // SAW = 11,
+    // SPIKEBALL = 12,
     BOX = 13,
-    TRAMPOLINE = 14,
-    PLANT_VIEW = 15,
-    PLANT_BULLET = 16,
-    COIN = 17,
-    ANANAS = 18,
-    MELON = 19,
-    PIRANHA_PLANT = 20,
-    LAVA = 21,
+    // TRAMPOLINE = 14,
+    // PLANT_VIEW = 15,
+    // PLANT_BULLET = 16,
+    // COIN = 17,
+    // ANANAS = 18,
+    // MELON = 19,
+    // PIRANHA_PLANT = 20,
+    // LAVA = 21,
 }
 
 // 事件
@@ -153,4 +153,61 @@ export enum ENUM_GAME_TYPE {
 export enum ENUM_GAME_ZINDEX {
     BLOCK,
     PLAYER 
+}
+
+export enum ITEM_CODE 
+{
+    LONG_LADDER = 1,
+    MEDIUM_LADDER,
+    SHORT_LADDER,
+    REWARD_1,
+    REWARD_2,
+    SOFT_TRAP_WALL,
+    HARD_TRAP_WALL_1,
+    HARD_TRAP_WALL_2,
+    SPIKE,
+    TRAP_SHOT_REAR,
+    TRAP_SHOT_CELLAR,
+    TRAP_HIDE_STAND,
+    TRAP_HIDE_CELLAR_LOW,
+    TRAP_HIDE_CELLAR_HIGH,
+    TRAP_HIDE_CELLAR_RANDOM,
+    REVERSE_MOVING_TRAP,
+    DANGER_MOVING_TRAP,
+    IDLE_MOVING_TRAP,
+    CIRCLE_MOVING_TRAP,
+    RANDOM_MOVING_TRAP,
+    BOOSTER_SPEED,
+    BOOSTER_MAGNET,
+    BOOSTER_SHIELD,
+    BOOSTER_RANDOM,
+    TRAMPOLINE,
+}
+
+export const ENUM_ITEM_COLLECTION = {
+    [ITEM_CODE.LONG_LADDER] : 'Long Ladder',
+    [ITEM_CODE.MEDIUM_LADDER] : 'Medium Ladder',
+    [ITEM_CODE.SHORT_LADDER] : 'Short Ladder',
+    [ITEM_CODE.REWARD_1] : 'Reward 1',
+    [ITEM_CODE.REWARD_2] : 'Reward 2',
+    [ITEM_CODE.SOFT_TRAP_WALL] : 'Soft Trap Wall',
+    [ITEM_CODE.HARD_TRAP_WALL_1] : 'Hard Trap Wall 1',
+    [ITEM_CODE.HARD_TRAP_WALL_2] : 'Hard Trap Wall 2',
+    [ITEM_CODE.SPIKE] : 'Spike',
+    [ITEM_CODE.TRAP_SHOT_REAR] : 'Trap Shot Rear',
+    [ITEM_CODE.TRAP_SHOT_CELLAR] : 'Trap Shot Cellar',
+    [ITEM_CODE.TRAP_HIDE_STAND] : 'Trap Hide Stand',
+    [ITEM_CODE.TRAP_HIDE_CELLAR_LOW] : 'Trap Hide Cellar Low',
+    [ITEM_CODE.TRAP_HIDE_CELLAR_HIGH] : 'Trap Hide Cellar High',
+    [ITEM_CODE.TRAP_HIDE_CELLAR_RANDOM] : 'Trap Hide Cellar Random',
+    [ITEM_CODE.REVERSE_MOVING_TRAP] : 'Reverse Moving Trap',
+    [ITEM_CODE.DANGER_MOVING_TRAP]: 'Danger Moving Trap',
+    [ITEM_CODE.IDLE_MOVING_TRAP] : 'Idle Moving Trap',
+    [ITEM_CODE.CIRCLE_MOVING_TRAP] : 'Circle Moving Trap',
+    [ITEM_CODE.RANDOM_MOVING_TRAP]: 'Random Moving Trap',
+    [ITEM_CODE.BOOSTER_SPEED]: 'Booster Speed',
+    [ITEM_CODE.BOOSTER_MAGNET] : 'Booster Magnet',
+    [ITEM_CODE.BOOSTER_SHIELD] : 'Booster Shield',
+    [ITEM_CODE.BOOSTER_RANDOM] : 'Booster Random',
+    [ITEM_CODE.TRAMPOLINE] : 'Trampoline'
 }

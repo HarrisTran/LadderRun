@@ -1,57 +1,117 @@
 // Created by carolsail
 
-import { ENUM_AUDIO_CLIP } from './../Enum';
+import { ENUM_AUDIO_CLIP, SCENE_TO_RESOURCES_MAPPING } from './../Enum';
 import DataManager from './DataManager';
+import { IManager } from './IManager';
 import ResourceManager from "./ResourceManager"
+const { ccclass, property } = cc._decorator;
+@ccclass
+export default class AudioManager extends cc.Component implements IManager{
+    private static readonly AUDIO_PATH = 'audio';
+    
+    @property(cc.AudioSource)
+    private soundSource: cc.AudioSource = null;
 
-export default class AudioManager {
-    private audioSource: cc.AudioSource = null
-    private static _instance: any = null
+    @property(cc.AudioSource)
+    private musicSource: cc.AudioSource = null;
 
-    static getInstance<T>(): T {
-        if (this._instance === null) {
-            this._instance = new this()
-            this._instance.init()
+    private _audioClipSet: {[key:string]: cc.AudioClip} = {};
+    private _audioInitializeProgress: number;
+    private _isAudioInitializeDone: boolean;
+    private _isMute = false;
+
+    initialize() {
+        this._audioInitializeProgress = 0;
+        this._isAudioInitializeDone = false;
+        cc.assetManager.loadBundle(SCENE_TO_RESOURCES_MAPPING[cc.director.getScene().name],(error,bundle)=>{
+            bundle.loadDir(AudioManager.AUDIO_PATH,cc.AudioClip,
+                (finish,total,item)=>{
+                    this._audioInitializeProgress = finish / total;
+                },
+                (error,assets)=>{
+                    if (error) console.error(error);
+                    let asset: any;
+                    for (let i = 0; i < assets.length; i++) {
+                        asset = assets[i];
+                        this._audioClipSet[asset.name] = asset;
+                    }
+                    this._audioInitializeProgress = 1;
+                    this._isAudioInitializeDone = true;
+                }
+            )
+        })
+
+    }
+    progress(): number {
+        return this._audioInitializeProgress;
+    }
+    initializationCompleted(): boolean {
+        return this._isAudioInitializeDone;
+    }
+
+    public toggleMute(): boolean {
+        this._isMute = !this._isMute;
+        // this.soundButton.active = !this._isMute;
+        this.setMute(this._isMute);
+        return this._isMute;
+    }
+
+    public setMute(mute: boolean) {
+        this._isMute = mute;
+        if(this.soundSource.clip){
+            this.soundSource.volume = mute ? 0 : 1;
         }
-
-        return this._instance
+        if(this.musicSource.clip){
+            this.musicSource.volume = mute ? 0 : 1;
+        }
     }
 
-    static get instance() {
-        return this.getInstance<AudioManager>()
+    public playBGM(volume = 1, loop = true) {
+        this.musicSource.stop();
+        this.musicSource.clip = this._audioClipSet["BGM"];
+        this.musicSource.play();
     }
 
-    init(){
-        this.audioSource = new cc.AudioSource()
-        this.audioSource.loop = true
-        this.audioSource.volume = 0.3
+    public playSfx(audioClipName: ENUM_AUDIO_CLIP, volume = 1, loop = false) {
+        
+        this.soundSource.clip = this._audioClipSet[audioClipName];
+        this.soundSource.volume = volume;
+        this.soundSource.loop = loop;
+        if(loop) return;
+        this.soundSource.play();
     }
 
-    async playMusic(){
-        const clip = await ResourceManager.instance.getClip(ENUM_AUDIO_CLIP.BGM)
-        this.audioSource.clip = clip
-        cc.audioEngine.playMusic(clip,true);
-    }
+    // init(){
+    //     this.audioSource = new cc.AudioSource()
+    //     this.audioSource.loop = true
+    //     this.audioSource.volume = 0.3
+    // }
 
-    stopMusic(){
-        cc.audioEngine.stopMusic();
-    }
+    // async playMusic(){
+    //     const clip = await ResourceManager.instance.getClip(ENUM_AUDIO_CLIP.BGM)
+    //     this.audioSource.clip = clip
+    //     cc.audioEngine.playMusic(clip,true);
+    // }
 
-    async playSound(name: ENUM_AUDIO_CLIP, isLoop: boolean = false){
-        if(!DataManager.instance.isSoundOn) return
-        const clip = await ResourceManager.instance.getClip(name)
-        return cc.audioEngine.playEffect(clip, isLoop)
-    }
+    // stopMusic(){
+    //     cc.audioEngine.stopMusic();
+    // }
 
-    stopAllEffect(){
-        cc.audioEngine.stopAllEffects();
-    }
+    // async playSound(name: ENUM_AUDIO_CLIP, isLoop: boolean = false){
+    //     if(!DataManager.instance.isSoundOn) return
+    //     const clip = await ResourceManager.instance.getClip(name)
+    //     return cc.audioEngine.playEffect(clip, isLoop)
+    // }
 
-    resumeAllEffect(){
-        cc.audioEngine.resumeAllEffects();
-    }
+    // stopAllEffect(){
+    //     cc.audioEngine.stopAllEffects();
+    // }
 
-    stopSound(audioId: number){
-        cc.audioEngine.stopEffect(audioId)
-    }
+    // resumeAllEffect(){
+    //     cc.audioEngine.resumeAllEffects();
+    // }
+
+    // stopSound(audioId: number){
+    //     cc.audioEngine.stopEffect(audioId)
+    // }
 }

@@ -1,60 +1,62 @@
 // Created by carolsail
 
-import { ENUM_GAME_ZINDEX } from './Enum';
-import { StaticInstance } from './StaticInstance';
-import Coin from './enemies/Coin';
-import DataManager from "./manager/DataManager";
-import EventManager from './manager/EventManager';
+import { ENUM_GAME_ZINDEX, ENUM_ITEM_COLLECTION, ITEM_CODE } from './Enum';
+import PoolManager from './manager/PoolManager';
 
 const { ccclass, property } = cc._decorator;
 
 export interface IBlock {
-    // 唯一id
     id: number,
-    // 坐标x
-    x: number,
-    // 坐标y
-    y: number
+    dataInstance : [[]]
 }
 
-enum Difficulty {
-    EASY = 0,
-    MEDIUM,
-    HARD,
-}
 
 @ccclass
 export default class Block extends cc.Component {
-
-    @property({ type: cc.Enum(Difficulty) })
-    blockType: Difficulty = Difficulty.EASY;
+    @property(cc.Node) private grid: cc.Node = null;
 
     id: number = -1
-    x: number = 0
-    y: number = 0
-
+    dataInstance = [[]]
 
     init(data: IBlock) {
-        Object.assign(this, data)
-        DataManager.instance.blocks.push(this)
+        this.id = data.id;
+        this.dataInstance = data.dataInstance;
     }
 
     rendor() {
         this.node.zIndex = ENUM_GAME_ZINDEX.BLOCK
-        this.node.x = this.x
-        this.node.y = this.y
+        this._rendorInternal();
     }
 
-    flipXHelper() {
-        let objectList = ["ladder","coin","box","ananas","melon2","bat","brick","chicken","plant","spikeball","spike","stone"];
-        objectList.forEach(name => {
-            let nodes = this.node.children.filter(node => node.name == name);
-            if (nodes.length > 0) {
-                nodes.map(node => {
-                    node.x *= -1;
-                    if(["plant","bat","ladder"].includes(name)) node.scaleX *= -1;
-                })
+    private _rendorInternal(){
+        for(let i=0; i < this.dataInstance.length; i++){
+            for(let j=0; j < this.dataInstance[0].length; j++){
+                let code : ITEM_CODE = this.dataInstance[i][j];
+                if( code == ITEM_CODE.LONG_LADDER ||
+                    code == ITEM_CODE.MEDIUM_LADDER ||
+                    code == ITEM_CODE.SHORT_LADDER ||
+                    code == ITEM_CODE.REWARD_1 ||
+                    code == ITEM_CODE.REWARD_2 ||
+                    code == ITEM_CODE.BOOSTER_MAGNET ||
+                    code == ITEM_CODE.BOOSTER_SHIELD ||
+                    code == ITEM_CODE.BOOSTER_SPEED
+                ){
+                    PoolManager.instance.getNode(ENUM_ITEM_COLLECTION[code],this.node,this.grid.children[15*i+j].position)
+                }
             }
-        })
+        }
     }
+
+    // flipXHelper() {
+    //     let objectList = ["ladder","coin","box","ananas","melon2","bat","brick","chicken","plant","spikeball","spike","stone"];
+    //     objectList.forEach(name => {
+    //         let nodes = this.node.children.filter(node => node.name == name);
+    //         if (nodes.length > 0) {
+    //             nodes.map(node => {
+    //                 node.x *= -1;
+    //                 if(["plant","bat","ladder"].includes(name)) node.scaleX *= -1;
+    //             })
+    //         }
+    //     })
+    // }
 }
