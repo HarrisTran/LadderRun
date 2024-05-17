@@ -2,6 +2,7 @@
 
 import { ENUM_GAME_ZINDEX, ENUM_ITEM_COLLECTION, ITEM_CODE } from './Enum';
 import PoolManager from './manager/PoolManager';
+import { randomInList } from './Utils';
 
 const { ccclass, property } = cc._decorator;
 
@@ -14,6 +15,7 @@ export interface IBlock {
 @ccclass
 export default class Block extends cc.Component {
     @property(cc.Node) private grid: cc.Node = null;
+    @property([cc.SpriteFrame]) private blockBGSpriteFrame : cc.SpriteFrame[] = [];
 
     id: number = -1
     dataInstance = [[]]
@@ -29,6 +31,7 @@ export default class Block extends cc.Component {
     }
 
     private _rendorInternal(){
+        this.grid.getComponent(cc.Sprite).spriteFrame = randomInList(this.blockBGSpriteFrame);
         for(let i=0; i < this.dataInstance.length; i++){
             for(let j=0; j < this.dataInstance[0].length; j++){
                 let code : ITEM_CODE = this.dataInstance[i][j];
@@ -39,7 +42,12 @@ export default class Block extends cc.Component {
                     code == ITEM_CODE.REWARD_2 ||
                     code == ITEM_CODE.BOOSTER_MAGNET ||
                     code == ITEM_CODE.BOOSTER_SHIELD ||
-                    code == ITEM_CODE.BOOSTER_SPEED
+                    code == ITEM_CODE.BOOSTER_SPEED ||
+                    code == ITEM_CODE.HARD_TRAP_WALL ||
+                    code == ITEM_CODE.DANGER_MOVING_TRAP ||
+                    code == ITEM_CODE.CIRCLE_MOVING_TRAP ||
+                    code == ITEM_CODE.IDLE_MOVING_TRAP ||
+                    code == ITEM_CODE.RANDOM_MOVING_TRAP
                 ){
                     PoolManager.instance.getNode(ENUM_ITEM_COLLECTION[code],this.node,this.grid.children[15*i+j].position)
                 }

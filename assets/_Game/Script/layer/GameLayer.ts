@@ -1,5 +1,6 @@
 import BackendConnector from "../BackendConnector";
 import { ENUM_AUDIO_CLIP, ENUM_GAME_EVENT, ENUM_GAME_STATUS, ENUM_GAME_TYPE, ENUM_UI_TYPE } from "../Enum";
+import GameManager from "../manager/GameManager";
 import BaseLayer from "./Baselayer";
 
 const {ccclass, property} = cc._decorator;
@@ -23,11 +24,14 @@ export default class GameLayer extends BaseLayer {
         cc.game.emit(ENUM_GAME_EVENT.PLAYER_JUMP)
     }
 
-
+    public setGameScore(){
+        this.coinsLabel.string = GameManager.Instance.playerDataManager.getScore().toString();
+    }
 
     protected onDisable(): void {
         this.node.off(cc.Node.EventType.TOUCH_START, this.onTouchStart, this)
     }
+
 
     // public spawnCoinAtPosition(position: cc.Vec3){ // world to local
     //     const pos = position.add(new cc.Vec3(0, -200, 0))

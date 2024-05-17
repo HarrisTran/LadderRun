@@ -1,8 +1,5 @@
-import { ENUM_COLLIDER_TAG, ENUM_PLAYER_STATUS, ENUM_GAME_EVENT, ENUM_AUDIO_CLIP, ENUM_GAME_STATUS, ENUM_UI_TYPE, GameState} from "./Enum";
-import AudioManager from "./manager/AudioManager";
-import DataManager from "./manager/DataManager";
-import EventManager from "./manager/EventManager";
-import Chicken from './enemies/Chicken';
+import SpeedBooster from "./enemies/SpeedBooster";
+import { ENUM_COLLIDER_TAG, ENUM_PLAYER_STATUS, ENUM_GAME_EVENT, GameState} from "./Enum";
 import GameManager from "./manager/GameManager";
 
 const {ccclass, property} = cc._decorator;
@@ -22,6 +19,9 @@ export default class Player extends cc.Component {
     jumpLimit: number = 1
     gravity: number = -1750
     _status: ENUM_PLAYER_STATUS = ENUM_PLAYER_STATUS.JUMP
+
+    private _boosterHolding: SpeedBooster[]
+
     
 
     get status(){
@@ -91,9 +91,6 @@ export default class Player extends cc.Component {
     }
 
     onCollisionEnter (other: any, self: any) {
-        console.log("collisionEnter");
-        
-        
         // let color = cc.color(243, 175, 197, 255)
         // if(other.tag == ENUM_COLLIDER_TAG.LAVA){
         //     // AudioManager.instance.playSound(ENUM_AUDIO_CLIP.DIE)
@@ -187,7 +184,7 @@ export default class Player extends cc.Component {
     onCollisionEnterX(other: any, self: any, otherAabb:any, selfAabb: any, otherPreAabb: any, selfPreAabb: any){
         switch(other.tag){
             case ENUM_COLLIDER_TAG.WALL:
-            case ENUM_COLLIDER_TAG.BRICK:
+            case ENUM_COLLIDER_TAG.HARD_TRAP_WALL:
             case ENUM_COLLIDER_TAG.BOX:
                 if (this.speed.x < 0 && (selfPreAabb.xMax > otherPreAabb.xMax)){
                     this.node.x += Math.floor(Math.abs(otherAabb.xMax - selfAabb.xMin))
@@ -216,13 +213,14 @@ export default class Player extends cc.Component {
     onCollisionEnterY(other: any, self: any, otherAabb:any, selfAabb: any, otherPreAabb: any, selfPreAabb: any){
         switch(other.tag){
             case ENUM_COLLIDER_TAG.GROUND:
-            case ENUM_COLLIDER_TAG.BRICK:
+            case ENUM_COLLIDER_TAG.HARD_TRAP_WALL:
             case ENUM_COLLIDER_TAG.BOX:
                 if (this.speed.y < 0 && (selfPreAabb.yMax > otherPreAabb.yMax)){
+                    
                     // 向下落地
                     this.jumpCount = 0
                     this.status = ENUM_PLAYER_STATUS.WALK
-                    this.node.y = (otherPreAabb.yMax - this.canvas.y) + (self.node.height - other.node.height)
+                    this.node.y = (otherPreAabb.yMax - this.canvas.y) + (self.node.height - other.node.height);
                     this.speed.y = 0
                     other.touchingY = true
                     //落地星星动画
@@ -239,8 +237,8 @@ export default class Player extends cc.Component {
                     v3.y = (otherPreAabb.yMin - this.canvas.y) + self.node.height
                     cc.tween(this.node).to(0.4, {position: v3}).call(()=>{
                         //AudioManager.instance.playSound(ENUM_AUDIO_CLIP.GOAL)
-                        EventManager.instance.emit(ENUM_GAME_EVENT.PLAYER_CLIMB_END)
-                        EventManager.instance.emit(ENUM_GAME_EVENT.CAMERA_MOVE, {block: other.node.parent})
+                        cc.game.emit(ENUM_GAME_EVENT.PLAYER_CLIMB_END)
+                        cc.game.emit(ENUM_GAME_EVENT.CAMERA_MOVE, {block: other.node.parent})
                         this.status  = ENUM_PLAYER_STATUS.WALK
                         this.jumpCount = 0
                     }).start()
@@ -255,12 +253,44 @@ export default class Player extends cc.Component {
     }
 
     onCollisionExit(other: any){
-        if(other.tag == ENUM_COLLIDER_TAG.BRICK || other.tag == ENUM_COLLIDER_TAG.BOX){
+        if(other.tag == ENUM_COLLIDER_TAG.HARD_TRAP_WALL || other.tag == ENUM_COLLIDER_TAG.BOX){
             if(other.touchingY){
                 other.touchingY = false
                 this.status = ENUM_PLAYER_STATUS.JUMP
             }
         }
+    }
+
+    public holdSpeedBoosterHandle(){
+
+    }
+
+    public cancelSpeedBoosterHandle(){
+
+    }
+
+    public holdMagnetBoosterHandle(){
+
+    }
+
+    public cancelMagnetBoosterHandle(){
+
+    }
+
+    holdShieldBoosterHandle(){
+
+    }
+
+    cancelShieldBoosterHandle(){
+
+    }
+
+    holdRandomBoosterHandle(){
+
+    }
+
+    cancelRandomBoosterHandle(){
+
     }
 
 

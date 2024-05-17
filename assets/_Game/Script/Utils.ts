@@ -5,10 +5,9 @@ export function random(lower: number, upper:number): number {
 }
 
 
-export function randomInList(lst: number[]){
-    let length = lst.length;
-    let index = random(0,length-1);
-    return lst[index];
+export function randomInList<T>(lst: T[]) : T | undefined{
+    if(lst.length == 0) return undefined;
+    return lst[Math.floor(Math.random() * lst.length)];
 }
 
 export function shuffle(arr: any[]){
@@ -38,14 +37,13 @@ export function sort(arr: any[] | unknown, key: any, flag: boolean = true){
     }
 }
 
-export function  Vec3ToVec2(vec3:cc.Vec3): cc.Vec2 {
-    return new cc.Vec2(vec3.x, vec3.y)
+export function getLastElement<T>(arr: T[]) : T | undefined {
+    if(arr.length == 0) return undefined;
+    else{
+        let length = arr.length;
+        return arr[length - 1];
+    }
 }
-
-export function  Vec2ToVec3(vec2:cc.Vec2): cc.Vec3 {
-    return new cc.Vec3(vec2.x, vec2.y)
-}
-
 
 export function delay(delay: number){
     return new Promise((resolve) => setTimeout(resolve, delay));

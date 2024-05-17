@@ -11,11 +11,12 @@ import Player from '../Player';
 import Star from '../Star';
 import BackendConnector from '../BackendConnector';
 import Lava from '../enemies/Lava';
-import { delay } from '../Utils';
+import { delay, getLastElement } from '../Utils';
 import { IManager } from './IManager';
 import ResourceManager from './ResourceManager';
 import UIManager from './UIManager';
 import AudioManager from './AudioManager';
+import { PlayerDataManager } from './PlayerDataManager';
 
 const {ccclass, property} = cc._decorator;
 
@@ -36,39 +37,15 @@ export default class GameManager extends cc.Component {
 
     private _allManagers: IManager[] = [];
     public resourcesManager: ResourceManager;
+    public playerDataManager: PlayerDataManager;
 
     private _levelList : number[] ;
 
     private _previousBlockNode: cc.Node;
 
-    onLoad () {
-        GameManager._instance = this;
-        this._initializePhysicsManager();
-        this._initializeGameEvents();
-        this.ChangeState(GameState.LOADING);
-    }
-
-    private _initializePhysicsManager(){
-        const physics = cc.director.getCollisionManager();
-        physics.enabled = true;
-    }
-
-    private _initializeGameEvents(): void {
-        cc.game.on(ENUM_GAME_EVENT.GAME_START, this.onGameStart, this)
-        cc.game.on(ENUM_GAME_EVENT.GAME_RELIVE, this.onGameRelive, this)
-        cc.game.on(ENUM_GAME_EVENT.PLAYER_CLIMB_END, this.onPlayerClimbEnd, this)
-        cc.game.on(ENUM_GAME_EVENT.GAME_WIN, this.onGameWin, this)
-        cc.game.on(ENUM_GAME_EVENT.GAME_LOSE, this.onGameLose, this)
-        cc.game.on(ENUM_GAME_EVENT.EFFECT_STAR_PLAY, this.onEffectStarPlay, this)
-        cc.game.on(ENUM_GAME_EVENT.GAME_OVER,this.onGameOver,this);
-    }
-
-
     public async ChangeState(newState: GameState) {
         if (this.CurrentGameState == newState) return;
-
         this.CurrentGameState = newState;  
-
         this.UIManager.changeState(newState);
         switch (this.CurrentGameState) {
             case GameState.LOADING:
@@ -92,10 +69,33 @@ export default class GameManager extends cc.Component {
         }
     }
 
+    onLoad () {
+        GameManager._instance = this;
+        this._initializePhysicsManager();
+        this._initializeGameEvents();
+        this.ChangeState(GameState.LOADING);
+    }
+
+    private _initializePhysicsManager(){
+        const physics = cc.director.getCollisionManager();
+        physics.enabled = true;
+    }
+
+    private _initializeGameEvents(): void {
+        cc.game.on(ENUM_GAME_EVENT.GAME_START, this.onGameStart, this)
+        cc.game.on(ENUM_GAME_EVENT.GAME_RELIVE, this.onGameRelive, this)
+        cc.game.on(ENUM_GAME_EVENT.PLAYER_CLIMB_END, this.onPlayerClimbEnd, this)
+        cc.game.on(ENUM_GAME_EVENT.GAME_WIN, this.onGameWin, this)
+        cc.game.on(ENUM_GAME_EVENT.GAME_LOSE, this.onGameLose, this)
+        cc.game.on(ENUM_GAME_EVENT.EFFECT_STAR_PLAY, this.onEffectStarPlay, this)
+        cc.game.on(ENUM_GAME_EVENT.GAME_OVER,this.onGameOver,this);
+    }
+
     private _initializeAllManagers(): void {
         this._allManagers = [];
 
         this.resourcesManager = new ResourceManager();
+        this.playerDataManager = new PlayerDataManager();
 
         this._allManagers.push(this.resourcesManager);
         this._allManagers.push(this.audioManager);
@@ -170,7 +170,7 @@ export default class GameManager extends cc.Component {
         this.stageNode.removeAllChildren()
         const canvasHeight = cc.find('Canvas').height;
 
-        for (let i = 0; i < 10; i++) {
+        for (let i = 0; i < 6; i++) {
             let block: cc.Node = PoolManager.instance.getNode('block',this.stageNode);
             if (i == 0) {
                 block.setPosition(0,(block.height-canvasHeight)/2);
@@ -187,75 +187,44 @@ export default class GameManager extends cc.Component {
             block.setSiblingIndex(0);
             this._previousBlockNode = block;
         }
-
-
-
-
-
-
-        // this.lavaNode.setPosition(0,-650);
-        // const data = [26,29,40,27,26,3,36,28,26,33,29,28,31,32]
-        // for(let i = 0; i < data.length; i++){
-        //     const blockIndex = data[i]
-        //     const block: cc.Node = PoolManager.instance.getNode(`block${blockIndex}`, this.stageNode)
-        //     const component = block.getComponent(Block)
-        //     component.init({ id: i + 1, x: 0, y: block.height * i})
-        //     component.rendor()
-        //     block.setSiblingIndex(0)
-        //     if(i%2){
-        //         component.flipXHelper()
-        //     }
-        // }
-        // const firstBlockNode = DataManager.instance.getFirstBlock()?.node
-        // if(firstBlockNode){
-        //     EventManager.instance.emit(ENUM_GAME_EVENT.CAMERA_MOVE, {block: firstBlockNode, reset: true})
-        //     this.scheduleOnce(()=>{
-        //         const ladder = firstBlockNode.getChildByName('ladder')
-        //         const player: cc.Node = PoolManager.instance.getNode(`player${DataManager.instance.skinIndex}`, this.stageNode)
-        //         player.zIndex = ENUM_GAME_ZINDEX.PLAYER
-        //         player.setPosition(cc.v2(-ladder.x, firstBlockNode.y))
-        //         if(ladder.x > 0){
-        //             player.getComponent(Player).setDir(1)
-        //         }else{
-        //             player.getComponent(Player).setDir(-1)
-        //         }
-        //     })
-        // }
-        // StaticInstance.uiManager.setGameScore()
-        // StaticInstance.uiManager.setGameMaxScore()
-        //DataManager.instance.status = ENUM_GAME_STATUS.RUNING
+        let firstBlock = getLastElement(this.stageNode.children).position.clone();
+        const player: cc.Node = PoolManager.instance.getNode(`player`, this.stageNode)
+        player.zIndex = ENUM_GAME_ZINDEX.PLAYER;
+        player.setPosition(firstBlock);
+        player.getComponent(Player).setDir(1) 
         
-        setTimeout(() => {
-            const player: cc.Node = PoolManager.instance.getNode(`player`, this.stageNode)
-            player.zIndex = ENUM_GAME_ZINDEX.PLAYER
-            player.setPosition(this.stageNode.children[10].position)
-            player.getComponent(Player).setDir(1) 
-        }, 2000);
     }
 
-    setMaxGoal(){
-        if(DataManager.instance.goal > DataManager.instance.maxGoal) {
-            DataManager.instance.maxGoal = DataManager.instance.goal
-            DataManager.instance.save()
-        }
-    }
 
     onPlayerClimbEnd(){
-        let currentIndexBlock = ++DataManager.instance.currentIndexBlock;
-        if(currentIndexBlock>=6)
-        {
-            if(currentIndexBlock % 10 == 0) {
-                DataManager.instance.score += Math.round(currentIndexBlock/10)*100;
-                DataManager.instance.save()
-                // StaticInstance.uiManager.setGameScore()
-                // this._levelList = createCycleBlockList();
-            }
-            if(currentIndexBlock % 12 == 1){
-                this._levelList = createCycleBlockList();
-            }
-        }
+        let block: cc.Node = PoolManager.instance.getNode('block', this.stageNode);
         
-        this.addNewBlock(this._levelList[(currentIndexBlock-2)%12]);
+        let offset = (this._previousBlockNode.height + block.height) / 2;
+        block.setPosition(0, this._previousBlockNode.y + offset);
+        
+        let cpn = block.getComponent(Block);
+        cpn.init({
+            id: 1,
+            dataInstance: this.resourcesManager.blockMap[Math.random() < 0.5 ? "Block1" : "Block0"].data
+        });
+        cpn.rendor();
+        block.setSiblingIndex(0);
+        this._previousBlockNode = block;
+        // let currentIndexBlock = ++DataManager.instance.currentIndexBlock;
+        // if(currentIndexBlock>=6)
+        // {
+        //     if(currentIndexBlock % 10 == 0) {
+        //         DataManager.instance.score += Math.round(currentIndexBlock/10)*100;
+        //         DataManager.instance.save()
+        //         // StaticInstance.uiManager.setGameScore()
+        //         // this._levelList = createCycleBlockList();
+        //     }
+        //     if(currentIndexBlock % 12 == 1){
+        //         this._levelList = createCycleBlockList();
+        //     }
+        // }
+        
+        // this.addNewBlock(this._levelList[(currentIndexBlock-2)%12]);
     }
 
     addNewBlock(blockIndex: number){

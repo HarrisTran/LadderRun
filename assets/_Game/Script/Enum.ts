@@ -49,6 +49,7 @@ export enum ENUM_PLANT_STATUS {
     ATTACK = 'attack'
 }
 
+
 // 碰撞类型
 export enum ENUM_COLLIDER_TAG {
     PLAYER = 0,
@@ -61,14 +62,14 @@ export enum ENUM_COLLIDER_TAG {
     // BAT_VIEW = 7,
     // CHICKEN = 8,
     // CHICKEN_VIEW = 9,
-    BRICK = 10,
+    HARD_TRAP_WALL = 10,
     // SAW = 11,
-    // SPIKEBALL = 12,
+    MOVING_TRAP = 12,
     BOX = 13,
     // TRAMPOLINE = 14,
     // PLANT_VIEW = 15,
     // PLANT_BULLET = 16,
-    // COIN = 17,
+    REWARD = 17,
     // ANANAS = 18,
     // MELON = 19,
     // PIRANHA_PLANT = 20,
@@ -163,8 +164,7 @@ export enum ITEM_CODE
     REWARD_1,
     REWARD_2,
     SOFT_TRAP_WALL,
-    HARD_TRAP_WALL_1,
-    HARD_TRAP_WALL_2,
+    HARD_TRAP_WALL,
     SPIKE,
     TRAP_SHOT_REAR,
     TRAP_SHOT_CELLAR,
@@ -191,8 +191,7 @@ export const ENUM_ITEM_COLLECTION = {
     [ITEM_CODE.REWARD_1] : 'Reward 1',
     [ITEM_CODE.REWARD_2] : 'Reward 2',
     [ITEM_CODE.SOFT_TRAP_WALL] : 'Soft Trap Wall',
-    [ITEM_CODE.HARD_TRAP_WALL_1] : 'Hard Trap Wall 1',
-    [ITEM_CODE.HARD_TRAP_WALL_2] : 'Hard Trap Wall 2',
+    [ITEM_CODE.HARD_TRAP_WALL] : 'Hard Trap Wall',
     [ITEM_CODE.SPIKE] : 'Spike',
     [ITEM_CODE.TRAP_SHOT_REAR] : 'Trap Shot Rear',
     [ITEM_CODE.TRAP_SHOT_CELLAR] : 'Trap Shot Cellar',
