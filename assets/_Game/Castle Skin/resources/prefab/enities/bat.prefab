@@ -28,13 +28,10 @@
       },
       {
         "__id__": 7
-      },
-      {
-        "__id__": 8
       }
     ],
     "_prefab": {
-      "__id__": 9
+      "__id__": 8
     },
     "_opacity": 255,
     "_color": {
@@ -225,16 +222,6 @@
     },
     "fileId": "e18yXf2gpHp40ax0nddead",
     "sync": false
-  },
-  {
-    "__type__": "74e6fEx2lNIhpWaXZECDZEb",
-    "_name": "",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 1
-    },
-    "_enabled": true,
-    "_id": ""
   },
   {
     "__type__": "cc.BoxCollider",

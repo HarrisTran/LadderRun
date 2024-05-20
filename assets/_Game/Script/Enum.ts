@@ -30,7 +30,7 @@ export enum ENUM_PLAYER_STATUS {
 }
 
 // 蝙蝠状态
-export enum ENUM_BAT_STATUS {
+export enum ENUM_FLY_TRAP_STATUS {
     IDLE = 'idle',
     FLY = 'fly',
     WALL_IN = 'wall_in',
@@ -38,13 +38,13 @@ export enum ENUM_BAT_STATUS {
     HIT = 'hit'
 }
 
-export enum ENUM_CHICKEN_STATUS {
+export enum ENUM_REVERSE_TRAP_STATUS {
     IDLE = 'idle',
     RUN = 'run',
     HIT = 'hit'
 }
 
-export enum ENUM_PLANT_STATUS {
+export enum ENUM_SHOOTER_STATUS {
     IDLE = 'idle',
     ATTACK = 'attack'
 }
@@ -57,23 +57,29 @@ export enum ENUM_COLLIDER_TAG {
     WALL = 2,
     LADDER = 3,
     // ENDPOINT = 4,
-    // BAT = 5,
-    // SPIKE = 6,
-    // BAT_VIEW = 7,
-    // CHICKEN = 8,
-    // CHICKEN_VIEW = 9,
+    FLY_TRAP = 5,
+    SPIKE = 6,
+    FLY_TRAP_VIEW = 7,
+    REVERSE_TRAP = 8,
+    REVERSE_TRAP_VIEW = 9,
     HARD_TRAP_WALL = 10,
     // SAW = 11,
     MOVING_TRAP = 12,
-    BOX = 13,
-    // TRAMPOLINE = 14,
+    SOFT_TRAP = 13,
+    TRAMPOLINE = 14,
     // PLANT_VIEW = 15,
-    // PLANT_BULLET = 16,
+    BULLET = 16,
     REWARD = 17,
     // ANANAS = 18,
     // MELON = 19,
-    // PIRANHA_PLANT = 20,
+    HIDE_TRAP = 20,
+    HIDE_TRAP_VIEW = 21,
+    SOFT_TRAP_DESTROY = 22,
     // LAVA = 21,
+    MAGNET_BOOSTER = 24,
+    SPEED_BOOSTER = 25,
+    SHIELD_BOOSTER = 26,
+    RANDOM_BOOSTER = 27,
 }
 
 // 事件
@@ -169,9 +175,9 @@ export enum ITEM_CODE
     TRAP_SHOT_REAR,
     TRAP_SHOT_CELLAR,
     TRAP_HIDE_STAND,
-    TRAP_HIDE_CELLAR_LOW,
-    TRAP_HIDE_CELLAR_HIGH,
-    TRAP_HIDE_CELLAR_RANDOM,
+    LOW_FLY_TRAP,
+    HIGH_FLY_TRAP,
+    RANDOM_FLY_TRAP,
     REVERSE_MOVING_TRAP,
     DANGER_MOVING_TRAP,
     IDLE_MOVING_TRAP,
@@ -196,9 +202,9 @@ export const ENUM_ITEM_COLLECTION = {
     [ITEM_CODE.TRAP_SHOT_REAR] : 'Trap Shot Rear',
     [ITEM_CODE.TRAP_SHOT_CELLAR] : 'Trap Shot Cellar',
     [ITEM_CODE.TRAP_HIDE_STAND] : 'Trap Hide Stand',
-    [ITEM_CODE.TRAP_HIDE_CELLAR_LOW] : 'Trap Hide Cellar Low',
-    [ITEM_CODE.TRAP_HIDE_CELLAR_HIGH] : 'Trap Hide Cellar High',
-    [ITEM_CODE.TRAP_HIDE_CELLAR_RANDOM] : 'Trap Hide Cellar Random',
+    [ITEM_CODE.LOW_FLY_TRAP] : 'Low Fly Trap',
+    [ITEM_CODE.HIGH_FLY_TRAP] : 'High Fly Trap',
+    [ITEM_CODE.RANDOM_FLY_TRAP] : 'Random Fly Trap',
     [ITEM_CODE.REVERSE_MOVING_TRAP] : 'Reverse Moving Trap',
     [ITEM_CODE.DANGER_MOVING_TRAP]: 'Danger Moving Trap',
     [ITEM_CODE.IDLE_MOVING_TRAP] : 'Idle Moving Trap',

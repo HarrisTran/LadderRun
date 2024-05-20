@@ -13,7 +13,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "plantbullet",
+    "_name": "bullet",
     "_objFlags": 0,
     "_parent": null,
     "_children": [],
@@ -42,8 +42,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 10,
-      "height": 10
+      "width": 15,
+      "height": 15
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -114,16 +114,6 @@
     "_id": ""
   },
   {
-    "__type__": "8784eNy1iFPF5e32a8EVS9y",
-    "_name": "",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 1
-    },
-    "_enabled": true,
-    "_id": ""
-  },
-  {
     "__type__": "cc.CircleCollider",
     "_name": "",
     "_objFlags": 0,
@@ -137,7 +127,17 @@
       "x": 0,
       "y": 0
     },
-    "_radius": 3,
+    "_radius": 5,
+    "_id": ""
+  },
+  {
+    "__type__": "8784eNy1iFPF5e32a8EVS9y",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 1
+    },
+    "_enabled": true,
     "_id": ""
   },
   {
@@ -146,7 +146,7 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "1624e0d4-bc0b-46ba-b335-f369f2c36648"
+      "__uuid__": "b9c55a93-6905-4384-a9cd-21311e19ba76"
     },
     "fileId": "",
     "sync": false

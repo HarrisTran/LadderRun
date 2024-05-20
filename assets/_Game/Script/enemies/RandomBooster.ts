@@ -11,7 +11,7 @@ export class ShieldBooster extends cc.Component {
 
     onCollisionEnter(other : cc.Collider, self: cc.Collider){
         if(other.tag === ENUM_COLLIDER_TAG.PLAYER){
-            other.node.getComponent(Player).shieldBoosterDuration = this.duration;
+            other.node.getComponent(Player).randomBoosterDuration = this.duration;
 
             this.node.removeComponent(cc.Collider);
             this.node.active = false;

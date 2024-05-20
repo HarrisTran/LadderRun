@@ -1,3 +1,4 @@
+import ReverseMovingTrap from "./enemies/ReverseMovingTrap";
 import SpeedBooster from "./enemies/SpeedBooster";
 import { ENUM_COLLIDER_TAG, ENUM_PLAYER_STATUS, ENUM_GAME_EVENT, GameState} from "./Enum";
 import GameManager from "./manager/GameManager";
@@ -10,6 +11,8 @@ const speedUp: number = 360;
 
 @ccclass
 export default class Player extends cc.Component {
+    @property(cc.Node) shieldIcon: cc.Node = null;
+    @property(cc.Node) magnet: cc.Node = null;
     canvas: cc.Node = null
     speed: cc.Vec2 = cc.v2(0, 0)
     walk: number = 150
@@ -19,10 +22,12 @@ export default class Player extends cc.Component {
     jumpLimit: number = 1
     gravity: number = -1750
     _status: ENUM_PLAYER_STATUS = ENUM_PLAYER_STATUS.JUMP
+    shield: boolean = false;
 
-    private _boosterHolding: SpeedBooster[]
-
-    
+    public speedBoosterDuration: number;
+    public shieldBoosterDuration: number;
+    public magnetBoosterDuration: number;
+    public randomBoosterDuration: number;
 
     get status(){
         return this._status
@@ -57,6 +62,10 @@ export default class Player extends cc.Component {
         if(!this.isClimb()) this.speed.x = this.walk * this.direction
         if(GameManager.Instance.CurrentGameState == GameState.PLAYING) {
             this.node.x += this.speed.x * dt
+            this.speedBoosterDuration > 0 ? this.holdSpeedBoosterHandle(dt) : this.cancelSpeedBoosterHandle();
+            this.magnetBoosterDuration > 0 ? this.holdMagnetBoosterHandle(dt) : this.cancelMagnetBoosterHandle();
+            this.shieldBoosterDuration > 0 ? this.holdShieldBoosterHandle(dt) : this.cancelMagnetBoosterHandle();
+            this.randomBoosterDuration > 0 ? this.holdRandomBoosterHandle(dt) : this.cancelRandomBoosterHandle();
         }
         this.node.y += this.speed.y * dt
         //this.survivalVFX.node.active = this._enablePowerUp
@@ -135,34 +144,39 @@ export default class Player extends cc.Component {
         // }
         
 
-        // switch (other.tag) {
-        //     case ENUM_COLLIDER_TAG.ENDPOINT:
-        //         //AudioManager.instance.playSound(ENUM_AUDIO_CLIP.WIN)
-        //         EventManager.instance.emit(ENUM_GAME_EVENT.GAME_WIN)
-        //         for(let i = 0; i < 5; i++){
-        //             EventManager.instance.emit(ENUM_GAME_EVENT.EFFECT_STAR_PLAY, {pos: self.node.position, color})
-        //         }
-        //         return;
-        //     case ENUM_COLLIDER_TAG.TRAMPOLINE:
-        //         // AudioManager.instance.playSound(ENUM_AUDIO_CLIP.TRAMPOLINE)
-        //         color = cc.color(255, 255, 255, 255)
-        //         for (let i = 0; i < 3; i++) {
-        //             EventManager.instance.emit(ENUM_GAME_EVENT.EFFECT_STAR_PLAY, { pos: self.node.position, color })
-        //         }
-        //         this.status = ENUM_PLAYER_STATUS.CLIMB
-        //         this.speed.y = this.jump * 2
-        //         return
-        //     case ENUM_COLLIDER_TAG.ANANAS:
-        //         // AudioManager.instance.playSound(ENUM_AUDIO_CLIP.SPEED_UP);
-        //         this.awakeSpeedUp();
-        //         return;
-        //     case ENUM_COLLIDER_TAG.MELON:
-        //         // AudioManager.instance.playSound(ENUM_AUDIO_CLIP.POWER_UP);
-        //         this.awakePowerUp()
-        //         return;
-        //     default:
-        //         break;
-        // }
+        switch (other.tag) {
+            case ENUM_COLLIDER_TAG.REVERSE_TRAP:
+                for (let i = 0; i < 3; i++) {
+                    cc.game.emit(ENUM_GAME_EVENT.EFFECT_STAR_PLAY, { pos: self.node.position, color: cc.color(255, 255, 255, 255) })
+                }
+                other.node.getComponent(ReverseMovingTrap).onTurn()
+                this.onTurn()
+                return;
+            case ENUM_COLLIDER_TAG.BULLET:
+            case ENUM_COLLIDER_TAG.FLY_TRAP:
+            case ENUM_COLLIDER_TAG.MOVING_TRAP:
+            case ENUM_COLLIDER_TAG.HIDE_TRAP:
+            case ENUM_COLLIDER_TAG.SPIKE:
+                if (!this.shield) {
+                    for (let i = 0; i < 5; i++) {
+                        cc.game.emit(ENUM_GAME_EVENT.EFFECT_STAR_PLAY, { pos: self.node.position, color: cc.color(226, 69, 109, 255) })
+                    }
+                    cc.game.emit(ENUM_GAME_EVENT.GAME_LOSE)
+                    this.unscheduleAllCallbacks();
+                    this.node.active = false;
+                }
+                return
+            case ENUM_COLLIDER_TAG.TRAMPOLINE:
+                // AudioManager.instance.playSound(ENUM_AUDIO_CLIP.TRAMPOLINE)
+                for (let i = 0; i < 3; i++) {
+                    cc.game.emit(ENUM_GAME_EVENT.EFFECT_STAR_PLAY, { pos: self.node.position, color: cc.color(255, 255, 255, 255) })
+                }
+                this.status = ENUM_PLAYER_STATUS.CLIMB
+                this.speed.y = this.jump * 2
+                return
+            default:
+                break;
+        }
         if(!(other instanceof cc.BoxCollider)) return
         const otherAabb = other.world.aabb
         const otherPreAabb = other.world.preAabb.clone()
@@ -185,7 +199,7 @@ export default class Player extends cc.Component {
         switch(other.tag){
             case ENUM_COLLIDER_TAG.WALL:
             case ENUM_COLLIDER_TAG.HARD_TRAP_WALL:
-            case ENUM_COLLIDER_TAG.BOX:
+            case ENUM_COLLIDER_TAG.SOFT_TRAP:
                 if (this.speed.x < 0 && (selfPreAabb.xMax > otherPreAabb.xMax)){
                     this.node.x += Math.floor(Math.abs(otherAabb.xMax - selfAabb.xMin))
                 }else if(this.speed.x > 0 && (selfPreAabb.xMin < otherPreAabb.xMin)){
@@ -204,7 +218,7 @@ export default class Player extends cc.Component {
                 this.node.getPosition(v3)
                 v3 = v3.add(cc.v3(x, 0, 0))
                 cc.tween(this.node).to(0.05, {position: v3}).call(()=>{
-                    this.speed.y = this.jump * 0.5
+                    this.speed.y = this.jump * 0.2
                 }).start()
             break
         }
@@ -214,7 +228,7 @@ export default class Player extends cc.Component {
         switch(other.tag){
             case ENUM_COLLIDER_TAG.GROUND:
             case ENUM_COLLIDER_TAG.HARD_TRAP_WALL:
-            case ENUM_COLLIDER_TAG.BOX:
+            case ENUM_COLLIDER_TAG.SOFT_TRAP:
                 if (this.speed.y < 0 && (selfPreAabb.yMax > otherPreAabb.yMax)){
                     
                     // 向下落地
@@ -253,7 +267,7 @@ export default class Player extends cc.Component {
     }
 
     onCollisionExit(other: any){
-        if(other.tag == ENUM_COLLIDER_TAG.HARD_TRAP_WALL || other.tag == ENUM_COLLIDER_TAG.BOX){
+        if(other.tag == ENUM_COLLIDER_TAG.HARD_TRAP_WALL || other.tag == ENUM_COLLIDER_TAG.SOFT_TRAP){
             if(other.touchingY){
                 other.touchingY = false
                 this.status = ENUM_PLAYER_STATUS.JUMP
@@ -261,36 +275,48 @@ export default class Player extends cc.Component {
         }
     }
 
-    public holdSpeedBoosterHandle(){
-
+    public holdSpeedBoosterHandle(dt:number){
+        this.speedBoosterDuration -= dt;
+        this.walk = 300;
     }
 
     public cancelSpeedBoosterHandle(){
-
+        this.speedBoosterDuration = 0;
+        this.walk = 150;
     }
 
-    public holdMagnetBoosterHandle(){
-
+    public holdMagnetBoosterHandle(dt :number){
+        this.magnetBoosterDuration -= dt;
+        this.magnet.active = true;
+        // console.log("magnet active");
     }
 
     public cancelMagnetBoosterHandle(){
-
+        this.magnetBoosterDuration = 0;
+        this.magnet.active = false;
+        // console.log("magnet deactive");
     }
 
-    holdShieldBoosterHandle(){
-
+    public holdShieldBoosterHandle(dt: number){
+        this.shieldBoosterDuration -= dt
+        this.shieldIcon.active = true;
+        this.shield = true;
     }
 
-    cancelShieldBoosterHandle(){
-
+    public cancelShieldBoosterHandle(){
+        this.shieldBoosterDuration = 0;
+        this.shieldIcon.active = false;
+        this.shield = false;
     }
 
-    holdRandomBoosterHandle(){
-
+    public holdRandomBoosterHandle(dt :number){
+        this.randomBoosterDuration -= dt;
+        // console.log("random active");
     }
 
-    cancelRandomBoosterHandle(){
-
+    public cancelRandomBoosterHandle(){
+        this.randomBoosterDuration = 0;
+        // console.log("random deactive");
     }
 
 

@@ -13,19 +13,15 @@ const {ccclass, property} = cc._decorator;
 
 @ccclass
 export default class SpeedBooster extends cc.Component {
-    @property(cc.Integer) protected duration: number = 10;
-    player : Player = null;
+    duration: number = 10;
 
     onCollisionEnter(other : cc.Collider, self: cc.Collider){
         if(other.tag === ENUM_COLLIDER_TAG.PLAYER){
-            this.player = other.node.getComponent(Player);
-            this.holdBooster();
-        }
-    }
+            other.node.getComponent(Player).speedBoosterDuration = this.duration;
 
-    private async holdBooster(){
-        await delay(this.duration);
-        this.player = null;
+            this.node.removeComponent(cc.Collider);
+            this.node.active = false;
+        }
     }
 
 }

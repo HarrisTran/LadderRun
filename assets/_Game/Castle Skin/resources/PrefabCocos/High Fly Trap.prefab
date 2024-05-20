@@ -13,7 +13,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "Reverse Moving Trap",
+    "_name": "High Fly Trap",
     "_objFlags": 0,
     "_parent": null,
     "_children": [
@@ -58,8 +58,8 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        -250,
-        -150,
+        -200,
+        150,
         0,
         0,
         0,
@@ -110,13 +110,13 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 40,
-      "height": 40
+      "width": 83.8,
+      "height": 77.8
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
       "x": 0.5,
-      "y": 0
+      "y": 0.5
     },
     "_trs": {
       "__type__": "TypedArray",
@@ -163,7 +163,7 @@
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
     "_spriteFrame": {
-      "__uuid__": "2402bfb3-e3ff-4d50-ad10-12efb748e454"
+      "__uuid__": "fe7e37d7-3de8-44c1-8b05-d9f130979181"
     },
     "_type": 0,
     "_sizeMode": 0,
@@ -185,9 +185,9 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "a712d334-3ba2-4da7-b7c1-3dedc099acb5"
+      "__uuid__": "79f1abf6-1cbb-4da8-b57c-1cb23ebb9e23"
     },
-    "fileId": "d11y3viXRGxqVK/0c0X5wJ",
+    "fileId": "edKdG1MHVHh6nFRzCB1eIu",
     "sync": false
   },
   {
@@ -198,13 +198,13 @@
       "__id__": 1
     },
     "_enabled": true,
-    "tag": 8,
+    "tag": 5,
     "_offset": {
       "__type__": "cc.Vec2",
       "x": 0,
-      "y": 16
+      "y": -12
     },
-    "_radius": 16,
+    "_radius": 22,
     "_id": ""
   },
   {
@@ -215,27 +215,28 @@
       "__id__": 1
     },
     "_enabled": true,
-    "tag": 9,
+    "tag": 7,
     "_offset": {
       "__type__": "cc.Vec2",
       "x": 0,
-      "y": 80
+      "y": -100
     },
     "_size": {
       "__type__": "cc.Size",
-      "width": 1000,
-      "height": 200
+      "width": 500,
+      "height": 300
     },
     "_id": ""
   },
   {
-    "__type__": "635c0iji5RD/qiAGOxQzvcl",
+    "__type__": "8608bTNp0pMRrtar1XTCkTZ",
     "_name": "",
     "_objFlags": 0,
     "node": {
       "__id__": 1
     },
     "_enabled": true,
+    "mode": 1,
     "_id": ""
   },
   {
@@ -244,7 +245,7 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "a712d334-3ba2-4da7-b7c1-3dedc099acb5"
+      "__uuid__": "79f1abf6-1cbb-4da8-b57c-1cb23ebb9e23"
     },
     "fileId": "",
     "sync": false

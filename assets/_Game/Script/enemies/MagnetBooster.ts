@@ -6,16 +6,17 @@ import { delay } from "../Utils";
 const {ccclass, property} = cc._decorator;
 
 @ccclass
-export class ShieldBooster extends cc.Component {
+export class MagnetBooster extends cc.Component {
     duration: number = 10;
 
     onCollisionEnter(other : cc.Collider, self: cc.Collider){
         if(other.tag === ENUM_COLLIDER_TAG.PLAYER){
-            other.node.getComponent(Player).shieldBoosterDuration = this.duration;
+            other.node.getComponent(Player).magnetBoosterDuration = this.duration;
 
             this.node.removeComponent(cc.Collider);
             this.node.active = false;
         }
     }
+
 
 }

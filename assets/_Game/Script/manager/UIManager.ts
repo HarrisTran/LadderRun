@@ -37,6 +37,7 @@ export default class UIManager extends cc.Component {
                 
                 break;
             case GameState.ENDGAME:
+                this.loseLayer.show();
                 break;
         }
     }

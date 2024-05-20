@@ -64,7 +64,6 @@ export default class GameManager extends cc.Component {
                 // this.UiController.StartGame();
                 break;
             case GameState.ENDGAME:
-                // this.UiController.ShowEndGameUI();
                 break;
         }
     }
@@ -159,6 +158,7 @@ export default class GameManager extends cc.Component {
 
     // 失败
     onGameLose(){
+        this.ChangeState(GameState.ENDGAME);
         // DataManager.instance.status = ENUM_GAME_STATUS.UNRUNING
         // this.scheduleOnce(()=>{
         //     StaticInstance.uiManager.toggle(ENUM_UI_TYPE.LOSE,true)
