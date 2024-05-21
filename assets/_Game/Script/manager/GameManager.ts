@@ -11,7 +11,7 @@ import Player from '../Player';
 import Star from '../Star';
 import BackendConnector from '../BackendConnector';
 import Lava from '../enemies/Lava';
-import { delay, getLastElement } from '../Utils';
+import { delay, getLastElement, Queue } from '../Utils';
 import { IManager } from './IManager';
 import ResourceManager from './ResourceManager';
 import UIManager from './UIManager';
@@ -39,7 +39,7 @@ export default class GameManager extends cc.Component {
     public resourcesManager: ResourceManager;
     public playerDataManager: PlayerDataManager;
 
-    private _levelList : number[] ;
+    private _blockQueue : Queue<string> = new Queue<string>();
 
     private _previousBlockNode: cc.Node;
 
@@ -70,7 +70,6 @@ export default class GameManager extends cc.Component {
 
     onLoad () {
         GameManager._instance = this;
-        this._initializePhysicsManager();
         this._initializeGameEvents();
         this.ChangeState(GameState.LOADING);
     }
@@ -101,15 +100,13 @@ export default class GameManager extends cc.Component {
 
         this.resourcesManager.initialize();
         this.audioManager.initialize();
+
+        this._initializePhysicsManager();
     }
 
     private onGameStart(){
         this.ChangeState(GameState.PLAYING)
-        // DataManager.instance.currentIndexBlock = 1;
-        // DataManager.instance.reset()
-        // // this._lowerLevelBound = 0;
-        // // this._upperLevelBound = 0;
-        // this._levelList = createCycleBlockList()
+        
     }
 
     protected update(dt: number): void {
@@ -165,10 +162,21 @@ export default class GameManager extends cc.Component {
         // }, 0.5) 
     }
 
+    private _initializeBlockQueue() {
+        let blockList = this.resourcesManager.popLevelMap();
+        
+        for (let i of blockList) {
+            this._blockQueue.enqueue(i);
+        }
+    }
+
     initGame(){
         if(!this.stageNode) return
         this.stageNode.removeAllChildren()
         const canvasHeight = cc.find('Canvas').height;
+
+        this._initializeBlockQueue();
+        this._initializeBlockQueue();
 
         for (let i = 0; i < 6; i++) {
             let block: cc.Node = PoolManager.instance.getNode('block',this.stageNode);
@@ -181,7 +189,7 @@ export default class GameManager extends cc.Component {
             let cpn = block.getComponent(Block);
             cpn.init({
                 id : 1,
-                dataInstance: this.resourcesManager.blockMap[Math.random() < 0.5 ? "Block1" : "Block0"].data
+                dataInstance: this.resourcesManager.blockMap[this._blockQueue.dequeue()].data
             });
             cpn.rendor();
             block.setSiblingIndex(0);
@@ -205,11 +213,15 @@ export default class GameManager extends cc.Component {
         let cpn = block.getComponent(Block);
         cpn.init({
             id: 1,
-            dataInstance: this.resourcesManager.blockMap[Math.random() < 0.5 ? "Block1" : "Block0"].data
+            dataInstance: this.resourcesManager.blockMap[this._blockQueue.dequeue()].data
         });
         cpn.rendor();
         block.setSiblingIndex(0);
         this._previousBlockNode = block;
+
+        if(this._blockQueue.size() < 10){
+            this._initializeBlockQueue();
+        }
         // let currentIndexBlock = ++DataManager.instance.currentIndexBlock;
         // if(currentIndexBlock>=6)
         // {
@@ -227,7 +239,8 @@ export default class GameManager extends cc.Component {
         // this.addNewBlock(this._levelList[(currentIndexBlock-2)%12]);
     }
 
-    addNewBlock(blockIndex: number){
+    addData(){
+
         // DataManager.instance.lastIndexBlock = blockIndex;
         // const block: cc.Node = PoolManager.instance.getNode(`block${blockIndex}`, this.stageNode)
         // block.setSiblingIndex(0);

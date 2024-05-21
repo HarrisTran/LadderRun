@@ -187,6 +187,7 @@
       "__id__": 2
     },
     "_enabled": true,
+    "boosterType": 0,
     "_id": ""
   },
   {
@@ -229,6 +230,7 @@
       "__id__": 1
     },
     "_enabled": true,
+    "boosterType": 3,
     "_id": ""
   },
   {

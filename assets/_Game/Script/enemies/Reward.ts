@@ -7,11 +7,9 @@ const {ccclass, property} = cc._decorator;
 export default class Reward extends cc.Component {
     @property(cc.Integer)
     private coinValue: number = 0;
-    // @property(cc.Animation)
-    // animation : cc.Animation = null;
-
-    // @property(cc.Node)
-    // floatText: cc.Node = null;
+   
+    isAttracted : boolean = false;
+    targetPos: cc.Vec2 ;
 
     protected onLoad(): void {
         // this.animation.on('play', this.onPlay, this);
@@ -20,6 +18,7 @@ export default class Reward extends cc.Component {
 
     onCollisionEnter (other: cc.BoxCollider, self: cc.BoxCollider) {
         if(other.tag == ENUM_COLLIDER_TAG.PLAYER && self.tag == ENUM_COLLIDER_TAG.REWARD){
+            
             //this.animation.play('collected')
             // AudioManager.instance.playSound(ENUM_AUDIO_CLIP.COLLECT)
             // DataManager.instance.coins += 1;
@@ -33,6 +32,18 @@ export default class Reward extends cc.Component {
             this.node.removeComponent(cc.Collider);
             this.node.active = false;
 
+        }
+    }
+
+    getRewardFromMagnet(target: cc.Vec2){
+        this.isAttracted = true;
+        this.targetPos = target.clone();
+    }
+
+    protected update(dt: number): void {
+        if(this.isAttracted){
+            let currentPos = this.node.getPosition();
+            this.node.setPosition(currentPos.lerp(this.targetPos,0.25,currentPos))
         }
     }
 

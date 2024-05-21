@@ -209,13 +209,14 @@
     "_id": ""
   },
   {
-    "__type__": "aa8b8aOcE1BIpjJLOsSoo1K",
+    "__type__": "a0b391RNtZK1JOuxtsYnW15",
     "_name": "",
     "_objFlags": 0,
     "node": {
       "__id__": 1
     },
     "_enabled": true,
+    "boosterType": 0,
     "_id": ""
   },
   {

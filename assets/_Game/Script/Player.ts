@@ -1,5 +1,4 @@
 import ReverseMovingTrap from "./enemies/ReverseMovingTrap";
-import SpeedBooster from "./enemies/SpeedBooster";
 import { ENUM_COLLIDER_TAG, ENUM_PLAYER_STATUS, ENUM_GAME_EVENT, GameState} from "./Enum";
 import GameManager from "./manager/GameManager";
 
@@ -64,7 +63,7 @@ export default class Player extends cc.Component {
             this.node.x += this.speed.x * dt
             this.speedBoosterDuration > 0 ? this.holdSpeedBoosterHandle(dt) : this.cancelSpeedBoosterHandle();
             this.magnetBoosterDuration > 0 ? this.holdMagnetBoosterHandle(dt) : this.cancelMagnetBoosterHandle();
-            this.shieldBoosterDuration > 0 ? this.holdShieldBoosterHandle(dt) : this.cancelMagnetBoosterHandle();
+            this.shieldBoosterDuration > 0 ? this.holdShieldBoosterHandle(dt) : this.cancelShieldBoosterHandle();
             this.randomBoosterDuration > 0 ? this.holdRandomBoosterHandle(dt) : this.cancelRandomBoosterHandle();
         }
         this.node.y += this.speed.y * dt

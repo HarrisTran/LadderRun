@@ -80,6 +80,8 @@ export enum ENUM_COLLIDER_TAG {
     SPEED_BOOSTER = 25,
     SHIELD_BOOSTER = 26,
     RANDOM_BOOSTER = 27,
+
+    MAGNET_RANGE = 28,
 }
 
 // 事件

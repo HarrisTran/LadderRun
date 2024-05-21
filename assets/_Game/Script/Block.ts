@@ -44,6 +44,7 @@ export default class Block extends cc.Component {
                     code == ITEM_CODE.BOOSTER_MAGNET ||
                     code == ITEM_CODE.BOOSTER_SHIELD ||
                     code == ITEM_CODE.BOOSTER_SPEED ||
+                    code == ITEM_CODE.BOOSTER_RANDOM ||
                     code == ITEM_CODE.HARD_TRAP_WALL ||
                     code == ITEM_CODE.DANGER_MOVING_TRAP ||
                     code == ITEM_CODE.CIRCLE_MOVING_TRAP ||
