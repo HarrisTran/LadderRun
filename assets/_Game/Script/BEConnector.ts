@@ -58,24 +58,6 @@ export default class BEConnector{
     }
 
 
-    public async requireRankList() {
-        // await fetch(
-        //     `${this.gameURL}/promotions/detail/${this.tournamentId}`
-        // ).then(response=>{
-        //     return response.json();
-        // })
-        // .then((json)=>{
-        //     console.log(json);
-            
-        // })
-        await delay(1);
-        let result = [
-            {id: "1", totalScore: 2000},{id: "2", totalScore: 1000},
-            {id: "3", totalScore: 900},{id: "4", totalScore: 700},
-            {id: "5", totalScore: 600},{id: "6", totalScore: 200},
-        ]
-        return result;
-    }
 
     public async authenticate() {
         
@@ -158,27 +140,29 @@ export default class BEConnector{
         );
     }
 
-    public postScoreToServer() {
-        let dataEncrypted : string = this._getDataEncrypted({Score: this._gameScore,TournamentId: this.tournamentId, SkinId: this.skinId});
-    
-        fetch(
-            `${this.gameURL}/promotions/store-score-tournament?tournamentId=${this.tournamentId}&skinId=${this.skinId}&cocos=1`,
-            {
-                headers: {
-                    Accept: 'application/json',
-                    'Content-Type': 'application/json',
-                    'x-access-refactor-token': this.token,
-                },
-                method: 'POST',
-                body: JSON.stringify({ data: dataEncrypted }),
-            },
-        )
-        .catch((res)=>{
-            console.log(res);
-        })
-        .catch((err) => console.log(err));
+    public async postScoreToServer() {
+        let dataEncrypted: string = this._getDataEncrypted({ Score: this._gameScore, TournamentId: this.tournamentId, SkinId: this.skinId });
 
-        this.postScoreWebEvent();
+        try {
+            let leaderBoard = await fetch(
+                `${this.gameURL}/promotions/store-score-tournament?tournamentId=${this.tournamentId}&skinId=${this.skinId}&cocos=1`,
+                {
+                    headers: {
+                        Accept: 'application/json',
+                        'Content-Type': 'application/json',
+                        'x-access-refactor-token': this.token,
+                    },
+                    method: 'POST',
+                    body: JSON.stringify({ data: dataEncrypted }),
+                },
+            )
+            return leaderBoard.json() as Promise<ParticipantInfo[]>;
+        } catch (error) {
+            throw error;
+        }
+
+
+        //this.postScoreWebEvent();
     }
 
     private postScoreWebEvent(){
@@ -223,6 +207,6 @@ const ENV_CONFIG = {
 };
 
 export interface ParticipantInfo {
-    id: string,
-    totalScore: number
+    userId: string,
+    sum: number
 }

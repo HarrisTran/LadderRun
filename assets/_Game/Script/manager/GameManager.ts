@@ -115,7 +115,7 @@ export default class GameManager extends cc.Component {
     private _initializePhysicsManager(){
         const physics = cc.director.getCollisionManager();
         physics.enabled = true;
-        // physics.enabledDebugDraw = true;
+        physics.enabledDebugDraw = true;
     }
 
     private _initializeGameEvents(): void {
@@ -144,6 +144,7 @@ export default class GameManager extends cc.Component {
         this.APIManager.initialize();
 
         this._initializePhysicsManager();
+        
     }
 
     private onGameStart(){

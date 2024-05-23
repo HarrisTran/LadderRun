@@ -110,8 +110,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 37.1735538,
-      "height": 18.9090909
+      "width": 46,
+      "height": 24
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -202,12 +202,12 @@
     "_offset": {
       "__type__": "cc.Vec2",
       "x": 0,
-      "y": 9.45454545
+      "y": 12.4545455
     },
     "_size": {
       "__type__": "cc.Size",
-      "width": 37.1735538,
-      "height": 18.9090909
+      "width": 44,
+      "height": 24
     },
     "_id": ""
   },

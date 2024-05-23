@@ -35,17 +35,28 @@ export default class LoseLayer extends BaseLayer {
         let index : number = 1;
         this.leaderBoardView.content.removeAllChildren();
 
-        let lst = await GameManager.Instance.APIManager.requireRankList();
+        let participants = await GameManager.Instance.APIManager.postScoreToServer()
+        
+        let listTop5 = participants.slice(0,5);
+        let currentScore = GameManager.Instance.playerDataManager.getScore();
+        
+        for(let info of listTop5){
+            let row = cc.instantiate(this.itemRowPrefab);
+            row.setParent(this.leaderBoardView.content);
+            row.getComponent(item).createItemRow(index,info.sum);
+            row.active = true;
+            index++;
+        }
 
-        // for(let info of lst.slice(0,5)){
-        //     let row = cc.instantiate(this.itemRowPrefab);
-        //     row.setParent(this.leaderBoardView.content);
-        //     row.getComponent(ItemRow).createItemRow(index,info.totalScore);
-        //     row.active = true;
-        //     index++;
-        // }
-        // let playerInfo : ParticipantInfo = {id: "Khoa", totalScore: GameManager.Instance.score} ;
-        // this.mainItemRow.createItemRow(1,playerInfo.totalScore);
+        let ranking = listTop5.findIndex(i=>i.sum == currentScore)
+
+        if(ranking > 4){
+            this.mainItemRow.node.active = true;
+            this.mainItemRow.createItemRow(ranking+1,currentScore);
+        }
+        else if(ranking > -1 && ranking <= 4){
+            this.mainItemRow.node.active = false;
+        }
     }
 
     private onClickContinue(){
