@@ -68,7 +68,7 @@ export default class AudioManager extends cc.Component implements IManager{
 
     public playBGM(volume = 1, loop = true) {
         this.musicSource.stop();
-        this.musicSource.clip = this._audioClipSet["BGM"];
+        this.musicSource.clip = this._audioClipSet["bgm"];
         this.musicSource.play();
     }
 

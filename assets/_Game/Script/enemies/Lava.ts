@@ -1,6 +1,7 @@
-import { ENUM_GAME_STATUS } from "../Enum";
+import { ENUM_GAME_STATUS, GameState } from "../Enum";
 import { delay } from "../Utils";
 import DataManager from "../manager/DataManager";
+import GameManager from "../manager/GameManager";
 
 const {ccclass, property} = cc._decorator;
 
@@ -10,27 +11,15 @@ export default class Lava extends cc.Component {
     cameraNode : cc.Node = null;
 
     @property
-    delayTime: number = 0;
-
-    @property
     lavaSpeed: number = 150;
    
-    // private _cameraNode : cc.Node = null;
-    private _isStarted : boolean = false;
-    protected async onLoad() {
-        
-        await delay(this.delayTime);
-        this._isStarted = true;
-    }
-
+   
     protected update(dt: number): void {
-        if (!this._isStarted ||
-            DataManager.instance.status !== ENUM_GAME_STATUS.RUNING ||
+        if (GameManager.Instance.CurrentGameState !== GameState.PLAYING ||
             this.node.position.y > this.cameraNode.position.y) {
             return;
         }
-        let currenty = this.node.position.y;
-        this.node.setPosition(0, currenty + dt * this.lavaSpeed);
+        this.node.y += dt*this.lavaSpeed
     }
 
 

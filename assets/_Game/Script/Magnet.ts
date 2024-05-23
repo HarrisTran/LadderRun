@@ -11,7 +11,7 @@ export default class Magnet extends cc.Component {
         
         let playerPos = block.convertToNodeSpaceAR(player.getPosition().addSelf(new cc.Vec2(canvasSize.width,canvasSize.height).multiplyScalar(0.5)));
         
-        other.node.getComponent(Reward).getRewardFromMagnet(playerPos);
+        other.node.getComponent(Reward).getRewardFromMagnet();
     }
 
 }

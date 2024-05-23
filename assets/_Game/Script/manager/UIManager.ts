@@ -15,6 +15,7 @@ export default class UIManager extends cc.Component {
     @property(GameLayer) gameLayer: GameLayer = null
     @property(LoseLayer) loseLayer: LoseLayer = null
 
+    
 
     public changeState(state : GameState)
     {

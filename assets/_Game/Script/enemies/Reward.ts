@@ -1,4 +1,4 @@
-import {ENUM_COLLIDER_TAG } from "../Enum";
+import {ENUM_COLLIDER_TAG, ENUM_GAME_EVENT } from "../Enum";
 import GameManager from '../manager/GameManager';
 
 const {ccclass, property} = cc._decorator;
@@ -27,7 +27,7 @@ export default class Reward extends cc.Component {
             //StaticInstance.uiManager.setGameScore()
 
             GameManager.Instance.playerDataManager.addScore(this.coinValue);
-            GameManager.Instance.UIManager.setGameScore();
+            cc.game.emit(ENUM_GAME_EVENT.UPDATE_SCORE);
 
             this.node.removeComponent(cc.Collider);
             this.node.active = false;
@@ -35,13 +35,13 @@ export default class Reward extends cc.Component {
         }
     }
 
-    getRewardFromMagnet(target: cc.Vec2){
+    getRewardFromMagnet(){
         this.isAttracted = true;
-        this.targetPos = target.clone();
     }
 
     protected update(dt: number): void {
         if(this.isAttracted){
+            this.targetPos = this.node.parent.convertToNodeSpaceAR(GameManager.Instance.getPlayerRelativePosition());
             let currentPos = this.node.getPosition();
             this.node.setPosition(currentPos.lerp(this.targetPos,0.25,currentPos))
         }

@@ -1,4 +1,3 @@
-import BackendConnector from "../BackendConnector";
 import { ENUM_AUDIO_CLIP, ENUM_GAME_EVENT, ENUM_GAME_STATUS, ENUM_GAME_TYPE, ENUM_UI_TYPE } from "../Enum";
 import GameManager from "../manager/GameManager";
 import BaseLayer from "./Baselayer";

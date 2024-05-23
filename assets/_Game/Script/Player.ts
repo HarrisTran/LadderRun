@@ -99,6 +99,7 @@ export default class Player extends cc.Component {
     }
 
     onCollisionEnter (other: any, self: any) {
+
         // let color = cc.color(243, 175, 197, 255)
         // if(other.tag == ENUM_COLLIDER_TAG.LAVA){
         //     // AudioManager.instance.playSound(ENUM_AUDIO_CLIP.DIE)
@@ -142,13 +143,24 @@ export default class Player extends cc.Component {
         //     }
         // }
         
+        
+        
 
         switch (other.tag) {
+            case ENUM_COLLIDER_TAG.LAVA:
+                for (let i = 0; i < 5; i++) {
+                    cc.game.emit(ENUM_GAME_EVENT.EFFECT_STAR_PLAY, { pos: self.node.position, color: cc.color(226, 69, 109, 255) })
+                }
+                cc.game.emit(ENUM_GAME_EVENT.GAME_LOSE)
+                this.unscheduleAllCallbacks();
+                this.node.active = false;
+                return;
             case ENUM_COLLIDER_TAG.REVERSE_TRAP:
                 for (let i = 0; i < 3; i++) {
                     cc.game.emit(ENUM_GAME_EVENT.EFFECT_STAR_PLAY, { pos: self.node.position, color: cc.color(255, 255, 255, 255) })
                 }
-                other.node.getComponent(ReverseMovingTrap).onTurn()
+                //other.node.getComponent(ReverseMovingTrap).onTurn()
+                this.direction *= -1
                 this.onTurn()
                 return;
             case ENUM_COLLIDER_TAG.BULLET:
@@ -183,6 +195,8 @@ export default class Player extends cc.Component {
         const selfPreAabb = self.world.preAabb.clone()
         otherPreAabb.x = otherAabb.x
         selfPreAabb.x = selfAabb.x
+       
+        
         if(cc.Intersection.rectRect(selfPreAabb, otherPreAabb)){
             this.onCollisionEnterX(other, self, otherAabb, selfAabb, otherPreAabb, selfPreAabb)
             return
@@ -208,6 +222,7 @@ export default class Player extends cc.Component {
                 this.onTurn()
             break
             case ENUM_COLLIDER_TAG.LADDER:
+                
                 let x = other.node.x  - self.node.x
                 this.status = ENUM_PLAYER_STATUS.CLIMB
                 this.speed.x = 0
@@ -217,7 +232,7 @@ export default class Player extends cc.Component {
                 this.node.getPosition(v3)
                 v3 = v3.add(cc.v3(x, 0, 0))
                 cc.tween(this.node).to(0.05, {position: v3}).call(()=>{
-                    this.speed.y = this.jump * 0.2
+                    this.speed.y = this.jump * 0.3
                 }).start()
             break
         }

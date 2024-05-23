@@ -6,7 +6,7 @@ import PoolManager from './PoolManager';
 
 export default class ResourceManager implements IManager{
     private static readonly COMMON_RESOURCES : string = "CommonResources";
-    private static readonly PREFAB_PATH: string = "PrefabCocos";
+    private static readonly PREFAB_PATH: string = "Prefab";
     private static readonly BLOCK_JSON_PATH: string = "Json/Block";
     private static readonly LEVEL_JSON_PATH: string = "Json/Level";
     private static _instance: any = null

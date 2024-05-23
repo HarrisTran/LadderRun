@@ -38,7 +38,11 @@ export default class ReverseMovingTrap extends cc.Component {
             this.speed += Math.random() * 80
             this.dir = 1
             this.onTurn();
-        }else if((other.tag == ENUM_COLLIDER_TAG.WALL || other.tag == ENUM_COLLIDER_TAG.HARD_TRAP_WALL || other.tag == ENUM_COLLIDER_TAG.SOFT_TRAP) && self.tag == ENUM_COLLIDER_TAG.REVERSE_TRAP && this.status == ENUM_REVERSE_TRAP_STATUS.RUN){
+        }else if((other.tag == ENUM_COLLIDER_TAG.WALL || 
+            other.tag == ENUM_COLLIDER_TAG.HARD_TRAP_WALL || 
+            other.tag == ENUM_COLLIDER_TAG.SOFT_TRAP ||
+            other.tag == ENUM_COLLIDER_TAG.PLAYER
+        ) && self.tag == ENUM_COLLIDER_TAG.REVERSE_TRAP && this.status == ENUM_REVERSE_TRAP_STATUS.RUN){
             this.onTurn()
         }
     }

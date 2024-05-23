@@ -9,7 +9,6 @@ import Block from '../Block';
 import PoolManager from "./PoolManager";
 import Player from '../Player';
 import Star from '../Star';
-import BackendConnector from '../BackendConnector';
 import Lava from '../enemies/Lava';
 import { delay, getLastElement, Queue } from '../Utils';
 import { IManager } from './IManager';
@@ -17,6 +16,7 @@ import ResourceManager from './ResourceManager';
 import UIManager from './UIManager';
 import AudioManager from './AudioManager';
 import { PlayerDataManager } from './PlayerDataManager';
+import BEConnector from '../BEConnector';
 
 const {ccclass, property} = cc._decorator;
 
@@ -38,6 +38,7 @@ export default class GameManager extends cc.Component {
     private _allManagers: IManager[] = [];
     public resourcesManager: ResourceManager;
     public playerDataManager: PlayerDataManager;
+    public APIManager : BEConnector;
 
     private _blockQueue : Queue<string> = new Queue<string>();
 
@@ -56,11 +57,11 @@ export default class GameManager extends cc.Component {
                 break;
             case GameState.PLAYING:
                 this.initGame()
-                // this.APIManager.ticketMinus("auth");
+                //this.APIManager.ticketMinus("auth");
                 // this.UiController.StartGame();
                 break;
             case GameState.REPLAY:
-                // this.APIManager.ticketMinus("revive");
+                //this.APIManager.ticketMinus("revive");
                 // this.UiController.StartGame();
                 break;
             case GameState.ENDGAME:
@@ -77,6 +78,7 @@ export default class GameManager extends cc.Component {
     private _initializePhysicsManager(){
         const physics = cc.director.getCollisionManager();
         physics.enabled = true;
+        physics.enabledDebugDraw = true;
     }
 
     private _initializeGameEvents(): void {
@@ -85,6 +87,7 @@ export default class GameManager extends cc.Component {
         cc.game.on(ENUM_GAME_EVENT.PLAYER_CLIMB_END, this.onPlayerClimbEnd, this)
         cc.game.on(ENUM_GAME_EVENT.GAME_WIN, this.onGameWin, this)
         cc.game.on(ENUM_GAME_EVENT.GAME_LOSE, this.onGameLose, this)
+        cc.game.on(ENUM_GAME_EVENT.UPDATE_SCORE,this.updateScore,this);
         cc.game.on(ENUM_GAME_EVENT.EFFECT_STAR_PLAY, this.onEffectStarPlay, this)
         cc.game.on(ENUM_GAME_EVENT.GAME_OVER,this.onGameOver,this);
     }
@@ -94,12 +97,14 @@ export default class GameManager extends cc.Component {
 
         this.resourcesManager = new ResourceManager();
         this.playerDataManager = new PlayerDataManager();
+        //this.APIManager = new BEConnector();
 
         this._allManagers.push(this.resourcesManager);
         this._allManagers.push(this.audioManager);
 
         this.resourcesManager.initialize();
         this.audioManager.initialize();
+        //this.APIManager.initialize();
 
         this._initializePhysicsManager();
     }
@@ -118,6 +123,14 @@ export default class GameManager extends cc.Component {
             if(-this._allManagers.every(manager => manager.initializationCompleted()) && this.CurrentGameState == GameState.LOADING){
                 this.ChangeState(GameState.MAIN_MENU);
             }
+        }
+    }
+
+    private updateScore(){
+        if(this.CurrentGameState == GameState.PLAYING || this.CurrentGameState === GameState.REPLAY){
+            
+            this.UIManager.setGameScore();
+            //this.APIManager.score = this.playerDataManager.getScore();
         }
     }
 
@@ -259,6 +272,14 @@ export default class GameManager extends cc.Component {
         //     y: lastBlock.y + lastBlock.node.height
         // })
         // component.rendor()
+    }
+
+    public getPlayerRelativePosition(){
+        let canvasSize = cc.Canvas.instance.designResolution;
+        let playerNode = this.stageNode.getChildByName("player")
+        if(!playerNode) return;
+        let pos = playerNode.getPosition().addSelf(new cc.Vec2(canvasSize.width,canvasSize.height).multiplyScalar(0.5));
+        return pos;
     }
 
     onEffectStarPlay(data: any){

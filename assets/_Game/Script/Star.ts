@@ -1,7 +1,4 @@
-// Created by carolsail
-
 const {ccclass, property} = cc._decorator;
-
 @ccclass
 export default class Star extends cc.Component {
 
