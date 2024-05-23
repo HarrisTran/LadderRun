@@ -18,7 +18,7 @@ export default class MovingTrap extends cc.Component {
     speed: number = 100
     dir: number = 1
     radian: number = 0
-    circleRadius: number = 50
+    circleRadius: number = 120
     circleCenter: cc.Vec2 = cc.v2(0, 0)
  
     onLoad () {
@@ -30,7 +30,7 @@ export default class MovingTrap extends cc.Component {
     }
  
     update(dt: number){
-        if(GameManager.Instance.CurrentGameState != GameState.PLAYING) return
+        if(GameManager.Instance.CurrentGameState != GameState.PLAYING) return;
         if(this.dir){
             this.radian += dt * (this.speed / 100) * this.dir;
             let x = this.circleRadius * Math.cos(this.radian) + this.circleCenter.x;

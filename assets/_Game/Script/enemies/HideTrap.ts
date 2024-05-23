@@ -1,6 +1,7 @@
 
 import { ENUM_AUDIO_CLIP, ENUM_COLLIDER_TAG } from "../Enum";
 import AudioManager from "../manager/AudioManager";
+import GameManager from "../manager/GameManager";
 
 const {ccclass, property} = cc._decorator;
 
@@ -13,6 +14,7 @@ export default class HideTrap extends cc.Component {
         if(other.tag == ENUM_COLLIDER_TAG.PLAYER && self.tag == ENUM_COLLIDER_TAG.HIDE_TRAP_VIEW){
             cc.tween(this.body)
             .to(1,{scaleY: 0})
+            .call(()=>GameManager.Instance.audioManager.playSfx(ENUM_AUDIO_CLIP.TRAP_HIDE))
             .delay(1)
             .to(0.5,{scaleY: 1.5})
             .union()

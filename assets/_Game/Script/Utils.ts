@@ -45,6 +45,14 @@ export function getLastElement<T>(arr: T[]) : T | undefined {
     }
 }
 
+export function getNextLastElement<T>(arr: T[]) : T | undefined {
+    if(arr.length == 0) return undefined;
+    else{
+        let length = arr.length;
+        return arr[length - 2];
+    }
+}
+
 export function delay(delay: number){
     return new Promise((resolve) => setTimeout(resolve, delay));
 }

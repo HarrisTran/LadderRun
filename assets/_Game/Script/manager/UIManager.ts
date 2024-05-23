@@ -34,9 +34,9 @@ export default class UIManager extends cc.Component {
             case GameState.PLAYING:
                 this.gameLayer.show();
                 break;
-            case GameState.REPLAY:
-                
-                break;
+            // case GameState.REPLAY:
+            //     this.changeState(GameState.PLAYING);
+            //     break;
             case GameState.ENDGAME:
                 this.loseLayer.show();
                 break;

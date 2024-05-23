@@ -23,22 +23,22 @@ export default class LoseLayer extends BaseLayer {
     }
 
     protected onEnable(): void {
-        //GameManager.Instance.APIManager.postScoreToServer()
-        // const numbetTicket = GameManager.Instance.APIManager.getTicketCanBeMinus();
-        // this.ticketMinus.string = '-'+numbetTicket.toString();
+        GameManager.Instance.APIManager.postScoreToServer()
+        const numbetTicket = GameManager.Instance.APIManager.getTicketCanBeMinus();
+        this.ticketMinus.string = '-'+numbetTicket.toString();
 
-        // this.scheduleOnce(this._exitGame,60);
-        // this._updateLeaderBoard();
+        this.scheduleOnce(this._exitGame,60);
+        this._updateLeaderBoard();
     }
 
     private async _updateLeaderBoard(){
-        // let index : number = 1;
+        let index : number = 1;
         this.leaderBoardView.content.removeAllChildren();
 
         let lst = await GameManager.Instance.APIManager.requireRankList();
 
         // for(let info of lst.slice(0,5)){
-        //     let row = instantiate(this.itemRowPrefab);
+        //     let row = cc.instantiate(this.itemRowPrefab);
         //     row.setParent(this.leaderBoardView.content);
         //     row.getComponent(ItemRow).createItemRow(index,info.totalScore);
         //     row.active = true;
@@ -56,7 +56,7 @@ export default class LoseLayer extends BaseLayer {
                 .checkGameScoreTicket()
                 .then(() => {
                     this._clickedContinueButton = false;
-                    GameManager.Instance.ChangeState(GameState.REPLAY);
+                    GameManager.Instance.ChangeState(GameState.PLAYING);
                     this.continueButton.active = false;
                 }) 
                 .catch(()=>{
@@ -70,11 +70,12 @@ export default class LoseLayer extends BaseLayer {
     }
 
     protected onDisable(): void {
-        //this.unschedule(this._exitGame);
+        this.unschedule(this._exitGame);
     }
 
     private _exitGame(){
         //GameManager.Instance.APIManager.postScoreWebEvent();
+        GameManager.Instance.APIManager.postScoreToServer()
     }
    
 }

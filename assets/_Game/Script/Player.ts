@@ -1,5 +1,5 @@
 import ReverseMovingTrap from "./enemies/ReverseMovingTrap";
-import { ENUM_COLLIDER_TAG, ENUM_PLAYER_STATUS, ENUM_GAME_EVENT, GameState} from "./Enum";
+import { ENUM_COLLIDER_TAG, ENUM_PLAYER_STATUS, ENUM_GAME_EVENT, GameState, ENUM_AUDIO_CLIP} from "./Enum";
 import GameManager from "./manager/GameManager";
 
 const {ccclass, property} = cc._decorator;
@@ -81,6 +81,7 @@ export default class Player extends cc.Component {
         if(GameManager.Instance.CurrentGameState != GameState.PLAYING) return
         this.jumpCount++
         if(this.jumpCount > this.jumpLimit || this.isClimb()) return
+        GameManager.Instance.audioManager.playSfx(ENUM_AUDIO_CLIP.PLAYER_JUMP);
         this.status = ENUM_PLAYER_STATUS.JUMP
         this.speed.y = this.jump
     }
@@ -232,6 +233,7 @@ export default class Player extends cc.Component {
                 this.node.getPosition(v3)
                 v3 = v3.add(cc.v3(x, 0, 0))
                 cc.tween(this.node).to(0.05, {position: v3}).call(()=>{
+                    GameManager.Instance.audioManager.playSfx(ENUM_AUDIO_CLIP.PLAYER_CLIMB);
                     this.speed.y = this.jump * 0.3
                 }).start()
             break

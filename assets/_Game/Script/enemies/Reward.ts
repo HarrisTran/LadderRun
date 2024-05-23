@@ -30,7 +30,7 @@ export default class Reward extends cc.Component {
             cc.game.emit(ENUM_GAME_EVENT.UPDATE_SCORE);
 
             this.node.removeComponent(cc.Collider);
-            this.node.active = false;
+            this.node.destroy();
 
         }
     }

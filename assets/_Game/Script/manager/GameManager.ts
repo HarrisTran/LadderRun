@@ -3,14 +3,14 @@ import { StaticInstance } from './../StaticInstance';
 
 import DataManager from "./DataManager";
 import EventManager from "./EventManager";
-import { ENUM_GAME_TYPE, ENUM_GAME_EVENT, ENUM_GAME_ZINDEX, ENUM_GAME_STATUS, ENUM_UI_TYPE, GameState  } from "../Enum";
+import { ENUM_GAME_TYPE, ENUM_GAME_EVENT, ENUM_GAME_ZINDEX, ENUM_GAME_STATUS, ENUM_UI_TYPE, GameState, ENUM_AUDIO_CLIP  } from "../Enum";
 import {createCycleBlockList, createLevelList} from '../Levels';
 import Block from '../Block';
 import PoolManager from "./PoolManager";
 import Player from '../Player';
 import Star from '../Star';
 import Lava from '../enemies/Lava';
-import { delay, getLastElement, Queue } from '../Utils';
+import { delay, getLastElement, getNextLastElement, Queue } from '../Utils';
 import { IManager } from './IManager';
 import ResourceManager from './ResourceManager';
 import UIManager from './UIManager';
@@ -19,7 +19,17 @@ import { PlayerDataManager } from './PlayerDataManager';
 import BEConnector from '../BEConnector';
 
 const {ccclass, property} = cc._decorator;
-
+window.addEventListener('message', (data) => {
+    const { data: res } = data;
+    const objectRes = JSON.parse(res);
+    if (objectRes) {
+        const { type, value } = objectRes;
+        if (type === 'newTicket') {
+            GameManager.Instance.APIManager.numberTicket += value;
+            GameManager.Instance.ChangeState(GameState.PLAYING);
+        }
+    }
+});
 @ccclass
 export default class GameManager extends cc.Component {
     private static _instance: GameManager = null;
@@ -32,6 +42,7 @@ export default class GameManager extends cc.Component {
     @property(UIManager) public UIManager: UIManager = null;
     @property(AudioManager) public audioManager : AudioManager = null;
     @property(cc.Node) private stageNode: cc.Node = null
+    @property(cc.Node) public lava: cc.Node = null;
     // @property(cc.Node) private lavaNode: cc.Node = null
 
 
@@ -43,6 +54,9 @@ export default class GameManager extends cc.Component {
     private _blockQueue : Queue<string> = new Queue<string>();
 
     private _previousBlockNode: cc.Node;
+    private _stayingPosition: cc.Vec2;
+
+    private isPlayedOnce: boolean = false;
 
     public async ChangeState(newState: GameState) {
         if (this.CurrentGameState == newState) return;
@@ -53,18 +67,41 @@ export default class GameManager extends cc.Component {
                 this._initializeAllManagers();
                 break;
             case GameState.MAIN_MENU:
+                this.isPlayedOnce = false;
+                this.audioManager.playBGM();
                 //this.UiController.LoadingDone();
                 break;
             case GameState.PLAYING:
-                this.initGame()
-                //this.APIManager.ticketMinus("auth");
+                if(this.isPlayedOnce){
+                    let lavaPosition = this.lava.getPosition();
+                    this.lava.setPosition(lavaPosition.x,lavaPosition.y-1000)
+                    //replay
+                    const player: cc.Node = PoolManager.instance.getNode(`player`, this.stageNode)
+                    player.zIndex = ENUM_GAME_ZINDEX.PLAYER;
+                    player.setPosition(this._stayingPosition);
+                    player.getComponent(Player).setDir(1) 
+
+                    this.APIManager.ticketMinus("revive");
+                }else{
+                    this.initGame()
+                    this.APIManager.ticketMinus("auth");
+                }
+                
                 // this.UiController.StartGame();
                 break;
-            case GameState.REPLAY:
-                //this.APIManager.ticketMinus("revive");
-                // this.UiController.StartGame();
-                break;
+            // case GameState.REPLAY:
+                
+            //     const player: cc.Node = PoolManager.instance.getNode(`player`, this.stageNode)
+            //     player.zIndex = ENUM_GAME_ZINDEX.PLAYER;
+            //     player.setPosition(this._previousBlockNode.position);
+            //     player.getComponent(Player).setDir(1)
+
+            //     this.APIManager.ticketMinus("revive");
+
+            //     // this.UiController.StartGame();
+            //     break;
             case GameState.ENDGAME:
+                this.isPlayedOnce = true
                 break;
         }
     }
@@ -78,7 +115,7 @@ export default class GameManager extends cc.Component {
     private _initializePhysicsManager(){
         const physics = cc.director.getCollisionManager();
         physics.enabled = true;
-        physics.enabledDebugDraw = true;
+        // physics.enabledDebugDraw = true;
     }
 
     private _initializeGameEvents(): void {
@@ -97,21 +134,21 @@ export default class GameManager extends cc.Component {
 
         this.resourcesManager = new ResourceManager();
         this.playerDataManager = new PlayerDataManager();
-        //this.APIManager = new BEConnector();
+        this.APIManager = new BEConnector();
 
         this._allManagers.push(this.resourcesManager);
         this._allManagers.push(this.audioManager);
 
         this.resourcesManager.initialize();
         this.audioManager.initialize();
-        //this.APIManager.initialize();
+        this.APIManager.initialize();
 
         this._initializePhysicsManager();
     }
 
     private onGameStart(){
+        this.audioManager.playSfx(ENUM_AUDIO_CLIP.BUTTON_PLAY);
         this.ChangeState(GameState.PLAYING)
-        
     }
 
     protected update(dt: number): void {
@@ -127,16 +164,17 @@ export default class GameManager extends cc.Component {
     }
 
     private updateScore(){
-        if(this.CurrentGameState == GameState.PLAYING || this.CurrentGameState === GameState.REPLAY){
+        if(this.CurrentGameState == GameState.PLAYING){
             
             this.UIManager.setGameScore();
-            //this.APIManager.score = this.playerDataManager.getScore();
+            this.audioManager.playSfx(ENUM_AUDIO_CLIP.COIN);
+            this.APIManager.score = this.playerDataManager.getScore();
         }
     }
 
     // 复活游戏
     onGameRelive(){
-        DataManager.instance.status = ENUM_GAME_STATUS.UNRUNING
+        //DataManager.instance.status = ENUM_GAME_STATUS.UNRUNING
         // DataManager.instance.reset(true)
         //this.initGame();
         // if(!DEBUG_MODE) BackendConnector.instance.ticketMinus("revive")
@@ -168,6 +206,7 @@ export default class GameManager extends cc.Component {
 
     // 失败
     onGameLose(){
+        this.audioManager.playSfx(ENUM_AUDIO_CLIP.PLAYER_HIT);
         this.ChangeState(GameState.ENDGAME);
         // DataManager.instance.status = ENUM_GAME_STATUS.UNRUNING
         // this.scheduleOnce(()=>{
@@ -195,6 +234,7 @@ export default class GameManager extends cc.Component {
             let block: cc.Node = PoolManager.instance.getNode('block',this.stageNode);
             if (i == 0) {
                 block.setPosition(0,(block.height-canvasHeight)/2);
+                this._stayingPosition = new cc.Vec2(0,(block.height-canvasHeight)/2);
             }else{
                 let offset = (this._previousBlockNode.height + block.height)/2;
                 block.setPosition(0,this._previousBlockNode.y + offset);
@@ -208,7 +248,7 @@ export default class GameManager extends cc.Component {
             block.setSiblingIndex(0);
             this._previousBlockNode = block;
         }
-        let firstBlock = getLastElement(this.stageNode.children).position.clone();
+        let firstBlock = getNextLastElement(this.stageNode.children).position.clone();
         const player: cc.Node = PoolManager.instance.getNode(`player`, this.stageNode)
         player.zIndex = ENUM_GAME_ZINDEX.PLAYER;
         player.setPosition(firstBlock);
@@ -231,6 +271,9 @@ export default class GameManager extends cc.Component {
         cpn.rendor();
         block.setSiblingIndex(0);
         this._previousBlockNode = block;
+        this._stayingPosition.addSelf(new cc.Vec2(0,block.height))
+        console.log(this._stayingPosition.x, this._stayingPosition.y);
+        
 
         if(this._blockQueue.size() < 10){
             this._initializeBlockQueue();

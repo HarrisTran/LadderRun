@@ -15,6 +15,15 @@ export default class AudioManager extends cc.Component implements IManager{
     @property(cc.AudioSource)
     private musicSource: cc.AudioSource = null;
 
+    @property(cc.Sprite)
+    soundButton: cc.Sprite = null;
+
+    @property(cc.SpriteFrame)
+    soundOn: cc.SpriteFrame = null;
+    
+    @property(cc.SpriteFrame)
+    soundOff: cc.SpriteFrame = null;
+
     private _audioClipSet: {[key:string]: cc.AudioClip} = {};
     private _audioInitializeProgress: number;
     private _isAudioInitializeDone: boolean;
@@ -51,7 +60,7 @@ export default class AudioManager extends cc.Component implements IManager{
 
     public toggleMute(): boolean {
         this._isMute = !this._isMute;
-        // this.soundButton.active = !this._isMute;
+        this.soundButton.spriteFrame = this._isMute ? this.soundOff : this.soundOn;
         this.setMute(this._isMute);
         return this._isMute;
     }
@@ -68,7 +77,7 @@ export default class AudioManager extends cc.Component implements IManager{
 
     public playBGM(volume = 1, loop = true) {
         this.musicSource.stop();
-        this.musicSource.clip = this._audioClipSet["bgm"];
+        this.musicSource.clip = this._audioClipSet[ENUM_AUDIO_CLIP.BGM];
         this.musicSource.play();
     }
 

@@ -1,5 +1,6 @@
 import * as CryptoES from "crypto-js";
 import { IManager } from './manager/IManager';
+import { delay } from "./Utils";
 
 
 const {ccclass, property} = cc._decorator;
@@ -58,15 +59,22 @@ export default class BEConnector{
 
 
     public async requireRankList() {
-        await fetch(
-            `${this.gameURL}/promotions/detail/${this.tournamentId}`
-        ).then(response=>{
-            return response.json();
-        })
-        .then((json)=>{
-            console.log(json);
+        // await fetch(
+        //     `${this.gameURL}/promotions/detail/${this.tournamentId}`
+        // ).then(response=>{
+        //     return response.json();
+        // })
+        // .then((json)=>{
+        //     console.log(json);
             
-        })
+        // })
+        await delay(1);
+        let result = [
+            {id: "1", totalScore: 2000},{id: "2", totalScore: 1000},
+            {id: "3", totalScore: 900},{id: "4", totalScore: 700},
+            {id: "5", totalScore: 600},{id: "6", totalScore: 200},
+        ]
+        return result;
     }
 
     public async authenticate() {
@@ -75,7 +83,6 @@ export default class BEConnector{
             `${this.gameURL}/promotions/authenticate-tournament?token=${this.token}&tournamentId=${this.tournamentId}&skinId=${this.skinId}&deviceInfo=${this.deviceInfo}`,
         )
             .then((response) => {
-                
                 if (response.ok) {
                     return response.json();
                 }
@@ -165,12 +172,16 @@ export default class BEConnector{
                 method: 'POST',
                 body: JSON.stringify({ data: dataEncrypted }),
             },
-        ).catch((err) => console.log(err));
+        )
+        .catch((res)=>{
+            console.log(res);
+        })
+        .catch((err) => console.log(err));
 
-        //this.postScoreWebEvent();
+        this.postScoreWebEvent();
     }
 
-    public postScoreWebEvent(){
+    private postScoreWebEvent(){
         window.parent.postMessage(
             JSON.stringify({
                 error: false,
@@ -206,7 +217,7 @@ export default class BEConnector{
 }
 
 const ENV_CONFIG = {
-    development: 'http://192.168.1.144:3009/api',
+    development: 'http://192.168.1.126:50002/api',
     staging: 'https://api.play4promote.com/api',
     production: 'https://api.play4promo.com/api',
 };

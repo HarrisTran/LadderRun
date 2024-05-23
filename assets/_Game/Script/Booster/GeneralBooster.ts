@@ -1,5 +1,6 @@
 
-import { ENUM_COLLIDER_TAG } from "../Enum";
+import { ENUM_AUDIO_CLIP, ENUM_COLLIDER_TAG } from "../Enum";
+import GameManager from "../manager/GameManager";
 import Player from "../Player";
 import { delay } from "../Utils";
 
@@ -49,14 +50,17 @@ export class GeneralBooster extends cc.Component {
     }
 
     activeSpeedBooster(collider: cc.Collider){
+        GameManager.Instance.audioManager.playSfx(ENUM_AUDIO_CLIP.BOOSTER_SPEED)
         collider.node.getComponent(Player).speedBoosterDuration = this.duration;
     }
 
     activeShieldBooster(collider: cc.Collider){
+        GameManager.Instance.audioManager.playSfx(ENUM_AUDIO_CLIP.BOOSTER_SHIELD)
         collider.node.getComponent(Player).shieldBoosterDuration = this.duration;
     }
 
     activeMagnetBooster(collider: cc.Collider){
+        GameManager.Instance.audioManager.playSfx(ENUM_AUDIO_CLIP.BOOSTER_MAGNET)
         collider.node.getComponent(Player).magnetBoosterDuration = this.duration;
     }
 

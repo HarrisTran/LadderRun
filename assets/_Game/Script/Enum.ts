@@ -3,7 +3,7 @@ export enum GameState {
     LOADING,
     MAIN_MENU,
     PLAYING,
-    REPLAY,
+    //REPLAY,
     ENDGAME
 }
 
@@ -122,35 +122,19 @@ export enum ENUM_UI_TYPE {
 
 // 音效
 export enum ENUM_AUDIO_CLIP {
-    BGM = 'bgm_ingame',
-
-    POWER_UP = 'ananas',
-    SPEED_UP = 'melon',
-
-    BOX = 'box',
-    CLICK = 'button_click',
-    PLAY = 'button_play',
-    COLLECT = 'coin',
-
-    CHICKEN_HIT = 'chicken_hit',
-    CHICKEN_RUN = 'chicken_run',
-
-    BAT_HIT = 'bat_hit',
-    BAT_FLY = 'bat_fly',
-
-    PIRANHA_PLANT = 'piranha_plant',
-
-    PLANT_SHOOT = 'plant_shoot',
-
-    DIE = 'player_hit',
-    JUMP = 'player_jump',
-    CLIMB = 'player_climb',
-
-    SAW = 'saw',
-
-    STONE = 'stone',
-
-    TRAMPOLINE = 'trampoline',
+    BGM = 'bgm',
+    BOOSTER_MAGNET = 'booster_magnet',
+    BOOSTER_SHIELD = 'booster_shield',
+    BOOSTER_SPEED = 'booster_speed',
+    BUTTON_CLICK  = 'button_click',
+    BUTTON_PLAY = 'button_play',
+    COIN = 'coin',
+    PLAYER_CLIMB = 'player_climb',
+    PLAYER_HIT = 'player_hit',
+    PLAYER_JUMP = 'player_jump',
+    TRAP_HIDE = 'trap_hide',
+    TRAP_SHOT = 'trap_shot',
+    TRAP_STAND = 'trap_stand',
 }
 
 // 游戏模式

@@ -5,7 +5,7 @@
 // Learn life-cycle callbacks:
 //  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
 
-import { ENUM_COLLIDER_TAG, ENUM_SHOOTER_STATUS, GameState } from "../Enum";
+import { ENUM_AUDIO_CLIP, ENUM_COLLIDER_TAG, ENUM_SHOOTER_STATUS, GameState } from "../Enum";
 import GameManager from "../manager/GameManager";
 import PoolManager from "../manager/PoolManager";
 import Bullet from "./Bullet";
@@ -64,6 +64,7 @@ export default class ShooterTrap extends cc.Component {
     onBulletBuild(){
         if(GameManager.Instance.CurrentGameState != GameState.PLAYING) return
         this.status = ENUM_SHOOTER_STATUS.ATTACK
+        GameManager.Instance.audioManager.playSfx(ENUM_AUDIO_CLIP.TRAP_SHOT);
         // AudioManager.instance.playSound(ENUM_AUDIO_CLIP.PLANT_SHOOT).then(v=>this.attackSoundId=v);
         const bullet = PoolManager.instance.getNode('bullet', this.bulletNode)
     }
