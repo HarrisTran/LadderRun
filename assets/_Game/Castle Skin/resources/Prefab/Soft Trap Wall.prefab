@@ -300,11 +300,11 @@
     "_offset": {
       "__type__": "cc.Vec2",
       "x": 0,
-      "y": 60.10000000000007
+      "y": 61
     },
     "_size": {
       "__type__": "cc.Size",
-      "width": 8,
+      "width": 16,
       "height": 2
     },
     "_id": ""

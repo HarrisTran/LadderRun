@@ -66,13 +66,8 @@ export default class AudioManager extends cc.Component implements IManager{
     }
 
     public setMute(mute: boolean) {
-        this._isMute = mute;
-        if(this.soundSource.clip){
-            this.soundSource.volume = mute ? 0 : 1;
-        }
-        if(this.musicSource.clip){
-            this.musicSource.volume = mute ? 0 : 1;
-        }
+        this.soundSource.mute = mute;
+        this.musicSource.mute = mute;
     }
 
     public playBGM(volume = 1, loop = true) {

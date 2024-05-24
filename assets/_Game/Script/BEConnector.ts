@@ -165,7 +165,7 @@ export default class BEConnector{
         //this.postScoreWebEvent();
     }
 
-    private postScoreWebEvent(){
+    public postScoreWebEvent(){
         window.parent.postMessage(
             JSON.stringify({
                 error: false,

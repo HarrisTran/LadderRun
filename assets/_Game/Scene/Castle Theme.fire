@@ -2307,11 +2307,11 @@
   {
     "__type__": "cc.ClickEvent",
     "target": {
-      "__id__": 2
+      "__id__": 38
     },
     "component": "",
-    "_componentId": "1b4e6NXg3RIDaCI1T/UvI/g",
-    "handler": "onGameStart",
+    "_componentId": "00762gPostDGp/BLnCjnO9q",
+    "handler": "onStartClick",
     "customEventData": ""
   },
   {
@@ -2658,7 +2658,7 @@
     "node": {
       "__id__": 52
     },
-    "_enabled": true,
+    "_enabled": false,
     "_id": "b0znXa2c5DA4suoOdcVORW"
   },
   {
@@ -5477,7 +5477,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 750,
-      "height": 1914.5144628
+      "height": 1500
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -5489,7 +5489,7 @@
       "ctor": "Float64Array",
       "array": [
         0,
-        506.786,
+        -74.421,
         0,
         0,
         0,
@@ -5636,7 +5636,7 @@
       "ctor": "Float64Array",
       "array": [
         0,
-        -515.367,
+        -498.965,
         0,
         0,
         0,

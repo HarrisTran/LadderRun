@@ -38,7 +38,8 @@ export default class LoseLayer extends BaseLayer {
         let participants = await GameManager.Instance.APIManager.postScoreToServer()
         
         let listTop5 = participants.slice(0,5);
-        let currentScore = GameManager.Instance.playerDataManager.getScore();
+        let currentScore = GameManager.Instance.playerDataManager.getScore() + 
+                            GameManager.Instance.APIManager.currentScore;
         
         for(let info of listTop5){
             let row = cc.instantiate(this.itemRowPrefab);
@@ -54,7 +55,7 @@ export default class LoseLayer extends BaseLayer {
             this.mainItemRow.node.active = true;
             this.mainItemRow.createItemRow(ranking+1,currentScore);
         }
-        else if(ranking > -1 && ranking <= 4){
+        else{
             this.mainItemRow.node.active = false;
         }
     }
@@ -86,7 +87,7 @@ export default class LoseLayer extends BaseLayer {
 
     private _exitGame(){
         //GameManager.Instance.APIManager.postScoreWebEvent();
-        GameManager.Instance.APIManager.postScoreToServer()
+        GameManager.Instance.APIManager.postScoreWebEvent()
     }
    
 }

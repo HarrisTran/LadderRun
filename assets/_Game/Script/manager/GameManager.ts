@@ -115,7 +115,6 @@ export default class GameManager extends cc.Component {
     private _initializePhysicsManager(){
         const physics = cc.director.getCollisionManager();
         physics.enabled = true;
-        physics.enabledDebugDraw = true;
     }
 
     private _initializeGameEvents(): void {
@@ -148,6 +147,7 @@ export default class GameManager extends cc.Component {
     }
 
     private onGameStart(){
+        //this.lava.getComponent(Lava).startMove();
         this.audioManager.playSfx(ENUM_AUDIO_CLIP.BUTTON_PLAY);
         this.ChangeState(GameState.PLAYING)
     }
@@ -273,8 +273,6 @@ export default class GameManager extends cc.Component {
         block.setSiblingIndex(0);
         this._previousBlockNode = block;
         this._stayingPosition.addSelf(new cc.Vec2(0,block.height))
-        console.log(this._stayingPosition.x, this._stayingPosition.y);
-        
 
         if(this._blockQueue.size() < 10){
             this._initializeBlockQueue();
