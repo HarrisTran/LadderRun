@@ -77,7 +77,7 @@ export default class AudioManager extends cc.Component implements IManager{
     }
 
     public playSfx(audioClipName: ENUM_AUDIO_CLIP, volume = 1, loop = false) {
-        
+        if(!this._audioClipSet[audioClipName]) return;
         this.soundSource.clip = this._audioClipSet[audioClipName];
         this.soundSource.volume = volume;
         this.soundSource.loop = loop;

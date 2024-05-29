@@ -21,17 +21,17 @@ export default class DangerMovingTrap extends cc.Component {
         if((other.tag == ENUM_COLLIDER_TAG.WALL || other.tag == ENUM_COLLIDER_TAG.HARD_TRAP_WALL) && self.tag == ENUM_COLLIDER_TAG.MOVING_TRAP){
             if(this.dir){
                 this.dir *= -1
-                this.node.scaleX = this.dir * -1
+                this.node.scaleX = this.dir ;
             }
         }
     }
 
     update (dt: number) {
-        if(GameManager.Instance.CurrentGameState != GameState.PLAYING) return
+        if(!GameManager.Instance.isStatePlay()) return
         if(this.dir){
             this.node.x += this.speed * this.dir * dt
-            this.body.angle += 5;
-            this.body.angle = this.body.angle % 360;
+            //this.body.angle += 5;
+            //this.body.angle = this.body.angle % 360;
         }
     }
 }

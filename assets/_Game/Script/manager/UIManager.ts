@@ -10,10 +10,10 @@ const {ccclass, property} = cc._decorator;
 @ccclass
 export default class UIManager extends cc.Component {
 
-    @property(LoadingLayer) loadingLayer: LoadingLayer = null
-    @property(MenuLayer) menuLayer: MenuLayer = null
-    @property(GameLayer) gameLayer: GameLayer = null
-    @property(LoseLayer) loseLayer: LoseLayer = null
+    @property(LoadingLayer) loadingLayer: LoadingLayer = null!
+    @property(MenuLayer) menuLayer: MenuLayer = null!
+    @property(GameLayer) gameLayer: GameLayer = null!
+    @property(LoseLayer) loseLayer: LoseLayer = null!
 
     
 

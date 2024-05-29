@@ -30,7 +30,7 @@ export default class MovingTrap extends cc.Component {
     }
  
     update(dt: number){
-        if(GameManager.Instance.CurrentGameState != GameState.PLAYING) return;
+        if(!GameManager.Instance.isStatePlay()) return;
         if(this.dir){
             this.radian += dt * (this.speed / 100) * this.dir;
             let x = this.circleRadius * Math.cos(this.radian) + this.circleCenter.x;
@@ -38,8 +38,8 @@ export default class MovingTrap extends cc.Component {
             if(this.movingMode == MovingMode.CIRCLE){
                 this.node.position = cc.v3(x, y, 0);
             }
-            let angle = Math.atan2(y, x) / (Math.PI / 180);
-            this.body.angle = angle;
+            //let angle = Math.atan2(y, x) / (Math.PI / 180);
+            //this.body.angle = angle;
         }
         
     }

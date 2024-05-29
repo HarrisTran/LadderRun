@@ -1,6 +1,7 @@
 import * as CryptoES from "crypto-js";
 import { IManager } from './manager/IManager';
 import { delay } from "./Utils";
+import GameManager from "./manager/GameManager";
 
 
 const {ccclass, property} = cc._decorator;
@@ -19,7 +20,6 @@ export default class BEConnector{
     public currentScore: number;
     private mileStone: string;
 
-    private _gameScore: number = 0;
 
 
     private gameURL: string = '';
@@ -27,13 +27,9 @@ export default class BEConnector{
 
     constructor()
     {
-        this._gameScore = 0;
         this.getAPInfo();
     }
 
-    public set score(value: number){
-        this._gameScore = value;
-    }
 
     public async initialize() {
         try {
@@ -100,7 +96,7 @@ export default class BEConnector{
         let closestMilestone: number = 0;
 
         for (const milestone in scoreRange) {
-            if (parseInt(milestone) <= this._gameScore) {
+            if (parseInt(milestone) <= GameManager.Instance.playerDataManager.getScore()) {
                 closestMilestone = scoreRange[milestone];
             }
         }
@@ -115,7 +111,7 @@ export default class BEConnector{
     }
 
     public async checkGameScoreTicket() {
-        let dataEncrypted : string = this._getDataEncrypted({score: this._gameScore, ticket: this.getTicketCanBeMinus()})
+        let dataEncrypted : string = this._getDataEncrypted({score: GameManager.Instance.playerDataManager.getScore(), ticket: this.getTicketCanBeMinus()})
 
         await fetch(`${this.gameURL}/promotions/check-game-score-ticket/${this.tournamentId}/${this.skinId}?cocos=1`, {
             headers: {
@@ -133,7 +129,7 @@ export default class BEConnector{
             JSON.stringify({
                 error: false,
                 message: 'Hello World',
-                score: this._gameScore,
+                score: GameManager.Instance.playerDataManager.getScore(),
                 type: 'paypal_modal',
             }),
             '*',
@@ -141,7 +137,7 @@ export default class BEConnector{
     }
 
     public async postScoreToServer() {
-        let dataEncrypted: string = this._getDataEncrypted({ Score: this._gameScore, TournamentId: this.tournamentId, SkinId: this.skinId });
+        let dataEncrypted: string = this._getDataEncrypted({ Score: GameManager.Instance.playerDataManager.getScore(), TournamentId: this.tournamentId, SkinId: this.skinId });
 
         try {
             let leaderBoard = await fetch(
@@ -170,7 +166,7 @@ export default class BEConnector{
             JSON.stringify({
                 error: false,
                 message: 'Hello World',
-                score: this._gameScore + this.currentScore,
+                score: GameManager.Instance.playerDataManager.getScore() + this.currentScore,
                 type: 'game_tournament',
             }),
             '*',
@@ -201,7 +197,7 @@ export default class BEConnector{
 }
 
 const ENV_CONFIG = {
-    development: 'http://192.168.1.126:50002/api',
+    development: 'http://192.168.1.144:3009/api',
     staging: 'https://api.play4promote.com/api',
     production: 'https://api.play4promo.com/api',
 };

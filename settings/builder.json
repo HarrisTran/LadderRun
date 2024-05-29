@@ -2,7 +2,9 @@
   "title": "LadderRun",
   "packageName": "org.cocos2d.demo",
   "startScene": "a738f065-fc56-4cca-a623-ac83643451a4",
-  "excludeScenes": [],
+  "excludeScenes": [
+    "c472c2ba-aba7-4b2c-9800-9ee291d2e158"
+  ],
   "orientation": {
     "landscapeRight": true,
     "landscapeLeft": true,
@@ -51,5 +53,8 @@
     "recordPath": ""
   },
   "appBundle": false,
-  "agreements": {}
+  "agreements": {
+    "20200831115453": false,
+    "20220901093311": false
+  }
 }

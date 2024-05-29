@@ -67,19 +67,22 @@ export default class GameManager extends cc.Component {
                 this._initializeAllManagers();
                 break;
             case GameState.MAIN_MENU:
+                console.log(GameManager.Instance.APIManager.currentScore);
+                
                 this.isPlayedOnce = false;
                 this.audioManager.playBGM();
                 //this.UiController.LoadingDone();
                 break;
             case GameState.PLAYING:
                 if(this.isPlayedOnce){
-                    let lavaPosition = this.lava.getPosition();
-                    this.lava.setPosition(lavaPosition.x,lavaPosition.y-1000)
+                    cc.tween(this.lava).by(1,{y: -1000}).start();
                     //replay
-                    const player: cc.Node = PoolManager.instance.getNode(`player`, this.stageNode)
+                    this.stageNode.getChildByName('player').destroy();
+                    const player: cc.Node = PoolManager.instance.getNode(`player`, this.stageNode, cc.v3(this._stayingPosition).addSelf(cc.v3(100,0)))
                     player.zIndex = ENUM_GAME_ZINDEX.PLAYER;
-                    player.setPosition(this._stayingPosition);
+                    // player.setPosition(this._stayingPosition);
                     player.getComponent(Player).setDir(1) 
+                    player.getComponent(Player).shieldBoosterDuration = 10;
 
                     this.APIManager.ticketMinus("revive");
                 }else{
@@ -166,10 +169,8 @@ export default class GameManager extends cc.Component {
 
     private updateScore(){
         if(this.CurrentGameState == GameState.PLAYING){
-            
             this.UIManager.setGameScore();
             this.audioManager.playSfx(ENUM_AUDIO_CLIP.COIN);
-            this.APIManager.score = this.playerDataManager.getScore();
         }
     }
 
@@ -205,6 +206,10 @@ export default class GameManager extends cc.Component {
         
     }
 
+    public isStatePlay() : boolean {
+        return this.CurrentGameState == GameState.PLAYING;
+    }
+
     // 失败
     onGameLose(){
         this.audioManager.playSfx(ENUM_AUDIO_CLIP.PLAYER_HIT);
@@ -235,7 +240,6 @@ export default class GameManager extends cc.Component {
             let block: cc.Node = PoolManager.instance.getNode('block',this.stageNode);
             if (i == 0) {
                 block.setPosition(0,(block.height-canvasHeight)/2);
-                this._stayingPosition = new cc.Vec2(0,(block.height-canvasHeight)/2);
             }else{
                 let offset = (this._previousBlockNode.height + block.height)/2;
                 block.setPosition(0,this._previousBlockNode.y + offset);
@@ -254,6 +258,7 @@ export default class GameManager extends cc.Component {
         player.zIndex = ENUM_GAME_ZINDEX.PLAYER;
         player.setPosition(firstBlock);
         player.getComponent(Player).setDir(1) 
+        this._stayingPosition = player.getPosition();
         
     }
 

@@ -8,7 +8,7 @@ export default class Bullet extends cc.Component {
     speed: number = 200
 
     protected update(dt: number): void {
-        if(GameManager.Instance.CurrentGameState != GameState.PLAYING) return
+        if(!GameManager.Instance.isStatePlay()) return
         this.node.x += this.speed * dt
         if(Math.abs(this.node.x) >= 800) this.node.removeFromParent()
     }

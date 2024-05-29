@@ -1,5 +1,6 @@
 // Created by carolsail
 
+import { ParticipantInfo } from "../BEConnector";
 import { GameState } from "../Enum";
 import GameManager from "../manager/GameManager";
 import BaseLayer from "./Baselayer";
@@ -18,16 +19,18 @@ export default class LoseLayer extends BaseLayer {
 
    private _clickedContinueButton : boolean = false;
 
+   private _numberItemRowCanShow: number = 6;
+
     protected onLoad(): void {
-        this.overlay.on('click',this._exitGame);
+        this.overlay.on('click',this.exitGame);
     }
 
     protected onEnable(): void {
-        GameManager.Instance.APIManager.postScoreToServer()
+        // GameManager.Instance.APIManager.postScoreToServer()
         const numbetTicket = GameManager.Instance.APIManager.getTicketCanBeMinus();
         this.ticketMinus.string = '-'+numbetTicket.toString();
 
-        this.scheduleOnce(this._exitGame,60);
+        this.scheduleOnce(this.exitGame,60);
         this._updateLeaderBoard();
     }
 
@@ -36,24 +39,29 @@ export default class LoseLayer extends BaseLayer {
         this.leaderBoardView.content.removeAllChildren();
 
         let participants = await GameManager.Instance.APIManager.postScoreToServer()
+        //let participants : ParticipantInfo[] = [{userId: "1",sum: 1000}, {userId: "2",sum:800},{userId: "3",sum:500}]
         
-        let listTop5 = participants.slice(0,5);
-        let currentScore = GameManager.Instance.playerDataManager.getScore() + 
-                            GameManager.Instance.APIManager.currentScore;
+        let listTop = participants.slice(0,this._numberItemRowCanShow+1);
+        let currentScore = GameManager.Instance.playerDataManager.getScore() + GameManager.Instance.APIManager.currentScore;
         
-        for(let info of listTop5){
+        for(let info of listTop){
             let row = cc.instantiate(this.itemRowPrefab);
             row.setParent(this.leaderBoardView.content);
             row.getComponent(item).createItemRow(index,info.sum);
+            // if(info.sum == currentScore){
+            //     row.getComponent(item).createItemRow(index,info.sum,true);
+            // }
             row.active = true;
             index++;
         }
 
-        let ranking = listTop5.findIndex(i=>i.sum == currentScore)
-
-        if(ranking > 4){
+        let ranking = listTop.findIndex(i=>i.sum == currentScore)+1;
+        
+        
+        if(ranking <= 0) return;
+        if(ranking > this._numberItemRowCanShow){
             this.mainItemRow.node.active = true;
-            this.mainItemRow.createItemRow(ranking+1,currentScore);
+            this.mainItemRow.createItemRow(ranking,currentScore);
         }
         else{
             this.mainItemRow.node.active = false;
@@ -82,10 +90,10 @@ export default class LoseLayer extends BaseLayer {
     }
 
     protected onDisable(): void {
-        this.unschedule(this._exitGame);
+        this.unschedule(this.exitGame);
     }
 
-    private _exitGame(){
+    private exitGame(){
         //GameManager.Instance.APIManager.postScoreWebEvent();
         GameManager.Instance.APIManager.postScoreWebEvent()
     }

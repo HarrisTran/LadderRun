@@ -304,8 +304,8 @@
     },
     "_size": {
       "__type__": "cc.Size",
-      "width": 16,
-      "height": 2
+      "width": 20,
+      "height": 4
     },
     "_id": ""
   },

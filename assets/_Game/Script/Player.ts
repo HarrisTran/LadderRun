@@ -19,7 +19,7 @@ export default class Player extends cc.Component {
     jump: number = 600
     jumpCount:number = 0
     jumpLimit: number = 1
-    gravity: number = -1750
+    gravity: number = -1700
     _status: ENUM_PLAYER_STATUS = ENUM_PLAYER_STATUS.JUMP
     shield: boolean = false;
 
@@ -250,7 +250,7 @@ export default class Player extends cc.Component {
                     // 向下落地
                     this.jumpCount = 0
                     this.status = ENUM_PLAYER_STATUS.WALK
-                    this.node.y = (otherPreAabb.yMax - this.canvas.y) + (self.node.height - other.node.height);
+                    this.node.y = (otherPreAabb.yMax - this.canvas.y) + (self.node.height - other.node.height)+1;
                     this.speed.y = 0
                     other.touchingY = true
                     //落地星星动画

@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "5d705d44-987c-48eb-8ab4-147a2c29efae",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 170,
+  "height": 875,
+  "platformSettings": {},
+  "subMetas": {
+    "Long Ladder": {
+      "ver": "1.0.6",
+      "uuid": "61c43aff-5a67-4747-9d5d-e303125b1f4f",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "5d705d44-987c-48eb-8ab4-147a2c29efae",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 170,
+      "height": 875,
+      "rawWidth": 170,
+      "rawHeight": 875,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}
