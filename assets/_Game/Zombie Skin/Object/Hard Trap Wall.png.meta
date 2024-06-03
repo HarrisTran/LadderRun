@@ -8,8 +8,8 @@
   "premultiplyAlpha": false,
   "genMipmaps": false,
   "packable": true,
-  "width": 230,
-  "height": 218,
+  "width": 256,
+  "height": 256,
   "platformSettings": {},
   "subMetas": {
     "Hard Trap Wall": {

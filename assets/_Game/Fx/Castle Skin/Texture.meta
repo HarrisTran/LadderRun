@@ -1,9 +1,9 @@
 {
   "ver": "1.1.3",
-  "uuid": "e8dd0504-b758-4166-ae0f-a8a968456acb",
+  "uuid": "7fe41e89-dd42-44c4-87fb-bd7149ed4215",
   "importer": "folder",
-  "isBundle": true,
-  "bundleName": "Alien",
+  "isBundle": false,
+  "bundleName": "",
   "priority": 1,
   "compressionType": {},
   "optimizeHotUpdate": {},

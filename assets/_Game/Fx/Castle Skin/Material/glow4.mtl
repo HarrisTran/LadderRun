@@ -1,0 +1,20 @@
+{
+  "__type__": "cc.Material",
+  "_name": "glow4",
+  "_objFlags": 0,
+  "_native": "",
+  "_effectAsset": {
+    "__uuid__": "829a282c-b049-4019-bd38-5ace8d8a6417"
+  },
+  "_techniqueIndex": 0,
+  "_techniqueData": {
+    "0": {
+      "props": {
+        "mainTexture": {
+          "__uuid__": "e3dbc6a1-8aee-48a1-9573-84c7cb96a451"
+        }
+      },
+      "defines": {}
+    }
+  }
+}
