@@ -5,23 +5,10 @@ import { IManager } from './IManager';
 import PoolManager from './PoolManager';
 
 export default class ResourceManager implements IManager{
-    private static readonly COMMON_RESOURCES : string = "CommonResources";
     private static readonly PREFAB_PATH: string = "Prefab";
     private static readonly BLOCK_JSON_PATH: string = "Json/Block";
     private static readonly LEVEL_JSON_PATH: string = "Json/Level";
-    private static _instance: any = null
 
-    static getInstance<T>(): T {
-        if (this._instance === null) {
-            this._instance = new this()
-        }
-
-        return this._instance
-    }
-
-    static get instance() {
-        return this.getInstance<ResourceManager>()
-    }
 
     private _prefabLoadingProgress: number;
     private _prefabLoadingDone: boolean;
@@ -86,39 +73,35 @@ export default class ResourceManager implements IManager{
             )
         })
 
-        cc.assetManager.loadBundle(ResourceManager.COMMON_RESOURCES,(error,bundle)=>{
-            if(error) console.error(error.message);
-
-            bundle.loadDir(ResourceManager.BLOCK_JSON_PATH,cc.JsonAsset,
-                (finish,total,item)=>{
-                    this._blockJsonLoadingProgress = finish / total;
-                },
-                (error,assets)=>{
-                    if (error) console.error(error);
-                    for (let i = 0; i < assets.length; i++) {
-                        let asset : cc.JsonAsset = assets[i] as any as cc.JsonAsset;
-                        this.blockMap[asset.name] = {data: asset.json.data};
-                    }
-                    this._blockJsonLoadingProgress = 1;
-                    this._blockJsonLoadingDone = true;
+        cc.resources.loadDir(ResourceManager.BLOCK_JSON_PATH,cc.JsonAsset,
+            (finish,total,item)=>{
+                this._blockJsonLoadingProgress = finish / total;
+            },
+            (error,assets)=>{
+                if (error) console.error(error);
+                for (let i = 0; i < assets.length; i++) {
+                    let asset : cc.JsonAsset = assets[i] as any as cc.JsonAsset;
+                    this.blockMap[asset.name] = {data: asset.json.data};
                 }
-            )
+                this._blockJsonLoadingProgress = 1;
+                this._blockJsonLoadingDone = true;
+            }
+        )
 
-            bundle.loadDir(ResourceManager.LEVEL_JSON_PATH,cc.JsonAsset,
-                (finish,total,item)=>{
-                    this._levelJsonLoadingProgress = finish / total;
-                },
-                (error,assets)=>{
-                    if (error) console.error(error);
-                    for (let i = 0; i < assets.length; i++) {
-                        let asset : cc.JsonAsset = assets[i] as any as cc.JsonAsset;
-                        this.levelMap.enqueue(asset.json.data);
-                    }
-                    this._levelJsonLoadingProgress = 1;
-                    this._levelJsonLoadingDone = true;
+        cc.resources.loadDir(ResourceManager.LEVEL_JSON_PATH,cc.JsonAsset,
+            (finish,total,item)=>{
+                this._levelJsonLoadingProgress = finish / total;
+            },
+            (error,assets)=>{
+                if (error) console.error(error);
+                for (let i = 0; i < assets.length; i++) {
+                    let asset : cc.JsonAsset = assets[i] as any as cc.JsonAsset;
+                    this.levelMap.enqueue(asset.json.data);
                 }
-            )
-        })
+                this._levelJsonLoadingProgress = 1;
+                this._levelJsonLoadingDone = true;
+            }
+        )
     }
 
     public popLevelMap(){

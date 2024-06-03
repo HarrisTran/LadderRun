@@ -5,7 +5,7 @@ import { ISpriteSubcriber } from "./ISpriteSubcriber";
 const {ccclass, property} = cc._decorator;
 
 @ccclass
-export default class SpriteManager implements IManager {
+export default class SpriteManager{
     private static _instance : SpriteManager;
 
     public static get instance(): SpriteManager {
@@ -22,7 +22,8 @@ export default class SpriteManager implements IManager {
     private _loadProgress: number;
     private _subcribers: Set<ISpriteSubcriber> = new Set<ISpriteSubcriber>();
 
-    initialize() {
+    initialize(skinCode : string) {
+        this._currentSkin = skinCode;
         this.setSkin(this._currentSkin);
         this._initialized = true;
     }
@@ -35,6 +36,8 @@ export default class SpriteManager implements IManager {
     }
 
     public getSpriteFrame(key : string) : cc.SpriteFrame {
+        console.log(this._spriteBank);
+        
         let obj = this._spriteBank[key];
         if(obj){
             return obj;
@@ -53,15 +56,15 @@ export default class SpriteManager implements IManager {
     private _loadSpriteBank() {
         this._loadProgress = 0;
         this._initialized = false;
-        this._spriteBank = null;
+        this._spriteBank = {};
         cc.resources.loadDir<cc.SpriteFrame>(SpriteManager.SPRITE_BANK_PATH + "/" + this._currentSkin, cc.SpriteFrame, (finish, total, item) => {
             this._loadProgress = finish / total;
         },
             (err, assets) => {
-                if(err){
+                if (err) {
                     console.error(err);
                 }
-                else{
+                else {
                     assets.forEach(element => {
                         this._spriteBank[element.name] = element;
                     });

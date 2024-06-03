@@ -2,17 +2,20 @@
 import { ISpriteSubcriber } from "./ISpriteSubcriber";
 import SpriteManager from "./SpriteManager";
 
-const {ccclass, property} = cc._decorator;
+const {ccclass, property, requireComponent} = cc._decorator;
 
 @ccclass
-export default class SpriteAdapter extends cc.Sprite implements ISpriteSubcriber {
-    private _spriteFrameKey: string = "";
+@requireComponent(cc.Sprite)
+export default class SpriteAdapter extends cc.Component implements ISpriteSubcriber {
+    @property({type: cc.Sprite, visible: false })
+    private sprite: cc.Sprite;
 
-    public get spriteFrameKey(): string { return this._spriteFrameKey; }
-    public set spriteFrameKey(value: string) { 
-        this._spriteFrameKey = value;
-        this.requestSpriteFrame()
+    private _spriteFrameKey: string = "";
+    
+    protected onLoad(): void {
+        this.sprite = this.node.getComponent(cc.Sprite)
     }
+
     protected onEnable(): void 
     {
         if(SpriteManager.instance.initializationCompleted()){
@@ -27,12 +30,17 @@ export default class SpriteAdapter extends cc.Sprite implements ISpriteSubcriber
     }
 
     notifyChangeSprite(): void {
-        throw new Error("Method not implemented.");
+        this.requestSpriteFrame();
     }
 
     private requestSpriteFrame(){
-        this.spriteFrame = SpriteManager.instance.getSpriteFrame(this._spriteFrameKey);
+        if(this.sprite && this.sprite.spriteFrame){
+            let spriteFrameName = this.sprite.spriteFrame.name;
+            this._spriteFrameKey = spriteFrameName;
+            this.sprite.spriteFrame = SpriteManager.instance.getSpriteFrame(this._spriteFrameKey);
+        }
     }
+
 
 
 }

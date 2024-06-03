@@ -1,24 +1,19 @@
-import { StaticInstance } from './../StaticInstance';
-// Created by carolsail 
 
-import DataManager from "./DataManager";
-import EventManager from "./EventManager";
-import { ENUM_GAME_TYPE, ENUM_GAME_EVENT, ENUM_GAME_ZINDEX, ENUM_GAME_STATUS, ENUM_UI_TYPE, GameState, ENUM_AUDIO_CLIP  } from "../Enum";
-import {createCycleBlockList, createLevelList} from '../Levels';
+import { ENUM_GAME_EVENT, ENUM_GAME_ZINDEX, GameState, ENUM_AUDIO_CLIP, ENUM_GAME_SKIN_CODE, skinCodeToString } from "../Enum";
 import Block from '../Block';
 import PoolManager from "./PoolManager";
 import Player from '../Player';
 import Star from '../Star';
-import Lava from '../enemies/Lava';
-import { delay, getLastElement, getNextLastElement, Queue } from '../Utils';
+import { delay, getNextLastElement, Queue } from '../Utils';
 import { IManager } from './IManager';
 import ResourceManager from './ResourceManager';
 import UIManager from './UIManager';
 import AudioManager from './AudioManager';
 import { PlayerDataManager } from './PlayerDataManager';
 import BEConnector from '../BEConnector';
+import SpriteManager from '../Common/SpriteManager';
 
-const {ccclass, property} = cc._decorator;
+const { ccclass, property } = cc._decorator;
 window.addEventListener('message', (data) => {
     const { data: res } = data;
     const objectRes = JSON.parse(res);
@@ -37,10 +32,13 @@ export default class GameManager extends cc.Component {
         return GameManager._instance;
     }
 
-    @property({ type: cc.Enum(GameState) , visible : false}) public CurrentGameState: GameState = GameState.MAIN_MENU;
+
+    //@property({ type: cc.Enum(ENUM_GAME_SKIN_CODE) }) public CurrentGameSkin: ENUM_GAME_SKIN_CODE = ENUM_GAME_SKIN_CODE.ALIEN_ASCENT;
+    @property(cc.Boolean) enabledConnectWeb: boolean = false;
+    @property({ type: cc.Enum(GameState), visible: false }) public CurrentGameState: GameState = GameState.MAIN_MENU;
 
     @property(UIManager) public UIManager: UIManager = null;
-    @property(AudioManager) public audioManager : AudioManager = null;
+    @property(AudioManager) public audioManager: AudioManager = null;
     @property(cc.Node) private stageNode: cc.Node = null
     @property(cc.Node) public lava: cc.Node = null;
     // @property(cc.Node) private lavaNode: cc.Node = null
@@ -49,9 +47,9 @@ export default class GameManager extends cc.Component {
     private _allManagers: IManager[] = [];
     public resourcesManager: ResourceManager;
     public playerDataManager: PlayerDataManager;
-    public APIManager : BEConnector;
+    public APIManager: BEConnector;
 
-    private _blockQueue : Queue<string> = new Queue<string>();
+    private _blockQueue: Queue<string> = new Queue<string>();
 
     private _previousBlockNode: cc.Node;
     private _stayingPosition: cc.Vec2;
@@ -60,40 +58,38 @@ export default class GameManager extends cc.Component {
 
     public async ChangeState(newState: GameState) {
         if (this.CurrentGameState == newState) return;
-        this.CurrentGameState = newState;  
+        this.CurrentGameState = newState;
         this.UIManager.changeState(newState);
         switch (this.CurrentGameState) {
             case GameState.LOADING:
                 this._initializeAllManagers();
                 break;
             case GameState.MAIN_MENU:
-                console.log(GameManager.Instance.APIManager.currentScore);
-                
                 this.isPlayedOnce = false;
                 this.audioManager.playBGM();
                 //this.UiController.LoadingDone();
                 break;
             case GameState.PLAYING:
-                if(this.isPlayedOnce){
-                    cc.tween(this.lava).by(1,{y: -1000}).start();
+                if (this.isPlayedOnce) {
+                    cc.tween(this.lava).by(1, { y: -1000 }).start();
                     //replay
                     this.stageNode.getChildByName('player').destroy();
-                    const player: cc.Node = PoolManager.instance.getNode(`player`, this.stageNode, cc.v3(this._stayingPosition).addSelf(cc.v3(100,0)))
+                    const player: cc.Node = PoolManager.instance.getNode(`player`, this.stageNode, cc.v3(this._stayingPosition).addSelf(cc.v3(100, 0)))
                     player.zIndex = ENUM_GAME_ZINDEX.PLAYER;
                     // player.setPosition(this._stayingPosition);
-                    player.getComponent(Player).setDir(1) 
+                    player.getComponent(Player).setDir(1)
                     player.getComponent(Player).shieldBoosterDuration = 10;
 
                     this.APIManager.ticketMinus("revive");
-                }else{
+                } else {
                     this.initGame()
                     this.APIManager.ticketMinus("auth");
                 }
-                
+
                 // this.UiController.StartGame();
                 break;
             // case GameState.REPLAY:
-                
+
             //     const player: cc.Node = PoolManager.instance.getNode(`player`, this.stageNode)
             //     player.zIndex = ENUM_GAME_ZINDEX.PLAYER;
             //     player.setPosition(this._previousBlockNode.position);
@@ -109,13 +105,13 @@ export default class GameManager extends cc.Component {
         }
     }
 
-    onLoad () {
+    onLoad() {
         GameManager._instance = this;
         this._initializeGameEvents();
         this.ChangeState(GameState.LOADING);
     }
 
-    private _initializePhysicsManager(){
+    private _initializePhysicsManager() {
         const physics = cc.director.getCollisionManager();
         physics.enabled = true;
     }
@@ -126,9 +122,9 @@ export default class GameManager extends cc.Component {
         cc.game.on(ENUM_GAME_EVENT.PLAYER_CLIMB_END, this.onPlayerClimbEnd, this)
         cc.game.on(ENUM_GAME_EVENT.GAME_WIN, this.onGameWin, this)
         cc.game.on(ENUM_GAME_EVENT.GAME_LOSE, this.onGameLose, this)
-        cc.game.on(ENUM_GAME_EVENT.UPDATE_SCORE,this.updateScore,this);
+        cc.game.on(ENUM_GAME_EVENT.UPDATE_SCORE, this.updateScore, this);
         cc.game.on(ENUM_GAME_EVENT.EFFECT_STAR_PLAY, this.onEffectStarPlay, this)
-        cc.game.on(ENUM_GAME_EVENT.GAME_OVER,this.onGameOver,this);
+        cc.game.on(ENUM_GAME_EVENT.GAME_OVER, this.onGameOver, this);
     }
 
     private _initializeAllManagers(): void {
@@ -137,6 +133,7 @@ export default class GameManager extends cc.Component {
         this.resourcesManager = new ResourceManager();
         this.playerDataManager = new PlayerDataManager();
         this.APIManager = new BEConnector();
+        this.APIManager.APIEnable = this.enabledConnectWeb;
 
         this._allManagers.push(this.resourcesManager);
         this._allManagers.push(this.audioManager);
@@ -145,37 +142,39 @@ export default class GameManager extends cc.Component {
         this.audioManager.initialize();
         this.APIManager.initialize();
 
+        //SpriteManager.instance.initialize(skinCodeToString[this.CurrentGameSkin]);
+
         this._initializePhysicsManager();
-        
+
     }
 
-    private onGameStart(){
+    private onGameStart() {
         //this.lava.getComponent(Lava).startMove();
         this.audioManager.playSfx(ENUM_AUDIO_CLIP.BUTTON_PLAY);
         this.ChangeState(GameState.PLAYING)
     }
 
     protected update(dt: number): void {
-        if(this.CurrentGameState == GameState.LOADING){
-            let total = this._allManagers.reduce((acc,manager)=>{
+        if (this.CurrentGameState == GameState.LOADING) {
+            let total = this._allManagers.reduce((acc, manager) => {
                 return acc + manager.progress();
-            },0)
-            this.UIManager.loadingLayer.setProgressBar(total/this._allManagers.length);
-            if(-this._allManagers.every(manager => manager.initializationCompleted()) && this.CurrentGameState == GameState.LOADING){
+            }, 0)
+            this.UIManager.loadingLayer.setProgressBar(total / this._allManagers.length);
+            if (-this._allManagers.every(manager => manager.initializationCompleted()) && this.CurrentGameState == GameState.LOADING) {
                 this.ChangeState(GameState.MAIN_MENU);
             }
         }
     }
 
-    private updateScore(){
-        if(this.CurrentGameState == GameState.PLAYING){
+    private updateScore() {
+        if (this.CurrentGameState == GameState.PLAYING) {
             this.UIManager.setGameScore();
             this.audioManager.playSfx(ENUM_AUDIO_CLIP.COIN);
         }
     }
 
     // 复活游戏
-    onGameRelive(){
+    onGameRelive() {
         //DataManager.instance.status = ENUM_GAME_STATUS.UNRUNING
         // DataManager.instance.reset(true)
         //this.initGame();
@@ -196,22 +195,22 @@ export default class GameManager extends cc.Component {
         // },0.25)
     }
 
-    async onGameOver(){
+    async onGameOver() {
         await delay(1000);
         // BackendConnector.instance.postScoreToServer(DataManager.instance.score)
     }
 
     // 过关
-    onGameWin(){
-        
+    onGameWin() {
+
     }
 
-    public isStatePlay() : boolean {
+    public isStatePlay(): boolean {
         return this.CurrentGameState == GameState.PLAYING;
     }
 
     // 失败
-    onGameLose(){
+    onGameLose() {
         this.audioManager.playSfx(ENUM_AUDIO_CLIP.PLAYER_HIT);
         this.ChangeState(GameState.ENDGAME);
         // DataManager.instance.status = ENUM_GAME_STATUS.UNRUNING
@@ -222,14 +221,14 @@ export default class GameManager extends cc.Component {
 
     private _initializeBlockQueue() {
         let blockList = this.resourcesManager.popLevelMap();
-        
+
         for (let i of blockList) {
             this._blockQueue.enqueue(i);
         }
     }
 
-    initGame(){
-        if(!this.stageNode) return
+    initGame() {
+        if (!this.stageNode) return
         this.stageNode.removeAllChildren()
         const canvasHeight = cc.find('Canvas').height;
 
@@ -237,16 +236,16 @@ export default class GameManager extends cc.Component {
         this._initializeBlockQueue();
 
         for (let i = 0; i < 6; i++) {
-            let block: cc.Node = PoolManager.instance.getNode('block',this.stageNode);
+            let block: cc.Node = PoolManager.instance.getNode('block', this.stageNode);
             if (i == 0) {
-                block.setPosition(0,(block.height-canvasHeight)/2);
-            }else{
-                let offset = (this._previousBlockNode.height + block.height)/2;
-                block.setPosition(0,this._previousBlockNode.y + offset);
+                block.setPosition(0, (block.height - canvasHeight) / 2);
+            } else {
+                let offset = (this._previousBlockNode.height + block.height) / 2;
+                block.setPosition(0, this._previousBlockNode.y + offset);
             }
             let cpn = block.getComponent(Block);
             cpn.init({
-                id : 1,
+                id: 1,
                 dataInstance: this.resourcesManager.blockMap[this._blockQueue.dequeue()].data
             });
             cpn.rendor();
@@ -257,18 +256,18 @@ export default class GameManager extends cc.Component {
         const player: cc.Node = PoolManager.instance.getNode(`player`, this.stageNode)
         player.zIndex = ENUM_GAME_ZINDEX.PLAYER;
         player.setPosition(firstBlock);
-        player.getComponent(Player).setDir(1) 
+        player.getComponent(Player).setDir(1)
         this._stayingPosition = player.getPosition();
-        
+
     }
 
 
-    onPlayerClimbEnd(){
+    onPlayerClimbEnd() {
         let block: cc.Node = PoolManager.instance.getNode('block', this.stageNode);
-        
+
         let offset = (this._previousBlockNode.height + block.height) / 2;
         block.setPosition(0, this._previousBlockNode.y + offset);
-        
+
         let cpn = block.getComponent(Block);
         cpn.init({
             id: 1,
@@ -277,9 +276,9 @@ export default class GameManager extends cc.Component {
         cpn.rendor();
         block.setSiblingIndex(0);
         this._previousBlockNode = block;
-        this._stayingPosition.addSelf(new cc.Vec2(0,block.height))
+        this._stayingPosition.addSelf(new cc.Vec2(0, block.height))
 
-        if(this._blockQueue.size() < 10){
+        if (this._blockQueue.size() < 10) {
             this._initializeBlockQueue();
         }
         // let currentIndexBlock = ++DataManager.instance.currentIndexBlock;
@@ -295,11 +294,11 @@ export default class GameManager extends cc.Component {
         //         this._levelList = createCycleBlockList();
         //     }
         // }
-        
+
         // this.addNewBlock(this._levelList[(currentIndexBlock-2)%12]);
     }
 
-    addData(){
+    addData() {
 
         // DataManager.instance.lastIndexBlock = blockIndex;
         // const block: cc.Node = PoolManager.instance.getNode(`block${blockIndex}`, this.stageNode)
@@ -321,16 +320,16 @@ export default class GameManager extends cc.Component {
         // component.rendor()
     }
 
-    public getPlayerRelativePosition(){
+    public getPlayerRelativePosition() {
         let canvasSize = cc.Canvas.instance.designResolution;
         let playerNode = this.stageNode.getChildByName("player")
-        if(!playerNode) return;
-        let pos = playerNode.getPosition().addSelf(new cc.Vec2(canvasSize.width,canvasSize.height).multiplyScalar(0.5));
+        if (!playerNode) return;
+        let pos = playerNode.getPosition().addSelf(new cc.Vec2(canvasSize.width, canvasSize.height).multiplyScalar(0.5));
         return pos;
     }
 
-    onEffectStarPlay(data: any){
-        const {pos, color, scale} = data
+    onEffectStarPlay(data: any) {
+        const { pos, color, scale } = data
         const star = PoolManager.instance.getNode('star', this.stageNode)
         star.getComponent(Star).init(pos, color, scale)
     }
@@ -342,7 +341,7 @@ export default class GameManager extends cc.Component {
         cc.game.off(ENUM_GAME_EVENT.GAME_WIN, this.onGameWin)
         cc.game.off(ENUM_GAME_EVENT.GAME_LOSE, this.onGameLose)
         cc.game.off(ENUM_GAME_EVENT.EFFECT_STAR_PLAY, this.onEffectStarPlay)
-        cc.game.off(ENUM_GAME_EVENT.GAME_OVER,this.onGameOver);
+        cc.game.off(ENUM_GAME_EVENT.GAME_OVER, this.onGameOver);
     }
 
 }

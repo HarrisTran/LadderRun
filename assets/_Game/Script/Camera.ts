@@ -1,7 +1,6 @@
 // Created by carolsail
 
 import { ENUM_GAME_EVENT } from './Enum';
-import EventManager from "./manager/EventManager";
 
 const {ccclass, property} = cc._decorator;
 

@@ -1,3 +1,17 @@
+export enum ENUM_GAME_SKIN_CODE {
+    ALIEN_ASCENT = 1,
+    CASTLE_ESCAPE,
+    PYRAMID_PANIC, 
+    ZOMBIE_BREAK,
+}
+
+export const skinCodeToString: Record<ENUM_GAME_SKIN_CODE, string> = {
+    [ENUM_GAME_SKIN_CODE.ALIEN_ASCENT]: "Alien Ascent",
+    [ENUM_GAME_SKIN_CODE.CASTLE_ESCAPE]: "Castle Escape",
+    [ENUM_GAME_SKIN_CODE.PYRAMID_PANIC]: "Pyramid Panic",
+    [ENUM_GAME_SKIN_CODE.ZOMBIE_BREAK]: "Zombie Break",
+};
+
 
 export enum GameState {
     LOADING,
