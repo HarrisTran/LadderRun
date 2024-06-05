@@ -7,7 +7,6 @@ const {ccclass, property} = cc._decorator;
 let v3 = new cc.Vec3()
 const normalSpeed: number = 150;
 const speedUp: number = 360;
-
 @ccclass
 export default class Player extends cc.Component {
     @property(cc.Node) shieldIcon: cc.Node = null;
@@ -169,6 +168,7 @@ export default class Player extends cc.Component {
             case ENUM_COLLIDER_TAG.MOVING_TRAP:
             case ENUM_COLLIDER_TAG.HIDE_TRAP:
             case ENUM_COLLIDER_TAG.SPIKE:
+                GameManager.Instance.audioManager.playSfx(ENUM_AUDIO_CLIP.TRAP_STAND);
                 if (!this.shield) {
                     for (let i = 0; i < 5; i++) {
                         cc.game.emit(ENUM_GAME_EVENT.EFFECT_STAR_PLAY, { pos: self.node.position, color: cc.color(226, 69, 109, 255) })
@@ -179,7 +179,7 @@ export default class Player extends cc.Component {
                 }
                 return
             case ENUM_COLLIDER_TAG.TRAMPOLINE:
-                // AudioManager.instance.playSound(ENUM_AUDIO_CLIP.TRAMPOLINE)
+                GameManager.Instance.audioManager.playSfx(ENUM_AUDIO_CLIP.TRAMPOLINE)
                 for (let i = 0; i < 3; i++) {
                     cc.game.emit(ENUM_GAME_EVENT.EFFECT_STAR_PLAY, { pos: self.node.position, color: cc.color(255, 255, 255, 255) })
                 }

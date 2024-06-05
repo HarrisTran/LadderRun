@@ -70,6 +70,7 @@ export default class GameManager extends cc.Component {
                 //this.UiController.LoadingDone();
                 break;
             case GameState.PLAYING:
+                //this.audioManager.playBGM();
                 if (this.isPlayedOnce) {
                     cc.tween(this.lava).by(1, { y: -1000 }).start();
                     //replay
@@ -169,7 +170,6 @@ export default class GameManager extends cc.Component {
     private updateScore() {
         if (this.CurrentGameState == GameState.PLAYING) {
             this.UIManager.setGameScore();
-            this.audioManager.playSfx(ENUM_AUDIO_CLIP.COIN);
         }
     }
 

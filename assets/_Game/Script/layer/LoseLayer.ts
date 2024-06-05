@@ -38,7 +38,7 @@ export default class LoseLayer extends BaseLayer {
         let index : number = 1;
         this.leaderBoardView.content.removeAllChildren();
 
-        let participants = await GameManager.Instance.APIManager.postScoreToServer()
+        let participants = await GameManager.Instance.APIManager.postScoreToServer() || [];
         //let participants : ParticipantInfo[] = [{userId: "1",sum: 1000}, {userId: "2",sum:800},{userId: "3",sum:500}]
         
         let listTop = participants.slice(0,this._numberItemRowCanShow+1);

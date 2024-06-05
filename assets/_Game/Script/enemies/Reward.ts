@@ -1,4 +1,4 @@
-import {ENUM_COLLIDER_TAG, ENUM_GAME_EVENT } from "../Enum";
+import {ENUM_AUDIO_CLIP, ENUM_COLLIDER_TAG, ENUM_GAME_EVENT } from "../Enum";
 import GameManager from '../manager/GameManager';
 
 const {ccclass, property} = cc._decorator;
@@ -25,7 +25,7 @@ export default class Reward extends cc.Component {
             // DataManager.instance.score += COIN_VALUE;
             // DataManager.instance.save()
             //StaticInstance.uiManager.setGameScore()
-
+            GameManager.Instance.audioManager.playSfx(this.coinValue > 100 ? ENUM_AUDIO_CLIP.REWARD2: ENUM_AUDIO_CLIP.REWARD1);
             GameManager.Instance.playerDataManager.addScore(this.coinValue);
             cc.game.emit(ENUM_GAME_EVENT.UPDATE_SCORE);
 

@@ -19,7 +19,7 @@ export default class ShooterTrap extends cc.Component {
     _status: ENUM_SHOOTER_STATUS = ENUM_SHOOTER_STATUS.IDLE
     //animation: cc.Animation = null
     isShoot: boolean = false
-    shootTime: number = 1.3
+    shootTime: number = 2.5
     bulletpos: cc.Node = null
     dir: number = 0;
  

@@ -100,7 +100,7 @@ export default class BEConnector{
     }
 
     public calculatingTicketToContinue(scoreRange: object) {
-        if(!this._APIEnable) return;
+        if(!this._APIEnable) return 0;
 
         let closestMilestone: number = 0;
 
@@ -207,13 +207,13 @@ export default class BEConnector{
     }
 
     public getTicketCanBeMinus() {
-        if(!this._APIEnable) return;
+        if(!this._APIEnable) return 0;
 
         return this.calculatingTicketToContinue(JSON.parse(this.mileStone));
     }
 
     public canRelive() {
-        if(!this._APIEnable) return;
+        if(!this._APIEnable) return false;
         
         return this.numberTicket >= this.getTicketCanBeMinus();
     }

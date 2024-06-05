@@ -21,15 +21,19 @@ export class GeneralBooster extends cc.Component {
         if(other.tag === ENUM_COLLIDER_TAG.PLAYER){
             switch (this.boosterType) {
                 case BoosterType.MAGNET:
+                    GameManager.Instance.audioManager.playSfx(ENUM_AUDIO_CLIP.BOOSTER_MAGNET)
                     this.activeMagnetBooster(other);
                     break;
                 case BoosterType.SHIELD:
+                    GameManager.Instance.audioManager.playSfx(ENUM_AUDIO_CLIP.BOOSTER_SHIELD)
                     this.activeShieldBooster(other);
                     break;
                 case BoosterType.SPEED:
+                    GameManager.Instance.audioManager.playSfx(ENUM_AUDIO_CLIP.BOOSTER_SPEED)
                     this.activeSpeedBooster(other);
                     break;
                 case BoosterType.RANDOM:
+                    GameManager.Instance.audioManager.playSfx(ENUM_AUDIO_CLIP.BOOSTER_RANDOM)
                     switch (Math.floor(Math.random()*3)) {
                         case 0:
                             this.activeMagnetBooster(other);
@@ -50,17 +54,14 @@ export class GeneralBooster extends cc.Component {
     }
 
     activeSpeedBooster(collider: cc.Collider){
-        GameManager.Instance.audioManager.playSfx(ENUM_AUDIO_CLIP.BOOSTER_SPEED)
         collider.node.getComponent(Player).speedBoosterDuration = this.duration;
     }
 
     activeShieldBooster(collider: cc.Collider){
-        GameManager.Instance.audioManager.playSfx(ENUM_AUDIO_CLIP.BOOSTER_SHIELD)
         collider.node.getComponent(Player).shieldBoosterDuration = this.duration;
     }
 
     activeMagnetBooster(collider: cc.Collider){
-        GameManager.Instance.audioManager.playSfx(ENUM_AUDIO_CLIP.BOOSTER_MAGNET)
         collider.node.getComponent(Player).magnetBoosterDuration = this.duration;
     }
 
