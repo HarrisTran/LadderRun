@@ -126,7 +126,7 @@
         0,
         0,
         1,
-        1,
+        -1,
         1,
         1
       ]
@@ -160,7 +160,7 @@
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
     "_spriteFrame": {
-      "__uuid__": "6c47be38-3b04-4051-a493-ff5164546102"
+      "__uuid__": "6ccfe3ac-99b8-4a8a-b8cc-3a66b8a00d01"
     },
     "_type": 0,
     "_sizeMode": 0,
@@ -212,9 +212,6 @@
       "__id__": 1
     },
     "_enabled": true,
-    "body": {
-      "__id__": 2
-    },
     "_id": ""
   },
   {

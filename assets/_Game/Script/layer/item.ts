@@ -10,10 +10,11 @@ export default class item extends cc.Component {
     @property(cc.SpriteFrame ) public goldMedal: cc.SpriteFrame = null;
     @property(cc.SpriteFrame ) public silverMedal: cc.SpriteFrame = null;
     @property(cc.SpriteFrame ) public bronzeMedal: cc.SpriteFrame = null;
-    @property(cc.SpriteFrame) public yellowFrame: cc.SpriteFrame = null;
 
+    public score : number;
 
-    public createItemRow(rank: number, score: number,selfframe?: boolean) {
+    public createItemRow(rank: number, score: number) {
+        this.score = score;
         let spriteFrame: cc.SpriteFrame = null;
         switch (rank) {
             case 1:

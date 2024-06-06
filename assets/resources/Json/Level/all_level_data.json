@@ -1,0 +1,154 @@
+[
+	{
+		"id": "Level1",
+		"data": [
+			"Block0",
+			"Block0",
+			"Block1",
+			"Block2",
+			"Block3",
+			"Block4",
+			"Block8"
+		]
+	},
+	{
+		"id": "Level2",
+		"data": [
+			"Block6",
+			"Block7",
+			"Block11",
+			"Block12",
+			"Block9"
+		]
+	},
+	{
+		"id": "Level3",
+		"data": [
+			"Block14",
+			"Block15",
+			"Block21",
+			"Block8",
+			"Block30"
+		]
+	},
+	{
+		"id": "Level4",
+		"data": [
+			"Block25",
+			"Block17",
+			"Block26",
+			"Block18",
+			"Block13"
+		]
+	},
+	{
+		"id": "Level5",
+		"data": [
+			"Block15",
+			"Block5",
+			"Block10",
+			"Block16",
+			"Block19"
+		]
+	},
+	{
+		"id": "Level6",
+		"data": [
+			"Block20",
+			"Block4",
+			"Block22",
+			"Block30",
+			"Block6"
+		]
+	},
+	{
+		"id": "Level7",
+		"data": [
+			"Block14",
+			"Block23",
+			"Block29",
+			"Block17",
+			"Block27"
+		]
+	},
+	{
+		"id": "Level8",
+		"data": [
+			"Block0",
+			"Block28",
+			"Block1",
+			"Block4",
+			"Block24"
+		]
+	},
+	{
+		"id": "Level9",
+		"data": [
+			"Block4",
+			"Block22",
+			"Block23",
+			"Block3",
+			"Block30"
+		]
+	},
+	{
+		"id": "Level10",
+		"data": [
+			"Block10",
+			"Block9",
+			"Block12",
+			"Block18",
+			"Block11"
+		]
+	},
+	{
+		"id": "Level11",
+		"data": [
+			"Block34",
+			"Block35",
+			"Block35",
+			"Block35",
+			"Block0"
+		]
+	},
+	{
+		"id": "Level12",
+		"data": [
+			"Block31",
+			"Block41",
+			"Block45",
+			"Block25",
+			"Block43"
+		]
+	},
+	{
+		"id": "Level13",
+		"data": [
+			"Block40",
+			"Block44",
+			"Block42",
+			"Block39",
+			"Block37"
+		]
+	},
+	{
+		"id": "Level14",
+		"data": [
+			"Block36",
+			"Block24",
+			"Block23",
+			"Block20",
+			"Block17"
+		]
+	},
+	{
+		"id": "Level15",
+		"data": [
+			"Block4",
+			"Block20",
+			"Block21",
+			"Block28",
+			"Block43"
+		]
+	}
+]

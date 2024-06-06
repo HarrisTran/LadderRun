@@ -8,7 +8,7 @@ const {ccclass, property} = cc._decorator;
 export default class Camera extends cc.Component {
 
     targetPos: cc.Vec2 = cc.Vec2.ZERO
-    offsetY: number = 300
+    offsetY: number = -100
 
     onLoad () {
         cc.game.on(ENUM_GAME_EVENT.CAMERA_MOVE, this.onCameraMove, this)

@@ -38,7 +38,6 @@
     "Physics",
     "RichText",
     "Renderer Texture",
-    "Spine Skeleton",
     "StudioComponent",
     "Toggle",
     "TiledMap",
@@ -73,6 +72,6 @@
       "enable": false
     }
   },
-  "last-module-event-record-time": 1716965881181,
-  "start-scene": "2a7198e2-2c3b-432f-b260-46eca93f5054"
+  "last-module-event-record-time": 1717576343134,
+  "start-scene": "c136c880-05f9-4e05-bf48-273a115ac7b8"
 }

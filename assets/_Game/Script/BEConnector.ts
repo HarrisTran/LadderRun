@@ -22,6 +22,8 @@ export default class BEConnector{
     public currentScore: number;
     private mileStone: string;
 
+    private userId: string;
+
     public set APIEnable(enable: boolean){
         this._APIEnable = enable;
     }
@@ -44,7 +46,6 @@ export default class BEConnector{
     }
 
     public getAPInfo(){
-        if(!this._APIEnable) return;
         let url = new URLSearchParams(window.location.search);
 
         this.token = url.get('token');
@@ -56,12 +57,13 @@ export default class BEConnector{
         this.currentScore = parseInt(url.get('currentScore')) || 0;
         this.mileStone = url.get('mileStone');
         this.gameURL = ENV_CONFIG[url.get('env')];
+        
+
     }
 
 
 
     public async authenticate() {
-        if(!this._APIEnable) return;
 
         await fetch(
             `${this.gameURL}/promotions/authenticate-tournament?token=${this.token}&tournamentId=${this.tournamentId}&skinId=${this.skinId}&deviceInfo=${this.deviceInfo}`,
@@ -73,6 +75,7 @@ export default class BEConnector{
             })
             .then((data) => {
                 if (data.ResultCode == 1) this.key = data.Data.Key;
+                this.userId = data.UserId;
                 console.log("Authenticate succeeded");
             })
             .catch(err=>{
@@ -81,8 +84,7 @@ export default class BEConnector{
     }
 
     public ticketMinus(type: 'auth' | 'revive') {
-        if(!this._APIEnable) return;
-
+        
         let numberTicket = type === 'auth' ? 1 : this.getTicketCanBeMinus();
         let dataEncrypted: string = this._getDataEncrypted({ type: type, total: numberTicket });
 
@@ -100,7 +102,6 @@ export default class BEConnector{
     }
 
     public calculatingTicketToContinue(scoreRange: object) {
-        if(!this._APIEnable) return 0;
 
         let closestMilestone: number = 0;
 
@@ -120,7 +121,6 @@ export default class BEConnector{
     }
 
     public async checkGameScoreTicket() {
-        if(!this._APIEnable) return;
 
         let dataEncrypted : string = this._getDataEncrypted({score: GameManager.Instance.playerDataManager.getScore(), ticket: this.getTicketCanBeMinus()})
 
@@ -136,7 +136,6 @@ export default class BEConnector{
     }
 
     public postMessage() {
-        if(!this._APIEnable) return;
 
         window.parent.postMessage(
             JSON.stringify({
@@ -149,13 +148,31 @@ export default class BEConnector{
         );
     }
 
+    public async getLeaderboardInGame(){
+        try {
+            let leaderBoard = await fetch(
+                `${this.gameURL}/promotions/leaderboard-in-game?tournamentId=${this.tournamentId}`,
+                {
+                    headers: {
+                        Accept: 'application/json',
+                        'Content-Type': 'application/json',
+                        'x-access-refactor-token': this.token,
+                    },
+                    method: 'GET',
+                },
+            )
+            return leaderBoard.json() as Promise<any>;
+        } catch (error) {
+            throw error;
+        }
+    }
+
     public async postScoreToServer() {
-        if(!this._APIEnable) return;
 
         let dataEncrypted: string = this._getDataEncrypted({ Score: GameManager.Instance.playerDataManager.getScore(), TournamentId: this.tournamentId, SkinId: this.skinId });
 
         try {
-            let leaderBoard = await fetch(
+            await fetch(
                 `${this.gameURL}/promotions/store-score-tournament?tournamentId=${this.tournamentId}&skinId=${this.skinId}&cocos=1`,
                 {
                     headers: {
@@ -167,7 +184,6 @@ export default class BEConnector{
                     body: JSON.stringify({ data: dataEncrypted }),
                 },
             )
-            return leaderBoard.json() as Promise<ParticipantInfo[]>;
         } catch (error) {
             throw error;
         }
@@ -177,7 +193,6 @@ export default class BEConnector{
     }
 
     public postScoreWebEvent(){
-        if(!this._APIEnable) return;
 
         window.parent.postMessage(
             JSON.stringify({
@@ -191,7 +206,6 @@ export default class BEConnector{
     }
 
     private _getDataEncrypted(data: any): string {
-        if(!this._APIEnable) return;
 
         let result = "";
         try {
@@ -207,13 +221,11 @@ export default class BEConnector{
     }
 
     public getTicketCanBeMinus() {
-        if(!this._APIEnable) return 0;
 
         return this.calculatingTicketToContinue(JSON.parse(this.mileStone));
     }
 
     public canRelive() {
-        if(!this._APIEnable) return false;
         
         return this.numberTicket >= this.getTicketCanBeMinus();
     }

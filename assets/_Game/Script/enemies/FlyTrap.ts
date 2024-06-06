@@ -1,4 +1,4 @@
-import { ENUM_COLLIDER_TAG, ENUM_FLY_TRAP_STATUS, GameState } from "../Enum";
+import { ENUM_AUDIO_CLIP, ENUM_COLLIDER_TAG, ENUM_FLY_TRAP_STATUS, GameState } from "../Enum";
 import GameManager from "../manager/GameManager";
 
 const {ccclass, property} = cc._decorator;
@@ -24,9 +24,9 @@ export default class FlyTrap extends cc.Component {
         this.onAnimPlay()
     }
 
-    protected onLoad(): void {
+
+    protected start(): void {
         this.node.scaleX = this.node.position.x < 0 ? 1 : -1;
-        //this.anim = this.node.getChildByName('body').getComponent(cc.Animation)
     }
 
     onCollisionEnter (other: cc.BoxCollider, self: cc.BoxCollider) {
@@ -36,20 +36,22 @@ export default class FlyTrap extends cc.Component {
             let y : number = 0;
             switch (this.mode) {
                 case TrapHideCellarMode.HIGH:
+                    GameManager.Instance.audioManager.playSfx(ENUM_AUDIO_CLIP.TRAP_FLY_3)
                     y = -50
                     break;
                 case TrapHideCellarMode.LOW:
+                    GameManager.Instance.audioManager.playSfx(ENUM_AUDIO_CLIP.TRAP_FLY_1)
                     y = -250
                     break;
                 case TrapHideCellarMode.RANDOM:
-                    y = cc.randomRangeInt(-200,-50);
+                    GameManager.Instance.audioManager.playSfx(ENUM_AUDIO_CLIP.TRAP_FLY_2)
+                    y = Math.random()*150-200
                     break;
             }
             const act = cc.moveBy(0.5, cc.v2(0, y)).easing(cc.easeCubicActionOut())
             cc.tween(this.node).then(act).call(()=>{
                 this.status = ENUM_FLY_TRAP_STATUS.FLY
                 this.dir = this.node.x < 0 ? 1 : -1
-                this.node.scaleX = this.dir
             }).start()
         }
     }

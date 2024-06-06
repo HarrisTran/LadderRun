@@ -64,8 +64,7 @@ export default class ShooterTrap extends cc.Component {
     onBulletBuild(){
         if(!GameManager.Instance.isStatePlay()) return
         this.status = ENUM_SHOOTER_STATUS.ATTACK
-        GameManager.Instance.audioManager.playSfx(ENUM_AUDIO_CLIP.TRAP_SHOT);
-        // AudioManager.instance.playSound(ENUM_AUDIO_CLIP.PLANT_SHOOT).then(v=>this.attackSoundId=v);
+        GameManager.Instance.audioManager.playSfx(ENUM_AUDIO_CLIP.TRAP_SHOT_REAR);
         const bullet = PoolManager.instance.getNode('bullet', this.bulletNode)
     }
  

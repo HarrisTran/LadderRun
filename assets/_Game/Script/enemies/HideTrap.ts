@@ -12,11 +12,12 @@ export default class HideTrap extends cc.Component {
 
     onCollisionEnter (other: cc.BoxCollider, self: cc.BoxCollider) {
         if(other.tag == ENUM_COLLIDER_TAG.PLAYER && self.tag == ENUM_COLLIDER_TAG.HIDE_TRAP_VIEW){
+            let bodyHeight = this.body.height;
             cc.tween(this.body)
-            .to(1,{scaleY: 0})
+            .to(0.15,{y: 0})
             .call(()=>GameManager.Instance.audioManager.playSfx(ENUM_AUDIO_CLIP.TRAP_HIDE))
-            .delay(1)
-            .to(0.5,{scaleY: 1.5})
+            .delay(0.3)
+            .to(0.15,{y: -bodyHeight})
             .union()
             .repeat(10)
             .start();

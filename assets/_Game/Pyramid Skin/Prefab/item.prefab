@@ -62,7 +62,7 @@
       "ctor": "Float64Array",
       "array": [
         0,
-        -30,
+        0,
         0,
         0,
         0,
@@ -182,7 +182,7 @@
     "_N$verticalAlign": 1,
     "_N$fontFamily": "Arial",
     "_N$overflow": 0,
-    "_N$cacheMode": 0,
+    "_N$cacheMode": 1,
     "_id": ""
   },
   {
@@ -292,7 +292,7 @@
     "_N$verticalAlign": 0,
     "_N$fontFamily": "Arial",
     "_N$overflow": 0,
-    "_N$cacheMode": 0,
+    "_N$cacheMode": 1,
     "_id": ""
   },
   {
@@ -470,9 +470,6 @@
     },
     "bronzeMedal": {
       "__uuid__": "bad44435-d762-49cc-be3d-53201f7e5e78"
-    },
-    "yellowFrame": {
-      "__uuid__": "55dacd56-940b-4d66-9737-310e1c30331b"
     },
     "_id": ""
   },

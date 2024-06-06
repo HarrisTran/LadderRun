@@ -27,7 +27,7 @@ export default class Lava extends cc.Component {
    
     protected update(dt: number): void {
         if (!GameManager.Instance.isStatePlay() ||
-            this.node.position.y > this.cameraNode.position.y) {
+            this.node.position.y > this.cameraNode.position.y+100) {
             return;
         }
         if(this._shouldMove){

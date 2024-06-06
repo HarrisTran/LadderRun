@@ -57,6 +57,11 @@ export function delay(delay: number){
     return new Promise((resolve) => setTimeout(resolve, delay));
 }
 
+export function setMix(spine: sp.Skeleton, anim1: string, anim2: string, mixTime: number = 0.1) {
+    spine?.setMix(anim1, anim2, mixTime);
+    spine?.setMix(anim2, anim1, mixTime);
+}
+
 export class Queue<T>{
     private storage: T[] = [];
   

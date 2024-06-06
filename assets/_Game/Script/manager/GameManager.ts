@@ -50,7 +50,6 @@ export default class GameManager extends cc.Component {
     public APIManager: BEConnector;
 
     private _blockQueue: Queue<string> = new Queue<string>();
-
     private _previousBlockNode: cc.Node;
     private _stayingPosition: cc.Vec2;
 
@@ -146,8 +145,8 @@ export default class GameManager extends cc.Component {
         //SpriteManager.instance.initialize(skinCodeToString[this.CurrentGameSkin]);
 
         this._initializePhysicsManager();
-
     }
+
 
     private onGameStart() {
         //this.lava.getComponent(Lava).startMove();
@@ -220,9 +219,7 @@ export default class GameManager extends cc.Component {
     }
 
     private _initializeBlockQueue() {
-        let blockList = this.resourcesManager.popLevelMap();
-
-        for (let i of blockList) {
+        for (let i of this.resourcesManager.levelMap.dequeue()) {
             this._blockQueue.enqueue(i);
         }
     }
@@ -234,6 +231,8 @@ export default class GameManager extends cc.Component {
 
         this._initializeBlockQueue();
         this._initializeBlockQueue();
+        
+        
 
         for (let i = 0; i < 6; i++) {
             let block: cc.Node = PoolManager.instance.getNode('block', this.stageNode);
@@ -244,9 +243,11 @@ export default class GameManager extends cc.Component {
                 block.setPosition(0, this._previousBlockNode.y + offset);
             }
             let cpn = block.getComponent(Block);
+            let nextID = this._blockQueue.dequeue()
+            console.log(nextID);
             cpn.init({
                 id: 1,
-                dataInstance: this.resourcesManager.blockMap[this._blockQueue.dequeue()].data
+                dataInstance: this.resourcesManager.blockMap[nextID].data
             });
             cpn.rendor();
             block.setSiblingIndex(0);
@@ -269,9 +270,12 @@ export default class GameManager extends cc.Component {
         block.setPosition(0, this._previousBlockNode.y + offset);
 
         let cpn = block.getComponent(Block);
+        let nextID = this._blockQueue.dequeue()
+        console.log(nextID);
+        
         cpn.init({
             id: 1,
-            dataInstance: this.resourcesManager.blockMap[this._blockQueue.dequeue()].data
+            dataInstance: this.resourcesManager.blockMap[nextID].data
         });
         cpn.rendor();
         block.setSiblingIndex(0);
