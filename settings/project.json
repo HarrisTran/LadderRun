@@ -42,11 +42,8 @@
     "Toggle",
     "TiledMap",
     "VideoPlayer",
-    "3D",
     "3D Primitive",
-    "3D Physics/cannon.js",
     "3D Physics/Builtin",
-    "3D Particle",
     "SafeArea"
   ],
   "preview-port": 7456,
