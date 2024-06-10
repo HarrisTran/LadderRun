@@ -1,6 +1,5 @@
-import { ENUM_GAME_EVENT, ENUM_GAME_STATUS, GameState } from "../Enum";
+import { ENUM_GAME_EVENT} from "../Enum";
 import { delay } from "../Utils";
-import DataManager from "../manager/DataManager";
 import GameManager from "../manager/GameManager";
 
 const {ccclass, property} = cc._decorator;
@@ -20,12 +19,13 @@ export default class Lava extends cc.Component {
     }
 
     async startMove(){
-        await delay(3000);
+        await delay(5000);
         this._shouldMove = true;
     }
    
    
     protected update(dt: number): void {
+        
         if (!GameManager.Instance.isStatePlay() ||
             this.node.position.y > this.cameraNode.position.y+100) {
             return;

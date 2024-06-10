@@ -64,9 +64,6 @@ export default class Player extends cc.Component {
     }
 
     update (dt: number) {
-        console.log(this._status + " "+cc.director.getTotalTime());
-        
-        
         if(this.isAir()) this.speed.y += this.gravity * dt
         if(!this.isClimb()) this.speed.x = this.walk * this.direction
         if(GameManager.Instance.CurrentGameState == GameState.PLAYING) {
@@ -185,9 +182,10 @@ export default class Player extends cc.Component {
                 for (let i = 0; i < 3; i++) {
                     cc.game.emit(ENUM_GAME_EVENT.EFFECT_STAR_PLAY, { pos: self.node.position, color: cc.color(255, 255, 255, 255) })
                 }
-                //other.node.getComponent(ReverseMovingTrap).onTurn()
-                this.direction *= -1
-                this.onTurn()
+                if(other.node.getComponent(ReverseMovingTrap).dir*this.direction < 0){
+                    this.direction *= -1
+                    this.onTurn()
+                }
                 return;
             case ENUM_COLLIDER_TAG.BULLET:
             case ENUM_COLLIDER_TAG.FLY_TRAP:

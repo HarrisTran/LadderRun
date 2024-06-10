@@ -22,7 +22,7 @@ export default class BEConnector{
     public currentScore: number;
     private mileStone: string;
 
-    private userId: string;
+    public userId: string;
 
     public set APIEnable(enable: boolean){
         this._APIEnable = enable;
@@ -161,7 +161,9 @@ export default class BEConnector{
                     method: 'GET',
                 },
             )
-            return leaderBoard.json() as Promise<any>;
+            let json = await leaderBoard.json();
+            
+            return (json.leaderBoard || []) as Promise<any[]>;
         } catch (error) {
             throw error;
         }

@@ -37,11 +37,11 @@ export default class FlyTrap extends cc.Component {
             switch (this.mode) {
                 case TrapHideCellarMode.HIGH:
                     GameManager.Instance.audioManager.playSfx(ENUM_AUDIO_CLIP.TRAP_FLY_3)
-                    y = -50
+                    y = -80
                     break;
                 case TrapHideCellarMode.LOW:
                     GameManager.Instance.audioManager.playSfx(ENUM_AUDIO_CLIP.TRAP_FLY_1)
-                    y = -250
+                    y = -220
                     break;
                 case TrapHideCellarMode.RANDOM:
                     GameManager.Instance.audioManager.playSfx(ENUM_AUDIO_CLIP.TRAP_FLY_2)

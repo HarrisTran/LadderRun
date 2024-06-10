@@ -244,7 +244,6 @@ export default class GameManager extends cc.Component {
             }
             let cpn = block.getComponent(Block);
             let nextID = this._blockQueue.dequeue()
-            console.log(nextID);
             cpn.init({
                 id: 1,
                 dataInstance: this.resourcesManager.blockMap[nextID].data
@@ -271,7 +270,6 @@ export default class GameManager extends cc.Component {
 
         let cpn = block.getComponent(Block);
         let nextID = this._blockQueue.dequeue()
-        console.log(nextID);
         
         cpn.init({
             id: 1,

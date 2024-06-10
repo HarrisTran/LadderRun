@@ -12,7 +12,7 @@ export default class ReverseMovingTrap extends cc.Component {
     _status: ENUM_REVERSE_TRAP_STATUS = ENUM_REVERSE_TRAP_STATUS.IDLE
     //anim: cc.Animation = null
     dir: number = 0
-    speed: number = 180
+    speed: number = 160
 
     runSoundId: number = 0;
 
