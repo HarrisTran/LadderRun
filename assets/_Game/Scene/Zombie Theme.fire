@@ -1731,7 +1731,7 @@
         "__id__": 43
       }
     ],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 48
@@ -4862,9 +4862,7 @@
     ],
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
-    "_spriteFrame": {
-      "__uuid__": "2cd87303-da63-4454-a06b-78cb81bb2684"
-    },
+    "_spriteFrame": null,
     "_type": 0,
     "_sizeMode": 0,
     "_fillType": 0,
@@ -4956,9 +4954,7 @@
     ],
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
-    "_spriteFrame": {
-      "__uuid__": "c63b8e6d-1137-4bfb-9bb3-868379556924"
-    },
+    "_spriteFrame": null,
     "_type": 0,
     "_sizeMode": 0,
     "_fillType": 0,
@@ -5168,9 +5164,7 @@
     ],
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
-    "_spriteFrame": {
-      "__uuid__": "a5ef6b33-47cf-4480-ad37-9b992115b8ff"
-    },
+    "_spriteFrame": null,
     "_type": 0,
     "_sizeMode": 0,
     "_fillType": 0,
@@ -5326,6 +5320,7 @@
       "__id__": 2
     },
     "_enabled": true,
+    "enabledConnectWeb": false,
     "CurrentGameState": 1,
     "UIManager": {
       "__id__": 90

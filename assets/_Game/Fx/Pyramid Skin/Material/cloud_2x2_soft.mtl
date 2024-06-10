@@ -1,0 +1,20 @@
+{
+  "__type__": "cc.Material",
+  "_name": "cloud_2x2_soft",
+  "_objFlags": 0,
+  "_native": "",
+  "_effectAsset": {
+    "__uuid__": "829a282c-b049-4019-bd38-5ace8d8a6417"
+  },
+  "_techniqueIndex": 0,
+  "_techniqueData": {
+    "0": {
+      "defines": {},
+      "props": {
+        "mainTexture": {
+          "__uuid__": "76fe88a6-03c7-45a1-a30c-e57eacb93b61"
+        }
+      }
+    }
+  }
+}
