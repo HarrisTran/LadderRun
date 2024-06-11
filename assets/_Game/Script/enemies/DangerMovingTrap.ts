@@ -20,7 +20,7 @@ export default class DangerMovingTrap extends cc.Component {
         if((other.tag == ENUM_COLLIDER_TAG.WALL || other.tag == ENUM_COLLIDER_TAG.HARD_TRAP_WALL) && self.tag == ENUM_COLLIDER_TAG.MOVING_TRAP){
             if(this.dir){
                 this.dir *= -1
-                this.node.scaleX = this.dir ;
+                this.node.scaleX = -this.dir ;
             }
         }
         if(other.tag == ENUM_COLLIDER_TAG.PLAYER) GameManager.Instance.audioManager.playSfx(ENUM_AUDIO_CLIP.DANGER_MOVING_TRAP);

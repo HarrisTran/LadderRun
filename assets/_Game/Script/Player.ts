@@ -44,6 +44,10 @@ export default class Player extends cc.Component {
     isAir(){
         return this.status == ENUM_PLAYER_STATUS.JUMP
     }
+
+    isDead(){
+        return this.status == ENUM_PLAYER_STATUS.DIE
+    }
     
     // 是否在攀爬
     isClimb(){
@@ -66,6 +70,7 @@ export default class Player extends cc.Component {
     }
 
     update (dt: number) {
+        if(this.isDead()) return;
         if(this.isAir()) this.speed.y += this.gravity * dt
         if(!this.isClimb()) this.speed.x = this.walk * this.direction
         if(GameManager.Instance.CurrentGameState == GameState.PLAYING) {
@@ -87,6 +92,7 @@ export default class Player extends cc.Component {
     }
 
     onJump(){
+        if(this.isDead()) return;
         if(GameManager.Instance.CurrentGameState != GameState.PLAYING) return
         this.jumpCount++
         if(this.jumpCount > this.jumpLimit || this.isClimb()) return
@@ -117,60 +123,22 @@ export default class Player extends cc.Component {
         else if(this._status == ENUM_PLAYER_STATUS.JUMP){
             this.spineSkeleton.setAnimation(0,'jump',false)
         }
-        else if(this._status == ENUM_PLAYER_STATUS.DIE){
-            this.spineSkeleton.setAnimation(0,'dead',false)
-        }
 
     }
 
+    onPlayerDead(){
+        console.log("dead");
+        
+        this.status = ENUM_PLAYER_STATUS.DIE;
+        let deadTrack = this.spineSkeleton.setAnimation(0,'dead',false);
+        this.spineSkeleton.setTrackCompleteListener(deadTrack,(track: sp.spine.TrackEntry,_)=>{
+            this.unscheduleAllCallbacks();
+            this.node.active = false;
+            cc.game.emit(ENUM_GAME_EVENT.GAME_LOSE);
+        })
+    }
+
     onCollisionEnter (other: any, self: any) {
-
-        // let color = cc.color(243, 175, 197, 255)
-        // if(other.tag == ENUM_COLLIDER_TAG.LAVA){
-        //     // AudioManager.instance.playSound(ENUM_AUDIO_CLIP.DIE)
-        //     EventManager.instance.emit(ENUM_GAME_EVENT.GAME_LOSE)
-        //     self.node.active = false
-        //     color = cc.color(226, 69, 109, 255)
-        //     for (let i = 0; i < 5; i++) {
-        //         EventManager.instance.emit(ENUM_GAME_EVENT.EFFECT_STAR_PLAY, { pos: self.node.position, color })
-        //     }
-        //     return
-        // }
-        // if (!this._enablePowerUp) {
-        //     switch (other.tag) {
-        //         case ENUM_COLLIDER_TAG.SPIKE:
-        //         case ENUM_COLLIDER_TAG.BAT:
-        //         case ENUM_COLLIDER_TAG.SAW:
-        //         case ENUM_COLLIDER_TAG.SPIKEBALL:
-        //         case ENUM_COLLIDER_TAG.PIRANHA_PLANT:
-        //             // AudioManager.instance.playSound(ENUM_AUDIO_CLIP.PIRANHA_PLANT)
-        //         case ENUM_COLLIDER_TAG.PLANT_BULLET:
-        //             // AudioManager.instance.playSound(ENUM_AUDIO_CLIP.DIE)
-        //             EventManager.instance.emit(ENUM_GAME_EVENT.GAME_LOSE)
-        //             self.node.active = false
-        //             color = cc.color(226, 69, 109, 255)
-        //             for (let i = 0; i < 5; i++) {
-        //                 EventManager.instance.emit(ENUM_GAME_EVENT.EFFECT_STAR_PLAY, { pos: self.node.position, color })
-        //             }
-        //             return
-        //         case ENUM_COLLIDER_TAG.CHICKEN:
-        //             // AudioManager.instance.playSound(ENUM_AUDIO_CLIP.CHICKEN_HIT)
-        //             color = cc.color(255, 255, 255, 255)
-        //             for (let i = 0; i < 3; i++) {
-        //                 EventManager.instance.emit(ENUM_GAME_EVENT.EFFECT_STAR_PLAY, { pos: self.node.position, color })
-        //             }
-        //             other.node.getComponent(Chicken).onTurn()
-        //             this.direction = other.node.getComponent(Chicken).getDir() * -1
-        //             this.onTurn()
-        //             return
-        //         default:
-        //             break;
-        //     }
-        // }
-        
-        
-        
-
         switch (other.tag) {
             case ENUM_COLLIDER_TAG.REWARD:
                 playParticle3D(this.coinParticle);
@@ -179,9 +147,7 @@ export default class Player extends cc.Component {
                 for (let i = 0; i < 5; i++) {
                     cc.game.emit(ENUM_GAME_EVENT.EFFECT_STAR_PLAY, { pos: self.node.position, color: cc.color(226, 69, 109, 255) })
                 }
-                cc.game.emit(ENUM_GAME_EVENT.GAME_LOSE)
-                this.unscheduleAllCallbacks();
-                this.node.active = false;
+                this.onPlayerDead();
                 return;
             case ENUM_COLLIDER_TAG.REVERSE_TRAP:
                 for (let i = 0; i < 3; i++) {
@@ -202,9 +168,7 @@ export default class Player extends cc.Component {
                     for (let i = 0; i < 5; i++) {
                         cc.game.emit(ENUM_GAME_EVENT.EFFECT_STAR_PLAY, { pos: self.node.position, color: cc.color(226, 69, 109, 255) })
                     }
-                    cc.game.emit(ENUM_GAME_EVENT.GAME_LOSE)
-                    this.unscheduleAllCallbacks();
-                    this.node.active = false;
+                    this.onPlayerDead();
                 }
                 return
             case ENUM_COLLIDER_TAG.TRAMPOLINE:

@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "b218bb46-48ba-47fc-9d31-d26e84b9fcfb",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 512,
+  "height": 512,
+  "platformSettings": {},
+  "subMetas": {
+    "trap shot cellar": {
+      "ver": "1.0.6",
+      "uuid": "d3d018f0-e579-437c-b883-f18eb385bd14",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "b218bb46-48ba-47fc-9d31-d26e84b9fcfb",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 7,
+      "offsetY": -28.5,
+      "trimX": 125,
+      "trimY": 173,
+      "width": 276,
+      "height": 223,
+      "rawWidth": 512,
+      "rawHeight": 512,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

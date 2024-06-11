@@ -15,7 +15,6 @@ export default class LoseLayer extends BaseLayer {
    @property(cc.Node) private continueButton : cc.Node = null;
    @property(cc.Prefab) private itemRowPrefab : cc.Prefab = null;
    @property(cc.SpriteFrame) playerFrame: cc.SpriteFrame = null;
-   @property(cc.Node) loadingLabel: cc.Node = null;
 
    private _clickedContinueButton : boolean = false;
 

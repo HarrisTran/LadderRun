@@ -63,10 +63,13 @@ export function setMix(spine: sp.Skeleton, anim1: string, anim2: string, mixTime
 }
 
 export function playParticle3D(particleNode: cc.Node){
+    
     let particleRoot = particleNode.getComponent(cc.ParticleSystem3D)
     if(particleRoot){
+        particleRoot.clear();
         particleRoot.play();
         for (let node of particleNode.children) {
+            node.getComponent(cc.ParticleSystem3D).clear();
             node.getComponent(cc.ParticleSystem3D).play();
         }
     }

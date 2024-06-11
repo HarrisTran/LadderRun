@@ -18,7 +18,7 @@ export default class UIManager extends cc.Component {
 
     
 
-    public async changeState(state : GameState)
+    public changeState(state : GameState)
     {
         this.loadingLayer.hide();
         this.menuLayer.hide();
@@ -39,7 +39,6 @@ export default class UIManager extends cc.Component {
             //     this.changeState(GameState.PLAYING);
             //     break;
             case GameState.ENDGAME:
-                await delay(200);
                 this.loseLayer.show();
                 break;
         }
