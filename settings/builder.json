@@ -4,7 +4,8 @@
   "startScene": "2a7198e2-2c3b-432f-b260-46eca93f5054",
   "excludeScenes": [
     "c472c2ba-aba7-4b2c-9800-9ee291d2e158",
-    "a738f065-fc56-4cca-a623-ac83643451a4"
+    "a738f065-fc56-4cca-a623-ac83643451a4",
+    "c136c880-05f9-4e05-bf48-273a115ac7b8"
   ],
   "orientation": {
     "landscapeRight": true,

@@ -49,7 +49,7 @@ export default class Block extends cc.Component {
                     code == ITEM_CODE.DANGER_MOVING_TRAP ||
                     code == ITEM_CODE.CIRCLE_MOVING_TRAP ||
                     code == ITEM_CODE.IDLE_MOVING_TRAP ||
-                    //code == ITEM_CODE.RANDOM_MOVING_TRAP || 
+                    code == ITEM_CODE.RANDOM_MOVING_TRAP || 
                     code == ITEM_CODE.SPIKE ||
                     code == ITEM_CODE.LOW_FLY_TRAP ||
                     code == ITEM_CODE.HIGH_FLY_TRAP ||

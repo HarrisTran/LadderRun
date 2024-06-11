@@ -5,7 +5,7 @@ const {ccclass, property} = cc._decorator;
 
 @ccclass
 export default class Bullet extends cc.Component {
-    speed: number = 200
+    speed: number = 150
 
     protected update(dt: number): void {
         if(!GameManager.Instance.isStatePlay()) return

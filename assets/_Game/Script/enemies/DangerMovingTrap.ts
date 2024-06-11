@@ -1,6 +1,6 @@
 // Created by carolsail
 
-import { ENUM_COLLIDER_TAG, ENUM_GAME_STATUS, GameState } from "../Enum";
+import { ENUM_AUDIO_CLIP, ENUM_COLLIDER_TAG, ENUM_GAME_STATUS, GameState } from "../Enum";
 import GameManager from "../manager/GameManager";
 import { random } from "../Utils";
 
@@ -8,9 +8,8 @@ const {ccclass, property} = cc._decorator;
 
 @ccclass
 export default class DangerMovingTrap extends cc.Component {
-    @property(cc.Node) private body: cc.Node = null;
 
-    dir: number = -1
+    dir: number = 1
     speed: number;
 
     onLoad(){
@@ -24,6 +23,7 @@ export default class DangerMovingTrap extends cc.Component {
                 this.node.scaleX = this.dir ;
             }
         }
+        if(other.tag == ENUM_COLLIDER_TAG.PLAYER) GameManager.Instance.audioManager.playSfx(ENUM_AUDIO_CLIP.DANGER_MOVING_TRAP);
     }
 
     update (dt: number) {

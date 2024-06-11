@@ -1,20 +1,23 @@
 import ReverseMovingTrap from "./enemies/ReverseMovingTrap";
 import { ENUM_COLLIDER_TAG, ENUM_PLAYER_STATUS, ENUM_GAME_EVENT, GameState, ENUM_AUDIO_CLIP} from "./Enum";
 import GameManager from "./manager/GameManager";
+import { playParticle3D, setMix } from "./Utils";
 
 const {ccclass, property} = cc._decorator;
 
 let v3 = new cc.Vec3()
 const normalSpeed: number = 150;
 const speedUp: number = 360;
-
 @ccclass
 export default class Player extends cc.Component {
+    @property(sp.Skeleton) spineSkeleton: sp.Skeleton = null;
     @property(cc.Node) shieldIcon: cc.Node = null;
     @property(cc.Node) magnet: cc.Node = null;
+    @property(cc.Node) coinParticle: cc.Node = null;
+
     canvas: cc.Node = null
     speed: cc.Vec2 = cc.v2(0, 0)
-    walk: number = 150
+    walk: number = 160
     direction: number = 0
     jump: number = 600
     jumpCount:number = 0
@@ -49,7 +52,13 @@ export default class Player extends cc.Component {
 
     protected onLoad(): void {
         this.canvas = cc.find('Canvas')
-        cc.game.on(ENUM_GAME_EVENT.PLAYER_JUMP, this.onJump, this)
+        cc.game.on(ENUM_GAME_EVENT.PLAYER_JUMP, this.onJump, this);
+        setMix(this.spineSkeleton,'move','jump',0.1);
+        setMix(this.spineSkeleton,'move','climb',0.1);
+        setMix(this.spineSkeleton,'jump','move',0.1);
+        setMix(this.spineSkeleton,'jump','climb',0.1);
+        setMix(this.spineSkeleton,'climb','move',0.1);
+        setMix(this.spineSkeleton,'climb','jump',0.1);
     }
 
     protected onDestroy(): void {
@@ -97,6 +106,21 @@ export default class Player extends cc.Component {
         // if(this.anim && this.anim.currentClip?.name != this.status){
         //     this.anim.play(this.status)
         // } 
+        
+        if(this._status == ENUM_PLAYER_STATUS.CLIMB){
+            this.spineSkeleton.setAnimation(0,'climb',true)
+        }
+        else if(this._status == ENUM_PLAYER_STATUS.WALK){
+            //this.spineSkeleton.clearTracks();
+            this.spineSkeleton.setAnimation(0,'move',true)
+        }
+        else if(this._status == ENUM_PLAYER_STATUS.JUMP){
+            this.spineSkeleton.setAnimation(0,'jump',false)
+        }
+        else if(this._status == ENUM_PLAYER_STATUS.DIE){
+            this.spineSkeleton.setAnimation(0,'dead',false)
+        }
+
     }
 
     onCollisionEnter (other: any, self: any) {
@@ -148,6 +172,9 @@ export default class Player extends cc.Component {
         
 
         switch (other.tag) {
+            case ENUM_COLLIDER_TAG.REWARD:
+                playParticle3D(this.coinParticle);
+                return;
             case ENUM_COLLIDER_TAG.LAVA:
                 for (let i = 0; i < 5; i++) {
                     cc.game.emit(ENUM_GAME_EVENT.EFFECT_STAR_PLAY, { pos: self.node.position, color: cc.color(226, 69, 109, 255) })
@@ -160,15 +187,17 @@ export default class Player extends cc.Component {
                 for (let i = 0; i < 3; i++) {
                     cc.game.emit(ENUM_GAME_EVENT.EFFECT_STAR_PLAY, { pos: self.node.position, color: cc.color(255, 255, 255, 255) })
                 }
-                //other.node.getComponent(ReverseMovingTrap).onTurn()
-                this.direction *= -1
-                this.onTurn()
+                if(other.node.getComponent(ReverseMovingTrap).dir*this.direction < 0){
+                    this.direction *= -1
+                    this.onTurn()
+                }
                 return;
             case ENUM_COLLIDER_TAG.BULLET:
             case ENUM_COLLIDER_TAG.FLY_TRAP:
             case ENUM_COLLIDER_TAG.MOVING_TRAP:
             case ENUM_COLLIDER_TAG.HIDE_TRAP:
             case ENUM_COLLIDER_TAG.SPIKE:
+                //GameManager.Instance.audioManager.playSfx(ENUM_AUDIO_CLIP.TRAP_STAND);
                 if (!this.shield) {
                     for (let i = 0; i < 5; i++) {
                         cc.game.emit(ENUM_GAME_EVENT.EFFECT_STAR_PLAY, { pos: self.node.position, color: cc.color(226, 69, 109, 255) })
@@ -179,7 +208,7 @@ export default class Player extends cc.Component {
                 }
                 return
             case ENUM_COLLIDER_TAG.TRAMPOLINE:
-                // AudioManager.instance.playSound(ENUM_AUDIO_CLIP.TRAMPOLINE)
+                GameManager.Instance.audioManager.playSfx(ENUM_AUDIO_CLIP.TRAMPOLINE)
                 for (let i = 0; i < 3; i++) {
                     cc.game.emit(ENUM_GAME_EVENT.EFFECT_STAR_PLAY, { pos: self.node.position, color: cc.color(255, 255, 255, 255) })
                 }

@@ -2,6 +2,7 @@
 import { ENUM_AUDIO_CLIP, ENUM_COLLIDER_TAG } from "../Enum";
 import { delay } from "../Utils";
 import AudioManager from "../manager/AudioManager";
+import GameManager from "../manager/GameManager";
 
 const {ccclass, property} = cc._decorator;
 
@@ -20,7 +21,7 @@ export default class SoftTrap extends cc.Component {
         if(other.tag == ENUM_COLLIDER_TAG.PLAYER && self.tag == ENUM_COLLIDER_TAG.SOFT_TRAP_DESTROY){
             this.onFinished();
             //self.node.getComponent(cc.Animation).play("box")
-            // AudioManager.instance.playSound(ENUM_AUDIO_CLIP.BOX)
+            GameManager.Instance.audioManager.playSfx(ENUM_AUDIO_CLIP.SOFT_TRAP_WALL);
         }
     }
 
@@ -28,9 +29,12 @@ export default class SoftTrap extends cc.Component {
         //if(this.animation.getAnimationState('box').isPlaying) this.node.removeComponent(cc.Collider)
     }
 
-    async onFinished(){
-        await delay(50)
-        this.node.active = false
+    onFinished(){
+        // await delay(10)
+        this.node.getComponentInChildren(sp.Skeleton).setAnimation(0,'break',false);
+        this.node.getChildByName('collider').removeComponent(cc.Collider);
+        this.node.removeComponent(cc.Collider);
+        
     }
 
     protected onDestroy(): void {

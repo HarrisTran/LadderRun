@@ -54,8 +54,7 @@ export enum ENUM_FLY_TRAP_STATUS {
 
 export enum ENUM_REVERSE_TRAP_STATUS {
     IDLE = 'idle',
-    RUN = 'run',
-    HIT = 'hit'
+    MOVE = 'move',
 }
 
 export enum ENUM_SHOOTER_STATUS {
@@ -96,6 +95,9 @@ export enum ENUM_COLLIDER_TAG {
     RANDOM_BOOSTER = 27,
 
     MAGNET_RANGE = 28,
+    HARD_TRAP_STAND = 29,
+
+    ENEMY_VIEW_ZONE = 50,
 }
 
 // 事件
@@ -140,15 +142,29 @@ export enum ENUM_AUDIO_CLIP {
     BOOSTER_MAGNET = 'booster_magnet',
     BOOSTER_SHIELD = 'booster_shield',
     BOOSTER_SPEED = 'booster_speed',
+    BOOSTER_RANDOM = 'booster_random',
     BUTTON_CLICK  = 'button_click',
     BUTTON_PLAY = 'button_play',
-    COIN = 'coin',
+    REWARD1 = 'reward1',
+    REWARD2 = 'reward2',
     PLAYER_CLIMB = 'player_climb',
     PLAYER_HIT = 'player_hit',
     PLAYER_JUMP = 'player_jump',
-    TRAP_HIDE = 'trap_hide',
-    TRAP_SHOT = 'trap_shot',
+    DANGER_MOVING_TRAP = 'danger_moving_trap',
+    HARD_TRAP_WALL = 'hard_trap_wall',
+    IDLE_MOVING_TRAP = 'idle_moving_trap',
+    CIRCLE_MOVING_TRAP = 'circle_moving_trap',
+    RANDOM_MOVING_TRAP = 'random_moving_trap',
+    SOFT_TRAP_WALL = 'soft_trap_wall',
+    TRAMPOLINE = 'trampoline',
+    TRAP_HIDE = 'trap_hide_stand',
+    TRAP_FALL = 'trap_shot_cellar',
+    TRAP_SHOT_REAR = 'trap_shot_rear',
     TRAP_STAND = 'trap_stand',
+    REVERSE_MOVING_TRAP = "reverse_moving_trap",
+    TRAP_FLY_1 = 'trap_fly1',
+    TRAP_FLY_2 = 'trap_fly2',
+    TRAP_FLY_3 = 'trap_fly3',
 }
 
 // 游戏模式

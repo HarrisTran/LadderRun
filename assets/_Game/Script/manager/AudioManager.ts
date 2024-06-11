@@ -32,6 +32,7 @@ export default class AudioManager extends cc.Component implements IManager{
     initialize() {
         this._audioInitializeProgress = 0;
         this._isAudioInitializeDone = false;
+        
         cc.assetManager.loadBundle(SCENE_TO_RESOURCES_MAPPING[cc.director.getScene().name],(error,bundle)=>{
             bundle.loadDir(AudioManager.AUDIO_PATH,cc.AudioClip,
                 (finish,total,item)=>{
@@ -66,23 +67,32 @@ export default class AudioManager extends cc.Component implements IManager{
     }
 
     public setMute(mute: boolean) {
-        this.soundSource.mute = mute;
-        this.musicSource.mute = mute;
+        cc.audioEngine.setMusicVolume(mute? 0 : 1);
+        cc.audioEngine.setEffectsVolume(mute? 0 : 1);
+        // this.soundSource.mute = mute;
+        // this.musicSource.mute = mute;
     }
 
     public playBGM(volume = 1, loop = true) {
-        this.musicSource.stop();
-        this.musicSource.clip = this._audioClipSet[ENUM_AUDIO_CLIP.BGM];
-        this.musicSource.play();
+        // this.musicSource.stop();
+        // this.musicSource.clip = this._audioClipSet[ENUM_AUDIO_CLIP.BGM];
+        // this.musicSource.play();
+        cc.audioEngine.playMusic(this._audioClipSet[ENUM_AUDIO_CLIP.BGM],loop);
     }
 
     public playSfx(audioClipName: ENUM_AUDIO_CLIP, volume = 1, loop = false) {
         if(!this._audioClipSet[audioClipName]) return;
-        this.soundSource.clip = this._audioClipSet[audioClipName];
-        this.soundSource.volume = volume;
-        this.soundSource.loop = loop;
-        if(loop) return;
-        this.soundSource.play();
+        // this.soundSource.clip = this._audioClipSet[audioClipName];
+        // this.soundSource.volume = volume;
+        // this.soundSource.loop = loop;
+        // if(loop) return;
+        // this.soundSource.play();
+
+        cc.audioEngine.playEffect(this._audioClipSet[audioClipName],loop);
+    }
+
+    public playButtonClick(){
+        this.playSfx(ENUM_AUDIO_CLIP.BUTTON_CLICK);
     }
 
     // init(){

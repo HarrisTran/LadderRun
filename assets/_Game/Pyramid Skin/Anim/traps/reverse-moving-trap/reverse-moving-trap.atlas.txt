@@ -1,0 +1,90 @@
+
+reverse-moving-trap.png
+size: 512,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+body
+  rotate: true
+  xy: 175, 87
+  size: 161, 87
+  orig: 161, 87
+  offset: 0, 0
+  index: -1
+eyes
+  rotate: true
+  xy: 114, 16
+  size: 58, 14
+  orig: 62, 17
+  offset: 2, 2
+  index: -1
+front-arm
+  rotate: false
+  xy: 4, 9
+  size: 51, 65
+  orig: 54, 68
+  offset: 2, 2
+  index: -1
+front-leg
+  rotate: false
+  xy: 266, 171
+  size: 53, 77
+  orig: 55, 80
+  offset: 1, 2
+  index: -1
+rear-leg
+  rotate: false
+  xy: 266, 171
+  size: 53, 77
+  orig: 55, 80
+  offset: 1, 2
+  index: -1
+front-thigh
+  rotate: false
+  xy: 59, 13
+  size: 51, 61
+  orig: 53, 64
+  offset: 1, 1
+  index: -1
+rear-thigh
+  rotate: false
+  xy: 59, 13
+  size: 51, 61
+  orig: 53, 64
+  offset: 1, 1
+  index: -1
+front-upper-arm
+  rotate: false
+  xy: 291, 60
+  size: 44, 49
+  orig: 46, 51
+  offset: 1, 1
+  index: -1
+head
+  rotate: true
+  xy: 4, 78
+  size: 170, 167
+  orig: 172, 170
+  offset: 1, 2
+  index: -1
+rear-arm
+  rotate: false
+  xy: 237, 4
+  size: 50, 79
+  orig: 54, 81
+  offset: 2, 1
+  index: -1
+rear-upper-arm
+  rotate: false
+  xy: 266, 113
+  size: 49, 54
+  orig: 52, 57
+  offset: 2, 1
+  index: -1
+tail
+  rotate: true
+  xy: 132, 19
+  size: 55, 101
+  orig: 55, 101
+  offset: 0, 0
+  index: -1

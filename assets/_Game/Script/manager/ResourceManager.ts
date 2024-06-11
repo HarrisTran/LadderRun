@@ -72,17 +72,24 @@ export default class ResourceManager implements IManager{
                 }
             )
         })
-
         cc.resources.loadDir(ResourceManager.BLOCK_JSON_PATH,cc.JsonAsset,
             (finish,total,item)=>{
                 this._blockJsonLoadingProgress = finish / total;
             },
             (error,assets)=>{
                 if (error) console.error(error);
-                for (let i = 0; i < assets.length; i++) {
-                    let asset : cc.JsonAsset = assets[i] as any as cc.JsonAsset;
-                    this.blockMap[asset.name] = {data: asset.json.data};
-                }
+                // for (let i = 0; i < assets.length; i++) {
+                //     let asset : cc.JsonAsset = assets[i] as any as cc.JsonAsset;
+                //     console.log(asset);
+                    
+                //     //this.blockMap[asset.name] = {data: asset.json.data};
+                // }
+                // console.log(assets);
+                
+                let asset : cc.JsonAsset = assets[0] as any as cc.JsonAsset;
+                asset.json.forEach(source=>{
+                    this.blockMap[source.id] = {data: source.data}
+                })
                 this._blockJsonLoadingProgress = 1;
                 this._blockJsonLoadingDone = true;
             }
@@ -94,14 +101,19 @@ export default class ResourceManager implements IManager{
             },
             (error,assets)=>{
                 if (error) console.error(error);
-                for (let i = 0; i < assets.length; i++) {
-                    let asset : cc.JsonAsset = assets[i] as any as cc.JsonAsset;
-                    this.levelMap.enqueue(asset.json.data);
-                }
+                // for (let i = 0; i < assets.length; i++) {
+                //     let asset : cc.JsonAsset = assets[i] as any as cc.JsonAsset;
+                //     this.levelMap.enqueue(asset.json.data);
+                // }
+                let asset : cc.JsonAsset = assets[0] as any as cc.JsonAsset;
+                asset.json.forEach(source=>{
+                    this.levelMap.enqueue(source.data);
+                })
                 this._levelJsonLoadingProgress = 1;
                 this._levelJsonLoadingDone = true;
             }
         )
+        
     }
 
     public popLevelMap(){

@@ -57,6 +57,21 @@ export function delay(delay: number){
     return new Promise((resolve) => setTimeout(resolve, delay));
 }
 
+export function setMix(spine: sp.Skeleton, anim1: string, anim2: string, mixTime: number = 0.1) {
+    spine?.setMix(anim1, anim2, mixTime);
+    spine?.setMix(anim2, anim1, mixTime);
+}
+
+export function playParticle3D(particleNode: cc.Node){
+    let particleRoot = particleNode.getComponent(cc.ParticleSystem3D)
+    if(particleRoot){
+        particleRoot.play();
+        for (let node of particleNode.children) {
+            node.getComponent(cc.ParticleSystem3D).play();
+        }
+    }
+}
+
 export class Queue<T>{
     private storage: T[] = [];
   

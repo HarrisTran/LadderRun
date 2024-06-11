@@ -50,7 +50,6 @@ export default class GameManager extends cc.Component {
     public APIManager: BEConnector;
 
     private _blockQueue: Queue<string> = new Queue<string>();
-
     private _previousBlockNode: cc.Node;
     private _stayingPosition: cc.Vec2;
 
@@ -70,6 +69,7 @@ export default class GameManager extends cc.Component {
                 //this.UiController.LoadingDone();
                 break;
             case GameState.PLAYING:
+                //this.audioManager.playBGM();
                 if (this.isPlayedOnce) {
                     cc.tween(this.lava).by(1, { y: -1000 }).start();
                     //replay
@@ -145,8 +145,8 @@ export default class GameManager extends cc.Component {
         //SpriteManager.instance.initialize(skinCodeToString[this.CurrentGameSkin]);
 
         this._initializePhysicsManager();
-
     }
+
 
     private onGameStart() {
         //this.lava.getComponent(Lava).startMove();
@@ -169,7 +169,6 @@ export default class GameManager extends cc.Component {
     private updateScore() {
         if (this.CurrentGameState == GameState.PLAYING) {
             this.UIManager.setGameScore();
-            this.audioManager.playSfx(ENUM_AUDIO_CLIP.COIN);
         }
     }
 
@@ -220,9 +219,7 @@ export default class GameManager extends cc.Component {
     }
 
     private _initializeBlockQueue() {
-        let blockList = this.resourcesManager.popLevelMap();
-
-        for (let i of blockList) {
+        for (let i of this.resourcesManager.levelMap.dequeue()) {
             this._blockQueue.enqueue(i);
         }
     }
@@ -234,6 +231,8 @@ export default class GameManager extends cc.Component {
 
         this._initializeBlockQueue();
         this._initializeBlockQueue();
+        
+        
 
         for (let i = 0; i < 6; i++) {
             let block: cc.Node = PoolManager.instance.getNode('block', this.stageNode);
@@ -244,9 +243,10 @@ export default class GameManager extends cc.Component {
                 block.setPosition(0, this._previousBlockNode.y + offset);
             }
             let cpn = block.getComponent(Block);
+            let nextID = this._blockQueue.dequeue()
             cpn.init({
                 id: 1,
-                dataInstance: this.resourcesManager.blockMap[this._blockQueue.dequeue()].data
+                dataInstance: this.resourcesManager.blockMap[nextID].data
             });
             cpn.rendor();
             block.setSiblingIndex(0);
@@ -258,7 +258,6 @@ export default class GameManager extends cc.Component {
         player.setPosition(firstBlock);
         player.getComponent(Player).setDir(1)
         this._stayingPosition = player.getPosition();
-
     }
 
 
@@ -269,9 +268,12 @@ export default class GameManager extends cc.Component {
         block.setPosition(0, this._previousBlockNode.y + offset);
 
         let cpn = block.getComponent(Block);
+        let nextID = this._blockQueue.dequeue()
+        
+        
         cpn.init({
             id: 1,
-            dataInstance: this.resourcesManager.blockMap[this._blockQueue.dequeue()].data
+            dataInstance: this.resourcesManager.blockMap[nextID].data
         });
         cpn.rendor();
         block.setSiblingIndex(0);
@@ -281,6 +283,14 @@ export default class GameManager extends cc.Component {
         if (this._blockQueue.size() < 10) {
             this._initializeBlockQueue();
         }
+
+        for(let i = this.stageNode.childrenCount - 1; i >= 0; i--){
+            if(this.stageNode.children[i].name == "block" && this._stayingPosition.y > 600){
+                this.stageNode.children[i].active = false;
+                break;
+            }
+        }
+        
         // let currentIndexBlock = ++DataManager.instance.currentIndexBlock;
         // if(currentIndexBlock>=6)
         // {
