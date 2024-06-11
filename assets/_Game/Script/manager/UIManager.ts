@@ -39,7 +39,7 @@ export default class UIManager extends cc.Component {
             //     this.changeState(GameState.PLAYING);
             //     break;
             case GameState.ENDGAME:
-                this.loseLayer.show();
+                this.loseLayer.showPopup();
                 break;
         }
     }

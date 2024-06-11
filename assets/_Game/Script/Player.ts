@@ -70,7 +70,7 @@ export default class Player extends cc.Component {
     }
 
     update (dt: number) {
-        if(this.isDead()) return;
+        // if(this.isDead()) return;
         if(this.isAir()) this.speed.y += this.gravity * dt
         if(!this.isClimb()) this.speed.x = this.walk * this.direction
         if(GameManager.Instance.CurrentGameState == GameState.PLAYING) {
@@ -92,7 +92,7 @@ export default class Player extends cc.Component {
     }
 
     onJump(){
-        if(this.isDead()) return;
+        // if(this.isDead()) return;
         if(GameManager.Instance.CurrentGameState != GameState.PLAYING) return
         this.jumpCount++
         if(this.jumpCount > this.jumpLimit || this.isClimb()) return
@@ -127,19 +127,20 @@ export default class Player extends cc.Component {
     }
 
     onPlayerDead(){
-        console.log("dead");
+        cc.game.emit(ENUM_GAME_EVENT.GAME_LOSE);
+        this.unscheduleAllCallbacks();
         
         this.status = ENUM_PLAYER_STATUS.DIE;
         let deadTrack = this.spineSkeleton.setAnimation(0,'dead',false);
         this.spineSkeleton.setTrackCompleteListener(deadTrack,(track: sp.spine.TrackEntry,_)=>{
-            this.unscheduleAllCallbacks();
             this.node.active = false;
-            cc.game.emit(ENUM_GAME_EVENT.GAME_LOSE);
+            //cc.game.emit(ENUM_GAME_EVENT.GAME_LOSE);
         })
     }
 
     onCollisionEnter (other: any, self: any) {
         switch (other.tag) {
+            
             case ENUM_COLLIDER_TAG.REWARD:
                 playParticle3D(this.coinParticle);
                 return;

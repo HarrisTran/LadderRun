@@ -12,7 +12,6 @@ var MovingMode = cc.Enum({
 @ccclass
 export default class MovingTrap extends cc.Component {
 
-    @property(cc.Node) private body: cc.Node = null;
     @property({type: MovingMode}) private movingMode = MovingMode.IDLE;
 
     speed: number = 85

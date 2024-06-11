@@ -7,13 +7,12 @@ const {ccclass, property} = cc._decorator;
 
 @ccclass
 export default class SoftTrap extends cc.Component {
+    @property(sp.Skeleton) body: sp.Skeleton = null;
+    @property(cc.Node) collider: cc.Node = null;
 
-    animation: sp.Skeleton = null
 
     protected onLoad(): void {
-        this.animation = this.node.getComponentInChildren(sp.Skeleton)
-        // this.animation.on('play', this.onPlay, this);
-        // this.animation.on('finished', this.onFinished, this);
+        
     }
 
     onCollisionEnter (other: cc.BoxCollider, self: cc.BoxCollider) {
@@ -28,13 +27,14 @@ export default class SoftTrap extends cc.Component {
         //if(this.animation.getAnimationState('box').isPlaying) this.node.removeComponent(cc.Collider)
     }
 
-    onFinished(){
-        // await delay(10)
+    async onFinished(){
+        await delay(10)
 
-        this.node.removeComponent(cc.BoxCollider);
-
-        this.animation.setAnimation(0,'break',false);
-        this.animation.setCompleteListener(()=>{
+        this.collider.getComponent(cc.Collider).enabled = false;
+        
+        this.body.setAnimation(0,'break',false);
+        this.body.setCompleteListener(()=>{
+            this.collider.getComponent(cc.Collider).enabled = false;
             this.node.active = false;
         })
     }

@@ -10,6 +10,7 @@ const {ccclass, property} = cc._decorator;
 @ccclass
 export default class LoseLayer extends BaseLayer {
     @property(cc.Node) private overlay : cc.Node = null;
+    @property(cc.Node) private panel: cc.Node = null;
    @property(cc.Label) private ticketMinus : cc.Label = null;
    @property(ScrollViewExtend) private leaderBoardView : ScrollViewExtend = null;
    @property(cc.Node) private continueButton : cc.Node = null;
@@ -18,10 +19,15 @@ export default class LoseLayer extends BaseLayer {
 
    private _clickedContinueButton : boolean = false;
 
-   private _numberItemRowCanShow: number = 6;
 
     protected onLoad(): void {
         //this.overlay.on('click',this.exitGame);
+    }
+
+    public showPopup(){
+        this.node.active = true;
+        this.panel.scale = 0;
+        cc.tween(this.panel).to(0.5,{scale: 1},{easing: "backOut"}).start();
     }
 
     protected onEnable() {
