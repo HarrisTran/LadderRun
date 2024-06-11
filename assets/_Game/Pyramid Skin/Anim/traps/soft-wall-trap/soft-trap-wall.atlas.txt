@@ -1,0 +1,62 @@
+
+soft-trap-wall.png
+size: 512,128
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+body
+  rotate: true
+  xy: 130, 35
+  size: 86, 80
+  orig: 88, 82
+  offset: 1, 1
+  index: -1
+front-arm
+  rotate: true
+  xy: 214, 25
+  size: 96, 45
+  orig: 98, 47
+  offset: 1, 1
+  index: -1
+rear-arm
+  rotate: true
+  xy: 214, 25
+  size: 96, 45
+  orig: 98, 47
+  offset: 1, 1
+  index: -1
+front-foot
+  rotate: true
+  xy: 329, 15
+  size: 53, 31
+  orig: 56, 33
+  offset: 2, 1
+  index: -1
+front-leg
+  rotate: true
+  xy: 263, 9
+  size: 40, 62
+  orig: 42, 64
+  offset: 1, 1
+  index: -1
+head
+  rotate: false
+  xy: 4, 4
+  size: 122, 117
+  orig: 124, 120
+  offset: 1, 2
+  index: -1
+rear-foot
+  rotate: true
+  xy: 324, 72
+  size: 49, 34
+  orig: 51, 36
+  offset: 1, 1
+  index: -1
+rear-leg
+  rotate: true
+  xy: 263, 53
+  size: 68, 57
+  orig: 70, 59
+  offset: 1, 1
+  index: -1

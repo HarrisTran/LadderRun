@@ -15,9 +15,9 @@ export default class MovingTrap extends cc.Component {
     @property(cc.Node) private body: cc.Node = null;
     @property({type: MovingMode}) private movingMode = MovingMode.IDLE;
 
-    speed: number = 100
+    speed: number = 85
     dir: number = 1
-    radian: number = 0
+    radian: number = 90
     circleRadius: number = 120
     circleCenter: cc.Vec2 = cc.v2(0, 0)
  

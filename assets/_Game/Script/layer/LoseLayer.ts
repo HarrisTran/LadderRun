@@ -1,11 +1,9 @@
-// Created by carolsail
 
-import { ParticipantInfo } from "../BEConnector";
 import ScrollViewExtend from "../Common/ScrollViewExtend";
 import { GameState } from "../Enum";
 import GameManager from "../manager/GameManager";
+import { delay } from "../Utils";
 import BaseLayer from "./Baselayer";
-import ItemRow from "./ItemRow";
 
 const {ccclass, property} = cc._decorator;
 
@@ -24,11 +22,10 @@ export default class LoseLayer extends BaseLayer {
    private _numberItemRowCanShow: number = 6;
 
     protected onLoad(): void {
-        this.overlay.on('click',this.exitGame);
+        //this.overlay.on('click',this.exitGame);
     }
 
-    protected onEnable(): void {
-        // GameManager.Instance.APIManager.postScoreToServer()
+    protected onEnable() {
         const numbetTicket = GameManager.Instance.APIManager.getTicketCanBeMinus();
         this.ticketMinus.string = '-'+numbetTicket.toString();
 
@@ -37,7 +34,7 @@ export default class LoseLayer extends BaseLayer {
     }
 
     private async _updateLeaderBoard(){
-        this.loadingLabel.active = true;
+        //this.loadingLabel.active = true;
         let userId = GameManager.Instance.APIManager.userId;
         
         let participants = await GameManager.Instance.APIManager.getLeaderboardInGame();
@@ -49,7 +46,7 @@ export default class LoseLayer extends BaseLayer {
 
         let indexAfterSort = participants.findIndex(participant => participant.userid == userId);
         
-        this.loadingLabel.active = false;
+        //this.loadingLabel.active = false;
 
         this.leaderBoardView.createBoard(participants.map(participant =>participant.score),indexAfterSort+1,player.score,this.itemRowPrefab)
         

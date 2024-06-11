@@ -9,24 +9,27 @@ const {ccclass, property} = cc._decorator;
 export default class HideTrap extends cc.Component {
     @property(cc.Node) body : cc.Node = null;
 
+    bodyTween: cc.Tween<cc.Node> = null;
 
-    onCollisionEnter (other: cc.BoxCollider, self: cc.BoxCollider) {
-        if(other.tag == ENUM_COLLIDER_TAG.PLAYER && self.tag == ENUM_COLLIDER_TAG.HIDE_TRAP_VIEW){
-            let bodyHeight = this.body.height;
-            cc.tween(this.body)
+    protected start(): void {
+        this.bodyTween = cc.tween(this.body)
             .to(0.15,{y: 0})
             .call(()=>GameManager.Instance.audioManager.playSfx(ENUM_AUDIO_CLIP.TRAP_HIDE))
             .delay(0.3)
-            .to(0.15,{y: -bodyHeight})
+            .to(0.15,{y: -this.body.height})
             .union()
-            .repeat(10)
-            .start();
+            .repeat(30)
+    }
+
+    onCollisionEnter (other: cc.BoxCollider, self: cc.BoxCollider) {
+        if(other.tag == ENUM_COLLIDER_TAG.PLAYER && self.tag == ENUM_COLLIDER_TAG.HIDE_TRAP_VIEW){
+            this.bodyTween.start();
         }
     }
 
     onCollisionEnd (other: cc.BoxCollider, self: cc.BoxCollider) {
         if(other.tag == ENUM_COLLIDER_TAG.PLAYER && self.tag == ENUM_COLLIDER_TAG.HIDE_TRAP_VIEW){
-            this.body.pauseAllActions();
+            this.bodyTween.stop();
         }
     }
 }

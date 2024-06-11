@@ -54,8 +54,7 @@ export enum ENUM_FLY_TRAP_STATUS {
 
 export enum ENUM_REVERSE_TRAP_STATUS {
     IDLE = 'idle',
-    RUN = 'run',
-    HIT = 'hit'
+    MOVE = 'move',
 }
 
 export enum ENUM_SHOOTER_STATUS {

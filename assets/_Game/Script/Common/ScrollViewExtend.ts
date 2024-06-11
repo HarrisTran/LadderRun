@@ -36,7 +36,7 @@ export default class ScrollViewExtend extends cc.Component{
             let item = cc.instantiate(itemPrefab);
             this.scrollView.content.addChild(item);
             item.getComponent(ItemRow).createItemRow(index,info);
-            if(index == playerIndex) item.getComponentInChildren(cc.Sprite).spriteFrame = this.playerFrame;
+            if(index == playerIndex) item.getComponent(cc.Sprite).spriteFrame = this.playerFrame;
             index++;
         }
         this.scrollView.content.getComponent(cc.Layout).updateLayout();

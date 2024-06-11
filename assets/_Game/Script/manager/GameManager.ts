@@ -258,7 +258,6 @@ export default class GameManager extends cc.Component {
         player.setPosition(firstBlock);
         player.getComponent(Player).setDir(1)
         this._stayingPosition = player.getPosition();
-
     }
 
 
@@ -270,6 +269,7 @@ export default class GameManager extends cc.Component {
 
         let cpn = block.getComponent(Block);
         let nextID = this._blockQueue.dequeue()
+        
         
         cpn.init({
             id: 1,
@@ -283,6 +283,14 @@ export default class GameManager extends cc.Component {
         if (this._blockQueue.size() < 10) {
             this._initializeBlockQueue();
         }
+
+        for(let i = this.stageNode.childrenCount - 1; i >= 0; i--){
+            if(this.stageNode.children[i].name == "block" && this._stayingPosition.y > 600){
+                this.stageNode.children[i].active = false;
+                break;
+            }
+        }
+        
         // let currentIndexBlock = ++DataManager.instance.currentIndexBlock;
         // if(currentIndexBlock>=6)
         // {

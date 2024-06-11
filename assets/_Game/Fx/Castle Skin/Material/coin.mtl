@@ -1,0 +1,20 @@
+{
+  "__type__": "cc.Material",
+  "_name": "coin",
+  "_objFlags": 0,
+  "_native": "",
+  "_effectAsset": {
+    "__uuid__": "829a282c-b049-4019-bd38-5ace8d8a6417"
+  },
+  "_techniqueIndex": 1,
+  "_techniqueData": {
+    "0": {
+      "props": {
+        "mainTexture": {
+          "__uuid__": "d53277ff-aa26-4c53-b38a-83035cf5df1c"
+        }
+      },
+      "defines": {}
+    }
+  }
+}

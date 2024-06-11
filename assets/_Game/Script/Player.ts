@@ -1,7 +1,7 @@
 import ReverseMovingTrap from "./enemies/ReverseMovingTrap";
 import { ENUM_COLLIDER_TAG, ENUM_PLAYER_STATUS, ENUM_GAME_EVENT, GameState, ENUM_AUDIO_CLIP} from "./Enum";
 import GameManager from "./manager/GameManager";
-import { setMix } from "./Utils";
+import { playParticle3D, setMix } from "./Utils";
 
 const {ccclass, property} = cc._decorator;
 
@@ -13,6 +13,8 @@ export default class Player extends cc.Component {
     @property(sp.Skeleton) spineSkeleton: sp.Skeleton = null;
     @property(cc.Node) shieldIcon: cc.Node = null;
     @property(cc.Node) magnet: cc.Node = null;
+    @property(cc.Node) coinParticle: cc.Node = null;
+
     canvas: cc.Node = null
     speed: cc.Vec2 = cc.v2(0, 0)
     walk: number = 160
@@ -170,6 +172,9 @@ export default class Player extends cc.Component {
         
 
         switch (other.tag) {
+            case ENUM_COLLIDER_TAG.REWARD:
+                playParticle3D(this.coinParticle);
+                return;
             case ENUM_COLLIDER_TAG.LAVA:
                 for (let i = 0; i < 5; i++) {
                     cc.game.emit(ENUM_GAME_EVENT.EFFECT_STAR_PLAY, { pos: self.node.position, color: cc.color(226, 69, 109, 255) })

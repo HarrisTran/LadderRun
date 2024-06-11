@@ -13,7 +13,7 @@ export default class FlyTrap extends cc.Component {
     _status: ENUM_FLY_TRAP_STATUS = ENUM_FLY_TRAP_STATUS.IDLE
     //anim: cc.Animation = null
     dir: number = 0
-    speed: number = 100
+    speed: number = 110
 
     get status(){
         return this._status
@@ -37,7 +37,7 @@ export default class FlyTrap extends cc.Component {
             switch (this.mode) {
                 case TrapHideCellarMode.HIGH:
                     GameManager.Instance.audioManager.playSfx(ENUM_AUDIO_CLIP.TRAP_FLY_3)
-                    y = -80
+                    y = -130
                     break;
                 case TrapHideCellarMode.LOW:
                     GameManager.Instance.audioManager.playSfx(ENUM_AUDIO_CLIP.TRAP_FLY_1)

@@ -9,6 +9,9 @@ const {ccclass, property} = cc._decorator;
 @ccclass
 export default class ReverseMovingTrap extends cc.Component {
 
+    @property(sp.Skeleton)
+    private trapAnimation: sp.Skeleton = null;
+
     _status: ENUM_REVERSE_TRAP_STATUS = ENUM_REVERSE_TRAP_STATUS.IDLE
     //anim: cc.Animation = null
     dir: number = 0
@@ -34,7 +37,7 @@ export default class ReverseMovingTrap extends cc.Component {
 
         }
         if(other.tag == ENUM_COLLIDER_TAG.PLAYER && self.tag == ENUM_COLLIDER_TAG.REVERSE_TRAP_VIEW && this.status == ENUM_REVERSE_TRAP_STATUS.IDLE){
-            this.status = ENUM_REVERSE_TRAP_STATUS.RUN
+            this.status = ENUM_REVERSE_TRAP_STATUS.MOVE
             this.speed += Math.random() * 80
             this.dir = 1
             this.onTurn();
@@ -42,7 +45,7 @@ export default class ReverseMovingTrap extends cc.Component {
             other.tag == ENUM_COLLIDER_TAG.HARD_TRAP_WALL || 
             other.tag == ENUM_COLLIDER_TAG.SOFT_TRAP ||
             other.tag == ENUM_COLLIDER_TAG.PLAYER
-        ) && self.tag == ENUM_COLLIDER_TAG.REVERSE_TRAP && this.status == ENUM_REVERSE_TRAP_STATUS.RUN){
+        ) && self.tag == ENUM_COLLIDER_TAG.REVERSE_TRAP && this.status == ENUM_REVERSE_TRAP_STATUS.MOVE){
             this.onTurn()
             if(other.tag == ENUM_COLLIDER_TAG.PLAYER) GameManager.Instance.audioManager.playSfx(ENUM_AUDIO_CLIP.REVERSE_MOVING_TRAP)
         }
@@ -50,6 +53,8 @@ export default class ReverseMovingTrap extends cc.Component {
 
     onCollisionExit(other: cc.BoxCollider, self: cc.BoxCollider) {
         if(other.tag == ENUM_COLLIDER_TAG.PLAYER && self.tag == ENUM_COLLIDER_TAG.REVERSE_TRAP_VIEW){
+            this.status = ENUM_REVERSE_TRAP_STATUS.IDLE;
+            this.dir = 0
             // AudioManager.instance.stopSound(this.runSoundId);
         }
     }
@@ -68,7 +73,7 @@ export default class ReverseMovingTrap extends cc.Component {
     }
 
     onAnimPlay(){
-        //this.anim.play(this.status)
+        this.trapAnimation.setAnimation(0,this.status,true)
     }
 
     update (dt: number) {

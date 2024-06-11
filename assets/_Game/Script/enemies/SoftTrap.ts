@@ -29,9 +29,12 @@ export default class SoftTrap extends cc.Component {
         //if(this.animation.getAnimationState('box').isPlaying) this.node.removeComponent(cc.Collider)
     }
 
-    async onFinished(){
-        await delay(50)
-        this.node.active = false
+    onFinished(){
+        // await delay(10)
+        this.node.getComponentInChildren(sp.Skeleton).setAnimation(0,'break',false);
+        this.node.getChildByName('collider').removeComponent(cc.Collider);
+        this.node.removeComponent(cc.Collider);
+        
     }
 
     protected onDestroy(): void {
