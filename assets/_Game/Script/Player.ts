@@ -73,7 +73,7 @@ export default class Player extends cc.Component {
         // if(this.isDead()) return;
         if(this.isAir()) this.speed.y += this.gravity * dt
         if(!this.isClimb()) this.speed.x = this.walk * this.direction
-        if(GameManager.Instance.CurrentGameState == GameState.PLAYING) {
+        if(GameManager.Instance.CurrentGameState == GameState.PLAYING && this.status != ENUM_PLAYER_STATUS.DIE) {
             this.node.x += this.speed.x * dt
             this.speedBoosterDuration > 0 ? this.holdSpeedBoosterHandle(dt) : this.cancelSpeedBoosterHandle();
             this.magnetBoosterDuration > 0 ? this.holdMagnetBoosterHandle(dt) : this.cancelMagnetBoosterHandle();

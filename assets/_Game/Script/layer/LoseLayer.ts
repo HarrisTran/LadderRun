@@ -27,7 +27,7 @@ export default class LoseLayer extends BaseLayer {
     public showPopup(){
         this.node.active = true;
         this.panel.scale = 0;
-        cc.tween(this.panel).to(0.5,{scale: 1},{easing: "backOut"}).start();
+        cc.tween(this.panel).delay(0.5).to(0.5,{scale: 1},{easing: "backOut"}).start();
     }
 
     protected onEnable() {
