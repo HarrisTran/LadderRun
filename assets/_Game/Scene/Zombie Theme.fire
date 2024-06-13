@@ -3481,9 +3481,6 @@
     "bronzeMedal": {
       "__uuid__": "d2dd9f12-6ffe-441c-9dc7-e6036fbbe1bc"
     },
-    "yellowFrame": {
-      "__uuid__": "05d4f062-5a6d-4b90-a0bb-e571a1235c44"
-    },
     "_id": "45BxPVcSBIf4P8+T9OpyOo"
   },
   {
@@ -4088,12 +4085,11 @@
     "continueButton": {
       "__id__": 76
     },
-    "mainItemRow": {
-      "__id__": 73
-    },
     "itemRowPrefab": {
       "__uuid__": "fbb83c70-c178-4fee-a7b3-889f1718adc1"
     },
+    "playerFrame": null,
+    "loadingLabel": null,
     "_id": "17NPajeuZD0b/hQ+bOkzyA"
   },
   {
