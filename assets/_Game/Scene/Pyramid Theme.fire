@@ -4036,7 +4036,7 @@
       "__id__": 63
     },
     "_children": [],
-    "_active": false,
+    "_active": true,
     "_components": [
       {
         "__id__": 87
@@ -4751,6 +4751,9 @@
     "playerFrame": {
       "__uuid__": "55dacd56-940b-4d66-9737-310e1c30331b"
     },
+    "txtLoading": {
+      "__id__": 86
+    },
     "_id": "17NPajeuZD0b/hQ+bOkzyA"
   },
   {
@@ -4815,6 +4818,12 @@
     },
     "pickupTarget": {
       "__id__": 113
+    },
+    "coinVfxPrefab": {
+      "__uuid__": "03973a04-393b-4380-ab60-f99b15ac1e2e"
+    },
+    "diamondVfxPrefab": {
+      "__uuid__": "460316cd-1e3f-484d-a035-a5aacf41ea22"
     },
     "_id": "72VHu/NfNEmZaEav+uGltT"
   },

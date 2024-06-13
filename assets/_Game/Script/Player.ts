@@ -143,6 +143,7 @@ export default class Player extends cc.Component {
             
             case ENUM_COLLIDER_TAG.REWARD:
                 playParticle3D(this.coinParticle);
+                
                 return;
             case ENUM_COLLIDER_TAG.LAVA:
                 for (let i = 0; i < 5; i++) {

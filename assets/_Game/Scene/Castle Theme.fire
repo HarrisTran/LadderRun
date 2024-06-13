@@ -633,7 +633,7 @@
   {
     "__type__": "cc.Node",
     "_name": "UI",
-    "_objFlags": 512,
+    "_objFlags": 0,
     "_parent": {
       "__id__": 2
     },
@@ -2841,7 +2841,7 @@
       "__id__": 60
     },
     "_children": [],
-    "_active": false,
+    "_active": true,
     "_components": [
       {
         "__id__": 62
@@ -4751,6 +4751,9 @@
     "playerFrame": {
       "__uuid__": "55dacd56-940b-4d66-9737-310e1c30331b"
     },
+    "txtLoading": {
+      "__id__": 86
+    },
     "_id": "1dvZRinrJNvJjfTiD3MmaX"
   },
   {
@@ -4815,6 +4818,12 @@
     },
     "pickupTarget": {
       "__id__": 113
+    },
+    "coinVfxPrefab": {
+      "__uuid__": "c742520a-4942-405a-b165-875aea0540b1"
+    },
+    "diamondVfxPrefab": {
+      "__uuid__": "9507231d-3775-4b46-90ea-f241ce43440e"
     },
     "_id": "72VHu/NfNEmZaEav+uGltT"
   },
@@ -5309,7 +5318,7 @@
   {
     "__type__": "cc.Node",
     "_name": "MAIN",
-    "_objFlags": 512,
+    "_objFlags": 0,
     "_parent": {
       "__id__": 2
     },
@@ -5381,7 +5390,7 @@
   {
     "__type__": "cc.Node",
     "_name": "stage",
-    "_objFlags": 512,
+    "_objFlags": 0,
     "_parent": {
       "__id__": 118
     },

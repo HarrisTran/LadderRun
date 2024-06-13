@@ -17,6 +17,8 @@ export default class LoseLayer extends BaseLayer {
    @property(cc.Prefab) private itemRowPrefab : cc.Prefab = null;
    @property(cc.SpriteFrame) playerFrame: cc.SpriteFrame = null;
 
+   @property(cc.Node) txtLoading: cc.Node = null;
+
    private _clickedContinueButton : boolean = false;
 
 
@@ -39,25 +41,29 @@ export default class LoseLayer extends BaseLayer {
     }
 
     private async _updateLeaderBoard(){
-        //this.loadingLabel.active = true;
+        this.txtLoading.active = true;
         let userId = GameManager.Instance.APIManager.userId;
         
         let participants = await GameManager.Instance.APIManager.getLeaderboardInGame();
         
         let player = participants.find(user => user.userid == userId);
+
+        if(!player) return;
        
         player.score += GameManager.Instance.playerDataManager.getScore();
         participants = participants.sort((a,b)=> b.score - a.score);
 
         let indexAfterSort = participants.findIndex(participant => participant.userid == userId);
         
-        //this.loadingLabel.active = false;
+        this.txtLoading.active = false;
 
         this.leaderBoardView.createBoard(participants.map(participant =>participant.score),indexAfterSort+1,player.score,this.itemRowPrefab)
         
     }
 
     private onClickContinue(){
+        // GameManager.Instance.ChangeState(GameState.PLAYING);
+        // return;
         if(this._clickedContinueButton) return;
         this._clickedContinueButton = true;
         if(GameManager.Instance.APIManager.canRelive()){
