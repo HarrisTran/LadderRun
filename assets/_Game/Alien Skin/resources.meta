@@ -1,21 +1,13 @@
 {
   "ver": "1.1.3",
-  "uuid": "e8dd0504-b758-4166-ae0f-a8a968456acb",
+  "uuid": "507d122b-d1d8-4e98-a107-2e2fb90c77b9",
   "importer": "folder",
-  "isBundle": true,
-  "bundleName": "Alien",
+  "isBundle": false,
+  "bundleName": "",
   "priority": 1,
-  "compressionType": {
-    "web-mobile": "default"
-  },
-  "optimizeHotUpdate": {
-    "web-mobile": false
-  },
-  "inlineSpriteFrames": {
-    "web-mobile": true
-  },
-  "isRemoteBundle": {
-    "web-mobile": false
-  },
+  "compressionType": {},
+  "optimizeHotUpdate": {},
+  "inlineSpriteFrames": {},
+  "isRemoteBundle": {},
   "subMetas": {}
 }

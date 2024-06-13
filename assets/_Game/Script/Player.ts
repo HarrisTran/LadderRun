@@ -13,6 +13,7 @@ export default class Player extends cc.Component {
     @property(sp.Skeleton) spineSkeleton: sp.Skeleton = null;
     @property(cc.Node) shieldIcon: cc.Node = null;
     @property(cc.Node) magnet: cc.Node = null;
+    @property(cc.Node) speedVfx: cc.Node = null;
     @property(cc.Node) coinParticle: cc.Node = null;
 
     canvas: cc.Node = null
@@ -288,11 +289,13 @@ export default class Player extends cc.Component {
 
     public holdSpeedBoosterHandle(dt:number){
         this.speedBoosterDuration -= dt;
+        this.speedVfx.active = true;
         this.walk = 300;
     }
 
     public cancelSpeedBoosterHandle(){
         this.speedBoosterDuration = 0;
+        this.speedVfx.active = false;
         this.walk = 150;
     }
 
