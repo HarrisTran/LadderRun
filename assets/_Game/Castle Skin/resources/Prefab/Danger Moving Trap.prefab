@@ -107,8 +107,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 276.51,
-      "height": 348.76
+      "width": 489,
+      "height": 489
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -120,14 +120,14 @@
       "ctor": "Float64Array",
       "array": [
         0,
-        0,
+        45,
         0,
         0,
         0,
         0,
         1,
-        0.3,
-        0.3,
+        0.2,
+        0.2,
         1
       ]
     },
@@ -159,7 +159,7 @@
     ],
     "paused": false,
     "defaultSkin": "default",
-    "defaultAnimation": "move",
+    "defaultAnimation": "",
     "_preCacheMode": 0,
     "_cacheMode": 0,
     "loop": true,
@@ -170,13 +170,13 @@
     "_frameCache": null,
     "_curFrame": null,
     "_skeletonCache": null,
-    "_animationName": "move",
+    "_animationName": "",
     "_animationQueue": [],
     "_headAniInfo": null,
     "_playTimes": 0,
     "_isAniComplete": true,
     "_N$skeletonData": {
-      "__uuid__": "4cb25690-b4f5-44b8-bd73-a7cdbaf64a57"
+      "__uuid__": "06632154-dc8b-467c-92b0-d1195741a8cc"
     },
     "_N$_defaultCacheMode": 0,
     "_N$debugSlots": false,
@@ -194,7 +194,7 @@
     "asset": {
       "__uuid__": "60e53841-a24b-4b24-b5ed-679ef0963643"
     },
-    "fileId": "9cY1rAJI5M3oDM+bRgOPa1",
+    "fileId": "2ez/kwGcZGwbvWQXLEIsIV",
     "sync": false
   },
   {
