@@ -21,6 +21,8 @@ export default class LoseLayer extends BaseLayer {
 
    private _clickedContinueButton : boolean = false;
 
+   private _clickedQuitGameButton: boolean = false;
+
 
     protected onLoad(): void {
         //this.overlay.on('click',this.exitGame);
@@ -92,6 +94,13 @@ export default class LoseLayer extends BaseLayer {
         //GameManager.Instance.APIManager.postScoreWebEvent();
         GameManager.Instance.APIManager.postScoreToServer();
         GameManager.Instance.APIManager.postScoreWebEvent()
+    }
+
+    onClickQuitGame(){
+        if(!this._clickedQuitGameButton){
+            this._clickedQuitGameButton = true;
+            this.exitGame();
+        }
     }
    
 }

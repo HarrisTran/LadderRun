@@ -1637,7 +1637,9 @@
     ],
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
-    "_spriteFrame": null,
+    "_spriteFrame": {
+      "__uuid__": "b045ee73-6f55-4e97-bfab-73d8c155642c"
+    },
     "_type": 0,
     "_sizeMode": 2,
     "_fillType": 0,
@@ -1729,7 +1731,9 @@
     ],
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
-    "_spriteFrame": null,
+    "_spriteFrame": {
+      "__uuid__": "b045ee73-6f55-4e97-bfab-73d8c155642c"
+    },
     "_type": 0,
     "_sizeMode": 2,
     "_fillType": 0,
@@ -2752,7 +2756,7 @@
     },
     "component": "",
     "_componentId": "05e85QD6N1JRpDnkCgnIhOC",
-    "handler": "exitGame",
+    "handler": "onClickQuitGame",
     "customEventData": ""
   },
   {

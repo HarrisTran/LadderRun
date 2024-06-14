@@ -2562,7 +2562,7 @@
     },
     "component": "",
     "_componentId": "05e85QD6N1JRpDnkCgnIhOC",
-    "handler": "exitGame",
+    "handler": "onClickQuitGame",
     "customEventData": ""
   },
   {

@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "f624fd8c-0475-4ada-afc4-3bb899672679",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 438,
+  "height": 246,
+  "platformSettings": {},
+  "subMetas": {
+    "Trap Stand": {
+      "ver": "1.0.6",
+      "uuid": "c71d964e-41e8-4880-b761-2919e7ba85fd",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "f624fd8c-0475-4ada-afc4-3bb899672679",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 438,
+      "height": 246,
+      "rawWidth": 438,
+      "rawHeight": 246,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}
