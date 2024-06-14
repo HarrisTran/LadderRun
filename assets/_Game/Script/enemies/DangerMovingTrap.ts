@@ -9,7 +9,7 @@ const {ccclass, property} = cc._decorator;
 @ccclass
 export default class DangerMovingTrap extends cc.Component {
 
-    dir: number = 1
+    dir: number = -1
     speed: number;
 
     onLoad(){

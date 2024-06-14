@@ -4038,7 +4038,7 @@
       "__id__": 63
     },
     "_children": [],
-    "_active": false,
+    "_active": true,
     "_components": [
       {
         "__id__": 87
@@ -4055,7 +4055,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 138.15,
+      "width": 136.65,
       "height": 50.4
     },
     "_anchorPoint": {
@@ -4113,7 +4113,7 @@
     "_lineHeight": 40,
     "_enableWrapText": true,
     "_N$file": {
-      "__uuid__": "8d96d20d-06e1-405a-ab3f-653d1df2055c"
+      "__uuid__": "b8c44a8f-f43d-429f-8e68-e58735cdd15c"
     },
     "_isSystemFontUsed": false,
     "_spacingX": 0,

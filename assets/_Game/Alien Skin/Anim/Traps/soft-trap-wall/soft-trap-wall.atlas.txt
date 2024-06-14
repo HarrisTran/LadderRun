@@ -1,0 +1,20 @@
+
+soft-trap-wall.png
+size: 256,128
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+trap-base
+  rotate: false
+  xy: 2, 62
+  size: 129, 32
+  orig: 132, 35
+  offset: 2, 1
+  index: -1
+trap-body
+  rotate: true
+  xy: 133, 2
+  size: 92, 120
+  orig: 95, 122
+  offset: 2, 1
+  index: -1

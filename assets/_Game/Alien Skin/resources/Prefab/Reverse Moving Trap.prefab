@@ -188,7 +188,7 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "1cfa9560-57b9-407c-afa6-97c9a6192bb4"
+      "__uuid__": "32a25983-ece2-4e87-94db-b006a0aaf063"
     },
     "fileId": "d11y3viXRGxqVK/0c0X5wJ",
     "sync": false
@@ -220,8 +220,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 237,
-      "height": 261
+      "width": 195.51,
+      "height": 162.11
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -289,7 +289,7 @@
     "_playTimes": 0,
     "_isAniComplete": true,
     "_N$skeletonData": {
-      "__uuid__": "c679cb19-ab41-4850-977b-11487ab09d17"
+      "__uuid__": "beda76f8-e1e9-4b80-88c2-89d1132cc856"
     },
     "_N$_defaultCacheMode": 0,
     "_N$debugSlots": false,
@@ -305,7 +305,7 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "1cfa9560-57b9-407c-afa6-97c9a6192bb4"
+      "__uuid__": "32a25983-ece2-4e87-94db-b006a0aaf063"
     },
     "fileId": "64mbioHT9HMK0SJwLA+PMO",
     "sync": false
@@ -367,7 +367,7 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "1cfa9560-57b9-407c-afa6-97c9a6192bb4"
+      "__uuid__": "32a25983-ece2-4e87-94db-b006a0aaf063"
     },
     "fileId": "",
     "sync": false

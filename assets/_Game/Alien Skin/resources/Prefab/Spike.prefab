@@ -185,7 +185,7 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "cdf1ad6e-9853-4fe3-a273-b2c43658c771"
+      "__uuid__": "cb9d45f0-2ec4-4102-abb7-e5ca18a0ff54"
     },
     "fileId": "7c2Q5jxqFGlpWVjI883ZwA",
     "sync": false
@@ -217,8 +217,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 373,
-      "height": 309
+      "width": 225,
+      "height": 215
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -229,15 +229,15 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        -17.679,
-        3.317,
+        0.11,
+        -18.725,
         0,
         0,
         0,
         0,
         1,
-        0.4,
-        0.4,
+        0.6,
+        0.6,
         1
       ]
     },
@@ -286,7 +286,7 @@
     "_playTimes": 0,
     "_isAniComplete": true,
     "_N$skeletonData": {
-      "__uuid__": "103b9dcc-0980-4de6-86c4-8cb08f534c8a"
+      "__uuid__": "345dcc8b-6aa4-443f-bec0-8f838075ceaf"
     },
     "_N$_defaultCacheMode": 0,
     "_N$debugSlots": false,
@@ -302,7 +302,7 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "cdf1ad6e-9853-4fe3-a273-b2c43658c771"
+      "__uuid__": "cb9d45f0-2ec4-4102-abb7-e5ca18a0ff54"
     },
     "fileId": "3a7ESjVA9OeJ+cpsHpRHp8",
     "sync": false
@@ -318,12 +318,12 @@
     "tag": 6,
     "_offset": {
       "__type__": "cc.Vec2",
-      "x": -2.9,
+      "x": 0,
       "y": 20.2
     },
     "_size": {
       "__type__": "cc.Size",
-      "width": 12,
+      "width": 23,
       "height": 40
     },
     "_id": ""
@@ -347,7 +347,7 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "cdf1ad6e-9853-4fe3-a273-b2c43658c771"
+      "__uuid__": "cb9d45f0-2ec4-4102-abb7-e5ca18a0ff54"
     },
     "fileId": "",
     "sync": false

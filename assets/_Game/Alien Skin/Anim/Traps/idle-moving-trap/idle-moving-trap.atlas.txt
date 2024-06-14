@@ -1,0 +1,20 @@
+
+idle-moving-trap.png
+size: 512,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+purple-glow
+  rotate: false
+  xy: 2, 2
+  size: 213, 203
+  orig: 225, 215
+  offset: 6, 6
+  index: -1
+spike-ball
+  rotate: true
+  xy: 217, 41
+  size: 164, 152
+  orig: 166, 154
+  offset: 1, 1
+  index: -1

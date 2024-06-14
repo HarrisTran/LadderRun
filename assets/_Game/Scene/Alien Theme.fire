@@ -1538,7 +1538,7 @@
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
     "_spriteFrame": {
-      "__uuid__": "3860b0f8-3fae-45f3-b79f-62f3f5e520c8"
+      "__uuid__": "9d128f06-3f49-42de-82eb-5e98b97be507"
     },
     "_type": 0,
     "_sizeMode": 0,
@@ -1842,7 +1842,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 580,
-      "height": 320
+      "height": 290
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -1923,7 +1923,7 @@
     "_alignFlags": 17,
     "_left": 0,
     "_right": 0,
-    "_top": -3,
+    "_top": 12,
     "_bottom": 0,
     "_verticalCenter": 0,
     "_horizontalCenter": 0,
@@ -1969,7 +1969,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 450,
-      "height": 158.1
+      "height": 140
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -2051,7 +2051,7 @@
     "_left": 0,
     "_right": 0,
     "_top": 0,
-    "_bottom": 20,
+    "_bottom": 29.049999999999997,
     "_verticalCenter": 0,
     "_horizontalCenter": 0,
     "_isAbsLeft": true,
@@ -4552,7 +4552,7 @@
       "__id__": 86
     },
     "itemRowPrefab": {
-      "__uuid__": "e89216b0-be3c-4245-899f-aa50afc66444"
+      "__uuid__": "3cbde6ac-fd0b-495b-b7c5-44a672db15ec"
     },
     "playerFrame": {
       "__uuid__": "55dacd56-940b-4d66-9737-310e1c30331b"
@@ -4626,10 +4626,10 @@
       "__id__": 109
     },
     "coinVfxPrefab": {
-      "__uuid__": "03973a04-393b-4380-ab60-f99b15ac1e2e"
+      "__uuid__": "d1fcabbf-dd83-458b-aa98-d9147c1e7611"
     },
     "diamondVfxPrefab": {
-      "__uuid__": "460316cd-1e3f-484d-a035-a5aacf41ea22"
+      "__uuid__": "6f5d1217-cc5f-4e2d-8031-80a3e2a20aba"
     },
     "_id": "72VHu/NfNEmZaEav+uGltT"
   },
@@ -4877,7 +4877,7 @@
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
     "_spriteFrame": {
-      "__uuid__": "6f5a965c-9ccb-473e-865d-438b4fb58823"
+      "__uuid__": "e424a673-6d75-4666-a84b-4489e59d44e6"
     },
     "_type": 0,
     "_sizeMode": 0,

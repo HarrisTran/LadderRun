@@ -107,8 +107,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 260.64,
-      "height": 286.2
+      "width": 276.51,
+      "height": 348.76
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -176,7 +176,7 @@
     "_playTimes": 0,
     "_isAniComplete": true,
     "_N$skeletonData": {
-      "__uuid__": "94ce8576-c048-4ada-a65f-3ddc44fdf0ee"
+      "__uuid__": "4cb25690-b4f5-44b8-bd73-a7cdbaf64a57"
     },
     "_N$_defaultCacheMode": 0,
     "_N$debugSlots": false,
@@ -192,9 +192,9 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "4280993f-9154-4a02-8cd2-3822df37ede9"
+      "__uuid__": "ee4a91c2-4037-4b72-884a-a2f9ba3b3734"
     },
-    "fileId": "9cY1rAJI5M3oDM+bRgOPa1",
+    "fileId": "69bpOMMWNNianzoLhgXCop",
     "sync": false
   },
   {
@@ -209,7 +209,7 @@
     "_offset": {
       "__type__": "cc.Vec2",
       "x": 0,
-      "y": 20
+      "y": 38
     },
     "_radius": 23,
     "_id": ""
@@ -230,7 +230,7 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "4280993f-9154-4a02-8cd2-3822df37ede9"
+      "__uuid__": "ee4a91c2-4037-4b72-884a-a2f9ba3b3734"
     },
     "fileId": "",
     "sync": false
