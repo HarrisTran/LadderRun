@@ -1,0 +1,111 @@
+
+monster.png
+size: 1024,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+body
+  rotate: true
+  xy: 99, 59
+  size: 194, 188
+  orig: 194, 188
+  offset: 0, 0
+  index: -1
+eye1
+  rotate: false
+  xy: 119, 4
+  size: 48, 53
+  orig: 48, 53
+  offset: 0, 0
+  index: -1
+eye2
+  rotate: false
+  xy: 169, 5
+  size: 48, 52
+  orig: 48, 52
+  offset: 0, 0
+  index: -1
+eye3
+  rotate: false
+  xy: 32, 15
+  size: 29, 30
+  orig: 29, 30
+  offset: 0, 0
+  index: -1
+eye4
+  rotate: true
+  xy: 63, 15
+  size: 30, 29
+  orig: 30, 29
+  offset: 0, 0
+  index: -1
+eye5
+  rotate: true
+  xy: 219, 2
+  size: 26, 22
+  orig: 26, 22
+  offset: 0, 0
+  index: -1
+eye6
+  rotate: true
+  xy: 94, 17
+  size: 28, 23
+  orig: 28, 23
+  offset: 0, 0
+  index: -1
+eye7
+  rotate: true
+  xy: 2, 11
+  size: 34, 28
+  orig: 34, 28
+  offset: 0, 0
+  index: -1
+eye8
+  rotate: true
+  xy: 219, 30
+  size: 27, 23
+  orig: 27, 23
+  offset: 0, 0
+  index: -1
+tentacle1
+  rotate: true
+  xy: 422, 26
+  size: 65, 121
+  orig: 65, 121
+  offset: 0, 0
+  index: -1
+tentacle2
+  rotate: true
+  xy: 289, 10
+  size: 68, 131
+  orig: 68, 131
+  offset: 0, 0
+  index: -1
+tentacle3
+  rotate: true
+  xy: 2, 47
+  size: 206, 95
+  orig: 206, 95
+  offset: 0, 0
+  index: -1
+tentacle4
+  rotate: false
+  xy: 511, 120
+  size: 128, 133
+  orig: 128, 133
+  offset: 0, 0
+  index: -1
+tentacle5
+  rotate: true
+  xy: 376, 93
+  size: 160, 133
+  orig: 160, 133
+  offset: 0, 0
+  index: -1
+tentacle6
+  rotate: true
+  xy: 289, 80
+  size: 173, 85
+  orig: 186, 86
+  offset: 0, 0
+  index: -1

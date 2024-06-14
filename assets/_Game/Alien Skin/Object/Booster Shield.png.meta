@@ -1,6 +1,6 @@
 {
   "ver": "2.3.7",
-  "uuid": "a1fea36f-4a75-4392-876c-ceb06d7751a0",
+  "uuid": "42129a6d-df1f-4fd1-8341-df3a4b4edc66",
   "importer": "texture",
   "type": "sprite",
   "wrapMode": "clamp",
@@ -14,9 +14,9 @@
   "subMetas": {
     "Booster Shield": {
       "ver": "1.0.6",
-      "uuid": "2390c535-6585-408d-a580-52b9c8b3333a",
+      "uuid": "dd806722-a4f4-4287-a246-8c330b1ad956",
       "importer": "sprite-frame",
-      "rawTextureUuid": "a1fea36f-4a75-4392-876c-ceb06d7751a0",
+      "rawTextureUuid": "42129a6d-df1f-4fd1-8341-df3a4b4edc66",
       "trimType": "auto",
       "trimThreshold": 1,
       "rotated": false,

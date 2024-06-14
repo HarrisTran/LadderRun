@@ -1,6 +1,6 @@
 {
   "ver": "2.3.7",
-  "uuid": "35d0d8e3-8350-4698-9561-444253114aba",
+  "uuid": "151103ae-e10a-4037-a919-eb45ff49d705",
   "importer": "texture",
   "type": "sprite",
   "wrapMode": "clamp",
@@ -14,9 +14,9 @@
   "subMetas": {
     "Hard Trap Wall": {
       "ver": "1.0.6",
-      "uuid": "c77090d5-b941-471e-b42d-4fb012a38fa0",
+      "uuid": "3c861dda-5d15-4bdc-9cbb-04c583cd9fa7",
       "importer": "sprite-frame",
-      "rawTextureUuid": "35d0d8e3-8350-4698-9561-444253114aba",
+      "rawTextureUuid": "151103ae-e10a-4037-a919-eb45ff49d705",
       "trimType": "auto",
       "trimThreshold": 1,
       "rotated": false,

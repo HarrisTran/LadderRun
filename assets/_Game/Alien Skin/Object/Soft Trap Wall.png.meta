@@ -1,6 +1,6 @@
 {
   "ver": "2.3.7",
-  "uuid": "667e7906-c777-4904-8642-2b6c88e1e1f1",
+  "uuid": "4e3a4fce-e830-42a1-944a-d0670b648050",
   "importer": "texture",
   "type": "sprite",
   "wrapMode": "clamp",
@@ -14,9 +14,9 @@
   "subMetas": {
     "Soft Trap Wall": {
       "ver": "1.0.6",
-      "uuid": "3c4d1d4b-9cbf-467d-8e02-90401c4fe193",
+      "uuid": "7db2f1ba-2767-4b59-8a11-db185369528b",
       "importer": "sprite-frame",
-      "rawTextureUuid": "667e7906-c777-4904-8642-2b6c88e1e1f1",
+      "rawTextureUuid": "4e3a4fce-e830-42a1-944a-d0670b648050",
       "trimType": "auto",
       "trimThreshold": 1,
       "rotated": false,

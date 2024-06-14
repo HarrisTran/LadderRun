@@ -1,6 +1,6 @@
 {
   "ver": "2.3.7",
-  "uuid": "30900735-fda4-4b69-8060-4de14f20612e",
+  "uuid": "d6ecbce0-ff49-4cb5-879c-b51fbdfea1ce",
   "importer": "texture",
   "type": "sprite",
   "wrapMode": "clamp",
@@ -14,9 +14,9 @@
   "subMetas": {
     "Monster": {
       "ver": "1.0.6",
-      "uuid": "26656453-cdff-48b3-b32e-0cdefd4ad1bc",
+      "uuid": "02837072-9335-446d-8e84-0a6f4d383258",
       "importer": "sprite-frame",
-      "rawTextureUuid": "30900735-fda4-4b69-8060-4de14f20612e",
+      "rawTextureUuid": "d6ecbce0-ff49-4cb5-879c-b51fbdfea1ce",
       "trimType": "auto",
       "trimThreshold": 1,
       "rotated": false,

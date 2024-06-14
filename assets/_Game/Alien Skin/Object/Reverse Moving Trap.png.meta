@@ -1,6 +1,6 @@
 {
   "ver": "2.3.7",
-  "uuid": "a30831c7-3575-4a5c-a59b-479c7c677bc0",
+  "uuid": "83fcf12c-0d35-4f40-bb35-fc6b7763d47a",
   "importer": "texture",
   "type": "sprite",
   "wrapMode": "clamp",
@@ -14,9 +14,9 @@
   "subMetas": {
     "Reverse Moving Trap": {
       "ver": "1.0.6",
-      "uuid": "da0047b6-8c7e-4832-9538-987885febe24",
+      "uuid": "fe58d526-4c2b-4b2c-b799-ad2e8ce8b9bb",
       "importer": "sprite-frame",
-      "rawTextureUuid": "a30831c7-3575-4a5c-a59b-479c7c677bc0",
+      "rawTextureUuid": "83fcf12c-0d35-4f40-bb35-fc6b7763d47a",
       "trimType": "auto",
       "trimThreshold": 1,
       "rotated": false,

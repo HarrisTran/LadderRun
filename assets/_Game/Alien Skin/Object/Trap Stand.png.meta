@@ -1,6 +1,6 @@
 {
   "ver": "2.3.7",
-  "uuid": "540daf18-cf34-4889-ba4a-4f73c43d5b46",
+  "uuid": "bd49b7f0-0a77-43b2-bc5c-72a8b3db9964",
   "importer": "texture",
   "type": "sprite",
   "wrapMode": "clamp",
@@ -14,9 +14,9 @@
   "subMetas": {
     "Trap Stand": {
       "ver": "1.0.6",
-      "uuid": "185126f5-267c-4aed-a311-572be0bea5f6",
+      "uuid": "7e95cce8-abc2-4f9a-bbbb-5bf17be01a98",
       "importer": "sprite-frame",
-      "rawTextureUuid": "540daf18-cf34-4889-ba4a-4f73c43d5b46",
+      "rawTextureUuid": "bd49b7f0-0a77-43b2-bc5c-72a8b3db9964",
       "trimType": "auto",
       "trimThreshold": 1,
       "rotated": false,
