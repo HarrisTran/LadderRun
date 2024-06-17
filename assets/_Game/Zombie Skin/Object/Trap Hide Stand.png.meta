@@ -1,6 +1,6 @@
 {
   "ver": "2.3.7",
-  "uuid": "0adcca6a-7198-417c-ab15-a6bfe7ec38f6",
+  "uuid": "7af974de-8989-4d8a-89a7-5bb505937c3b",
   "importer": "texture",
   "type": "sprite",
   "wrapMode": "clamp",
@@ -14,9 +14,9 @@
   "subMetas": {
     "Trap Hide Stand": {
       "ver": "1.0.6",
-      "uuid": "58fd8947-e078-425a-a702-572242941af0",
+      "uuid": "1c4832ec-50c0-43a0-bc06-a78f712258ff",
       "importer": "sprite-frame",
-      "rawTextureUuid": "0adcca6a-7198-417c-ab15-a6bfe7ec38f6",
+      "rawTextureUuid": "7af974de-8989-4d8a-89a7-5bb505937c3b",
       "trimType": "auto",
       "trimThreshold": 1,
       "rotated": false,

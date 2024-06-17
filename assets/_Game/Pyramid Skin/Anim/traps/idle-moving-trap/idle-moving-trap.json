@@ -1,0 +1,61 @@
+{
+"skeleton": {
+	"hash": "7ZKB3occ2E3cGTuwzRr8o6duGgo",
+	"spine": "3.8.99",
+	"x": -222,
+	"y": -223,
+	"width": 444,
+	"height": 445,
+	"images": "",
+	"audio": "D:/Huy 2D Animation/works/2024/Product/Ladder Run Animation/Pyramid Panic/traps/idle-moving-trap"
+},
+"bones": [
+	{ "name": "root" },
+	{ "name": "pivot", "parent": "root" },
+	{ "name": "blades", "parent": "pivot", "length": 100 }
+],
+"slots": [
+	{ "name": "blade4", "bone": "blades", "attachment": "blade4" },
+	{ "name": "blade3", "bone": "blades", "attachment": "blade3" },
+	{ "name": "blade2", "bone": "blades", "attachment": "blade2" },
+	{ "name": "blade1", "bone": "blades", "attachment": "blade1" },
+	{ "name": "emblem", "bone": "pivot", "attachment": "emblem" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"blade1": {
+				"blade1": { "x": -10.5, "y": 127, "width": 121, "height": 190 }
+			},
+			"blade2": {
+				"blade2": { "x": 127, "y": 10, "width": 190, "height": 120 }
+			},
+			"blade3": {
+				"blade3": { "x": 12, "y": -129, "width": 122, "height": 188 }
+			},
+			"blade4": {
+				"blade4": { "x": -128, "y": -11, "width": 188, "height": 120 }
+			},
+			"emblem": {
+				"emblem": { "x": 1, "y": -1, "width": 182, "height": 182 }
+			}
+		}
+	}
+],
+"animations": {
+	"idle": {
+		"bones": {
+			"blades": {
+				"rotate": [
+					{},
+					{ "time": 0.1333, "angle": -90 },
+					{ "time": 0.2667, "angle": 180 },
+					{ "time": 0.4, "angle": 90 },
+					{ "time": 0.5333 }
+				]
+			}
+		}
+	}
+}
+}

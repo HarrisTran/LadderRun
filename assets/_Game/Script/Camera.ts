@@ -28,7 +28,7 @@ export default class Camera extends cc.Component {
 
     update (dt: number) {
         let currentPos = this.node.getPosition()
-        currentPos.lerp(this.targetPos, 0.02, currentPos)
+        currentPos.lerp(this.targetPos, 0.05, currentPos)
         this.node.setPosition(currentPos)
     }
 }

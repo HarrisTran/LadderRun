@@ -1,6 +1,6 @@
 {
   "ver": "2.3.7",
-  "uuid": "9f9f2088-4c6b-4797-9377-4726a87bf233",
+  "uuid": "e528ca42-975b-44c6-9c58-a0d1d91f309c",
   "importer": "texture",
   "type": "sprite",
   "wrapMode": "clamp",
@@ -14,9 +14,9 @@
   "subMetas": {
     "Coin": {
       "ver": "1.0.6",
-      "uuid": "1e1303c1-00f8-4665-8574-2540f3dc7fa3",
+      "uuid": "625ccc6e-06b0-4f8d-960e-b236756a6c6b",
       "importer": "sprite-frame",
-      "rawTextureUuid": "9f9f2088-4c6b-4797-9377-4726a87bf233",
+      "rawTextureUuid": "e528ca42-975b-44c6-9c58-a0d1d91f309c",
       "trimType": "auto",
       "trimThreshold": 1,
       "rotated": false,

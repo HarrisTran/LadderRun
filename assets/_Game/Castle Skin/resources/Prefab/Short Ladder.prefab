@@ -82,7 +82,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "ladder3",
+    "_name": "body",
     "_objFlags": 0,
     "_parent": {
       "__id__": 1
@@ -182,7 +182,7 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "39890c55-201a-4a93-8241-5fd496fde12a"
+      "__uuid__": "26205ffe-31e7-404e-a2d5-18cba542515b"
     },
     "fileId": "aaXovxc/xEH6ZazG+KGA+P",
     "sync": false
@@ -235,7 +235,7 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "39890c55-201a-4a93-8241-5fd496fde12a"
+      "__uuid__": "26205ffe-31e7-404e-a2d5-18cba542515b"
     },
     "fileId": "",
     "sync": false

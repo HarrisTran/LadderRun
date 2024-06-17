@@ -1,21 +1,13 @@
 {
   "ver": "1.1.3",
-  "uuid": "a0bdd1be-6131-459c-830e-04f13953a6df",
+  "uuid": "b7ade67c-9497-4c96-b617-b18d22486dec",
   "importer": "folder",
   "isBundle": true,
   "bundleName": "Zombie",
   "priority": 1,
-  "compressionType": {
-    "web-mobile": "default"
-  },
-  "optimizeHotUpdate": {
-    "web-mobile": false
-  },
-  "inlineSpriteFrames": {
-    "web-mobile": true
-  },
-  "isRemoteBundle": {
-    "web-mobile": false
-  },
+  "compressionType": {},
+  "optimizeHotUpdate": {},
+  "inlineSpriteFrames": {},
+  "isRemoteBundle": {},
   "subMetas": {}
 }

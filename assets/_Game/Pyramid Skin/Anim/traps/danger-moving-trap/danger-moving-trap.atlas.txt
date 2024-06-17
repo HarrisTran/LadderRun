@@ -1,0 +1,76 @@
+
+danger-moving-trap.png
+size: 1024,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+body
+  rotate: true
+  xy: 4, 13
+  size: 235, 199
+  orig: 237, 199
+  offset: 1, 0
+  index: -1
+front-claw
+  rotate: true
+  xy: 661, 53
+  size: 48, 45
+  orig: 49, 45
+  offset: 0, 0
+  index: -1
+front-leg1
+  rotate: true
+  xy: 338, 7
+  size: 74, 93
+  orig: 74, 94
+  offset: 0, 0
+  index: -1
+front-leg2
+  rotate: true
+  xy: 435, 13
+  size: 68, 96
+  orig: 69, 96
+  offset: 0, 0
+  index: -1
+front-pinscer
+  rotate: true
+  xy: 494, 97
+  size: 151, 133
+  orig: 152, 133
+  offset: 1, 0
+  index: -1
+rear-claw
+  rotate: true
+  xy: 207, 13
+  size: 31, 49
+  orig: 31, 51
+  offset: 0, 1
+  index: -1
+rear-pinscer
+  rotate: false
+  xy: 631, 105
+  size: 116, 143
+  orig: 117, 143
+  offset: 1, 0
+  index: -1
+stinger
+  rotate: true
+  xy: 338, 85
+  size: 163, 152
+  orig: 164, 152
+  offset: 0, 0
+  index: -1
+tail1
+  rotate: false
+  xy: 207, 48
+  size: 127, 200
+  orig: 127, 200
+  offset: 0, 0
+  index: -1
+tail2
+  rotate: false
+  xy: 535, 4
+  size: 122, 89
+  orig: 122, 89
+  offset: 0, 0
+  index: -1

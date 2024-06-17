@@ -16,12 +16,32 @@ export default class ShotCellarTrap extends cc.Component {
 
     onCollisionEnter (other: cc.BoxCollider, self: cc.BoxCollider) {
         if(other.tag == ENUM_COLLIDER_TAG.PLAYER && self.tag == ENUM_COLLIDER_TAG.HIDE_TRAP_VIEW){
+            let animation = this.node.getChildByName('body');
+            if(animation){
+                let track = animation.getComponent(sp.Skeleton).setAnimation(0,'break',false);
+                animation.getComponent(sp.Skeleton).setTrackCompleteListener(track,(_,__)=>{
+                    cc.tween(this.rock)
+                    .by(1.3, { y: -250 })
+                    .removeSelf()
+                    .call(() => {
+                        this.node.removeComponent(cc.Collider)
+                        animation.getComponent(sp.Skeleton).setAnimation(0,'idle',true)
+                    })
+                    .start();
+                })
+            }else{
+                this.playFallObstacle();
+            }
+            
             GameManager.Instance.audioManager.playSfx(ENUM_AUDIO_CLIP.TRAP_FALL)
-            cc.tween(this.rock)
-                .by(1.2, { y: -270 }, { easing: "sineIn"})
-                .removeSelf()
-                .call(()=>this.node.active = false)
-                .start();
         }
+    }
+
+    playFallObstacle() {
+        cc.tween(this.rock)
+            .by(1.2, { y: -270 }, { easing: "sineIn" })
+            .removeSelf()
+            .call(() => this.node.active = false)
+            .start();
     }
 }

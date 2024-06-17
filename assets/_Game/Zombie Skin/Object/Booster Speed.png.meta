@@ -1,6 +1,6 @@
 {
   "ver": "2.3.7",
-  "uuid": "c2079fd1-2059-46e8-9ab4-776732821866",
+  "uuid": "963a7e26-6bf1-498c-8976-d5f0a7814a92",
   "importer": "texture",
   "type": "sprite",
   "wrapMode": "clamp",
@@ -14,9 +14,9 @@
   "subMetas": {
     "Booster Speed": {
       "ver": "1.0.6",
-      "uuid": "8f523a5c-2be0-4f49-b407-75d811098a6c",
+      "uuid": "b2f629b6-af31-443e-867d-12ed8deb23ef",
       "importer": "sprite-frame",
-      "rawTextureUuid": "c2079fd1-2059-46e8-9ab4-776732821866",
+      "rawTextureUuid": "963a7e26-6bf1-498c-8976-d5f0a7814a92",
       "trimType": "auto",
       "trimThreshold": 1,
       "rotated": false,

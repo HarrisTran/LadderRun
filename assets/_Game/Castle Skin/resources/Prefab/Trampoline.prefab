@@ -16,24 +16,25 @@
     "_name": "Trampoline",
     "_objFlags": 0,
     "_parent": null,
-    "_children": [],
+    "_children": [
+      {
+        "__id__": 2
+      }
+    ],
     "_active": true,
     "_components": [
       {
-        "__id__": 2
-      },
-      {
-        "__id__": 3
-      },
-      {
-        "__id__": 4
-      },
-      {
         "__id__": 5
+      },
+      {
+        "__id__": 6
+      },
+      {
+        "__id__": 7
       }
     ],
     "_prefab": {
-      "__id__": 6
+      "__id__": 8
     },
     "_opacity": 255,
     "_color": {
@@ -57,8 +58,8 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        -200,
-        -150,
+        0,
+        0,
         0,
         0,
         0,
@@ -83,11 +84,75 @@
     "_id": ""
   },
   {
+    "__type__": "cc.Node",
+    "_name": "body",
+    "_objFlags": 0,
+    "_parent": {
+      "__id__": 1
+    },
+    "_children": [],
+    "_active": true,
+    "_components": [
+      {
+        "__id__": 3
+      }
+    ],
+    "_prefab": {
+      "__id__": 4
+    },
+    "_opacity": 255,
+    "_color": {
+      "__type__": "cc.Color",
+      "r": 255,
+      "g": 255,
+      "b": 255,
+      "a": 255
+    },
+    "_contentSize": {
+      "__type__": "cc.Size",
+      "width": 60,
+      "height": 60
+    },
+    "_anchorPoint": {
+      "__type__": "cc.Vec2",
+      "x": 0.5,
+      "y": 0.5
+    },
+    "_trs": {
+      "__type__": "TypedArray",
+      "ctor": "Float64Array",
+      "array": [
+        0,
+        30.481,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    "_eulerAngles": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "_skewX": 0,
+    "_skewY": 0,
+    "_is3DNode": false,
+    "_groupIndex": 0,
+    "groupIndex": 0,
+    "_id": ""
+  },
+  {
     "__type__": "cc.Sprite",
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 1
+      "__id__": 2
     },
     "_enabled": true,
     "_materials": [
@@ -98,7 +163,7 @@
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
     "_spriteFrame": {
-      "__uuid__": "277c6dc6-212e-4233-9e4e-9867fc6f8ddd"
+      "__uuid__": "54362610-e5b6-4804-8300-f5f699cde71e"
     },
     "_type": 0,
     "_sizeMode": 0,
@@ -110,9 +175,20 @@
     },
     "_fillStart": 0,
     "_fillRange": 0,
-    "_isTrimmedMode": false,
+    "_isTrimmedMode": true,
     "_atlas": null,
     "_id": ""
+  },
+  {
+    "__type__": "cc.PrefabInfo",
+    "root": {
+      "__id__": 1
+    },
+    "asset": {
+      "__uuid__": "bbfc48bb-027d-4ec6-8333-1749140ec18e"
+    },
+    "fileId": "6c9qoMFMVNkLUuEFJGbekU",
+    "sync": false
   },
   {
     "__type__": "cc.Animation",
@@ -142,12 +218,12 @@
     "_offset": {
       "__type__": "cc.Vec2",
       "x": 0,
-      "y": 18.1
+      "y": 23.3
     },
     "_size": {
       "__type__": "cc.Size",
-      "width": 20,
-      "height": 31.2
+      "width": 23,
+      "height": 46.5
     },
     "_id": ""
   },
@@ -167,7 +243,7 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "deb28dd9-7835-46d5-8b97-c0da0890d34e"
+      "__uuid__": "bbfc48bb-027d-4ec6-8333-1749140ec18e"
     },
     "fileId": "",
     "sync": false

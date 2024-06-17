@@ -107,8 +107,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 60,
-      "height": 60
+      "width": 444,
+      "height": 445
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -126,8 +126,8 @@
         0,
         0,
         1,
-        1,
-        1,
+        0.2,
+        0.2,
         1
       ]
     },
@@ -145,7 +145,7 @@
     "_id": ""
   },
   {
-    "__type__": "cc.Sprite",
+    "__type__": "sp.Skeleton",
     "_name": "",
     "_objFlags": 0,
     "node": {
@@ -154,28 +154,36 @@
     "_enabled": true,
     "_materials": [
       {
-        "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
+        "__uuid__": "7afd064b-113f-480e-b793-8817d19f63c3"
       }
     ],
-    "_srcBlendFactor": 770,
-    "_dstBlendFactor": 771,
-    "_spriteFrame": {
-      "__uuid__": "de9aaf95-53fa-4d69-a84c-81b817885193"
+    "paused": false,
+    "defaultSkin": "default",
+    "defaultAnimation": "idle",
+    "_preCacheMode": 0,
+    "_cacheMode": 0,
+    "loop": true,
+    "premultipliedAlpha": true,
+    "timeScale": 1,
+    "_accTime": 0,
+    "_playCount": 0,
+    "_frameCache": null,
+    "_curFrame": null,
+    "_skeletonCache": null,
+    "_animationName": "idle",
+    "_animationQueue": [],
+    "_headAniInfo": null,
+    "_playTimes": 0,
+    "_isAniComplete": true,
+    "_N$skeletonData": {
+      "__uuid__": "1e98c33e-b902-4e39-9997-a7607211d3a8"
     },
-    "_type": 0,
-    "_sizeMode": 0,
-    "_fillType": 0,
-    "_fillCenter": {
-      "__type__": "cc.Vec2",
-      "x": 0,
-      "y": 0
-    },
-    "_fillStart": 0,
-    "_fillRange": 0,
-    "_isTrimmedMode": true,
-    "_atlas": {
-      "__uuid__": "1228c238-7fbb-41ab-a971-4c908c82bf27"
-    },
+    "_N$_defaultCacheMode": 0,
+    "_N$debugSlots": false,
+    "_N$debugBones": false,
+    "_N$debugMesh": false,
+    "_N$useTint": false,
+    "_N$enableBatch": false,
     "_id": ""
   },
   {
@@ -184,9 +192,9 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "d86dd9ad-1c6c-4610-91c0-e18c1443a8ca"
+      "__uuid__": "effa146d-5cf9-46b9-87bf-3478e5cd9721"
     },
-    "fileId": "41tHYkNr5GZbb02p5ncg9C",
+    "fileId": "f2qTsZs9ZDRIsVm1XEJhnO",
     "sync": false
   },
   {
@@ -214,9 +222,6 @@
       "__id__": 1
     },
     "_enabled": true,
-    "body": {
-      "__id__": 2
-    },
     "movingMode": 1,
     "_id": ""
   },
@@ -226,7 +231,7 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "d86dd9ad-1c6c-4610-91c0-e18c1443a8ca"
+      "__uuid__": "effa146d-5cf9-46b9-87bf-3478e5cd9721"
     },
     "fileId": "",
     "sync": false

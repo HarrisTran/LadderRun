@@ -1,0 +1,146 @@
+
+monster.png
+size: 512,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+body
+  rotate: false
+  xy: 4, 74
+  size: 129, 178
+  orig: 135, 178
+  offset: 5, 0
+  index: -1
+head
+  rotate: false
+  xy: 342, 163
+  size: 47, 32
+  orig: 47, 33
+  offset: 0, 1
+  index: -1
+left-claw1
+  rotate: false
+  xy: 50, 5
+  size: 70, 65
+  orig: 71, 65
+  offset: 0, 0
+  index: -1
+left-claw2
+  rotate: false
+  xy: 137, 152
+  size: 54, 100
+  orig: 54, 101
+  offset: 0, 1
+  index: -1
+left-jaw
+  rotate: false
+  xy: 188, 74
+  size: 44, 74
+  orig: 47, 75
+  offset: 0, 1
+  index: -1
+left-middle-leg1
+  rotate: true
+  xy: 320, 199
+  size: 53, 28
+  orig: 54, 28
+  offset: 1, 0
+  index: -1
+left-middle-leg2
+  rotate: true
+  xy: 236, 85
+  size: 63, 84
+  orig: 64, 84
+  offset: 0, 0
+  index: -1
+left-middle-leg3
+  rotate: false
+  xy: 252, 195
+  size: 30, 57
+  orig: 32, 57
+  offset: 0, 0
+  index: -1
+left-rear-leg1
+  rotate: true
+  xy: 252, 152
+  size: 39, 41
+  orig: 40, 45
+  offset: 1, 4
+  index: -1
+left-rear-leg2
+  rotate: false
+  xy: 197, 5
+  size: 43, 65
+  orig: 43, 66
+  offset: 0, 0
+  index: -1
+left-rear-leg3
+  rotate: true
+  xy: 332, 44
+  size: 47, 44
+  orig: 48, 45
+  offset: 0, 0
+  index: -1
+right-claw1
+  rotate: false
+  xy: 124, 5
+  size: 69, 65
+  orig: 71, 65
+  offset: 1, 0
+  index: -1
+right-claw2
+  rotate: false
+  xy: 195, 152
+  size: 53, 100
+  orig: 53, 101
+  offset: 0, 1
+  index: -1
+right-jaw
+  rotate: false
+  xy: 137, 74
+  size: 47, 74
+  orig: 55, 75
+  offset: 1, 1
+  index: -1
+right-middle-leg1
+  rotate: true
+  xy: 324, 95
+  size: 53, 28
+  orig: 53, 28
+  offset: 0, 0
+  index: -1
+right-middle-leg2
+  rotate: true
+  xy: 244, 18
+  size: 63, 84
+  orig: 64, 84
+  offset: 1, 0
+  index: -1
+right-middle-leg3
+  rotate: false
+  xy: 286, 195
+  size: 30, 57
+  orig: 32, 57
+  offset: 2, 0
+  index: -1
+right-rear-leg1
+  rotate: true
+  xy: 297, 152
+  size: 39, 41
+  orig: 39, 44
+  offset: 0, 3
+  index: -1
+right-rear-leg2
+  rotate: false
+  xy: 4, 4
+  size: 42, 66
+  orig: 43, 66
+  offset: 1, 0
+  index: -1
+right-rear-leg3
+  rotate: true
+  xy: 352, 204
+  size: 48, 44
+  orig: 48, 88
+  offset: 0, 0
+  index: -1

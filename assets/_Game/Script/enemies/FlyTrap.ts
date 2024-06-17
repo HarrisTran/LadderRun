@@ -26,7 +26,7 @@ export default class FlyTrap extends cc.Component {
 
 
     protected start(): void {
-        this.node.scaleX = this.node.position.x < 0 ? 1 : -1;
+        this.node.scaleX = this.node.position.x < 0 ? -1 : 1;
     }
 
     onCollisionEnter (other: cc.BoxCollider, self: cc.BoxCollider) {
@@ -41,7 +41,7 @@ export default class FlyTrap extends cc.Component {
                     break;
                 case TrapHideCellarMode.LOW:
                     GameManager.Instance.audioManager.playSfx(ENUM_AUDIO_CLIP.TRAP_FLY_1)
-                    y = -220
+                    y = -260
                     break;
                 case TrapHideCellarMode.RANDOM:
                     GameManager.Instance.audioManager.playSfx(ENUM_AUDIO_CLIP.TRAP_FLY_2)
@@ -51,7 +51,7 @@ export default class FlyTrap extends cc.Component {
             const act = cc.moveBy(0.5, cc.v2(0, y)).easing(cc.easeCubicActionOut())
             cc.tween(this.node).then(act).call(()=>{
                 this.status = ENUM_FLY_TRAP_STATUS.FLY
-                this.dir = this.node.x < 0 ? 1 : -1
+                this.dir = this.node.position.x < 0 ? 1 : -1
             }).start()
         }
     }

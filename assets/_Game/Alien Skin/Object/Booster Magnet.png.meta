@@ -1,6 +1,6 @@
 {
   "ver": "2.3.7",
-  "uuid": "fed5abd6-2cf9-4917-878c-d9b984ec213f",
+  "uuid": "46381aa6-f3da-42f3-9c72-0b8f742c0aa8",
   "importer": "texture",
   "type": "sprite",
   "wrapMode": "clamp",
@@ -14,9 +14,9 @@
   "subMetas": {
     "Booster Magnet": {
       "ver": "1.0.6",
-      "uuid": "47de5ca5-4e3c-4929-9add-ebb790e0e404",
+      "uuid": "f5a88f91-9aec-4c23-9b26-83ff6786e781",
       "importer": "sprite-frame",
-      "rawTextureUuid": "fed5abd6-2cf9-4917-878c-d9b984ec213f",
+      "rawTextureUuid": "46381aa6-f3da-42f3-9c72-0b8f742c0aa8",
       "trimType": "auto",
       "trimThreshold": 1,
       "rotated": false,

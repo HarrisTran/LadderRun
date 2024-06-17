@@ -1,24 +1,22 @@
 
-import { ENUM_AUDIO_CLIP, ENUM_COLLIDER_TAG } from "../Enum";
-import { delay } from "../Utils";
-import AudioManager from "../manager/AudioManager";
+import { ENUM_AUDIO_CLIP, ENUM_COLLIDER_TAG, ENUM_PLAYER_STATUS } from "../Enum";
 import GameManager from "../manager/GameManager";
+import { delay } from "../Utils";
 
 const {ccclass, property} = cc._decorator;
 
 @ccclass
 export default class SoftTrap extends cc.Component {
+    @property(sp.Skeleton) body: sp.Skeleton = null;
+    @property(cc.Node) collider: cc.Node = null;
 
-    //animation: cc.Animation = null
 
     protected onLoad(): void {
-        // this.animation = this.node.getComponent(cc.Animation);
-        // this.animation.on('play', this.onPlay, this);
-        // this.animation.on('finished', this.onFinished, this);
+        
     }
 
     onCollisionEnter (other: cc.BoxCollider, self: cc.BoxCollider) {
-        if(other.tag == ENUM_COLLIDER_TAG.PLAYER && self.tag == ENUM_COLLIDER_TAG.SOFT_TRAP_DESTROY){
+        if(other.tag == ENUM_COLLIDER_TAG.PLAYER && self.tag == ENUM_COLLIDER_TAG.SOFT_TRAP){
             this.onFinished();
             //self.node.getComponent(cc.Animation).play("box")
             GameManager.Instance.audioManager.playSfx(ENUM_AUDIO_CLIP.SOFT_TRAP_WALL);
@@ -29,12 +27,16 @@ export default class SoftTrap extends cc.Component {
         //if(this.animation.getAnimationState('box').isPlaying) this.node.removeComponent(cc.Collider)
     }
 
-    onFinished(){
-        // await delay(10)
-        this.node.getComponentInChildren(sp.Skeleton).setAnimation(0,'break',false);
-        this.node.getChildByName('collider').removeComponent(cc.Collider);
-        this.node.removeComponent(cc.Collider);
+    async onFinished(){
+        await delay(10)
+
+        this.collider.getComponent(cc.Collider).enabled = false;
         
+        this.body.setAnimation(0,'break',false);
+        this.body.setCompleteListener(()=>{
+            this.collider.getComponent(cc.Collider).enabled = false;
+            this.node.active = false;
+        })
     }
 
     protected onDestroy(): void {

@@ -1,0 +1,62 @@
+
+cellar-hide-trap.png
+size: 512,128
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+body
+  rotate: false
+  xy: 136, 5
+  size: 92, 113
+  orig: 148, 201
+  offset: 0, 0
+  index: -1
+front-mandible
+  rotate: false
+  xy: 429, 77
+  size: 26, 41
+  orig: 26, 41
+  offset: 0, 0
+  index: -1
+front-wing1
+  rotate: false
+  xy: 4, 4
+  size: 128, 114
+  orig: 130, 116
+  offset: 1, 1
+  index: -1
+front-wing2
+  rotate: false
+  xy: 279, 94
+  size: 125, 24
+  orig: 127, 26
+  offset: 1, 1
+  index: -1
+head
+  rotate: false
+  xy: 279, 22
+  size: 76, 68
+  orig: 84, 70
+  offset: 1, 1
+  index: -1
+rear-mandible
+  rotate: false
+  xy: 429, 36
+  size: 25, 37
+  orig: 25, 37
+  offset: 0, 0
+  index: -1
+tail
+  rotate: true
+  xy: 359, 18
+  size: 72, 66
+  orig: 131, 230
+  offset: 0, 0
+  index: -1
+wing
+  rotate: false
+  xy: 232, 7
+  size: 43, 111
+  orig: 45, 113
+  offset: 1, 1
+  index: -1

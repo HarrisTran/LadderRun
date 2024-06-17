@@ -111,6 +111,7 @@ export enum ENUM_GAME_EVENT {
     GAME_LOSE = 'GAME_LOSE',
     CAMERA_MOVE = 'CAMERA_MOVE',
     EFFECT_STAR_PLAY = 'EFFECT_STAR_PLAY',
+    EFFECT_PICKUP_COIN = 'EFFECT_PICKUP_COIN',
     GAME_OVER = 'GAME_OVER',
 }
 
@@ -152,9 +153,6 @@ export enum ENUM_AUDIO_CLIP {
     PLAYER_JUMP = 'player_jump',
     DANGER_MOVING_TRAP = 'danger_moving_trap',
     HARD_TRAP_WALL = 'hard_trap_wall',
-    IDLE_MOVING_TRAP = 'idle_moving_trap',
-    CIRCLE_MOVING_TRAP = 'circle_moving_trap',
-    RANDOM_MOVING_TRAP = 'random_moving_trap',
     SOFT_TRAP_WALL = 'soft_trap_wall',
     TRAMPOLINE = 'trampoline',
     TRAP_HIDE = 'trap_hide_stand',
