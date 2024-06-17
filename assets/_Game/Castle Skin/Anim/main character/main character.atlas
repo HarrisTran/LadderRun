@@ -1,0 +1,160 @@
+
+main character.png
+size: 512,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+climb-body
+  rotate: false
+  xy: 353, 155
+  size: 110, 99
+  orig: 110, 99
+  offset: 0, 0
+  index: -1
+climb-head
+  rotate: true
+  xy: 188, 85
+  size: 169, 163
+  orig: 170, 168
+  offset: 0, 0
+  index: -1
+climb-left-arm
+  rotate: true
+  xy: 301, 25
+  size: 58, 77
+  orig: 58, 77
+  offset: 0, 0
+  index: -1
+climb-left-leg
+  rotate: false
+  xy: 192, 5
+  size: 31, 36
+  orig: 31, 36
+  offset: 0, 0
+  index: -1
+climb-right-arm
+  rotate: false
+  xy: 353, 88
+  size: 71, 65
+  orig: 71, 65
+  offset: 0, 0
+  index: -1
+climb-right-leg
+  rotate: false
+  xy: 159, 3
+  size: 31, 38
+  orig: 31, 38
+  offset: 0, 0
+  index: -1
+dead-mouth
+  rotate: false
+  xy: 258, 8
+  size: 26, 12
+  orig: 26, 12
+  offset: 0, 0
+  index: -1
+dead-wrinkles
+  rotate: false
+  xy: 75, 2
+  size: 64, 8
+  orig: 64, 8
+  offset: 0, 0
+  index: -1
+move-body
+  rotate: false
+  xy: 380, 16
+  size: 60, 70
+  orig: 60, 70
+  offset: 0, 0
+  index: -1
+move-eyes
+  rotate: false
+  xy: 75, 12
+  size: 82, 29
+  orig: 85, 29
+  offset: 0, 0
+  index: -1
+move-front-forearm
+  rotate: false
+  xy: 225, 15
+  size: 28, 34
+  orig: 28, 34
+  offset: 0, 0
+  index: -1
+move-front-hand
+  rotate: true
+  xy: 253, 53
+  size: 30, 25
+  orig: 30, 25
+  offset: 0, 0
+  index: -1
+move-front-iris
+  rotate: true
+  xy: 225, 2
+  size: 11, 15
+  orig: 11, 15
+  offset: 0, 0
+  index: -1
+move-front-leg
+  rotate: false
+  xy: 188, 43
+  size: 29, 40
+  orig: 29, 40
+  offset: 0, 0
+  index: -1
+move-rear-leg
+  rotate: false
+  xy: 188, 43
+  size: 29, 40
+  orig: 29, 40
+  offset: 0, 0
+  index: -1
+move-front-upper-arm
+  rotate: false
+  xy: 279, 23
+  size: 20, 28
+  orig: 20, 28
+  offset: 0, 0
+  index: -1
+move-head
+  rotate: true
+  xy: 2, 43
+  size: 211, 184
+  orig: 213, 197
+  offset: 2, 3
+  index: -1
+move-rear-arm
+  rotate: false
+  xy: 219, 51
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+move-rear-hand
+  rotate: true
+  xy: 286, 2
+  size: 19, 21
+  orig: 23, 24
+  offset: 2, 3
+  index: -1
+move-rear-iris
+  rotate: true
+  xy: 242, 3
+  size: 10, 14
+  orig: 10, 14
+  offset: 0, 0
+  index: -1
+move-rear-upperarm
+  rotate: false
+  xy: 255, 22
+  size: 22, 29
+  orig: 22, 29
+  offset: 0, 0
+  index: -1
+move-scarf
+  rotate: false
+  xy: 2, 3
+  size: 71, 38
+  orig: 71, 38
+  offset: 0, 0
+  index: -1
