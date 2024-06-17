@@ -126,7 +126,7 @@
       "ctor": "Float64Array",
       "array": [
         0,
-        0,
+        10,
         0,
         0,
         0,
@@ -198,7 +198,7 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "adef9272-18e5-44a0-a321-527aeaba2d8b"
+      "__uuid__": "815917d4-4362-43fa-aabb-a99c19254513"
     },
     "fileId": "0a/sbDPKFBmqDdssVJTSL9",
     "sync": false
@@ -294,7 +294,7 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "adef9272-18e5-44a0-a321-527aeaba2d8b"
+      "__uuid__": "815917d4-4362-43fa-aabb-a99c19254513"
     },
     "fileId": "ec4VzDpn5K8IuFQ6EAc/iB",
     "sync": false
@@ -403,7 +403,7 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "adef9272-18e5-44a0-a321-527aeaba2d8b"
+      "__uuid__": "815917d4-4362-43fa-aabb-a99c19254513"
     },
     "fileId": "edyaZTXLhG6ZWqhjETZnez",
     "sync": false
@@ -451,7 +451,7 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "adef9272-18e5-44a0-a321-527aeaba2d8b"
+      "__uuid__": "815917d4-4362-43fa-aabb-a99c19254513"
     },
     "fileId": "",
     "sync": false
