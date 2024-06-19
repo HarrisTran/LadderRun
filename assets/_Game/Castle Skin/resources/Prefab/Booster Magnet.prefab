@@ -228,7 +228,7 @@
         "__uuid__": "70a7e0d8-ff4c-409f-9f1e-829586f3263a"
       }
     ],
-    "duration": 5,
+    "duration": 1,
     "_capacity": 100,
     "loop": true,
     "playOnAwake": true,
@@ -285,8 +285,8 @@
   {
     "__type__": "cc.CurveRange",
     "mode": 3,
-    "constantMin": 1,
-    "constantMax": 2,
+    "constantMin": 0.5,
+    "constantMax": 1,
     "multiplier": 1
   },
   {
@@ -302,8 +302,9 @@
   },
   {
     "__type__": "cc.CurveRange",
-    "mode": 0,
-    "constant": 0.5,
+    "mode": 3,
+    "constantMin": 6,
+    "constantMax": 10,
     "multiplier": 1
   },
   {
@@ -493,7 +494,7 @@
       "__id__": 2
     },
     "asset": {
-      "__uuid__": "159f8241-edf6-4bf9-83db-a8050e35bd7e"
+      "__uuid__": "8f527bda-ef4e-4947-97f4-70388c4cb90f"
     },
     "fileId": "a3uqEJsx1NP7W9WDYpAJdS",
     "sync": false
@@ -778,7 +779,7 @@
       "__id__": 2
     },
     "asset": {
-      "__uuid__": "159f8241-edf6-4bf9-83db-a8050e35bd7e"
+      "__uuid__": "8f527bda-ef4e-4947-97f4-70388c4cb90f"
     },
     "fileId": "f5MCSwbTtD37u4T1kGIFPX",
     "sync": false
@@ -885,7 +886,7 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "76db627d-65d0-44ad-8de2-aef58a356ae2"
+      "__uuid__": "fdfd94fe-f058-43ad-b9a4-30b83015d495"
     },
     "fileId": "68IjlmDEBF2adEmzPr0Zug",
     "sync": false
@@ -928,7 +929,7 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "76db627d-65d0-44ad-8de2-aef58a356ae2"
+      "__uuid__": "fdfd94fe-f058-43ad-b9a4-30b83015d495"
     },
     "fileId": "",
     "sync": false

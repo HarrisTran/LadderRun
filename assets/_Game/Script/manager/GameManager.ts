@@ -196,7 +196,7 @@ export default class GameManager extends cc.Component {
         const canvasHeight = cc.find('Canvas').height;
 
         this._initializeBlockQueue();
-        this._initializeBlockQueue();
+        //this._initializeBlockQueue();
         
         
 
@@ -252,7 +252,11 @@ export default class GameManager extends cc.Component {
 
         for(let i = this.stageNode.childrenCount - 1; i >= 0; i--){
             if(this.stageNode.children[i].name == "block" && this._stayingPosition.y > 600){
-                this.stageNode.children[i].active = false;
+                cc.tween(this.stageNode.children[i])
+                .delay(0.3)
+                .removeSelf()
+                .start();
+                // this.stageNode.children[i].active = false;
                 break;
             }
         }

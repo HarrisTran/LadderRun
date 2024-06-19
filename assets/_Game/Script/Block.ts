@@ -15,7 +15,8 @@ export interface IBlock {
 @ccclass
 export default class Block extends cc.Component {
     @property(cc.Node) private grid: cc.Node = null;
-    @property([cc.SpriteFrame]) private blockBGSpriteFrame : cc.SpriteFrame[] = [];
+    @property(cc.Node) private blockTemplate: cc.Node = null;
+    @property([cc.Prefab]) private blockBGPrefab : cc.Prefab[] = [];
 
     id: number = -1
     dataInstance = [[]]
@@ -31,7 +32,8 @@ export default class Block extends cc.Component {
     }
 
     private _rendorInternal(){
-        this.grid.getComponent(cc.Sprite).spriteFrame = randomInList(this.blockBGSpriteFrame);
+        //this.grid.getComponent(cc.Sprite).spriteFrame = randomInList(this.blockBGSpriteFrame);
+        cc.instantiate(randomInList(this.blockBGPrefab)).parent = this.blockTemplate;
         for(let i=0; i < this.dataInstance.length; i++){
             for(let j=0; j < this.dataInstance[0].length; j++){
                 let code : ITEM_CODE = this.dataInstance[i][j];

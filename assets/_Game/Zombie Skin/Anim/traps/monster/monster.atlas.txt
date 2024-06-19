@@ -4,52 +4,220 @@ size: 1024,1024
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
+Slime_01
+  rotate: true
+  xy: 561, 103
+  size: 128, 78
+  orig: 128, 128
+  offset: 0, 1
+  index: -1
+Smoke02
+  rotate: true
+  xy: 2, 89
+  size: 123, 128
+  orig: 128, 128
+  offset: 4, 0
+  index: -1
+Smoke05
+  rotate: true
+  xy: 641, 73
+  size: 119, 125
+  orig: 128, 128
+  offset: 5, 0
+  index: -1
+Smoke06
+  rotate: false
+  xy: 132, 90
+  size: 109, 122
+  orig: 128, 128
+  offset: 9, 0
+  index: -1
 body
   rotate: false
-  xy: 2, 363
+  xy: 2, 451
   size: 659, 571
   orig: 659, 571
   offset: 0, 0
   index: -1
 butt
   rotate: true
-  xy: 663, 333
+  xy: 663, 421
   size: 601, 300
   orig: 601, 300
   offset: 0, 0
   index: -1
 head
-  rotate: false
-  xy: 722, 130
-  size: 217, 201
-  orig: 217, 201
+  rotate: true
+  xy: 461, 233
+  size: 216, 200
+  orig: 216, 200
   offset: 0, 0
   index: -1
-left-arm
+left-forearm
+  rotate: false
+  xy: 252, 35
+  size: 133, 193
+  orig: 133, 193
+  offset: 0, 0
+  index: -1
+left-hand
   rotate: true
-  xy: 419, 2
-  size: 150, 301
-  orig: 150, 301
+  xy: 807, 315
+  size: 104, 89
+  orig: 104, 89
+  offset: 0, 0
+  index: -1
+left-index1
+  rotate: true
+  xy: 898, 336
+  size: 39, 45
+  orig: 39, 45
+  offset: 0, 0
+  index: -1
+left-index2
+  rotate: false
+  xy: 387, 19
+  size: 38, 68
+  orig: 38, 69
+  offset: 0, 1
+  index: -1
+left-middle1
+  rotate: true
+  xy: 859, 230
+  size: 37, 46
+  orig: 37, 46
+  offset: 0, 0
+  index: -1
+left-middle2
+  rotate: true
+  xy: 2, 2
+  size: 37, 52
+  orig: 37, 52
+  offset: 0, 0
+  index: -1
+left-pinky1
+  rotate: false
+  xy: 892, 183
+  size: 36, 45
+  orig: 36, 45
+  offset: 0, 0
+  index: -1
+left-pinky2
+  rotate: false
+  xy: 807, 222
+  size: 37, 44
+  orig: 37, 44
+  offset: 0, 0
+  index: -1
+left-thumb1
+  rotate: false
+  xy: 427, 50
+  size: 31, 37
+  orig: 31, 37
+  offset: 0, 0
+  index: -1
+left-thumb2
+  rotate: true
+  xy: 561, 52
+  size: 49, 46
+  orig: 49, 46
   offset: 0, 0
   index: -1
 left-upper-arm
-  rotate: false
-  xy: 419, 154
+  rotate: true
+  xy: 252, 230
   size: 219, 207
   orig: 219, 207
   offset: 0, 0
   index: -1
 right-forearm
   rotate: false
-  xy: 2, 22
-  size: 178, 339
-  orig: 178, 339
+  xy: 663, 194
+  size: 142, 225
+  orig: 142, 225
+  offset: 0, 0
+  index: -1
+right-hand
+  rotate: false
+  xy: 768, 87
+  size: 122, 105
+  orig: 122, 105
+  offset: 0, 0
+  index: -1
+right-index1
+  rotate: true
+  xy: 898, 377
+  size: 42, 50
+  orig: 42, 50
+  offset: 0, 0
+  index: -1
+right-index2
+  rotate: false
+  xy: 56, 27
+  size: 41, 60
+  orig: 41, 74
+  offset: 0, 0
+  index: -1
+right-middle1
+  rotate: true
+  xy: 2, 41
+  size: 46, 52
+  orig: 46, 52
+  offset: 0, 0
+  index: -1
+right-middle2
+  rotate: false
+  xy: 189, 30
+  size: 49, 58
+  orig: 49, 58
+  offset: 0, 0
+  index: -1
+right-pinky1
+  rotate: true
+  xy: 859, 269
+  size: 44, 51
+  orig: 44, 51
+  offset: 0, 0
+  index: -1
+right-pinky2
+  rotate: true
+  xy: 807, 268
+  size: 45, 50
+  orig: 45, 50
+  offset: 0, 0
+  index: -1
+right-thumb1
+  rotate: true
+  xy: 846, 195
+  size: 33, 41
+  orig: 33, 41
+  offset: 0, 0
+  index: -1
+right-thumb2
+  rotate: false
+  xy: 132, 35
+  size: 55, 53
+  orig: 55, 53
   offset: 0, 0
   index: -1
 right-upper-arm
-  rotate: false
-  xy: 182, 113
+  rotate: true
+  xy: 2, 214
   size: 235, 248
   orig: 235, 248
   offset: 0, 0
+  index: -1
+tongue
+  rotate: false
+  xy: 461, 37
+  size: 98, 194
+  orig: 98, 194
+  offset: 0, 0
+  index: -1
+upper-jaw
+  rotate: true
+  xy: 387, 89
+  size: 139, 62
+  orig: 142, 63
+  offset: 1, 0
   index: -1

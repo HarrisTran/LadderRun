@@ -794,9 +794,7 @@
     "_fontSize": 60,
     "_lineHeight": 40,
     "_enableWrapText": true,
-    "_N$file": {
-      "__uuid__": "8d96d20d-06e1-405a-ab3f-653d1df2055c"
-    },
+    "_N$file": null,
     "_isSystemFontUsed": false,
     "_spacingX": 0,
     "_batchAsBitmap": false,
@@ -891,9 +889,7 @@
     "_fontSize": 60,
     "_lineHeight": 40,
     "_enableWrapText": true,
-    "_N$file": {
-      "__uuid__": "8d96d20d-06e1-405a-ab3f-653d1df2055c"
-    },
+    "_N$file": null,
     "_isSystemFontUsed": false,
     "_spacingX": 0,
     "_batchAsBitmap": false,
@@ -1215,9 +1211,7 @@
     "_fontSize": 60,
     "_lineHeight": 40,
     "_enableWrapText": true,
-    "_N$file": {
-      "__uuid__": "8d96d20d-06e1-405a-ab3f-653d1df2055c"
-    },
+    "_N$file": null,
     "_isSystemFontUsed": false,
     "_spacingX": 0,
     "_batchAsBitmap": false,
@@ -1312,9 +1306,7 @@
     "_fontSize": 60,
     "_lineHeight": 40,
     "_enableWrapText": true,
-    "_N$file": {
-      "__uuid__": "8d96d20d-06e1-405a-ab3f-653d1df2055c"
-    },
+    "_N$file": null,
     "_isSystemFontUsed": false,
     "_spacingX": 0,
     "_batchAsBitmap": false,
@@ -1702,9 +1694,7 @@
     "_fontSize": 46,
     "_lineHeight": 40,
     "_enableWrapText": true,
-    "_N$file": {
-      "__uuid__": "8d96d20d-06e1-405a-ab3f-653d1df2055c"
-    },
+    "_N$file": null,
     "_isSystemFontUsed": false,
     "_spacingX": 0,
     "_batchAsBitmap": false,
@@ -1893,9 +1883,7 @@
     "_fontSize": 40,
     "_lineHeight": 40,
     "_enableWrapText": true,
-    "_N$file": {
-      "__uuid__": "8d96d20d-06e1-405a-ab3f-653d1df2055c"
-    },
+    "_N$file": null,
     "_isSystemFontUsed": false,
     "_spacingX": 0,
     "_batchAsBitmap": false,
@@ -2068,8 +2056,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 2078.38,
-      "height": 1087.33
+      "width": 2087.55,
+      "height": 2404.15
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -2080,15 +2068,15 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        0,
-        0,
+        20,
+        -614.648,
         0,
         0,
         0,
         0,
         1,
-        0.4,
-        0.4,
+        0.7,
+        0.7,
         1
       ]
     },
@@ -2103,7 +2091,7 @@
     "_is3DNode": false,
     "_groupIndex": 0,
     "groupIndex": 0,
-    "_id": "34V/Jv/lhJRoIjwbW62tlS"
+    "_id": "8bf990o9JLu7sQMaOFKj2l"
   },
   {
     "__type__": "sp.Skeleton",
@@ -2137,7 +2125,7 @@
     "_playTimes": 0,
     "_isAniComplete": true,
     "_N$skeletonData": {
-      "__uuid__": "90cd82d3-99a3-446a-a742-e0635e1fe78b"
+      "__uuid__": "0ddf7244-29a2-4670-af71-a8eabe7c4e4c"
     },
     "_N$_defaultCacheMode": 0,
     "_N$debugSlots": false,
@@ -2145,7 +2133,7 @@
     "_N$debugMesh": false,
     "_N$useTint": false,
     "_N$enableBatch": false,
-    "_id": "b9X6zdlRVBc7MxU1qwBCVu"
+    "_id": "d5e+NFX3lA+7KmyY/IK3lg"
   },
   {
     "__type__": "cc.Canvas",

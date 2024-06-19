@@ -423,7 +423,7 @@
       "__id__": 1
     },
     "asset": {
-      "__id__": 0
+      "__uuid__": "04f1c795-fe60-4faa-ac03-f4de762d3349"
     },
     "fileId": "d51uRjOY1F1pLL3lcj6feS",
     "sync": false
@@ -547,9 +547,9 @@
     "_colorOverLifetimeModule": {
       "__id__": 44
     },
-    "_renderMode": 0,
-    "_velocityScale": 1,
-    "_lengthScale": 1,
+    "_renderMode": 1,
+    "_velocityScale": 0.1,
+    "_lengthScale": 1.5,
     "_mesh": null,
     "_id": ""
   },
@@ -744,7 +744,7 @@
       "__id__": 1
     },
     "asset": {
-      "__id__": 0
+      "__uuid__": "04f1c795-fe60-4faa-ac03-f4de762d3349"
     },
     "fileId": "478OQ/ibhEnJZnsCzhtVcu",
     "sync": false
@@ -925,7 +925,7 @@
       "__id__": 1
     },
     "asset": {
-      "__id__": 0
+      "__uuid__": "04f1c795-fe60-4faa-ac03-f4de762d3349"
     },
     "fileId": "",
     "sync": false
