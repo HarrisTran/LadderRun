@@ -423,7 +423,7 @@
       "__id__": 1
     },
     "asset": {
-      "__id__": 0
+      "__uuid__": "0437fb8e-429e-40e7-b7c2-c8d59e13d508"
     },
     "fileId": "b3Axrn4yJFy7RS4Cw4UUNe",
     "sync": false
@@ -510,7 +510,7 @@
     "loop": true,
     "playOnAwake": true,
     "_prewarm": false,
-    "_simulationSpace": 1,
+    "_simulationSpace": 0,
     "simulationSpeed": 1,
     "startDelay": {
       "__id__": 33
@@ -788,7 +788,7 @@
       "__id__": 1
     },
     "asset": {
-      "__id__": 0
+      "__uuid__": "0437fb8e-429e-40e7-b7c2-c8d59e13d508"
     },
     "fileId": "bdX1TwZn1BrorVm8FLTyYV",
     "sync": false
@@ -969,7 +969,7 @@
       "__id__": 1
     },
     "asset": {
-      "__id__": 0
+      "__uuid__": "0437fb8e-429e-40e7-b7c2-c8d59e13d508"
     },
     "fileId": "",
     "sync": false
