@@ -1,5 +1,5 @@
 
-import { ENUM_GAME_EVENT, ENUM_GAME_ZINDEX, GameState, ENUM_AUDIO_CLIP, ENUM_GAME_SKIN_CODE, skinCodeToString } from "../Enum";
+import { ENUM_GAME_EVENT, ENUM_GAME_ZINDEX, GameState, ENUM_AUDIO_CLIP } from "../Enum";
 import Block from '../Block';
 import PoolManager from "./PoolManager";
 import Player from '../Player';
@@ -178,7 +178,7 @@ export default class GameManager extends cc.Component {
         return this.CurrentGameState == GameState.PLAYING;
     }
 
-    // 失败
+    // 失败Pp
     onGameLose() {
         this.audioManager.playSfx(ENUM_AUDIO_CLIP.PLAYER_HIT);
         this.ChangeState(GameState.ENDGAME);

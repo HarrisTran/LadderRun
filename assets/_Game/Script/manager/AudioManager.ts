@@ -1,9 +1,7 @@
 // Created by carolsail
 
 import { ENUM_AUDIO_CLIP, SCENE_TO_RESOURCES_MAPPING } from './../Enum';
-import DataManager from './DataManager';
 import { IManager } from './IManager';
-import ResourceManager from "./ResourceManager"
 const { ccclass, property } = cc._decorator;
 @ccclass
 export default class AudioManager extends cc.Component implements IManager{

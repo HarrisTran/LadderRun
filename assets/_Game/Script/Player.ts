@@ -219,7 +219,7 @@ export default class Player extends cc.Component {
                 this.onTurn()
             break
             case ENUM_COLLIDER_TAG.LADDER:
-                
+                if(this.isClimb()) return
                 let x = other.node.x  - self.node.x
                 this.status = ENUM_PLAYER_STATUS.CLIMB
                 this.speed.x = 0

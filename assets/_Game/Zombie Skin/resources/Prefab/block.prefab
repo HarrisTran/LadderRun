@@ -8324,7 +8324,7 @@
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
     "_spriteFrame": {
-      "__uuid__": "885d2c7c-c35b-4134-a129-3e3688d6f04d"
+      "__uuid__": "7c588c9b-b65d-43c0-b3b3-3a77047a6ea4"
     },
     "_type": 0,
     "_sizeMode": 0,
@@ -8450,7 +8450,7 @@
     },
     "blockBGSpriteFrame": [
       {
-        "__uuid__": "885d2c7c-c35b-4134-a129-3e3688d6f04d"
+        "__uuid__": "68421984-69a6-4720-beb2-e3027ff17cb1"
       },
       {
         "__uuid__": "780b667e-6c8c-4a10-9d6d-0597d5b5cd21"
@@ -8469,9 +8469,6 @@
       },
       {
         "__uuid__": "f01aa721-d7c7-4609-9f8c-7da246721bf1"
-      },
-      {
-        "__uuid__": "68421984-69a6-4720-beb2-e3027ff17cb1"
       }
     ],
     "_id": ""

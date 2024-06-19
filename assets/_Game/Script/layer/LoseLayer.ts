@@ -2,7 +2,6 @@
 import ScrollViewExtend from "../Common/ScrollViewExtend";
 import { GameState } from "../Enum";
 import GameManager from "../manager/GameManager";
-import { delay } from "../Utils";
 import BaseLayer from "./Baselayer";
 
 const {ccclass, property} = cc._decorator;

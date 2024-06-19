@@ -1,7 +1,5 @@
 
 import { ENUM_AUDIO_CLIP, ENUM_COLLIDER_TAG } from "../Enum";
-import { delay } from "../Utils";
-import AudioManager from "../manager/AudioManager";
 import GameManager from "../manager/GameManager";
 
 const {ccclass, property} = cc._decorator;

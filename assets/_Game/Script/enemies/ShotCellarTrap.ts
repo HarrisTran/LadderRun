@@ -21,7 +21,7 @@ export default class ShotCellarTrap extends cc.Component {
                 let track = animation.getComponent(sp.Skeleton).setAnimation(0,'break',false);
                 animation.getComponent(sp.Skeleton).setTrackCompleteListener(track,(_,__)=>{
                     cc.tween(this.rock)
-                    .by(1.3, { y: -250 })
+                    .by(1, { y: -270 }, { easing: "sineIn" })
                     .removeSelf()
                     .call(() => {
                         this.node.removeComponent(cc.Collider)

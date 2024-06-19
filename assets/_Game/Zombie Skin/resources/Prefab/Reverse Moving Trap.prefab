@@ -110,8 +110,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 237,
-      "height": 261
+      "width": 240,
+      "height": 201
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -179,7 +179,7 @@
     "_playTimes": 0,
     "_isAniComplete": true,
     "_N$skeletonData": {
-      "__uuid__": "c679cb19-ab41-4850-977b-11487ab09d17"
+      "__uuid__": "fe3761bc-259e-4e92-aabe-88b45fc11dc9"
     },
     "_N$_defaultCacheMode": 0,
     "_N$debugSlots": false,

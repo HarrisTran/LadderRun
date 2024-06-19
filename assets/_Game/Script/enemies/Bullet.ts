@@ -1,6 +1,5 @@
 
 import GameManager from '../manager/GameManager';
-import { GameState } from './../Enum';
 const {ccclass, property} = cc._decorator;
 
 @ccclass

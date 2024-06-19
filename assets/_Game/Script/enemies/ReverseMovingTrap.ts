@@ -1,7 +1,5 @@
 
-import { ENUM_AUDIO_CLIP, ENUM_COLLIDER_TAG, ENUM_GAME_STATUS, ENUM_REVERSE_TRAP_STATUS, GameState } from "../Enum";
-import AudioManager from "../manager/AudioManager";
-import DataManager from "../manager/DataManager";
+import { ENUM_AUDIO_CLIP, ENUM_COLLIDER_TAG, ENUM_REVERSE_TRAP_STATUS, GameState } from "../Enum";
 import GameManager from "../manager/GameManager";
 
 const {ccclass, property} = cc._decorator;
