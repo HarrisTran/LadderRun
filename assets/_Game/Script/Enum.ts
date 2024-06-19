@@ -160,9 +160,7 @@ export enum ENUM_AUDIO_CLIP {
     TRAP_SHOT_REAR = 'trap_shot_rear',
     TRAP_STAND = 'trap_stand',
     REVERSE_MOVING_TRAP = "reverse_moving_trap",
-    TRAP_FLY_1 = 'trap_fly1',
-    TRAP_FLY_2 = 'trap_fly2',
-    TRAP_FLY_3 = 'trap_fly3',
+    TRAP_HIDE_CELLAR = 'trap_hide_cellar',
 }
 
 // 游戏模式

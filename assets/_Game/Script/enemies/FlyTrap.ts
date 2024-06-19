@@ -34,17 +34,15 @@ export default class FlyTrap extends cc.Component {
             this.status = ENUM_FLY_TRAP_STATUS.WALL_OUT
             this.speed += Math.random() * 80
             let y : number = 0;
+            GameManager.Instance.audioManager.playSfx(ENUM_AUDIO_CLIP.TRAP_HIDE_CELLAR)
             switch (this.mode) {
                 case TrapHideCellarMode.HIGH:
-                    GameManager.Instance.audioManager.playSfx(ENUM_AUDIO_CLIP.TRAP_FLY_3)
                     y = -130
                     break;
                 case TrapHideCellarMode.LOW:
-                    GameManager.Instance.audioManager.playSfx(ENUM_AUDIO_CLIP.TRAP_FLY_1)
                     y = -260
                     break;
                 case TrapHideCellarMode.RANDOM:
-                    GameManager.Instance.audioManager.playSfx(ENUM_AUDIO_CLIP.TRAP_FLY_2)
                     y = Math.random()*150-200
                     break;
             }
