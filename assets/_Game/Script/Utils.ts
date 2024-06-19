@@ -92,4 +92,15 @@ export class Queue<T>{
     size(): number {
       return this.storage.length;
     }
+
+    shuffle(start: number, end: number){
+        if(this.size() < 3) return [];
+        let sublist1 = this.storage.slice(0,start);
+        let sublist2 = this.storage.slice(start,end+1);
+        let sublist3 = this.storage.slice(end+1)
+
+        let shuffleList2 = shuffle(sublist2).concat(sublist3);
+
+        this.storage = sublist1.concat(shuffleList2)
+    }
   }

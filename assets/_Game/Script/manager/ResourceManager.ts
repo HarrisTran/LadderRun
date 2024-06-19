@@ -1,6 +1,6 @@
 // Created by carolsail
 import { Queue } from '../Utils';
-import { ENUM_RESOURCE_TYPE, SCENE_TO_RESOURCES_MAPPING } from './../Enum';
+import { SCENE_TO_RESOURCES_MAPPING } from './../Enum';
 import { IManager } from './IManager';
 import PoolManager from './PoolManager';
 
@@ -109,6 +109,8 @@ export default class ResourceManager implements IManager{
                 asset.json.forEach(source=>{
                     this.levelMap.enqueue(source.data);
                 })
+                let size = this.levelMap.size();
+                this.levelMap.shuffle(1,size-1);
                 this._levelJsonLoadingProgress = 1;
                 this._levelJsonLoadingDone = true;
             }
