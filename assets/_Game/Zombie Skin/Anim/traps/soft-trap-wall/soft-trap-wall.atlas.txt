@@ -1,0 +1,132 @@
+
+soft-trap-wall.png
+size: 512,128
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+box
+  rotate: true
+  xy: 2, 17
+  size: 108, 77
+  orig: 108, 78
+  offset: 0, 1
+  index: -1
+fragment10
+  rotate: true
+  xy: 119, 3
+  size: 24, 31
+  orig: 25, 32
+  offset: 1, 0
+  index: -1
+fragment11
+  rotate: true
+  xy: 233, 51
+  size: 35, 27
+  orig: 35, 28
+  offset: 0, 1
+  index: -1
+fragment12
+  rotate: true
+  xy: 152, 4
+  size: 23, 29
+  orig: 23, 29
+  offset: 0, 0
+  index: -1
+fragment13
+  rotate: true
+  xy: 81, 72
+  size: 53, 38
+  orig: 53, 38
+  offset: 0, 0
+  index: -1
+fragment14
+  rotate: true
+  xy: 258, 95
+  size: 30, 22
+  orig: 30, 23
+  offset: 0, 1
+  index: -1
+fragment15
+  rotate: true
+  xy: 81, 20
+  size: 50, 36
+  orig: 50, 36
+  offset: 0, 0
+  index: -1
+fragment16
+  rotate: true
+  xy: 224, 88
+  size: 37, 32
+  orig: 37, 32
+  offset: 0, 0
+  index: -1
+fragment17
+  rotate: true
+  xy: 160, 36
+  size: 39, 36
+  orig: 40, 36
+  offset: 1, 0
+  index: -1
+fragment18
+  rotate: false
+  xy: 119, 29
+  size: 39, 41
+  orig: 39, 42
+  offset: 0, 0
+  index: -1
+fragment2
+  rotate: true
+  xy: 121, 84
+  size: 41, 37
+  orig: 42, 37
+  offset: 1, 0
+  index: -1
+fragment3
+  rotate: true
+  xy: 160, 77
+  size: 48, 30
+  orig: 49, 30
+  offset: 0, 0
+  index: -1
+fragment4
+  rotate: false
+  xy: 262, 40
+  size: 24, 24
+  orig: 24, 25
+  offset: 0, 0
+  index: -1
+fragment5
+  rotate: true
+  xy: 262, 66
+  size: 27, 24
+  orig: 27, 25
+  offset: 0, 0
+  index: -1
+fragment6
+  rotate: false
+  xy: 230, 2
+  size: 36, 33
+  orig: 36, 33
+  offset: 0, 0
+  index: -1
+fragment7
+  rotate: false
+  xy: 183, 3
+  size: 45, 31
+  orig: 45, 31
+  offset: 0, 0
+  index: -1
+fragment8
+  rotate: false
+  xy: 198, 37
+  size: 33, 40
+  orig: 33, 40
+  offset: 0, 0
+  index: -1
+fragment9
+  rotate: false
+  xy: 192, 79
+  size: 30, 46
+  orig: 30, 46
+  offset: 0, 0
+  index: -1

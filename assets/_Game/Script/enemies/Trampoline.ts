@@ -1,8 +1,6 @@
 // Created by carolsail
 
-import { ENUM_AUDIO_CLIP, ENUM_COLLIDER_TAG, ENUM_PLAYER_STATUS } from "../Enum";
-import AudioManager from "../manager/AudioManager";
-import Player from "../Player";
+import { ENUM_COLLIDER_TAG} from "../Enum";
 
 const {ccclass, property} = cc._decorator;
 

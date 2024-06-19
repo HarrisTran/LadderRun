@@ -1,6 +1,6 @@
 // Created by carolsail
 
-import { ENUM_AUDIO_CLIP, ENUM_COLLIDER_TAG, ENUM_GAME_STATUS, GameState } from "../Enum";
+import { ENUM_AUDIO_CLIP, ENUM_COLLIDER_TAG } from "../Enum";
 import GameManager from "../manager/GameManager";
 import { random } from "../Utils";
 

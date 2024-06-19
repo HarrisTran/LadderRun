@@ -8,7 +8,7 @@ const {ccclass, property, requireComponent} = cc._decorator;
 @requireComponent(cc.Sprite)
 export default class SpriteAdapter extends cc.Component implements ISpriteSubcriber {
     @property({type: cc.Sprite, visible: false })
-    private sprite: cc.Sprite;
+    private sprite: cc.Sprite = null;
 
     private _spriteFrameKey: string = "";
     

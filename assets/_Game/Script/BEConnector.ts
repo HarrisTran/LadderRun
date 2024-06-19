@@ -1,6 +1,4 @@
 import * as CryptoES from "crypto-js";
-import { IManager } from './manager/IManager';
-import { delay } from "./Utils";
 import GameManager from "./manager/GameManager";
 
 

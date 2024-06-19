@@ -4,7 +4,6 @@ import MenuLayer from "../layer/MenuLayer";
 import GameLayer from '../layer/GameLayer';
 import LoseLayer from '../layer/LoseLayer';
 import { GameState } from '../Enum';
-import { delay } from '../Utils';
 
 const {ccclass, property} = cc._decorator;
 

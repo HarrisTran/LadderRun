@@ -231,15 +231,16 @@
     "color": {
       "__type__": "cc.Color",
       "r": 255,
-      "g": 224,
-      "b": 0,
+      "g": 255,
+      "b": 255,
       "a": 255
     }
   },
   {
     "__type__": "cc.CurveRange",
-    "mode": 0,
-    "constant": 1,
+    "mode": 3,
+    "constantMin": 0.25,
+    "constantMax": 1,
     "multiplier": 1
   },
   {
@@ -499,7 +500,7 @@
       "__id__": 1
     },
     "asset": {
-      "__id__": 0
+      "__uuid__": "a288af46-6933-40fe-a81b-2eec4058a2ec"
     },
     "fileId": "70MONZ47tEEZdcT7sL6KsA",
     "sync": false
@@ -649,7 +650,7 @@
       "__type__": "cc.Color",
       "r": 255,
       "g": 255,
-      "b": 0,
+      "b": 255,
       "a": 150
     }
   },
@@ -757,7 +758,7 @@
       "__id__": 1
     },
     "asset": {
-      "__id__": 0
+      "__uuid__": "a288af46-6933-40fe-a81b-2eec4058a2ec"
     },
     "fileId": "1fVD6s9W5KD7yeVUgfcWE+",
     "sync": false
@@ -935,7 +936,7 @@
       "__id__": 1
     },
     "asset": {
-      "__id__": 0
+      "__uuid__": "a288af46-6933-40fe-a81b-2eec4058a2ec"
     },
     "fileId": "",
     "sync": false

@@ -1,7 +1,6 @@
 // Created by carolsail
 
 import { ENUM_GAME_ZINDEX, ENUM_ITEM_COLLECTION, ITEM_CODE } from './Enum';
-import item from './layer/item';
 import PoolManager from './manager/PoolManager';
 import { randomInList } from './Utils';
 
