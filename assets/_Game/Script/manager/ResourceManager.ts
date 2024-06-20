@@ -109,8 +109,8 @@ export default class ResourceManager implements IManager{
                 asset.json.forEach(source=>{
                     this.levelMap.enqueue(source.data);
                 })
-                // let size = this.levelMap.size();
-                // this.levelMap.shuffle(1,size-1);
+                let size = this.levelMap.size();
+                this.levelMap.shuffle(1,size-1);
                 this._levelJsonLoadingProgress = 1;
                 this._levelJsonLoadingDone = true;
             }

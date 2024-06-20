@@ -62,8 +62,8 @@
         0,
         0,
         1,
-        1,
-        1,
+        0.387,
+        0.387,
         1
       ]
     },
@@ -305,7 +305,7 @@
   {
     "__type__": "cc.CurveRange",
     "mode": 0,
-    "constant": 2,
+    "constant": 0.6,
     "multiplier": 1
   },
   {
@@ -329,7 +329,7 @@
   {
     "__type__": "cc.CurveRange",
     "mode": 0,
-    "constant": 5,
+    "constant": 6,
     "multiplier": 1
   },
   {
@@ -661,7 +661,7 @@
   {
     "__type__": "cc.CurveRange",
     "mode": 0,
-    "constant": 2,
+    "constant": 0.6,
     "multiplier": 1
   },
   {
@@ -685,7 +685,7 @@
   {
     "__type__": "cc.CurveRange",
     "mode": 0,
-    "constant": 5,
+    "constant": 6,
     "multiplier": 1
   },
   {
@@ -1266,7 +1266,7 @@
   {
     "__type__": "cc.CurveRange",
     "mode": 0,
-    "constant": 2,
+    "constant": 0.6,
     "multiplier": 1
   },
   {
@@ -1290,7 +1290,7 @@
   {
     "__type__": "cc.CurveRange",
     "mode": 0,
-    "constant": 5,
+    "constant": 6,
     "multiplier": 1
   },
   {
@@ -1622,7 +1622,7 @@
   {
     "__type__": "cc.CurveRange",
     "mode": 0,
-    "constant": 2,
+    "constant": 0.6,
     "multiplier": 1
   },
   {
@@ -1646,7 +1646,7 @@
   {
     "__type__": "cc.CurveRange",
     "mode": 0,
-    "constant": 5,
+    "constant": 6,
     "multiplier": 1
   },
   {
@@ -2040,7 +2040,7 @@
       "__id__": 1
     },
     "asset": {
-      "__id__": 0
+      "__uuid__": "af787acc-86e8-4d78-9e5a-4dde6cd3cd64"
     },
     "fileId": "",
     "sync": false

@@ -62,8 +62,8 @@
         0,
         0,
         1,
-        1,
-        1,
+        0.387,
+        0.387,
         1
       ]
     },
@@ -321,8 +321,8 @@
   {
     "__type__": "cc.CurveRange",
     "mode": 3,
-    "constantMin": 5.65,
-    "constantMax": 5.8,
+    "constantMin": 2,
+    "constantMax": 3,
     "multiplier": 1
   },
   {
@@ -930,7 +930,7 @@
   {
     "__type__": "cc.CurveRange",
     "mode": 0,
-    "constant": 15,
+    "constant": 5,
     "multiplier": 1
   },
   {
@@ -1927,8 +1927,8 @@
   {
     "__type__": "cc.CurveRange",
     "mode": 3,
-    "constantMin": 5.65,
-    "constantMax": 5.8,
+    "constantMin": 2,
+    "constantMax": 3,
     "multiplier": 1
   },
   {
@@ -2536,7 +2536,7 @@
   {
     "__type__": "cc.CurveRange",
     "mode": 0,
-    "constant": 15,
+    "constant": 5,
     "multiplier": 1
   },
   {
@@ -3330,7 +3330,7 @@
       "__id__": 1
     },
     "asset": {
-      "__id__": 0
+      "__uuid__": "5850d88c-3d00-47b8-938b-8d322d82efcc"
     },
     "fileId": "",
     "sync": false

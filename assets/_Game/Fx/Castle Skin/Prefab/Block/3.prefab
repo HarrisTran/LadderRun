@@ -59,8 +59,8 @@
         0,
         0,
         1,
-        1,
-        1,
+        0.387,
+        0.387,
         1
       ]
     },
@@ -476,8 +476,8 @@
   {
     "__type__": "cc.CurveRange",
     "mode": 3,
-    "constantMin": 1,
-    "constantMax": 3,
+    "constantMin": 0.25,
+    "constantMax": 1.25,
     "multiplier": 1
   },
   {
@@ -791,7 +791,7 @@
     "asset": {
       "__uuid__": "5a3b8f00-288d-4675-bae8-47f8781da014"
     },
-    "fileId": "27viV4zcVAnYd7Gwsqa2jW",
+    "fileId": "7eh6Yw0VJFsp4cyV8cWuuf",
     "sync": false
   },
   {
