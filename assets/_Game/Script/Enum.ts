@@ -155,7 +155,7 @@ export enum ENUM_AUDIO_CLIP {
     HARD_TRAP_WALL = 'hard_trap_wall',
     SOFT_TRAP_WALL = 'soft_trap_wall',
     TRAMPOLINE = 'trampoline',
-    TRAP_HIDE = 'trap_hide_stand',
+    TRAP_HIDE_STAND = 'trap_hide_stand',
     TRAP_FALL = 'trap_shot_cellar',
     TRAP_SHOT_REAR = 'trap_shot_rear',
     TRAP_STAND = 'trap_stand',
