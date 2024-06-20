@@ -510,7 +510,7 @@
     "loop": true,
     "playOnAwake": true,
     "_prewarm": false,
-    "_simulationSpace": 1,
+    "_simulationSpace": 0,
     "simulationSpeed": 1,
     "startDelay": {
       "__id__": 33

@@ -1,0 +1,91 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "Light",
+  "_objFlags": 0,
+  "_native": "",
+  "_duration": 3.25,
+  "sample": 60,
+  "speed": 1,
+  "wrapMode": 2,
+  "curveData": {
+    "paths": {
+      "light": {
+        "props": {
+          "active": [
+            {
+              "frame": 0,
+              "value": true
+            },
+            {
+              "frame": 0.16666666666666666,
+              "value": false
+            },
+            {
+              "frame": 0.6333333333333333,
+              "value": true
+            },
+            {
+              "frame": 0.7166666666666667,
+              "value": false
+            },
+            {
+              "frame": 0.8,
+              "value": true
+            },
+            {
+              "frame": 0.9166666666666666,
+              "value": false
+            },
+            {
+              "frame": 1,
+              "value": true
+            },
+            {
+              "frame": 3.0166666666666666,
+              "value": true
+            }
+          ]
+        }
+      },
+      "light copy": {
+        "props": {
+          "active": [
+            {
+              "frame": 0.23333333333333334,
+              "value": true
+            },
+            {
+              "frame": 0.4,
+              "value": false
+            },
+            {
+              "frame": 0.8666666666666667,
+              "value": true
+            },
+            {
+              "frame": 0.95,
+              "value": false
+            },
+            {
+              "frame": 1.0333333333333334,
+              "value": true
+            },
+            {
+              "frame": 1.15,
+              "value": false
+            },
+            {
+              "frame": 1.2333333333333334,
+              "value": true
+            },
+            {
+              "frame": 3.25,
+              "value": true
+            }
+          ]
+        }
+      }
+    }
+  },
+  "events": []
+}

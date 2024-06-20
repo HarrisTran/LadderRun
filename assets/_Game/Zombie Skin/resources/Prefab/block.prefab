@@ -160,7 +160,7 @@
     "asset": {
       "__uuid__": "8e87793d-8417-4c7a-b4d3-d83581224195"
     },
-    "fileId": "7dctYZzwlNFZ+K4s3aNkbb",
+    "fileId": "72WhHZVvpPUYZv/uu4gkCk",
     "sync": false
   },
   {
@@ -8527,13 +8527,28 @@
     },
     "blockBGPrefab": [
       {
-        "__uuid__": "bfcf83e4-e564-4cf8-95ce-a55f05db0554"
+        "__uuid__": "fbb3ca57-39d5-4f74-a868-c2e1d61b956c"
       },
       {
-        "__uuid__": "4d48b963-9512-4e51-b6c5-7dd6f5a1a2cc"
+        "__uuid__": "7c6ee0b5-d7c8-489f-b73f-4937e838479f"
       },
       {
-        "__uuid__": "ad6a9250-96a8-480e-ac07-08f1369f0a44"
+        "__uuid__": "15184fc7-2321-46c0-be3e-f343608b2276"
+      },
+      {
+        "__uuid__": "9912870e-a21a-42b1-92ed-38b35e015e77"
+      },
+      {
+        "__uuid__": "c6c75a9f-0e1d-4ce4-9681-3aee9382532e"
+      },
+      {
+        "__uuid__": "41368177-0109-499f-9c16-b85d19ccf4f3"
+      },
+      {
+        "__uuid__": "223f4b53-2590-46d9-b58a-376931d4e191"
+      },
+      {
+        "__uuid__": "ab69dada-f052-44d2-ada1-02b96e649356"
       }
     ],
     "_id": ""
