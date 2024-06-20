@@ -3022,7 +3022,7 @@ declare namespace cc {
 	     - 将计时器 & 渲染与显示器的刷新频率同步。<br/>
 	     - 只支持动画的间隔 1/60 1/30 & 1/15。<br/>
 	</p> */
-	export class Director extends EventTarget {		
+	export class Director extends EventTarget {
 		/**
 		!#en
 		Converts a view coordinate to an WebGL coordinate<br/>
@@ -3349,7 +3349,7 @@ declare namespace cc {
 		         2 - 强制使用 WebGL 渲染，但是在部分 Android 浏览器中这个选项会被忽略。     <br/>
 		<br/>
 		注意：请不要直接修改这个对象，它不会有任何效果。 */
-		config: any;		
+		config: any;	
 		/**
 		!#en Callback when the scripts of engine have been load.
 		!#zh 当引擎完成启动后的回调函数。 

@@ -2,12 +2,23 @@ import ReverseMovingTrap from "./enemies/ReverseMovingTrap";
 import { ENUM_COLLIDER_TAG, ENUM_PLAYER_STATUS, ENUM_GAME_EVENT, GameState, ENUM_AUDIO_CLIP} from "./Enum";
 import GameManager from "./manager/GameManager";
 import { playParticle3D, setMix } from "./Utils";
-
+var timeScale = 1;
 const {ccclass, property} = cc._decorator;
 
+//@ts-ignore
+cc.game._calculateDT = function (now: number) {
+    if (!now) now = performance.now();
+        this._deltaTime = now > this._startTime ? (now - this._startTime) / 1000 : 0;
+        if (this._deltaTime > 1/60) {
+            this._deltaTime = this.frameTime / 1000;
+        }
+        this._startTime = now;
+        return this._deltaTime * timeScale;
+};
+
+
+
 let v3 = new cc.Vec3()
-const normalSpeed: number = 150;
-const speedUp: number = 360;
 @ccclass
 export default class Player extends cc.Component {
     @property(sp.Skeleton) spineSkeleton: sp.Skeleton = null;
@@ -122,10 +133,12 @@ export default class Player extends cc.Component {
             this.spineSkeleton.setAnimation(0,'move',true)
         }
         else if(this._status == ENUM_PLAYER_STATUS.JUMP){
-            this.spineSkeleton.setAnimation(0,'jump',false)
+            let track = this.spineSkeleton.setAnimation(0,'jump',false)
+            timeScale = 0.2;
         }
 
     }
+
 
     onPlayerDead(){
         cc.game.emit(ENUM_GAME_EVENT.GAME_LOSE);

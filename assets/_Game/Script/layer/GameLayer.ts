@@ -20,6 +20,22 @@ export default class GameLayer extends BaseLayer {
     @property(cc.Prefab)
     diamondVfxPrefab: cc.Prefab = null;
 
+    private rollValue = {
+        value: 0
+    }
+
+    addRollValue(val: number) {
+        const newValue = this.rollValue.value + val;
+        cc.tween(this.rollValue)
+            .to(0.5, { value: newValue }, {
+                onUpdate: (target: { value: number }, ratio: number) => {
+                    // 取整后显示
+                    this.coinsLabel.string = (target.value).toFixed(0).toString();
+                }
+            })
+            .start();
+    }
+
 
     onEnable(){
         //PoolManager.instance.getNode('player', this.node,this.node.convertToNodeSpaceAR(cc.v3(0)))
@@ -48,8 +64,8 @@ export default class GameLayer extends BaseLayer {
         cc.game.emit(ENUM_GAME_EVENT.PLAYER_JUMP)
     }
 
-    public setGameScore(){
-        this.coinsLabel.string = GameManager.Instance.playerDataManager.getScore().toString();
+    public setGameScore(score: number){
+        this.addRollValue(score);
     }
 
     public convertPositionToWorldSpace(pos: cc.Vec3){

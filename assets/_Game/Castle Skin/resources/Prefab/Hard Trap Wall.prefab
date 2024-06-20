@@ -265,12 +265,12 @@
     "tag": 10,
     "_offset": {
       "__type__": "cc.Vec2",
-      "x": 0,
+      "x": 4.2,
       "y": 1
     },
     "_size": {
       "__type__": "cc.Size",
-      "width": 80,
+      "width": 88.4,
       "height": 55
     },
     "_id": ""
