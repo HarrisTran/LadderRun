@@ -171,7 +171,7 @@
     "_lineHeight": 40,
     "_enableWrapText": true,
     "_N$file": {
-      "__uuid__": "b8c44a8f-f43d-429f-8e68-e58735cdd15c"
+      "__uuid__": "85de93bc-2d16-45b4-8940-886f315aebb3"
     },
     "_isSystemFontUsed": false,
     "_spacingX": 0,
@@ -281,7 +281,7 @@
     "_lineHeight": 40,
     "_enableWrapText": true,
     "_N$file": {
-      "__uuid__": "b8c44a8f-f43d-429f-8e68-e58735cdd15c"
+      "__uuid__": "85de93bc-2d16-45b4-8940-886f315aebb3"
     },
     "_isSystemFontUsed": false,
     "_spacingX": 0,
@@ -470,9 +470,6 @@
     },
     "bronzeMedal": {
       "__uuid__": "d2dd9f12-6ffe-441c-9dc7-e6036fbbe1bc"
-    },
-    "yellowFrame": {
-      "__uuid__": "05d4f062-5a6d-4b90-a0bb-e571a1235c44"
     },
     "_id": ""
   },

@@ -64,8 +64,8 @@ export default class GameLayer extends BaseLayer {
         cc.game.emit(ENUM_GAME_EVENT.PLAYER_JUMP)
     }
 
-    public setGameScore(score: number){
-        this.addRollValue(score);
+    public setGameScore(){
+        this.coinsLabel.string = GameManager.Instance.playerDataManager.getScore().toString();
     }
 
     public convertPositionToWorldSpace(pos: cc.Vec3){
