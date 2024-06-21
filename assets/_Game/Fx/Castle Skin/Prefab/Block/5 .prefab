@@ -1231,7 +1231,7 @@
         "__uuid__": "f5d4f44b-00cc-48b1-a87c-d7cdff119d25"
       }
     ],
-    "duration": 1,
+    "duration": 3,
     "_capacity": 100,
     "loop": true,
     "playOnAwake": true,
@@ -1608,7 +1608,7 @@
         "__uuid__": "f5d4f44b-00cc-48b1-a87c-d7cdff119d25"
       }
     ],
-    "duration": 1,
+    "duration": 3,
     "_capacity": 100,
     "loop": true,
     "playOnAwake": true,
