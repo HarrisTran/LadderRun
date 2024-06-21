@@ -31,19 +31,22 @@
       },
       {
         "__id__": 16
+      },
+      {
+        "__id__": 231
       }
     ],
     "_active": true,
     "_components": [
       {
-        "__id__": 231
+        "__id__": 283
       },
       {
-        "__id__": 232
+        "__id__": 284
       }
     ],
     "_prefab": {
-      "__id__": 233
+      "__id__": 285
     },
     "_opacity": 255,
     "_color": {
@@ -8482,6 +8485,693 @@
       "__uuid__": "8e87793d-8417-4c7a-b4d3-d83581224195"
     },
     "fileId": "2dIgYyPgxEH4O0c0ELCJmi",
+    "sync": false
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "WindFx",
+    "_objFlags": 0,
+    "_parent": {
+      "__id__": 1
+    },
+    "_children": [
+      {
+        "__id__": 232
+      }
+    ],
+    "_active": true,
+    "_components": [
+      {
+        "__id__": 266
+      }
+    ],
+    "_prefab": {
+      "__id__": 282
+    },
+    "_opacity": 255,
+    "_color": {
+      "__type__": "cc.Color",
+      "r": 255,
+      "g": 255,
+      "b": 255,
+      "a": 255
+    },
+    "_contentSize": {
+      "__type__": "cc.Size",
+      "width": 0,
+      "height": 0
+    },
+    "_anchorPoint": {
+      "__type__": "cc.Vec2",
+      "x": 0.5,
+      "y": 0.5
+    },
+    "_trs": {
+      "__type__": "TypedArray",
+      "ctor": "Float64Array",
+      "array": [
+        -632.571,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    "_eulerAngles": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "_skewX": 0,
+    "_skewY": 0,
+    "_is3DNode": true,
+    "_groupIndex": 0,
+    "groupIndex": 0,
+    "_id": ""
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "Smoke",
+    "_objFlags": 0,
+    "_parent": {
+      "__id__": 231
+    },
+    "_children": [],
+    "_active": true,
+    "_components": [
+      {
+        "__id__": 233
+      }
+    ],
+    "_prefab": {
+      "__id__": 265
+    },
+    "_opacity": 255,
+    "_color": {
+      "__type__": "cc.Color",
+      "r": 255,
+      "g": 255,
+      "b": 255,
+      "a": 255
+    },
+    "_contentSize": {
+      "__type__": "cc.Size",
+      "width": 0,
+      "height": 0
+    },
+    "_anchorPoint": {
+      "__type__": "cc.Vec2",
+      "x": 0.5,
+      "y": 0.5
+    },
+    "_trs": {
+      "__type__": "TypedArray",
+      "ctor": "Float64Array",
+      "array": [
+        -123.971,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        30,
+        30,
+        30
+      ]
+    },
+    "_eulerAngles": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "_skewX": 0,
+    "_skewY": 0,
+    "_is3DNode": true,
+    "_groupIndex": 0,
+    "groupIndex": 0,
+    "_id": ""
+  },
+  {
+    "__type__": "cc.ParticleSystem3D",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 232
+    },
+    "_enabled": true,
+    "_materials": [
+      {
+        "__uuid__": "c9e50956-bd24-420d-9808-26664376e639"
+      }
+    ],
+    "duration": 7,
+    "_capacity": 100,
+    "loop": true,
+    "playOnAwake": true,
+    "_prewarm": false,
+    "_simulationSpace": 1,
+    "simulationSpeed": 1,
+    "startDelay": {
+      "__id__": 234
+    },
+    "startLifetime": {
+      "__id__": 235
+    },
+    "startColor": {
+      "__id__": 236
+    },
+    "scaleSpace": 1,
+    "startSize": {
+      "__id__": 237
+    },
+    "startSpeed": {
+      "__id__": 238
+    },
+    "startRotation": {
+      "__id__": 239
+    },
+    "gravityModifier": {
+      "__id__": 240
+    },
+    "rateOverTime": {
+      "__id__": 241
+    },
+    "rateOverDistance": {
+      "__id__": 242
+    },
+    "bursts": [],
+    "_shapeModule": {
+      "__id__": 243
+    },
+    "_colorOverLifetimeModule": {
+      "__id__": 245
+    },
+    "_forceOvertimeModule": {
+      "__id__": 254
+    },
+    "_rotationOvertimeModule": {
+      "__id__": 258
+    },
+    "_textureAnimationModule": {
+      "__id__": 262
+    },
+    "_renderMode": 0,
+    "_velocityScale": 1,
+    "_lengthScale": 1,
+    "_mesh": null,
+    "_id": ""
+  },
+  {
+    "__type__": "cc.CurveRange",
+    "mode": 0,
+    "constant": 0,
+    "multiplier": 1
+  },
+  {
+    "__type__": "cc.CurveRange",
+    "mode": 0,
+    "constant": 7,
+    "multiplier": 1
+  },
+  {
+    "__type__": "cc.GradientRange",
+    "_mode": 0,
+    "color": {
+      "__type__": "cc.Color",
+      "r": 255,
+      "g": 255,
+      "b": 255,
+      "a": 35
+    }
+  },
+  {
+    "__type__": "cc.CurveRange",
+    "mode": 3,
+    "constantMin": 6,
+    "constantMax": 10,
+    "multiplier": 1
+  },
+  {
+    "__type__": "cc.CurveRange",
+    "mode": 0,
+    "constant": 1,
+    "multiplier": 1
+  },
+  {
+    "__type__": "cc.CurveRange",
+    "mode": 0,
+    "constant": 0,
+    "multiplier": 1
+  },
+  {
+    "__type__": "cc.CurveRange",
+    "mode": 0,
+    "constant": 0,
+    "multiplier": 1
+  },
+  {
+    "__type__": "cc.CurveRange",
+    "mode": 0,
+    "constant": 5.3,
+    "multiplier": 1
+  },
+  {
+    "__type__": "cc.CurveRange",
+    "mode": 0,
+    "constant": 0,
+    "multiplier": 1
+  },
+  {
+    "__type__": "cc.ShapeModule",
+    "enable": true,
+    "_shapeType": 0,
+    "emitFrom": 3,
+    "radius": 5,
+    "radiusThickness": 1,
+    "_angle": 0.4363323129985824,
+    "_arc": 6.283185307179586,
+    "arcMode": 0,
+    "arcSpread": 0,
+    "arcSpeed": {
+      "__id__": 244
+    },
+    "length": 5,
+    "boxThickness": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "_position": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "_rotation": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "_scale": {
+      "__type__": "cc.Vec3",
+      "x": 10,
+      "y": 10,
+      "z": 1
+    },
+    "alignToDirection": false,
+    "randomDirectionAmount": 0,
+    "sphericalDirectionAmount": 0,
+    "randomPositionAmount": 0
+  },
+  {
+    "__type__": "cc.CurveRange",
+    "mode": 0,
+    "constant": 0,
+    "multiplier": 1
+  },
+  {
+    "__type__": "cc.ColorOvertimeModule",
+    "enable": true,
+    "color": {
+      "__id__": 246
+    }
+  },
+  {
+    "__type__": "cc.GradientRange",
+    "_mode": 1,
+    "gradient": {
+      "__id__": 247
+    }
+  },
+  {
+    "__type__": "cc.Gradient",
+    "colorKeys": [
+      {
+        "__id__": 248
+      },
+      {
+        "__id__": 249
+      },
+      {
+        "__id__": 250
+      }
+    ],
+    "alphaKeys": [
+      {
+        "__id__": 251
+      },
+      {
+        "__id__": 252
+      },
+      {
+        "__id__": 253
+      }
+    ],
+    "mode": 0
+  },
+  {
+    "__type__": "cc.ColorKey",
+    "color": {
+      "__type__": "cc.Color",
+      "r": 255,
+      "g": 255,
+      "b": 255,
+      "a": 255
+    },
+    "time": 0
+  },
+  {
+    "__type__": "cc.ColorKey",
+    "color": {
+      "__type__": "cc.Color",
+      "r": 255,
+      "g": 255,
+      "b": 255,
+      "a": 255
+    },
+    "time": 0.49772727272727274
+  },
+  {
+    "__type__": "cc.ColorKey",
+    "color": {
+      "__type__": "cc.Color",
+      "r": 255,
+      "g": 255,
+      "b": 255,
+      "a": 255
+    },
+    "time": 1
+  },
+  {
+    "__type__": "cc.AlphaKey",
+    "alpha": 1,
+    "time": 0
+  },
+  {
+    "__type__": "cc.AlphaKey",
+    "alpha": 255,
+    "time": 0.3340909090909091
+  },
+  {
+    "__type__": "cc.AlphaKey",
+    "alpha": 0,
+    "time": 1
+  },
+  {
+    "__type__": "cc.ForceOvertimeModule",
+    "enable": true,
+    "space": 1,
+    "x": {
+      "__id__": 255
+    },
+    "y": {
+      "__id__": 256
+    },
+    "z": {
+      "__id__": 257
+    }
+  },
+  {
+    "__type__": "cc.CurveRange",
+    "mode": 3,
+    "constantMin": 0.5,
+    "constantMax": 2,
+    "multiplier": 1
+  },
+  {
+    "__type__": "cc.CurveRange",
+    "mode": 0,
+    "constant": 0,
+    "multiplier": 1
+  },
+  {
+    "__type__": "cc.CurveRange",
+    "mode": 0,
+    "constant": 0,
+    "multiplier": 1
+  },
+  {
+    "__type__": "cc.RotationOvertimeModule",
+    "enable": true,
+    "_separateAxes": true,
+    "x": {
+      "__id__": 259
+    },
+    "y": {
+      "__id__": 260
+    },
+    "z": {
+      "__id__": 261
+    }
+  },
+  {
+    "__type__": "cc.CurveRange",
+    "mode": 0,
+    "constant": 0,
+    "multiplier": 1
+  },
+  {
+    "__type__": "cc.CurveRange",
+    "mode": 0,
+    "constant": 0,
+    "multiplier": 1
+  },
+  {
+    "__type__": "cc.CurveRange",
+    "mode": 3,
+    "constantMin": -5,
+    "constantMax": 5,
+    "multiplier": 1
+  },
+  {
+    "__type__": "cc.TextureAnimationModule",
+    "_enable": true,
+    "_mode": 0,
+    "_numTilesX": 2,
+    "_numTilesY": 2,
+    "animation": 0,
+    "randomRow": false,
+    "rowIndex": 0,
+    "frameOverTime": {
+      "__id__": 263
+    },
+    "startFrame": {
+      "__id__": 264
+    },
+    "cycleCount": 1
+  },
+  {
+    "__type__": "cc.CurveRange",
+    "mode": 0,
+    "constant": 0,
+    "multiplier": 1
+  },
+  {
+    "__type__": "cc.CurveRange",
+    "mode": 0,
+    "constant": 0,
+    "multiplier": 1
+  },
+  {
+    "__type__": "cc.PrefabInfo",
+    "root": {
+      "__id__": 231
+    },
+    "asset": {
+      "__uuid__": "bae6c3b6-610b-4d1f-87e2-4f24567063dd"
+    },
+    "fileId": "af2qFLXvZFX6jEZzBeMmDI",
+    "sync": false
+  },
+  {
+    "__type__": "cc.ParticleSystem3D",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 231
+    },
+    "_enabled": true,
+    "_materials": [
+      {
+        "__uuid__": "aeaf5ece-bace-45e8-8a25-bc02278f8feb"
+      }
+    ],
+    "duration": 5,
+    "_capacity": 100,
+    "loop": true,
+    "playOnAwake": true,
+    "_prewarm": false,
+    "_simulationSpace": 1,
+    "simulationSpeed": 1,
+    "startDelay": {
+      "__id__": 267
+    },
+    "startLifetime": {
+      "__id__": 268
+    },
+    "startColor": {
+      "__id__": 269
+    },
+    "scaleSpace": 1,
+    "startSize": {
+      "__id__": 270
+    },
+    "startSpeed": {
+      "__id__": 271
+    },
+    "startRotation": {
+      "__id__": 272
+    },
+    "gravityModifier": {
+      "__id__": 273
+    },
+    "rateOverTime": {
+      "__id__": 274
+    },
+    "rateOverDistance": {
+      "__id__": 275
+    },
+    "bursts": [
+      {
+        "__id__": 276
+      }
+    ],
+    "_rotationOvertimeModule": {
+      "__id__": 278
+    },
+    "_renderMode": 0,
+    "_velocityScale": 1,
+    "_lengthScale": 1,
+    "_mesh": null,
+    "_id": ""
+  },
+  {
+    "__type__": "cc.CurveRange",
+    "mode": 0,
+    "constant": 0,
+    "multiplier": 1
+  },
+  {
+    "__type__": "cc.CurveRange",
+    "mode": 0,
+    "constant": 5,
+    "multiplier": 1
+  },
+  {
+    "__type__": "cc.GradientRange",
+    "_mode": 0,
+    "color": {
+      "__type__": "cc.Color",
+      "r": 255,
+      "g": 255,
+      "b": 0,
+      "a": 255
+    }
+  },
+  {
+    "__type__": "cc.CurveRange",
+    "mode": 0,
+    "constant": 0,
+    "multiplier": 1
+  },
+  {
+    "__type__": "cc.CurveRange",
+    "mode": 0,
+    "constant": 0,
+    "multiplier": 1
+  },
+  {
+    "__type__": "cc.CurveRange",
+    "mode": 0,
+    "constant": 0,
+    "multiplier": 1
+  },
+  {
+    "__type__": "cc.CurveRange",
+    "mode": 0,
+    "constant": 0,
+    "multiplier": 1
+  },
+  {
+    "__type__": "cc.CurveRange",
+    "mode": 0,
+    "constant": 0,
+    "multiplier": 1
+  },
+  {
+    "__type__": "cc.CurveRange",
+    "mode": 0,
+    "constant": 0,
+    "multiplier": 1
+  },
+  {
+    "__type__": "cc.Burst",
+    "_time": 0,
+    "minCount": 30,
+    "maxCount": 30,
+    "_repeatCount": 1,
+    "repeatInterval": 1,
+    "count": {
+      "__id__": 277
+    }
+  },
+  {
+    "__type__": "cc.CurveRange",
+    "mode": 0,
+    "constant": 2,
+    "multiplier": 1
+  },
+  {
+    "__type__": "cc.RotationOvertimeModule",
+    "enable": true,
+    "_separateAxes": true,
+    "x": {
+      "__id__": 279
+    },
+    "y": {
+      "__id__": 280
+    },
+    "z": {
+      "__id__": 281
+    }
+  },
+  {
+    "__type__": "cc.CurveRange",
+    "mode": 0,
+    "constant": 0,
+    "multiplier": 1
+  },
+  {
+    "__type__": "cc.CurveRange",
+    "mode": 0,
+    "constant": 0,
+    "multiplier": 1
+  },
+  {
+    "__type__": "cc.CurveRange",
+    "mode": 0,
+    "constant": 5,
+    "multiplier": 1
+  },
+  {
+    "__type__": "cc.PrefabInfo",
+    "root": {
+      "__id__": 231
+    },
+    "asset": {
+      "__uuid__": "bae6c3b6-610b-4d1f-87e2-4f24567063dd"
+    },
+    "fileId": "149JWe7QRERbjnNiWGgJa3",
     "sync": false
   },
   {

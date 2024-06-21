@@ -529,7 +529,7 @@
     "node": {
       "__id__": 12
     },
-    "_enabled": true,
+    "_enabled": false,
     "_defaultClip": {
       "__uuid__": "cedb0a40-0fc0-4c15-93c5-543f586e22c2"
     },
@@ -566,9 +566,6 @@
     "_clips": [
       {
         "__uuid__": "09da3ddf-3c5b-41b1-a140-adc82bdd38a4"
-      },
-      {
-        "__uuid__": "8b15b2bd-a554-4323-8022-b06af00b3813"
       }
     ],
     "playOnLoad": true,
