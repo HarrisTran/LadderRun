@@ -13,7 +13,7 @@ export default class HideTrap extends cc.Component {
     protected start(): void {
         this.bodyTween = cc.tween(this.body)
             .to(0.15,{y: 0})
-            .call(()=>GameManager.Instance.audioManager.playSfx(ENUM_AUDIO_CLIP.TRAP_HIDE))
+            .call(()=>GameManager.Instance.audioManager.playSfx(ENUM_AUDIO_CLIP.TRAP_HIDE_STAND))
             .delay(0.3)
             .to(0.15,{y: -this.body.height})
             .union()

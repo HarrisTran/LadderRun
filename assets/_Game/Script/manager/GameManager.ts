@@ -155,9 +155,9 @@ export default class GameManager extends cc.Component {
         }
     }
 
-    private updateScore() {
+    private updateScore(data: number) {
         if (this.CurrentGameState == GameState.PLAYING) {
-            this.UIManager.gameLayer.setGameScore();
+            this.UIManager.gameLayer.setGameScore(data);
         }
     }
 

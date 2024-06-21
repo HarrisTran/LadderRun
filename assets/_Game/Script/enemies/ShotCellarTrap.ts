@@ -14,34 +14,31 @@ export default class ShotCellarTrap extends cc.Component {
         this.rock = this.node.getChildByName("rock");
     }
 
-    onCollisionEnter (other: cc.BoxCollider, self: cc.BoxCollider) {
-        if(other.tag == ENUM_COLLIDER_TAG.PLAYER && self.tag == ENUM_COLLIDER_TAG.HIDE_TRAP_VIEW){
+    onCollisionEnter(other: cc.BoxCollider, self: cc.BoxCollider) {
+        if (other.tag == ENUM_COLLIDER_TAG.PLAYER && self.tag == ENUM_COLLIDER_TAG.HIDE_TRAP_VIEW) {
             let animation = this.node.getChildByName('body');
-            if(animation){
-                let track = animation.getComponent(sp.Skeleton).setAnimation(0,'break',false);
-                animation.getComponent(sp.Skeleton).setTrackCompleteListener(track,(_,__)=>{
+            if (animation) {
+                let track = animation.getComponent(sp.Skeleton).setAnimation(0, 'break', false);
+                animation.getComponent(sp.Skeleton).setTrackCompleteListener(track, (_, __) => {
                     cc.tween(this.rock)
-                    .by(1, { y: -270 }, { easing: "sineIn" })
-                    .removeSelf()
-                    .call(() => {
-                        this.node.removeComponent(cc.Collider)
-                        animation.getComponent(sp.Skeleton).setAnimation(0,'idle',true)
-                    })
-                    .start();
+                        .by(1, { y: -270 }, { easing: "sineIn" })
+                        .removeSelf()
+                        .call(() => {
+                            this.node.removeComponent(cc.Collider)
+                            animation.getComponent(sp.Skeleton).setAnimation(0, 'idle', true)
+                        })
+                        .start();
                 })
-            }else{
-                this.playFallObstacle();
+            } else {
+                cc.tween(this.rock)
+                    .by(1.2, { y: -270 }, { easing: "sineIn" })
+                    .removeSelf()
+                    .call(() => this.node.active = false)
+                    .start();
             }
-            
+
             GameManager.Instance.audioManager.playSfx(ENUM_AUDIO_CLIP.TRAP_FALL)
         }
     }
 
-    playFallObstacle() {
-        cc.tween(this.rock)
-            .by(1.2, { y: -270 }, { easing: "sineIn" })
-            .removeSelf()
-            .call(() => this.node.active = false)
-            .start();
-    }
 }
