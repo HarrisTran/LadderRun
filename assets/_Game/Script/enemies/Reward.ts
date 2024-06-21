@@ -27,7 +27,7 @@ export default class Reward extends cc.Component {
             //StaticInstance.uiManager.setGameScore()
             GameManager.Instance.audioManager.playSfx(this.coinValue > 100 ? ENUM_AUDIO_CLIP.REWARD2: ENUM_AUDIO_CLIP.REWARD1);
             GameManager.Instance.playerDataManager.addScore(this.coinValue);
-            cc.game.emit(ENUM_GAME_EVENT.UPDATE_SCORE,this.coinValue);
+            cc.game.emit(ENUM_GAME_EVENT.UPDATE_SCORE);
             
             cc.game.emit(ENUM_GAME_EVENT.EFFECT_PICKUP_COIN,{pos: this.node.parent.parent.convertToWorldSpaceAR(this.node.position.clone()),type: this.coinValue > 100 ? 'diamond' : 'coin'})
 

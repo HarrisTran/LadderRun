@@ -166,7 +166,7 @@
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
     "_spriteFrame": {
-      "__uuid__": "885d2c7c-c35b-4134-a129-3e3688d6f04d"
+      "__uuid__": "780b667e-6c8c-4a10-9d6d-0597d5b5cd21"
     },
     "_type": 0,
     "_sizeMode": 0,
@@ -458,8 +458,8 @@
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
-      "x": 1,
-      "y": 0
+      "x": 0.95,
+      "y": 0.05
     },
     "_trs": {
       "__type__": "TypedArray",
