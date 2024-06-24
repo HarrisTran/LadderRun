@@ -8527,13 +8527,40 @@
     },
     "blockBGPrefab": [
       {
-        "__uuid__": "da0446ca-62ac-4011-9d59-e3eb7d12728d"
+        "__uuid__": "2bb79923-f2b7-4505-90c8-5192721df680"
       },
       {
-        "__uuid__": "bfcf83e4-e564-4cf8-95ce-a55f05db0554"
+        "__uuid__": "6c238a31-5930-4f6a-a9ad-029bdc27fcaa"
       },
       {
-        "__uuid__": "9c674a25-60e7-4e03-bc6b-c13a1e18ba4e"
+        "__uuid__": "d7983cca-7591-480f-b4f7-69a1000e06aa"
+      },
+      {
+        "__uuid__": "e5cdb6de-a8e6-401f-b2e9-6c77eff37700"
+      },
+      {
+        "__uuid__": "6456f8aa-bf2f-4ebe-ade7-4dda436d9783"
+      },
+      {
+        "__uuid__": "3b64ded0-4acf-4866-879c-48d775086b0d"
+      },
+      {
+        "__uuid__": "d687a809-ef20-4da6-b2d5-0c261c677a23"
+      },
+      {
+        "__uuid__": "110b23d8-f151-404f-b814-ff8f159fa546"
+      },
+      {
+        "__uuid__": "e96e4fd1-f3bd-4a35-9f87-e1f0a72d072b"
+      },
+      {
+        "__uuid__": "acecd836-951a-40bf-bb42-27bdb86dcded"
+      },
+      {
+        "__uuid__": "9fe8a8af-7393-4d8f-96e7-a115bef40b8b"
+      },
+      {
+        "__uuid__": "8fa072be-d7d9-48c0-a185-586cb4a0ea6d"
       }
     ],
     "_id": ""
