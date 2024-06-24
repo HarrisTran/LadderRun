@@ -788,7 +788,7 @@
         "__uuid__": "bd016186-7588-4f5b-a781-e9b5b371aaf5"
       }
     ],
-    "playOnLoad": false,
+    "playOnLoad": true,
     "_id": ""
   },
   {

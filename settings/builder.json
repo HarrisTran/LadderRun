@@ -1,12 +1,12 @@
 {
   "title": "LadderRun",
   "packageName": "org.cocos2d.demo",
-  "startScene": "62b83733-ef10-40f1-8b84-673c433c03e7",
+  "startScene": "2a7198e2-2c3b-432f-b260-46eca93f5054",
   "excludeScenes": [
     "c136c880-05f9-4e05-bf48-273a115ac7b8",
-    "117a6fca-2fbe-43e3-9c68-5667cd457350",
+    "62b83733-ef10-40f1-8b84-673c433c03e7",
     "3cc652da-f01d-4d8f-8e79-177dc9521b8c",
-    "2a7198e2-2c3b-432f-b260-46eca93f5054"
+    "117a6fca-2fbe-43e3-9c68-5667cd457350"
   ],
   "orientation": {
     "landscapeRight": true,

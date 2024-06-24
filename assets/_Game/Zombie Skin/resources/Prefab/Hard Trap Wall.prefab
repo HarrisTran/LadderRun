@@ -270,7 +270,7 @@
     },
     "_size": {
       "__type__": "cc.Size",
-      "width": 80,
+      "width": 30,
       "height": 55
     },
     "_id": ""
@@ -302,7 +302,7 @@
     },
     "_size": {
       "__type__": "cc.Size",
-      "width": 30,
+      "width": 25,
       "height": 4
     },
     "_id": ""

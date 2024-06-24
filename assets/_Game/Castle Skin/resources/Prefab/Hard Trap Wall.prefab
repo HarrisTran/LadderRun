@@ -270,7 +270,7 @@
     },
     "_size": {
       "__type__": "cc.Size",
-      "width": 88.4,
+      "width": 28,
       "height": 55
     },
     "_id": ""
@@ -297,12 +297,12 @@
     "tag": 29,
     "_offset": {
       "__type__": "cc.Vec2",
-      "x": 0,
+      "x": 2,
       "y": 55
     },
     "_size": {
       "__type__": "cc.Size",
-      "width": 30,
+      "width": 20,
       "height": 4
     },
     "_id": ""
