@@ -1,0 +1,111 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "block-3",
+  "_objFlags": 0,
+  "_native": "",
+  "_duration": 9.533333333333333,
+  "sample": 60,
+  "speed": 1,
+  "wrapMode": 2,
+  "curveData": {
+    "paths": {
+      "scientool/alien": {
+        "props": {
+          "position": [
+            {
+              "frame": 0,
+              "value": [
+                0,
+                105,
+                0
+              ],
+              "curve": "cubicInOut"
+            },
+            {
+              "frame": 3.9833333333333334,
+              "value": [
+                0,
+                85,
+                0
+              ],
+              "curve": "cubicInOut"
+            },
+            {
+              "frame": 8,
+              "value": [
+                0,
+                105,
+                0
+              ]
+            }
+          ]
+        }
+      },
+      "scientool copy/alien": {
+        "props": {
+          "position": [
+            {
+              "frame": 1.0166666666666666,
+              "value": [
+                0,
+                105,
+                0
+              ],
+              "curve": "cubicInOut"
+            },
+            {
+              "frame": 5,
+              "value": [
+                0,
+                85,
+                0
+              ],
+              "curve": "cubicInOut"
+            },
+            {
+              "frame": 9.016666666666667,
+              "value": [
+                0,
+                105,
+                0
+              ]
+            }
+          ]
+        }
+      },
+      "scientool2/alien": {
+        "props": {
+          "position": [
+            {
+              "frame": 1.5333333333333334,
+              "value": [
+                0,
+                105,
+                0
+              ],
+              "curve": "cubicInOut"
+            },
+            {
+              "frame": 5.516666666666667,
+              "value": [
+                0,
+                85,
+                0
+              ],
+              "curve": "cubicInOut"
+            },
+            {
+              "frame": 9.533333333333333,
+              "value": [
+                0,
+                105,
+                0
+              ]
+            }
+          ]
+        }
+      }
+    }
+  },
+  "events": []
+}
