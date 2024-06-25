@@ -49,7 +49,10 @@ export default class LoseLayer extends BaseLayer {
         
         let player = participants.find(user => user.userid == userId);
 
-        if(!player) return;
+        //if(!player) return;
+        if(!player) {
+            participants.push({userid: userId,score: 0})
+        }
        
         player.score += GameManager.Instance.playerDataManager.getScore();
         participants = participants.sort((a,b)=> b.score - a.score);

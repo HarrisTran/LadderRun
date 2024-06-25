@@ -3000,7 +3000,7 @@
         "__id__": 69
       }
     ],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 71
@@ -3423,7 +3423,7 @@
         "__id__": 78
       }
     ],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 80
@@ -3856,7 +3856,7 @@
       "__id__": 60
     },
     "_children": [],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 84
@@ -3982,8 +3982,12 @@
     "scrollView": {
       "__id__": 85
     },
-    "topItem": null,
-    "bottomItem": null,
+    "topItem": {
+      "__id__": 64
+    },
+    "bottomItem": {
+      "__id__": 73
+    },
     "playerFrame": {
       "__uuid__": "05d4f062-5a6d-4b90-a0bb-e571a1235c44"
     },
