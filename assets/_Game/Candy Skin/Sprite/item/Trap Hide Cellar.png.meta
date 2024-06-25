@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "de9348a3-a4a8-4016-8175-f1751fb37437",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 184,
+  "height": 110,
+  "platformSettings": {},
+  "subMetas": {
+    "Trap Hide Cellar": {
+      "ver": "1.0.6",
+      "uuid": "4fb32d5f-e8f8-47c1-bf4d-dbf965581fc0",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "de9348a3-a4a8-4016-8175-f1751fb37437",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 184,
+      "height": 110,
+      "rawWidth": 184,
+      "rawHeight": 110,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

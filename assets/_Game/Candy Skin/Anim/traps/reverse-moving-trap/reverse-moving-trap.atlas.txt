@@ -1,0 +1,76 @@
+
+reverse-moving-trap.png
+size: 512,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+body
+  rotate: false
+  xy: 2, 7
+  size: 212, 175
+  orig: 212, 175
+  offset: 0, 0
+  index: -1
+front-eye
+  rotate: false
+  xy: 284, 64
+  size: 63, 75
+  orig: 63, 76
+  offset: 0, 0
+  index: -1
+mouth
+  rotate: false
+  xy: 216, 141
+  size: 139, 41
+  orig: 139, 43
+  offset: 0, 1
+  index: -1
+rear-eye
+  rotate: false
+  xy: 349, 22
+  size: 56, 72
+  orig: 56, 74
+  offset: 0, 1
+  index: -1
+spike-1
+  rotate: false
+  xy: 216, 3
+  size: 60, 66
+  orig: 61, 67
+  offset: 1, 0
+  index: -1
+spike-2
+  rotate: false
+  xy: 357, 96
+  size: 80, 86
+  orig: 80, 88
+  offset: 0, 2
+  index: -1
+spike-3
+  rotate: false
+  xy: 216, 71
+  size: 66, 68
+  orig: 67, 68
+  offset: 0, 0
+  index: -1
+spike-4
+  rotate: true
+  xy: 278, 2
+  size: 60, 50
+  orig: 62, 51
+  offset: 1, 0
+  index: -1
+spike-5
+  rotate: false
+  xy: 407, 49
+  size: 32, 45
+  orig: 33, 45
+  offset: 0, 0
+  index: -1
+spike-6
+  rotate: false
+  xy: 439, 146
+  size: 28, 36
+  orig: 29, 36
+  offset: 0, 0
+  index: -1

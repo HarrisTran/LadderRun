@@ -26,6 +26,7 @@ export const SCENE_TO_RESOURCES_MAPPING : {[key:string]:string} = {
     'Castle Theme' : 'Castle',
     'Pyramid Theme' : 'Pyramid',
     'Zombie Theme' : 'Zombie',
+    'Candy Theme': 'Sweet'
 }
 
 export enum ENUM_GAME_STATUS {

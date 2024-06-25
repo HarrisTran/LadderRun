@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "a0c273d8-ff85-4df6-b322-c952808d1ceb",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 121,
+  "height": 135,
+  "platformSettings": {},
+  "subMetas": {
+    "Copper Medal": {
+      "ver": "1.0.6",
+      "uuid": "4c727b3d-b5bb-422b-952b-940d133c65f3",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "a0c273d8-ff85-4df6-b322-c952808d1ceb",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 121,
+      "height": 135,
+      "rawWidth": 121,
+      "rawHeight": 135,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}
