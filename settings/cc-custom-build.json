@@ -1,0 +1,5 @@
+{
+  "build-start": "../LadderRun/bin/build-start.js",
+  "build-finish": "../LadderRun/bin/build-finish.js",
+  "undefined": "../LadderRun/bin/build-finish.js"
+}
