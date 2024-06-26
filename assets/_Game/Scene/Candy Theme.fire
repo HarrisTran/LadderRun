@@ -2914,7 +2914,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 220,
-      "height": -12
+      "height": 83.9
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -2961,7 +2961,7 @@
     "_layoutSize": {
       "__type__": "cc.Size",
       "width": 220,
-      "height": -12
+      "height": 83.9
     },
     "_resize": 1,
     "_N$layoutType": 2,
@@ -3989,7 +3989,7 @@
       "__id__": 73
     },
     "playerFrame": {
-      "__uuid__": "05d4f062-5a6d-4b90-a0bb-e571a1235c44"
+      "__uuid__": "9d4b2917-4637-4ce0-8292-c2dd26968f29"
     },
     "_id": "1aCK6zsZxMm6I+5pIaIZLJ"
   },
@@ -4564,7 +4564,7 @@
       "__id__": 87
     },
     "itemRowPrefab": {
-      "__uuid__": "1f480f4b-4481-4c10-912c-e5d4ae884138"
+      "__uuid__": "a7b3a5e1-724b-4dde-9615-6f023ecfa8f0"
     },
     "playerFrame": {
       "__uuid__": "9d4b2917-4637-4ce0-8292-c2dd26968f29"

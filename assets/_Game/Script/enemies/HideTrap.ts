@@ -17,7 +17,7 @@ export default class HideTrap extends cc.Component {
             .delay(0.3)
             .to(0.15,{y: -this.body.height})
             .union()
-            .repeat(1000)
+            .repeat(100)
     }
 
     onCollisionEnter (other: cc.BoxCollider, self: cc.BoxCollider) {

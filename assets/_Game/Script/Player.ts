@@ -69,6 +69,7 @@ export default class Player extends cc.Component {
     protected onLoad(): void {
         this.canvas = cc.find('Canvas')
         cc.game.on(ENUM_GAME_EVENT.PLAYER_JUMP, this.onJump, this);
+        this.status = ENUM_PLAYER_STATUS.JUMP;
         setMix(this.spineSkeleton,'move','jump',0.1);
         setMix(this.spineSkeleton,'move','climb',0.1);
         setMix(this.spineSkeleton,'jump','move',0.1);

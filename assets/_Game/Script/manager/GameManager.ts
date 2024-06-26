@@ -190,7 +190,7 @@ export default class GameManager extends cc.Component {
         }
     }
 
-    initGame() {
+    async initGame() {
         if (!this.stageNode) return
         this.stageNode.removeAllChildren()
         const canvasHeight = cc.find('Canvas').height;
@@ -219,11 +219,12 @@ export default class GameManager extends cc.Component {
             this._previousBlockNode = block;
         }
         let firstBlock = getNextLastElement(this.stageNode.children).position.clone();
+        await delay(10);
         const player: cc.Node = PoolManager.instance.getNode(`player`, this.stageNode)
         player.zIndex = ENUM_GAME_ZINDEX.PLAYER;
-        player.setPosition(firstBlock);
+        player.setPosition(firstBlock.addSelf(cc.v3(-200,25)));
         player.getComponent(Player).setDir(1)
-        this._stayingPosition = player.getPosition();
+        this._stayingPosition = cc.v2(firstBlock);
     }
 
 
