@@ -115,6 +115,8 @@ export default class GameManager extends cc.Component {
     }
 
     private _initializeAllManagers(): void {
+        console.log("hello world");
+        
         this._allManagers = [];
 
         this.resourcesManager = new ResourceManager();
