@@ -303,13 +303,11 @@ export default class Player extends cc.Component {
     public holdMagnetBoosterHandle(dt :number){
         this.magnetBoosterDuration -= dt;
         this.magnet.active = true;
-        // console.log("magnet active");
     }
 
     public cancelMagnetBoosterHandle(){
         this.magnetBoosterDuration = 0;
         this.magnet.active = false;
-        // console.log("magnet deactive");
     }
 
     public holdShieldBoosterHandle(dt: number){
@@ -326,12 +324,10 @@ export default class Player extends cc.Component {
 
     public holdRandomBoosterHandle(dt :number){
         this.randomBoosterDuration -= dt;
-        // console.log("random active");
     }
 
     public cancelRandomBoosterHandle(){
         this.randomBoosterDuration = 0;
-        // console.log("random deactive");
     }
 
 
