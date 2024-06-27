@@ -27,14 +27,14 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 72
+        "__id__": 74
       },
       {
-        "__id__": 73
+        "__id__": 75
       }
     ],
     "_prefab": {
-      "__id__": 74
+      "__id__": 76
     },
     "_opacity": 255,
     "_color": {
@@ -199,7 +199,7 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "ee089cfe-84a6-46ec-a1b7-15c4a9c85933"
+      "__uuid__": "dc6a2089-c8a7-4a59-889f-377cf05971b0"
     },
     "fileId": "eaxhyn2S5MVKMX0f4+TNaX",
     "sync": false
@@ -223,7 +223,7 @@
       }
     ],
     "_prefab": {
-      "__id__": 71
+      "__id__": 73
     },
     "_opacity": 255,
     "_color": {
@@ -748,7 +748,7 @@
         "__uuid__": "f5d4f44b-00cc-48b1-a87c-d7cdff119d25"
       }
     ],
-    "duration": 5,
+    "duration": 1,
     "_capacity": 100,
     "loop": true,
     "playOnAwake": true,
@@ -783,12 +783,16 @@
     "rateOverDistance": {
       "__id__": 53
     },
-    "bursts": [],
+    "bursts": [
+      {
+        "__id__": 54
+      }
+    ],
     "_colorOverLifetimeModule": {
-      "__id__": 54
+      "__id__": 56
     },
     "_sizeOvertimeModule": {
-      "__id__": 62
+      "__id__": 64
     },
     "_renderMode": 0,
     "_velocityScale": 1,
@@ -805,7 +809,7 @@
   {
     "__type__": "cc.CurveRange",
     "mode": 0,
-    "constant": 0.2,
+    "constant": 0.7,
     "multiplier": 1
   },
   {
@@ -813,16 +817,16 @@
     "_mode": 0,
     "color": {
       "__type__": "cc.Color",
-      "r": 255,
-      "g": 0,
-      "b": 82,
-      "a": 50
+      "r": 235,
+      "g": 255,
+      "b": 0,
+      "a": 75
     }
   },
   {
     "__type__": "cc.CurveRange",
     "mode": 0,
-    "constant": 5,
+    "constant": 6,
     "multiplier": 1
   },
   {
@@ -846,48 +850,65 @@
   {
     "__type__": "cc.CurveRange",
     "mode": 0,
-    "constant": 5,
+    "constant": 0,
     "multiplier": 1
   },
   {
     "__type__": "cc.CurveRange",
     "mode": 0,
     "constant": 0,
+    "multiplier": 1
+  },
+  {
+    "__type__": "cc.Burst",
+    "_time": 0,
+    "minCount": 30,
+    "maxCount": 30,
+    "_repeatCount": 1,
+    "repeatInterval": 1,
+    "count": {
+      "__id__": 55
+    }
+  },
+  {
+    "__type__": "cc.CurveRange",
+    "mode": 0,
+    "constant": 0.9,
     "multiplier": 1
   },
   {
     "__type__": "cc.ColorOvertimeModule",
     "enable": true,
     "color": {
-      "__id__": 55
+      "__id__": 57
     }
   },
   {
     "__type__": "cc.GradientRange",
     "_mode": 1,
     "gradient": {
-      "__id__": 56
+      "__id__": 58
     }
   },
   {
     "__type__": "cc.Gradient",
     "colorKeys": [
       {
-        "__id__": 57
-      },
-      {
-        "__id__": 58
-      }
-    ],
-    "alphaKeys": [
-      {
         "__id__": 59
       },
       {
         "__id__": 60
-      },
+      }
+    ],
+    "alphaKeys": [
       {
         "__id__": 61
+      },
+      {
+        "__id__": 62
+      },
+      {
+        "__id__": 63
       }
     ],
     "mode": 0
@@ -926,7 +947,7 @@
   },
   {
     "__type__": "cc.AlphaKey",
-    "alpha": 255,
+    "alpha": 0,
     "time": 0.9977272727272727
   },
   {
@@ -934,23 +955,23 @@
     "enable": true,
     "separateAxes": false,
     "size": {
-      "__id__": 63
+      "__id__": 65
     },
     "x": {
-      "__id__": 68
+      "__id__": 70
     },
     "y": {
-      "__id__": 69
+      "__id__": 71
     },
     "z": {
-      "__id__": 70
+      "__id__": 72
     }
   },
   {
     "__type__": "cc.CurveRange",
     "mode": 1,
     "curve": {
-      "__id__": 64
+      "__id__": 66
     },
     "multiplier": 1
   },
@@ -958,13 +979,13 @@
     "__type__": "cc.AnimationCurve",
     "keyFrames": [
       {
-        "__id__": 65
-      },
-      {
-        "__id__": 66
-      },
-      {
         "__id__": 67
+      },
+      {
+        "__id__": 68
+      },
+      {
+        "__id__": 69
       }
     ],
     "preWrapMode": 4,
@@ -1058,7 +1079,7 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "ee089cfe-84a6-46ec-a1b7-15c4a9c85933"
+      "__uuid__": "dc6a2089-c8a7-4a59-889f-377cf05971b0"
     },
     "fileId": "",
     "sync": false

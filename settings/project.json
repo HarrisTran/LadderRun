@@ -30,14 +30,11 @@
     ]
   ],
   "excluded-modules": [
-    "Dynamic Atlas",
-    "DragonBones",
     "EditBox",
     "MotionStreak",
     "Native Socket",
     "Physics",
     "RichText",
-    "Renderer Texture",
     "StudioComponent",
     "Toggle",
     "TiledMap",
@@ -70,5 +67,5 @@
     }
   },
   "last-module-event-record-time": 1719398015800,
-  "start-scene": "62b83733-ef10-40f1-8b84-673c433c03e7"
+  "start-scene": "c42a9a49-cbf2-4c80-bdeb-91fa9c45f07e"
 }

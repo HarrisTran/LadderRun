@@ -27,14 +27,14 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 71
+        "__id__": 73
       },
       {
-        "__id__": 72
+        "__id__": 74
       }
     ],
     "_prefab": {
-      "__id__": 73
+      "__id__": 75
     },
     "_opacity": 255,
     "_color": {
@@ -185,7 +185,7 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "e85d4ba9-97a4-4f92-aebb-e8eb2fc6f365"
+      "__uuid__": "1cf593e7-fb7e-4acb-9db8-7914bc3617c9"
     },
     "fileId": "4dSRlSkwtHUYnJ3BE8l9wt",
     "sync": false
@@ -209,7 +209,7 @@
       }
     ],
     "_prefab": {
-      "__id__": 70
+      "__id__": 72
     },
     "_opacity": 255,
     "_color": {
@@ -734,7 +734,7 @@
         "__uuid__": "f5d4f44b-00cc-48b1-a87c-d7cdff119d25"
       }
     ],
-    "duration": 5,
+    "duration": 1,
     "_capacity": 100,
     "loop": true,
     "playOnAwake": true,
@@ -769,12 +769,16 @@
     "rateOverDistance": {
       "__id__": 52
     },
-    "bursts": [],
+    "bursts": [
+      {
+        "__id__": 53
+      }
+    ],
     "_colorOverLifetimeModule": {
-      "__id__": 53
+      "__id__": 55
     },
     "_sizeOvertimeModule": {
-      "__id__": 61
+      "__id__": 63
     },
     "_renderMode": 0,
     "_velocityScale": 1,
@@ -791,7 +795,7 @@
   {
     "__type__": "cc.CurveRange",
     "mode": 0,
-    "constant": 0.2,
+    "constant": 1,
     "multiplier": 1
   },
   {
@@ -802,13 +806,13 @@
       "r": 255,
       "g": 245,
       "b": 0,
-      "a": 50
+      "a": 75
     }
   },
   {
     "__type__": "cc.CurveRange",
     "mode": 0,
-    "constant": 5,
+    "constant": 8,
     "multiplier": 1
   },
   {
@@ -832,48 +836,65 @@
   {
     "__type__": "cc.CurveRange",
     "mode": 0,
-    "constant": 5,
+    "constant": 0,
     "multiplier": 1
   },
   {
     "__type__": "cc.CurveRange",
     "mode": 0,
     "constant": 0,
+    "multiplier": 1
+  },
+  {
+    "__type__": "cc.Burst",
+    "_time": 0,
+    "minCount": 30,
+    "maxCount": 30,
+    "_repeatCount": 1,
+    "repeatInterval": 1,
+    "count": {
+      "__id__": 54
+    }
+  },
+  {
+    "__type__": "cc.CurveRange",
+    "mode": 0,
+    "constant": 1,
     "multiplier": 1
   },
   {
     "__type__": "cc.ColorOvertimeModule",
     "enable": true,
     "color": {
-      "__id__": 54
+      "__id__": 56
     }
   },
   {
     "__type__": "cc.GradientRange",
     "_mode": 1,
     "gradient": {
-      "__id__": 55
+      "__id__": 57
     }
   },
   {
     "__type__": "cc.Gradient",
     "colorKeys": [
       {
-        "__id__": 56
-      },
-      {
-        "__id__": 57
-      }
-    ],
-    "alphaKeys": [
-      {
         "__id__": 58
       },
       {
         "__id__": 59
-      },
+      }
+    ],
+    "alphaKeys": [
       {
         "__id__": 60
+      },
+      {
+        "__id__": 61
+      },
+      {
+        "__id__": 62
       }
     ],
     "mode": 0
@@ -912,7 +933,7 @@
   },
   {
     "__type__": "cc.AlphaKey",
-    "alpha": 255,
+    "alpha": 0,
     "time": 0.9977272727272727
   },
   {
@@ -920,23 +941,23 @@
     "enable": true,
     "separateAxes": false,
     "size": {
-      "__id__": 62
+      "__id__": 64
     },
     "x": {
-      "__id__": 67
+      "__id__": 69
     },
     "y": {
-      "__id__": 68
+      "__id__": 70
     },
     "z": {
-      "__id__": 69
+      "__id__": 71
     }
   },
   {
     "__type__": "cc.CurveRange",
     "mode": 1,
     "curve": {
-      "__id__": 63
+      "__id__": 65
     },
     "multiplier": 1
   },
@@ -944,13 +965,13 @@
     "__type__": "cc.AnimationCurve",
     "keyFrames": [
       {
-        "__id__": 64
-      },
-      {
-        "__id__": 65
-      },
-      {
         "__id__": 66
+      },
+      {
+        "__id__": 67
+      },
+      {
+        "__id__": 68
       }
     ],
     "preWrapMode": 4,
@@ -1044,7 +1065,7 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "e85d4ba9-97a4-4f92-aebb-e8eb2fc6f365"
+      "__uuid__": "1cf593e7-fb7e-4acb-9db8-7914bc3617c9"
     },
     "fileId": "",
     "sync": false
