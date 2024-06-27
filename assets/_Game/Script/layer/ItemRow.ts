@@ -32,8 +32,6 @@ export default class item extends cc.Component {
         }
         this.medalSprite.spriteFrame = spriteFrame;
 
-        //console.log(this.yellowFrame);
-        
         this.scoreLabel.string = score.toString();
 
         this.index.string = rank.toString();

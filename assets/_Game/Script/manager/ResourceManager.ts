@@ -78,13 +78,6 @@ export default class ResourceManager implements IManager{
             },
             (error,assets)=>{
                 if (error) console.error(error);
-                // for (let i = 0; i < assets.length; i++) {
-                //     let asset : cc.JsonAsset = assets[i] as any as cc.JsonAsset;
-                //     console.log(asset);
-                    
-                //     //this.blockMap[asset.name] = {data: asset.json.data};
-                // }
-                // console.log(assets);
                 
                 let asset : cc.JsonAsset = assets[0] as any as cc.JsonAsset;
                 asset.json.forEach(source=>{
