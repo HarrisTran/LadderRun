@@ -1,0 +1,27 @@
+
+skeleton.png
+size: 48,1172
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Long ladder
+  rotate: false
+  xy: 2, 695
+  size: 44, 475
+  orig: 44, 475
+  offset: 0, 0
+  index: -1
+Medium Ladder
+  rotate: false
+  xy: 2, 304
+  size: 44, 389
+  orig: 44, 389
+  offset: 0, 0
+  index: -1
+Short Ladder
+  rotate: false
+  xy: 2, 2
+  size: 44, 300
+  orig: 44, 300
+  offset: 0, 0
+  index: -1
