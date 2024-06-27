@@ -106,14 +106,12 @@ export default class GameManager extends cc.Component {
 
     private _initializeGameEvents(): void {
         cc.game.on(ENUM_GAME_EVENT.GAME_START, this.onGameStart, this)
-        cc.game.on(ENUM_GAME_EVENT.GAME_RELIVE, this.onGameRelive, this)
         cc.game.on(ENUM_GAME_EVENT.PLAYER_CLIMB_END, this.onPlayerClimbEnd, this)
         cc.game.on(ENUM_GAME_EVENT.GAME_WIN, this.onGameWin, this)
         cc.game.on(ENUM_GAME_EVENT.GAME_LOSE, this.onGameLose, this)
         cc.game.on(ENUM_GAME_EVENT.UPDATE_SCORE, this.updateScore, this);
         cc.game.on(ENUM_GAME_EVENT.EFFECT_STAR_PLAY, this.onEffectStarPlay, this)
         cc.game.on(ENUM_GAME_EVENT.EFFECT_PICKUP_COIN,this.onEffectPickupCoin,this);
-        cc.game.on(ENUM_GAME_EVENT.GAME_OVER, this.onGameOver, this);
     }
 
     private _initializeAllManagers(): void {
@@ -161,15 +159,6 @@ export default class GameManager extends cc.Component {
         }
     }
 
-    onGameRelive() {
-    }
-
-    async onGameOver() {
-        await delay(1000);
-        // BackendConnector.instance.postScoreToServer(DataManager.instance.score)
-    }
-
-    // 过关
     onGameWin() {
 
     }
@@ -292,12 +281,10 @@ export default class GameManager extends cc.Component {
 
     protected onDestroy(): void {
         cc.game.off(ENUM_GAME_EVENT.GAME_START, this.onGameStart)
-        cc.game.off(ENUM_GAME_EVENT.GAME_RELIVE, this.onGameRelive)
         cc.game.off(ENUM_GAME_EVENT.PLAYER_CLIMB_END, this.onPlayerClimbEnd)
         cc.game.off(ENUM_GAME_EVENT.GAME_WIN, this.onGameWin)
         cc.game.off(ENUM_GAME_EVENT.GAME_LOSE, this.onGameLose)
         cc.game.off(ENUM_GAME_EVENT.EFFECT_STAR_PLAY, this.onEffectStarPlay)
-        cc.game.off(ENUM_GAME_EVENT.GAME_OVER, this.onGameOver);
     }
 
 }
