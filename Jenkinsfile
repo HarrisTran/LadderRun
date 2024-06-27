@@ -5,13 +5,13 @@ pipeline {
     stages{
         stage('Checkout'){
             steps{
-                checkout scm
-                sh 'npm update'
+                git 'https://github.com/HarrisTran/LadderRun.git'
             }
         }
 
         stage('Build') {
             steps{
+                sh 'npm update'
                 echo 'Building...'
             }
         }
