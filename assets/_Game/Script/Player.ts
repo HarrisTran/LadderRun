@@ -83,6 +83,7 @@ export default class Player extends cc.Component {
     }
 
     update (dt: number) {
+        dt *= 0.5
         // if(this.isDead()) return;
         if(this.isAir()) this.speed.y += this.gravity * dt
         if(!this.isClimb()) this.speed.x = this.walk * this.direction

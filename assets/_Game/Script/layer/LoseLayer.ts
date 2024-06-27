@@ -45,7 +45,7 @@ export default class LoseLayer extends BaseLayer {
         this.txtLoading.active = true;
         let userId = GameManager.Instance.APIManager.userId;
         
-        let participants = await GameManager.Instance.APIManager.getLeaderboardInGame();
+        let participants = []
         
         let player = participants.find(user => user.userid == userId);
 
@@ -53,6 +53,7 @@ export default class LoseLayer extends BaseLayer {
         if(!player) {
             participants.push({userid: userId,score: 0})
         }
+        player = participants.find(user => user.userid == userId);
        
         player.score += GameManager.Instance.playerDataManager.getScore();
         participants = participants.sort((a,b)=> b.score - a.score);

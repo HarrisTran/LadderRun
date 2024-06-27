@@ -20,24 +20,9 @@ export default class GameLayer extends BaseLayer {
     @property(cc.Prefab)
     diamondVfxPrefab: cc.Prefab = null;
 
-    private rollValue = {
-        value: 0
-    }
-
-    addRollValue(val: number) {
-        const newValue = this.rollValue.value + val;
-        cc.tween(this.rollValue)
-            .to(0.5, { value: newValue }, {
-                onUpdate: (target: { value: number }, ratio: number) => {
-                    // 取整后显示
-                    this.coinsLabel.string = (target.value).toFixed(0).toString();
-                }
-            })
-            .start();
-    }
-
 
     onEnable(){
+        this.setGameScore()
         //PoolManager.instance.getNode('player', this.node,this.node.convertToNodeSpaceAR(cc.v3(0)))
         this.node.on(cc.Node.EventType.TOUCH_START, this.onTouchStart, this)
         // this.historyNode.active = DataManager.instance.type == ENUM_GAME_TYPE.LOOP
@@ -76,15 +61,4 @@ export default class GameLayer extends BaseLayer {
         this.node.off(cc.Node.EventType.TOUCH_START, this.onTouchStart, this)
     }
 
-
-    // public spawnCoinAtPosition(position: cc.Vec3){ // world to local
-    //     const pos = position.add(new cc.Vec3(0, -200, 0))
-    //     const coin = PoolManager.instance.getNode('coin', this.node, pos);
-    //     cc.tween(coin)
-    //     .to(1,{position: this.pickupTarget.position},{easing: "sineOut"})
-    //     .call(()=>{
-    //         coin.removeFromParent();
-    //     })
-    //     .start();
-    // }
 }

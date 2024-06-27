@@ -261,6 +261,7 @@ export default class GameManager extends cc.Component {
                 break;
             }
         }
+
     }
 
     public getPlayerRelativePosition() {
