@@ -5,19 +5,6 @@ import { playParticle3D, setMix } from "./Utils";
 var timeScale = 1;
 const {ccclass, property} = cc._decorator;
 
-//@ts-ignore
-cc.game._calculateDT = function (now: number) {
-    if (!now) now = performance.now();
-        this._deltaTime = now > this._startTime ? (now - this._startTime) / 1000 : 0;
-        if (this._deltaTime > 1/60) {
-            this._deltaTime = this.frameTime / 1000;
-        }
-        this._startTime = now;
-        return this._deltaTime * timeScale;
-};
-
-
-
 let v3 = new cc.Vec3()
 @ccclass
 export default class Player extends cc.Component {
@@ -83,7 +70,6 @@ export default class Player extends cc.Component {
     }
 
     update (dt: number) {
-        dt *= 0.5
         // if(this.isDead()) return;
         if(this.isAir()) this.speed.y += this.gravity * dt
         if(!this.isClimb()) this.speed.x = this.walk * this.direction
