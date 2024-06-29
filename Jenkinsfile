@@ -2,22 +2,14 @@ pipeline {
     agent any
     tools {nodejs "node"}
     stages{
-        stage('Checkout'){
-            steps{
-                echo 'Checkout'
-            }
-        }
-
         stage('Build') {
             steps{
-                sh 'npm update'
-                echo 'Building...'
+                bat '/Applications/Cocos/Creator/2.4.6/CocosCreator.app --project . --build \"platform=web-desktop\"'
             }
         }
-
-        stage('Deploy') {
-            steps{
-                echo 'Deploying...'
+        stage('Archiving Artifacts') {
+            steps {
+                echo 'fuck'
             }
         }
     }
