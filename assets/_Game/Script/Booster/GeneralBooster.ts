@@ -46,6 +46,7 @@ export class GeneralBooster extends cc.Component {
                             break;
                     }
                     break;
+
             }
 
             this.node.removeComponent(cc.Collider);

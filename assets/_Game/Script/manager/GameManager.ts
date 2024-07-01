@@ -11,6 +11,7 @@ import UIManager from './UIManager';
 import AudioManager from './AudioManager';
 import { PlayerDataManager } from './PlayerDataManager';
 import BEConnector from '../BEConnector';
+import GachaManager from "../Gacha/GachaManager";
 
 const { ccclass, property } = cc._decorator;
 window.addEventListener('message', (data) => {
@@ -37,6 +38,7 @@ export default class GameManager extends cc.Component {
     @property({ type: cc.Enum(GameState), visible: false }) public CurrentGameState: GameState = GameState.MAIN_MENU;
 
     @property(UIManager) public UIManager: UIManager = null;
+    @property(GachaManager) public gachaManager: GachaManager = null;
     @property(AudioManager) public audioManager: AudioManager = null;
     @property(cc.Node) private stageNode: cc.Node = null
     @property(cc.Node) public lava: cc.Node = null;

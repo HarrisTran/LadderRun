@@ -9,6 +9,7 @@ const {ccclass, property} = cc._decorator;
 @ccclass
 export default class ShooterTrap extends cc.Component {
     @property(cc.Node) bulletNode : cc.Node = null;
+    @property(sp.Skeleton) animation : sp.Skeleton = null;
 
     _status: ENUM_SHOOTER_STATUS = ENUM_SHOOTER_STATUS.IDLE
     //animation: cc.Animation = null
@@ -50,6 +51,7 @@ export default class ShooterTrap extends cc.Component {
     onCollisionExit (other: cc.BoxCollider, self: cc.BoxCollider) {
         if(other.tag == ENUM_COLLIDER_TAG.PLAYER && self.tag == ENUM_COLLIDER_TAG.HIDE_TRAP_VIEW){
             this.isShoot = false;
+            this.animation.setAnimation(0,'idle',true);
             this.unschedule(this.onBulletBuild);
             // AudioManager.instance.stopSound(this.attackSoundId);
         }
@@ -59,7 +61,8 @@ export default class ShooterTrap extends cc.Component {
         if(!GameManager.Instance.isStatePlay()) return
         this.status = ENUM_SHOOTER_STATUS.ATTACK
         GameManager.Instance.audioManager.playSfx(ENUM_AUDIO_CLIP.TRAP_SHOT_REAR);
-        const bullet = PoolManager.instance.getNode('bullet', this.bulletNode)
+        this.animation.setAnimation(0,'shoot',false);
+        PoolManager.instance.getNode('bullet', this.bulletNode)
     }
  
     onFinished(){

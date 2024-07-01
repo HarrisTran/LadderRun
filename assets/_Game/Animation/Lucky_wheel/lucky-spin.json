@@ -1,0 +1,130 @@
+{
+"skeleton": {
+	"hash": "sKAs3NK0GSdpZcOpBJA0pZ3Vlxo",
+	"spine": "3.8.99",
+	"x": -541,
+	"y": -557,
+	"width": 1087,
+	"height": 1227,
+	"images": "",
+	"audio": "D:/Huy 2D Animation/works/2024/Product/Galaxy Seeker/Reward Animation/lucky-spin"
+},
+"bones": [
+	{ "name": "root" },
+	{ "name": "pivot", "parent": "root" },
+	{ "name": "wheel", "parent": "pivot", "length": 415.93, "y": 3.5 },
+	{ "name": "arrow", "parent": "pivot", "x": -3.78, "y": 505.13 },
+	{ "name": "spin-button", "parent": "pivot" },
+	{ "name": "slot01", "parent": "wheel", "length": 80, "x": 3.31, "y": 264.08 },
+	{ "name": "slot02", "parent": "wheel", "length": 80, "rotation": 36, "x": -152.54, "y": 215.59 },
+	{ "name": "slot03", "parent": "wheel", "length": 80, "rotation": 72, "x": -250.13, "y": 84.75 },
+	{ "name": "slot04", "parent": "wheel", "length": 80, "rotation": 108, "x": -252.18, "y": -78.45 },
+	{ "name": "slot05", "parent": "wheel", "length": 80, "rotation": 144, "x": -157.9, "y": -211.7 },
+	{ "name": "slot06", "parent": "wheel", "length": 80, "rotation": 180, "x": -3.31, "y": -264.08 },
+	{ "name": "slot07", "parent": "wheel", "length": 80, "rotation": -144, "x": 152.54, "y": -215.59 },
+	{ "name": "slot08", "parent": "wheel", "length": 80, "rotation": -108, "x": 250.13, "y": -84.75 },
+	{ "name": "slot09", "parent": "wheel", "length": 80, "rotation": -72, "x": 252.18, "y": 78.46 },
+	{ "name": "slot10", "parent": "wheel", "length": 80, "rotation": -36, "x": 157.9, "y": 211.7 }
+],
+"slots": [
+	{ "name": "base", "bone": "pivot", "attachment": "base" },
+	{ "name": "wheel", "bone": "wheel", "attachment": "wheel" },
+	{ "name": "button", "bone": "spin-button", "attachment": "button" },
+	{ "name": "arrow", "bone": "arrow", "attachment": "arrow" },
+	{ "name": "txt-spin", "bone": "spin-button", "attachment": "txt-spin" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"arrow": {
+				"arrow": { "x": 6.28, "y": 7.37, "width": 205, "height": 315 }
+			},
+			"base": {
+				"base": { "x": 2.5, "y": -7.5, "width": 1087, "height": 1099 }
+			},
+			"button": {
+				"button": { "width": 264, "height": 264 }
+			},
+			"txt-spin": {
+				"txt-spin": { "y": -2.5, "width": 216, "height": 123 }
+			},
+			"wheel": {
+				"wheel": { "width": 888, "height": 887 }
+			}
+		}
+	}
+],
+"animations": {
+	"appear": {
+		"slots": {
+			"arrow": {
+				"color": [
+					{ "color": "ffffff00", "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.1667, "color": "ffffffff" }
+				]
+			},
+			"base": {
+				"color": [
+					{ "color": "ffffff00", "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.1667, "color": "ffffffff" }
+				]
+			},
+			"button": {
+				"color": [
+					{ "color": "ffffff00", "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.1667, "color": "ffffffff" }
+				]
+			},
+			"txt-spin": {
+				"color": [
+					{ "color": "ffffff00", "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.1667, "color": "ffffffff" }
+				]
+			},
+			"wheel": {
+				"color": [
+					{ "color": "ffffff00", "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.1667, "color": "ffffffff" }
+				]
+			}
+		},
+		"bones": {
+			"pivot": {
+				"scale": [
+					{ "x": 0.8, "y": 0.8, "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.2667, "x": 1.1, "y": 1.1, "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.5333 }
+				]
+			}
+		}
+	},
+	"idle": {
+		"bones": {
+			"wheel": {
+				"rotate": [
+					{},
+					{ "time": 3.3333, "angle": 90 },
+					{ "time": 6.6667, "angle": 180 },
+					{ "time": 10, "angle": -90 },
+					{ "time": 13.3333 }
+				]
+			}
+		}
+	},
+	"spin": {
+		"bones": {
+			"wheel": {
+				"rotate": [
+					{},
+					{ "time": 0.1333, "angle": -90 },
+					{ "time": 0.2667, "angle": 180 },
+					{ "time": 0.4, "angle": 90 },
+					{ "time": 0.5333 }
+				]
+			}
+		}
+	},
+	"stop": {}
+}
+}

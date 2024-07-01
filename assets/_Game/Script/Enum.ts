@@ -97,6 +97,7 @@ export enum ENUM_COLLIDER_TAG {
 
     MAGNET_RANGE = 28,
     HARD_TRAP_STAND = 29,
+    GACHA_BOOSTER = 30,
 
     ENEMY_VIEW_ZONE = 50,
 }
@@ -202,6 +203,7 @@ export enum ITEM_CODE
     BOOSTER_SHIELD,
     BOOSTER_RANDOM,
     TRAMPOLINE,
+    BOOSTER_GACHA,
 }
 
 export const ENUM_ITEM_COLLECTION = {
@@ -228,5 +230,6 @@ export const ENUM_ITEM_COLLECTION = {
     [ITEM_CODE.BOOSTER_MAGNET] : 'Booster Magnet',
     [ITEM_CODE.BOOSTER_SHIELD] : 'Booster Shield',
     [ITEM_CODE.BOOSTER_RANDOM] : 'Booster Random',
-    [ITEM_CODE.TRAMPOLINE] : 'Trampoline'
+    [ITEM_CODE.TRAMPOLINE] : 'Trampoline',
+    [ITEM_CODE.BOOSTER_GACHA] : 'Booster Gacha'
 }
