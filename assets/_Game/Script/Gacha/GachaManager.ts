@@ -26,7 +26,7 @@ var RewardType = cc.Enum({
 })
 
 @ccclass('RewardConfig')
-class RewardConfig {
+export class RewardConfig {
     @property(cc.String)
     public id: string = '';
     @property({ type: RewardType })
