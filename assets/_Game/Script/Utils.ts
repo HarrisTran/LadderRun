@@ -10,7 +10,9 @@ export function randomInList<T>(lst: T[]): T | undefined {
     return lst[Math.floor(Math.random() * lst.length)];
 }
 
-export function shuffle(arr: any[]) {
+
+
+export function shuffle<T>(arr: T[]) {
     let length: number = arr.length,
         randomIndex: number,
         temp: any;

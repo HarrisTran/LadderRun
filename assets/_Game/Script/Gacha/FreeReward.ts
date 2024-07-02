@@ -6,7 +6,6 @@ const {ccclass, property} = cc._decorator;
 export default class FreeReward extends cc.Component {
     @property(sp.Skeleton) animation : sp.Skeleton = null;
     @property(cc.Sprite) gift : cc.Sprite = null;
-    @property(cc.Label) private rewardLabel: cc.Label = null;
 
     private _opened: boolean = false;
 
@@ -34,7 +33,6 @@ export default class FreeReward extends cc.Component {
         if (reward) {
             this.animation.setAnimation(0,'open',false);
             this.gift.spriteFrame = reward.icon;
-            reward.quantity > 1 ? this.rewardLabel.string = `${reward.quantity} x`: '';
             return;
         }
     }

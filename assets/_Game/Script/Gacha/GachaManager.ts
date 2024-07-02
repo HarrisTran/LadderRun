@@ -27,12 +27,12 @@ var RewardType = cc.Enum({
 
 @ccclass('RewardConfig')
 class RewardConfig {
+    @property(cc.String)
+    public id: string = '';
     @property({ type: RewardType })
     public type: number = RewardType.MAGNET;
     @property(cc.SpriteFrame)
     public icon: cc.SpriteFrame = null;
-    @property(cc.Integer)
-    public quantity: number = 0;
 }
 
 @ccclass
