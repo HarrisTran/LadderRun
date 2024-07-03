@@ -2,7 +2,6 @@ import ReverseMovingTrap from "./enemies/ReverseMovingTrap";
 import { ENUM_COLLIDER_TAG, ENUM_PLAYER_STATUS, ENUM_GAME_EVENT, GameState, ENUM_AUDIO_CLIP} from "./Enum";
 import GameManager from "./manager/GameManager";
 import { playParticle3D, setMix } from "./Utils";
-var timeScale = 1;
 const {ccclass, property} = cc._decorator;
 
 let v3 = new cc.Vec3()
@@ -54,8 +53,14 @@ export default class Player extends cc.Component {
 
     protected onLoad(): void {
         this.canvas = cc.find('Canvas')
+
         cc.game.on(ENUM_GAME_EVENT.PLAYER_JUMP, this.onJump, this);
+        cc.game.on(ENUM_GAME_EVENT.CLAIM_MAGNET_BOOSTER,this._claimMagnetBooster,this);
+        cc.game.on(ENUM_GAME_EVENT.CLAIM_SHIELD_BOOSTER,this._claimShieldBooster,this);
+        cc.game.on(ENUM_GAME_EVENT.CLAIM_SPEED_BOOSTER,this._claimSpeedBooster,this);
+
         this.status = ENUM_PLAYER_STATUS.JUMP;
+
         setMix(this.spineSkeleton,'move','jump',0.1);
         setMix(this.spineSkeleton,'move','climb',0.1);
         setMix(this.spineSkeleton,'jump','move',0.1);
@@ -66,6 +71,9 @@ export default class Player extends cc.Component {
 
     protected onDestroy(): void {
         cc.game.off(ENUM_GAME_EVENT.PLAYER_JUMP, this.onJump)
+        cc.game.off(ENUM_GAME_EVENT.CLAIM_MAGNET_BOOSTER,this._claimMagnetBooster,this);
+        cc.game.off(ENUM_GAME_EVENT.CLAIM_SHIELD_BOOSTER,this._claimShieldBooster,this);
+        cc.game.off(ENUM_GAME_EVENT.CLAIM_SPEED_BOOSTER,this._claimSpeedBooster,this);
     }
 
     update (dt: number) {
@@ -81,7 +89,6 @@ export default class Player extends cc.Component {
             this.shieldBoosterDuration > 0 ? this.holdShieldBoosterHandle(dt) : this.cancelShieldBoosterHandle();
         }
         this.node.y += this.speed.y * dt
-        //this.survivalVFX.node.active = this._enablePowerUp
     }
 
     setDir(dir: number = 1){
@@ -92,7 +99,6 @@ export default class Player extends cc.Component {
     }
 
     onJump(){
-        // if(this.isDead()) return;
         if(GameManager.Instance.CurrentGameState != GameState.PLAYING) return
         this.jumpCount++
         if(this.jumpCount > this.jumpLimit || this.isClimb()) return
@@ -109,22 +115,15 @@ export default class Player extends cc.Component {
     }
 
     onAnimPlay(){
-        // if(this.anim && this.anim.currentClip?.name != this.status){
-        //     this.anim.play(this.status)
-        // } 
-        
         if(this._status == ENUM_PLAYER_STATUS.CLIMB){
             this.spineSkeleton.setAnimation(0,'climb',true)
         }
         else if(this._status == ENUM_PLAYER_STATUS.WALK){
-            //this.spineSkeleton.clearTracks();
             this.spineSkeleton.setAnimation(0,'move',true)
         }
         else if(this._status == ENUM_PLAYER_STATUS.JUMP){
-            let track = this.spineSkeleton.setAnimation(0,'jump',false)
-            timeScale = 0.2;
+            this.spineSkeleton.setAnimation(0,'jump',false)
         }
-
     }
 
 
@@ -136,7 +135,6 @@ export default class Player extends cc.Component {
         let deadTrack = this.spineSkeleton.setAnimation(0,'dead',false);
         this.spineSkeleton.setTrackCompleteListener(deadTrack,(track: sp.spine.TrackEntry,_)=>{
             this.node.active = false;
-            //cc.game.emit(ENUM_GAME_EVENT.GAME_LOSE);
         })
     }
 
@@ -288,6 +286,10 @@ export default class Player extends cc.Component {
         }
     }
 
+    private _claimSpeedBooster(){
+        this.speedBoosterDuration = 10;
+    }
+
     public holdSpeedBoosterHandle(dt:number){
         this.speedBoosterDuration -= dt;
         this.speedVfx.active = true;
@@ -300,6 +302,10 @@ export default class Player extends cc.Component {
         this.walk = 150;
     }
 
+    private _claimMagnetBooster(){
+        this.magnetBoosterDuration = 10;
+    }
+
     public holdMagnetBoosterHandle(dt :number){
         this.magnetBoosterDuration -= dt;
         this.magnet.active = true;
@@ -308,6 +314,10 @@ export default class Player extends cc.Component {
     public cancelMagnetBoosterHandle(){
         this.magnetBoosterDuration = 0;
         this.magnet.active = false;
+    }
+
+    private _claimShieldBooster(){
+        this.shieldBoosterDuration = 10;
     }
 
     public holdShieldBoosterHandle(dt: number){

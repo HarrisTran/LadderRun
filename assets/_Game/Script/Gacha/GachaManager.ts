@@ -1,4 +1,5 @@
 import { ENUM_GAME_EVENT } from "../Enum";
+import GameManager from "../manager/GameManager";
 import { randomInList } from "../Utils";
 
 const { ccclass, property } = cc._decorator;
@@ -22,7 +23,6 @@ var RewardType = cc.Enum({
     SPEED: 0,
     SHIELD: 1,
     MAGNET: 2,
-    RANDOM: 3,
     COIN: 4,
 })
 
@@ -60,6 +60,7 @@ export default class GachaManager extends cc.Component {
 
     hide(){
         this.animateHide();
+        this._requestReward();
     }
 
     protected async animateShow() {
@@ -83,6 +84,48 @@ export default class GachaManager extends cc.Component {
             this.node.active = false;
         },0.1)
     }    
+
+    private _requestReward() {
+        switch (this._reward.id) {
+            case 'GMN':
+                cc.game.emit(ENUM_GAME_EVENT.CLAIM_MAGNET_BOOSTER);
+                break;
+            case 'GSH':
+                cc.game.emit(ENUM_GAME_EVENT.CLAIM_SHIELD_BOOSTER);
+                break;
+            case 'GSP':
+                cc.game.emit(ENUM_GAME_EVENT.CLAIM_SPEED_BOOSTER);
+                break;
+            case 'GC100':
+                cc.game.emit(ENUM_GAME_EVENT.UPDATE_SCORE,100);
+                GameManager.Instance.UIManager.gameLayer.pickUpCoin(cc.v3(0));
+                break;
+            case 'GC150':
+                cc.game.emit(ENUM_GAME_EVENT.UPDATE_SCORE,150);
+                GameManager.Instance.UIManager.gameLayer.pickUpCoin(cc.v3(0));
+                break;
+            case 'GC200':
+                cc.game.emit(ENUM_GAME_EVENT.UPDATE_SCORE,200);
+                GameManager.Instance.UIManager.gameLayer.pickUpCoin(cc.v3(0));
+                break;
+            case 'GC250':
+                cc.game.emit(ENUM_GAME_EVENT.UPDATE_SCORE,250);
+                GameManager.Instance.UIManager.gameLayer.pickUpCoin(cc.v3(0));
+                break;
+            case 'GC300':
+                cc.game.emit(ENUM_GAME_EVENT.UPDATE_SCORE,300);
+                GameManager.Instance.UIManager.gameLayer.pickUpCoin(cc.v3(0));
+                break;
+            case 'GC350':
+                cc.game.emit(ENUM_GAME_EVENT.UPDATE_SCORE,350);
+                GameManager.Instance.UIManager.gameLayer.pickUpCoin(cc.v3(0));
+                break;
+            case 'GC400':
+                cc.game.emit(ENUM_GAME_EVENT.UPDATE_SCORE,400);
+                GameManager.Instance.UIManager.gameLayer.pickUpCoin(cc.v3(0));
+                break;
+        }
+    }
 
     onShowStart(){
         cc.game.emit(ENUM_GAME_EVENT.UPDATE_GAME_TICK,0)

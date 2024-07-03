@@ -6,26 +6,28 @@ const {ccclass, property} = cc._decorator;
 @ccclass
 export default class ShotCellarTrap extends cc.Component {
     @property(cc.Node) rock : cc.Node = null;
+    @property(sp.Skeleton) animation : sp.Skeleton = null;
 
-    //animation: cc.Animation = null
-    
-    protected onLoad(): void {
-        //this.animation = this.node.getComponent(cc.Animation);
-        this.rock = this.node.getChildByName("rock");
-    }
 
     onCollisionEnter(other: cc.BoxCollider, self: cc.BoxCollider) {
         if (other.tag == ENUM_COLLIDER_TAG.PLAYER && self.tag == ENUM_COLLIDER_TAG.HIDE_TRAP_VIEW) {
-            let animation = this.node.getChildByName('body');
-            if (animation) {
-                let track = animation.getComponent(sp.Skeleton).setAnimation(0, 'break', false);
-                animation.getComponent(sp.Skeleton).setTrackCompleteListener(track, (_, __) => {
+            if (this.animation) {
+                let vertexEffect = new sp.VertexEffectDelegate()
+
+                vertexEffect.initJitter(10,4);
+
+                this.animation.setVertexEffectDelegate(vertexEffect)
+
+                let track = this.animation.setAnimation(0, 'break', false);
+                this.animation.setTrackCompleteListener(track, (_, __) => {
+                    vertexEffect.clear();
                     cc.tween(this.rock)
                         .by(1, { y: -270 }, { easing: "sineIn" })
                         .removeSelf()
                         .call(() => {
                             this.node.removeComponent(cc.Collider)
-                            animation.getComponent(sp.Skeleton).setAnimation(0, 'idle', true)
+                            this.animation.setVertexEffectDelegate(vertexEffect)
+                            this.animation.setAnimation(0, 'idle', true)
                         })
                         .start();
                 })
