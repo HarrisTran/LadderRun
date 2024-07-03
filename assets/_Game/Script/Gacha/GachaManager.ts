@@ -58,6 +58,10 @@ export default class GachaManager extends cc.Component {
         this.animateShow();
     }
 
+    hide(){
+        this.animateHide();
+    }
+
     protected async animateShow() {
         this.node.active = true;
         this.panelContent.scale = 0;
@@ -67,9 +71,18 @@ export default class GachaManager extends cc.Component {
         this.TweenShowAlphaBG(this.background, 0.5).start();
         this.scheduleOnce(()=>{
             this.onShowEnd();
-        })
-
+        },0.1)
     }
+
+    protected async animateHide() {
+        this.onHideStart();
+        this.TweenHideScalePopup(this.panelContent, 0.5).start();
+        this.TweenHideAlphaBG(this.background, 0.5).start();
+        this.scheduleOnce(()=>{
+            this.onHideEnd();
+            this.node.active = false;
+        },0.1)
+    }    
 
     onShowStart(){
         cc.game.emit(ENUM_GAME_EVENT.UPDATE_GAME_TICK,0)
@@ -80,12 +93,29 @@ export default class GachaManager extends cc.Component {
         gacha.gacha.active = true;
     }
 
+    onHideStart(){
+        let gacha = this.gachas.find((gacha)=>gacha.type === this._showingGachaType)
+        gacha.gacha.active = false;
+    }
+
+    onHideEnd(){
+        cc.game.emit(ENUM_GAME_EVENT.UPDATE_GAME_TICK,1)
+    }
+
     protected TweenShowScalePopUp(target: cc.Node, time: number, scale: number): cc.Tween<cc.Node> {
         return cc.tween(target).to(time, { scale: scale }, { easing: 'backOut' })
     }
 
     protected TweenShowAlphaBG(target: cc.Node, time: number): cc.Tween<cc.Node> {
         return cc.tween(target.opacity).to(time, { opacity: 255 }, { easing: 'quadOut' })
+    }
+
+    protected TweenHideScalePopup(target: cc.Node, time: number): cc.Tween<cc.Node> {
+        return cc.tween(target).to(time, { scale: 0 }, { easing: 'backOut' })
+    }
+
+    protected TweenHideAlphaBG(target: cc.Node, time: number): cc.Tween<cc.Node> {
+        return cc.tween(target.opacity).to(time, { opacity: 0 }, { easing: 'quadOut' })
     }
 
 

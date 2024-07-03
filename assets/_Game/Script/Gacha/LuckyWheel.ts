@@ -31,7 +31,6 @@ export default class LuckyWheel extends cc.Component {
             this.items[i].spriteFrame = luckyWheelData[i].icon;
         }
         const reward = GameManager.Instance.gachaManager.getReward();
-        console.log("Reward: " + reward.id);
         
         let prizeIndex : number = luckyWheelData.findIndex(i=>i.id == reward.id) + 1;
 
@@ -54,8 +53,17 @@ export default class LuckyWheel extends cc.Component {
             {easing: 'quintOut'}
         )
         .call(()=>{
-            cc.tween(this.items[prizeIndex-1].node).to(0.2,{scale : 1.25}).to(0.2,{scale: 1}).start();
+            cc.tween(this.items[prizeIndex-1].node)
+            .to(0.2,{scale : 1.25})
+            .to(0.2,{scale: 1})
+            .call(()=> GameManager.Instance.gachaManager.hide())
+            .start();
         })
+    }
+
+    protected onDisable(): void {
+        this._wheelBone.rotation = 0;
+        this._wheelBone.update();
     }
 
     public spin(){

@@ -51,7 +51,7 @@ export default class ShooterTrap extends cc.Component {
     onCollisionExit (other: cc.BoxCollider, self: cc.BoxCollider) {
         if(other.tag == ENUM_COLLIDER_TAG.PLAYER && self.tag == ENUM_COLLIDER_TAG.HIDE_TRAP_VIEW){
             this.isShoot = false;
-            this.animation.setAnimation(0,'idle',true);
+            this.animation && this.animation.setAnimation(0,'idle',true);
             this.unschedule(this.onBulletBuild);
             // AudioManager.instance.stopSound(this.attackSoundId);
         }
@@ -61,7 +61,7 @@ export default class ShooterTrap extends cc.Component {
         if(!GameManager.Instance.isStatePlay()) return
         this.status = ENUM_SHOOTER_STATUS.ATTACK
         GameManager.Instance.audioManager.playSfx(ENUM_AUDIO_CLIP.TRAP_SHOT_REAR);
-        this.animation.setAnimation(0,'shoot',false);
+        this.animation && this.animation.setAnimation(0,'shoot',false);
         PoolManager.instance.getNode('bullet', this.bulletNode)
     }
  

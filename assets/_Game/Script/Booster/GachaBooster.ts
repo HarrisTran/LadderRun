@@ -8,6 +8,7 @@
 import { ENUM_COLLIDER_TAG } from "../Enum";
 import { GachaType } from "../Gacha/GachaManager";
 import GameManager from "../manager/GameManager";
+import { random } from "../Utils";
 
 const { ccclass, property } = cc._decorator;
 
@@ -17,7 +18,7 @@ export default class GachaBooster extends cc.Component {
 
     onCollisionEnter(other: cc.Collider, self: cc.Collider) {
         if (other.tag === ENUM_COLLIDER_TAG.PLAYER) {
-            this.gachaType = GachaType.LuckyChain
+            this.gachaType = GachaType.FlipCard
             GameManager.Instance.gachaManager.show(this.gachaType);
         }
         this.node.removeComponent(cc.Collider);

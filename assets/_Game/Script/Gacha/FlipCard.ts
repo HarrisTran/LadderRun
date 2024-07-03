@@ -38,7 +38,10 @@ export default class FlipCard extends cc.Component {
         const reward = GameManager.Instance.gachaManager.getReward();
         if (reward) {
             this.cards[0].spriteFrame = reward.icon;
-            this.animation.setAnimation(0,`card1-active`, false);
+            let track = this.animation.setAnimation(0,`card1-active`, false);
+            this.animation.setTrackCompleteListener(track,()=>{
+                GameManager.Instance.gachaManager.hide();
+            })
             return;
         }
     }
@@ -48,7 +51,10 @@ export default class FlipCard extends cc.Component {
         const reward = GameManager.Instance.gachaManager.getReward();
         if (reward) {
             this.cards[1].spriteFrame = reward.icon;
-            this.animation.setAnimation(0,`card2-active`, false);
+            let track = this.animation.setAnimation(0,`card2-active`, false);
+            this.animation.setTrackCompleteListener(track,()=>{
+                GameManager.Instance.gachaManager.hide();
+            })
             return;
         }
     }
@@ -58,7 +64,10 @@ export default class FlipCard extends cc.Component {
         const reward = GameManager.Instance.gachaManager.getReward();
         if (reward) {
             this.cards[2].spriteFrame = reward.icon;
-            this.animation.setAnimation(0,`card3-active`, false);
+            let track = this.animation.setAnimation(0,`card3-active`, false);
+            this.animation.setTrackCompleteListener(track,()=>{
+                GameManager.Instance.gachaManager.hide();
+            })
             return;
         }
     }
@@ -68,7 +77,10 @@ export default class FlipCard extends cc.Component {
         const reward = GameManager.Instance.gachaManager.getReward();
         if (reward) {
             this.cards[3].spriteFrame = reward.icon;
-            this.animation.setAnimation(0,`card4-active`, false);
+            let track = this.animation.setAnimation(0,`card4-active`, false);
+            this.animation.setTrackCompleteListener(track,()=>{
+                GameManager.Instance.gachaManager.hide();
+            })
             return;
         }
     }

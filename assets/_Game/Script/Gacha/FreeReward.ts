@@ -31,8 +31,11 @@ export default class FreeReward extends cc.Component {
         this._opened = true;
         const reward = GameManager.Instance.gachaManager.getReward();
         if (reward) {
-            this.animation.setAnimation(0,'open',false);
+            let track = this.animation.setAnimation(0,'open',false);
             this.gift.spriteFrame = reward.icon;
+            this.animation.setTrackCompleteListener(track,()=>{
+                GameManager.Instance.gachaManager.hide();
+            })
             return;
         }
     }

@@ -69,6 +69,8 @@ export default class Player extends cc.Component {
     }
 
     update (dt: number) {
+        console.log(GameManager.Instance.timeScale);
+        
         dt *= GameManager.Instance.timeScale;
         if(this.isAir()) this.speed.y += this.gravity * dt
         if(!this.isClimb()) this.speed.x = this.walk * this.direction

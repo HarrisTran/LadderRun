@@ -36,7 +36,10 @@ export default class LuckyChain extends cc.Component {
         this.card1.node.active = true;
         this.animation.setAnimation(0,'appear',false);
         this.animation.addAnimation(0,'idle',false);
-        this.animation.addAnimation(0,'active',false);
+        let track = this.animation.addAnimation(0,'active',false);
+        this.animation.setTrackCompleteListener(track,()=>{
+            GameManager.Instance.gachaManager.hide();
+        })
     }
 
     refreshSpriteChain(){
