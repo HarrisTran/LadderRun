@@ -7,7 +7,6 @@ const {ccclass, property} = cc._decorator;
 
 @ccclass
 export default class BEConnector{
-    private _APIEnable: boolean = false;
 
     private token: string;
     private skinId: string;
@@ -21,10 +20,6 @@ export default class BEConnector{
     private mileStone: string;
 
     public userId: string;
-
-    public set APIEnable(enable: boolean){
-        this._APIEnable = enable;
-    }
 
     private gameURL: string = '';
 
@@ -237,7 +232,3 @@ const ENV_CONFIG = {
     production: 'https://api.play4promo.com/api',
 };
 
-export interface ParticipantInfo {
-    userId: string,
-    sum: number
-}

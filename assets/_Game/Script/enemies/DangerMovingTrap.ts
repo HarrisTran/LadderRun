@@ -29,6 +29,7 @@ export default class DangerMovingTrap extends cc.Component {
     update (dt: number) {
         if(!GameManager.Instance.isStatePlay()) return
         if(this.dir){
+            dt *= GameManager.Instance.timeScale;
             this.node.x += this.speed * this.dir * dt
             //this.body.angle += 5;
             //this.body.angle = this.body.angle % 360;

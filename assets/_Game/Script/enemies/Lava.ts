@@ -31,6 +31,7 @@ export default class Lava extends cc.Component {
             return;
         }
         if(this._shouldMove){
+            dt *= GameManager.Instance.timeScale;
             this.node.y += dt*this.lavaSpeed
         }
         

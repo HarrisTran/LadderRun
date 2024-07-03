@@ -30,7 +30,7 @@ export default class FlipCard extends cc.Component {
     protected onEnable(): void {
         this.cards.forEach((card) => card.node.active = false);
         this.animation.setAnimation(0,'appear',false);
-        this.animation.setAnimation(0,'idle',true);
+        this.animation.addAnimation(0,'idle',true);
     }
 
     public open1() {

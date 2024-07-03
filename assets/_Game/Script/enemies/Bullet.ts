@@ -16,6 +16,7 @@ export default class Bullet extends cc.Component {
 
     protected update(dt: number): void {
         if(!GameManager.Instance.isStatePlay()) return
+        dt *= GameManager.Instance.timeScale;
         this.node.x += this.speed * dt
         //if(Math.abs(this.node.x) >= 800) this.node.removeFromParent()
     }

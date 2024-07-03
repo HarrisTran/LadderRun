@@ -13,43 +13,44 @@ export default class LuckyChain extends cc.Component {
     @property(cc.Sprite) card1: cc.Sprite = null;
 
     private _currCycleIndex : number = 0;
+    private _luckyChainData: RewardConfig[] = []
 
     protected onLoad(): void {
-        let luckyChainData = [...GameManager.Instance.gachaManager.rewards];
+        this._luckyChainData = [...GameManager.Instance.gachaManager.rewards];
+        this.refreshSpriteChain();
         this.animation.setEventListener((_: sp.spine.TrackEntry, e: sp.spine.Event)=>{
             switch (e.data.name) {
                 case 'card-claimed':
                     this.card1.node.active = false;
                     this.card5.node.active = false;
-                    let rewardCardClaimed = this.getGroupReward(luckyChainData,this._currCycleIndex);
-                    this.card1.spriteFrame = rewardCardClaimed[0].icon;
-                    this.card2.spriteFrame = rewardCardClaimed[1].icon;
-                    this.card3.spriteFrame = rewardCardClaimed[2].icon;
-                    this.card4.spriteFrame = rewardCardClaimed[3].icon;
-                    this.card5.spriteFrame = rewardCardClaimed[4].icon;
-                    
                     break;
-            
                 case 'new-card-spawned':
-                    this.card1.node.active = false;
                     this.card5.node.active = true;
                     this._currCycleIndex++;
-                    let rewardNewCardSpawned = this.getGroupReward(luckyChainData,this._currCycleIndex);
-                    this.card1.spriteFrame = rewardNewCardSpawned[0].icon;
-                    this.card2.spriteFrame = rewardNewCardSpawned[1].icon;
-                    this.card3.spriteFrame = rewardNewCardSpawned[2].icon;
-                    this.card4.spriteFrame = rewardNewCardSpawned[3].icon;
-                    this.card5.spriteFrame = rewardNewCardSpawned[4].icon;
-                    
                     break;
             }
         })
     }
 
     protected onEnable(): void {
+        this.card1.node.active = true;
         this.animation.setAnimation(0,'appear',false);
         this.animation.addAnimation(0,'idle',false);
         this.animation.addAnimation(0,'active',false);
+    }
+
+    refreshSpriteChain(){
+        let rewardNewCardSpawned = this.getGroupReward(this._luckyChainData, this._currCycleIndex);
+        this.card1.spriteFrame = rewardNewCardSpawned[0].icon;
+        this.card2.spriteFrame = rewardNewCardSpawned[1].icon;
+        this.card3.spriteFrame = rewardNewCardSpawned[2].icon;
+        this.card4.spriteFrame = rewardNewCardSpawned[3].icon;
+        this.card5.spriteFrame = rewardNewCardSpawned[4].icon;
+        this.card5.node.active = false;
+    }
+
+    protected onDisable(): void {
+        this.refreshSpriteChain();
     }
 
     getGroupReward(arr: RewardConfig[], index: number) {

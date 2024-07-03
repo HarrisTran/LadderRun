@@ -61,6 +61,7 @@ export default class FlyTrap extends cc.Component {
     protected update(dt: number): void {
         if(!GameManager.Instance.isStatePlay()) return
         if(this.dir){
+            dt *= GameManager.Instance.timeScale;
             this.node.x += this.speed * this.dir * dt
             if(Math.abs(this.node.x) >= 400) this.node.removeFromParent()
         }

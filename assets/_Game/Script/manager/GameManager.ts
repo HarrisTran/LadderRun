@@ -32,9 +32,6 @@ export default class GameManager extends cc.Component {
         return GameManager._instance;
     }
 
-
-    //@property({ type: cc.Enum(ENUM_GAME_SKIN_CODE) }) public CurrentGameSkin: ENUM_GAME_SKIN_CODE = ENUM_GAME_SKIN_CODE.ALIEN_ASCENT;
-    @property(cc.Boolean) enabledConnectWeb: boolean = false;
     @property({ type: cc.Enum(GameState), visible: false }) public CurrentGameState: GameState = GameState.MAIN_MENU;
 
     @property(UIManager) public UIManager: UIManager = null;
@@ -42,8 +39,8 @@ export default class GameManager extends cc.Component {
     @property(AudioManager) public audioManager: AudioManager = null;
     @property(cc.Node) private stageNode: cc.Node = null
     @property(cc.Node) public lava: cc.Node = null;
-    // @property(cc.Node) private lavaNode: cc.Node = null
 
+    private _timeScale: number = 1;
 
     private _allManagers: IManager[] = [];
     public resourcesManager: ResourceManager;
@@ -109,11 +106,11 @@ export default class GameManager extends cc.Component {
     private _initializeGameEvents(): void {
         cc.game.on(ENUM_GAME_EVENT.GAME_START, this.onGameStart, this)
         cc.game.on(ENUM_GAME_EVENT.PLAYER_CLIMB_END, this.onPlayerClimbEnd, this)
-        cc.game.on(ENUM_GAME_EVENT.GAME_WIN, this.onGameWin, this)
         cc.game.on(ENUM_GAME_EVENT.GAME_LOSE, this.onGameLose, this)
         cc.game.on(ENUM_GAME_EVENT.UPDATE_SCORE, this.updateScore, this);
         cc.game.on(ENUM_GAME_EVENT.EFFECT_STAR_PLAY, this.onEffectStarPlay, this)
         cc.game.on(ENUM_GAME_EVENT.EFFECT_PICKUP_COIN,this.onEffectPickupCoin,this);
+        cc.game.on(ENUM_GAME_EVENT.UPDATE_GAME_TICK,this.onUpdateGameTick,this);
     }
 
     private _initializeAllManagers(): void {
@@ -122,7 +119,6 @@ export default class GameManager extends cc.Component {
         this.resourcesManager = new ResourceManager();
         this.playerDataManager = new PlayerDataManager();
         this.APIManager = new BEConnector();
-        this.APIManager.APIEnable = this.enabledConnectWeb;
 
         this._allManagers.push(this.resourcesManager);
         this._allManagers.push(this.audioManager);
@@ -161,9 +157,6 @@ export default class GameManager extends cc.Component {
         }
     }
 
-    onGameWin() {
-
-    }
 
     public isStatePlay(): boolean {
         return this.CurrentGameState == GameState.PLAYING;
@@ -281,10 +274,15 @@ export default class GameManager extends cc.Component {
         }
     }
 
+    onUpdateGameTick(timeScale : number){
+        this._timeScale = timeScale;
+    }
+
+    public get timeScale(): number {return this._timeScale}
+
     protected onDestroy(): void {
         cc.game.off(ENUM_GAME_EVENT.GAME_START, this.onGameStart)
         cc.game.off(ENUM_GAME_EVENT.PLAYER_CLIMB_END, this.onPlayerClimbEnd)
-        cc.game.off(ENUM_GAME_EVENT.GAME_WIN, this.onGameWin)
         cc.game.off(ENUM_GAME_EVENT.GAME_LOSE, this.onGameLose)
         cc.game.off(ENUM_GAME_EVENT.EFFECT_STAR_PLAY, this.onEffectStarPlay)
     }

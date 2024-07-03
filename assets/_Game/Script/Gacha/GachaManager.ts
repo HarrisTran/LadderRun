@@ -1,3 +1,4 @@
+import { ENUM_GAME_EVENT } from "../Enum";
 import { randomInList } from "../Utils";
 
 const { ccclass, property } = cc._decorator;
@@ -71,6 +72,7 @@ export default class GachaManager extends cc.Component {
     }
 
     onShowStart(){
+        cc.game.emit(ENUM_GAME_EVENT.UPDATE_GAME_TICK,0)
     }
 
     onShowEnd(){

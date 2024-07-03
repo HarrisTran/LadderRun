@@ -30,6 +30,7 @@ export default class MovingTrap extends cc.Component {
     update(dt: number){
         if(!GameManager.Instance.isStatePlay()) return;
         if(this.dir){
+            dt *= GameManager.Instance.timeScale;
             this.radian += dt * (this.speed / 100) * this.dir;
             let x = this.circleRadius * Math.cos(this.radian) + this.circleCenter.x;
             let y = this.circleRadius * Math.sin(this.radian) + this.circleCenter.y;

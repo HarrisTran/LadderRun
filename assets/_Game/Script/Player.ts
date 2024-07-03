@@ -28,7 +28,6 @@ export default class Player extends cc.Component {
     public speedBoosterDuration: number;
     public shieldBoosterDuration: number;
     public magnetBoosterDuration: number;
-    public randomBoosterDuration: number;
 
     get status(){
         return this._status
@@ -70,7 +69,7 @@ export default class Player extends cc.Component {
     }
 
     update (dt: number) {
-        // if(this.isDead()) return;
+        dt *= GameManager.Instance.timeScale;
         if(this.isAir()) this.speed.y += this.gravity * dt
         if(!this.isClimb()) this.speed.x = this.walk * this.direction
         if(GameManager.Instance.CurrentGameState == GameState.PLAYING && this.status != ENUM_PLAYER_STATUS.DIE) {
@@ -78,7 +77,6 @@ export default class Player extends cc.Component {
             this.speedBoosterDuration > 0 ? this.holdSpeedBoosterHandle(dt) : this.cancelSpeedBoosterHandle();
             this.magnetBoosterDuration > 0 ? this.holdMagnetBoosterHandle(dt) : this.cancelMagnetBoosterHandle();
             this.shieldBoosterDuration > 0 ? this.holdShieldBoosterHandle(dt) : this.cancelShieldBoosterHandle();
-            this.randomBoosterDuration > 0 ? this.holdRandomBoosterHandle(dt) : this.cancelRandomBoosterHandle();
         }
         this.node.y += this.speed.y * dt
         //this.survivalVFX.node.active = this._enablePowerUp
@@ -320,14 +318,6 @@ export default class Player extends cc.Component {
         this.shieldBoosterDuration = 0;
         this.shieldIcon.active = false;
         this.shield = false;
-    }
-
-    public holdRandomBoosterHandle(dt :number){
-        this.randomBoosterDuration -= dt;
-    }
-
-    public cancelRandomBoosterHandle(){
-        this.randomBoosterDuration = 0;
     }
 
 
