@@ -77,6 +77,7 @@ export default class ReverseMovingTrap extends cc.Component {
     update (dt: number) {
         if(GameManager.Instance.CurrentGameState != GameState.PLAYING) return
         if(this.dir){
+            dt *= GameManager.Instance.timeScale;
             this.node.x += this.speed * this.dir * dt
         }
     }

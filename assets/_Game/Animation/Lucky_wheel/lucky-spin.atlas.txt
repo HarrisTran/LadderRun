@@ -1,0 +1,41 @@
+
+lucky-spin.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+arrow
+  rotate: false
+  xy: 452, 155
+  size: 103, 157
+  orig: 103, 158
+  offset: 0, 0
+  index: -1
+base
+  rotate: false
+  xy: 4, 452
+  size: 543, 548
+  orig: 544, 550
+  offset: 0, 1
+  index: -1
+button
+  rotate: false
+  xy: 452, 316
+  size: 132, 132
+  orig: 132, 132
+  offset: 0, 0
+  index: -1
+txt-spin
+  rotate: true
+  xy: 452, 49
+  size: 102, 58
+  orig: 108, 62
+  offset: 3, 3
+  index: -1
+wheel
+  rotate: false
+  xy: 4, 4
+  size: 444, 444
+  orig: 444, 444
+  offset: 0, 0
+  index: -1

@@ -1,3 +1,4 @@
+let FOO = 5
 pipeline {
     agent any
     tools {nodejs "node"}

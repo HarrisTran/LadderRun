@@ -60,7 +60,8 @@ export default class Block extends cc.Component {
                     code == ITEM_CODE.SOFT_TRAP_WALL ||
                     code == ITEM_CODE.REVERSE_MOVING_TRAP ||
                     code == ITEM_CODE.TRAMPOLINE ||
-                    code == ITEM_CODE.TRAP_SHOT_CELLAR
+                    code == ITEM_CODE.TRAP_SHOT_CELLAR ||
+                    code == ITEM_CODE.BOOSTER_GACHA
                 ){
                     PoolManager.instance.getNode(ENUM_ITEM_COLLECTION[code],this.node,this.grid.children[15*i+j].position)
                 }

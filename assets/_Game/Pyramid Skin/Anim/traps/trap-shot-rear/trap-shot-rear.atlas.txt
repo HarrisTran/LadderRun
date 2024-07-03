@@ -1,0 +1,20 @@
+
+trap-shot-rear.png
+size: 256,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Impact10
+  rotate: false
+  xy: 4, 4
+  size: 54, 44
+  orig: 64, 64
+  offset: 6, 11
+  index: -1
+statue
+  rotate: false
+  xy: 4, 52
+  size: 126, 126
+  orig: 126, 126
+  offset: 0, 0
+  index: -1

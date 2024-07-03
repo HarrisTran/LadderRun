@@ -1,0 +1,83 @@
+
+lucky chain.png
+size: 1024,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+card1
+  rotate: true
+  xy: 735, 149
+  size: 135, 148
+  orig: 135, 148
+  offset: 0, 0
+  index: -1
+card2
+  rotate: true
+  xy: 735, 10
+  size: 135, 148
+  orig: 135, 148
+  offset: 0, 0
+  index: -1
+card3
+  rotate: true
+  xy: 735, 10
+  size: 135, 148
+  orig: 135, 148
+  offset: 0, 0
+  index: -1
+card4
+  rotate: true
+  xy: 735, 10
+  size: 135, 148
+  orig: 135, 148
+  offset: 0, 0
+  index: -1
+card5
+  rotate: true
+  xy: 735, 10
+  size: 135, 148
+  orig: 135, 148
+  offset: 0, 0
+  index: -1
+frame
+  rotate: false
+  xy: 4, 4
+  size: 376, 468
+  orig: 376, 469
+  offset: 0, 0
+  index: -1
+frame-planet1
+  rotate: false
+  xy: 735, 288
+  size: 186, 184
+  orig: 186, 184
+  offset: 0, 0
+  index: -1
+frame-planet2
+  rotate: false
+  xy: 887, 167
+  size: 122, 117
+  orig: 122, 117
+  offset: 0, 0
+  index: -1
+frame-planet3
+  rotate: false
+  xy: 887, 51
+  size: 114, 112
+  orig: 114, 112
+  offset: 0, 0
+  index: -1
+galaxy-screen
+  rotate: false
+  xy: 384, 45
+  size: 347, 427
+  orig: 347, 427
+  offset: 0, 0
+  index: -1
+txt
+  rotate: false
+  xy: 384, 6
+  size: 278, 35
+  orig: 278, 35
+  offset: 0, 0
+  index: -1

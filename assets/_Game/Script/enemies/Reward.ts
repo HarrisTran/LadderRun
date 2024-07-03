@@ -11,23 +11,10 @@ export default class Reward extends cc.Component {
     isAttracted : boolean = false;
     targetPos: cc.Vec2 ;
 
-    protected onLoad(): void {
-        // this.animation.on('play', this.onPlay, this);
-        // this.animation.on('finished', this.onFinished, this);
-    }
-
     onCollisionEnter (other: cc.BoxCollider, self: cc.BoxCollider) {
         if(other.tag == ENUM_COLLIDER_TAG.PLAYER && self.tag == ENUM_COLLIDER_TAG.REWARD){
-            
-            //this.animation.play('collected')
-            // AudioManager.instance.playSound(ENUM_AUDIO_CLIP.COLLECT)
-            // DataManager.instance.coins += 1;
-            // DataManager.instance.score += COIN_VALUE;
-            // DataManager.instance.save()
-            //StaticInstance.uiManager.setGameScore()
             GameManager.Instance.audioManager.playSfx(this.coinValue > 100 ? ENUM_AUDIO_CLIP.REWARD2: ENUM_AUDIO_CLIP.REWARD1);
-            GameManager.Instance.playerDataManager.addScore(this.coinValue);
-            cc.game.emit(ENUM_GAME_EVENT.UPDATE_SCORE);
+            cc.game.emit(ENUM_GAME_EVENT.UPDATE_SCORE,this.coinValue);
             
             cc.game.emit(ENUM_GAME_EVENT.EFFECT_PICKUP_COIN,{pos: this.node.parent.parent.convertToWorldSpaceAR(this.node.position.clone()),type: this.coinValue > 100 ? 'diamond' : 'coin'})
 
@@ -49,25 +36,5 @@ export default class Reward extends cc.Component {
         }
     }
 
-    onPlay(){
-        //if(this.animation.getAnimationState('collected').isPlaying) this.node.removeComponent(cc.Collider)
-    }
-
-    async onFinished(){
-        // cc.tween(this.floatText)
-        // .by(0.46,{y:48})
-        // .delay(0.2)
-        // .call(()=>{
-        //     this.node.active = false;
-        // })
-        // .start()
-        // await delay(200);
-        // StaticInstance.uiManager.spawnCoinAtPosition(this.node.position.clone());
-    }
-
-    protected onDestroy(): void {
-        // this.animation.off('play', this.onFinished, this)
-        // this.animation.off('finished', this.onFinished, this)
-    }
 
 }
