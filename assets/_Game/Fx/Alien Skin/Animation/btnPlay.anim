@@ -1,0 +1,190 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "btnPlay",
+  "_objFlags": 0,
+  "_native": "",
+  "_duration": 1,
+  "sample": 60,
+  "speed": 1,
+  "wrapMode": 2,
+  "curveData": {
+    "paths": {
+      "Start_Button": {
+        "props": {
+          "scale": [
+            {
+              "frame": 0,
+              "value": {
+                "__type__": "cc.Vec2",
+                "x": 1,
+                "y": 1
+              },
+              "curve": "cubicIn"
+            },
+            {
+              "frame": 0.25,
+              "value": {
+                "__type__": "cc.Vec2",
+                "x": 1.1,
+                "y": 1.1
+              },
+              "curve": "cubicOut"
+            },
+            {
+              "frame": 0.5,
+              "value": {
+                "__type__": "cc.Vec2",
+                "x": 1,
+                "y": 1
+              }
+            },
+            {
+              "frame": 0.75,
+              "value": {
+                "__type__": "cc.Vec2",
+                "x": 1.1,
+                "y": 1.1
+              },
+              "curve": "cubicOut"
+            },
+            {
+              "frame": 1,
+              "value": {
+                "__type__": "cc.Vec2",
+                "x": 1,
+                "y": 1
+              }
+            }
+          ]
+        }
+      },
+      "Title": {
+        "props": {
+          "scale": [
+            {
+              "frame": 0,
+              "value": {
+                "__type__": "cc.Vec2",
+                "x": 1,
+                "y": 1
+              },
+              "curve": "cubicIn"
+            },
+            {
+              "frame": 0.5,
+              "value": {
+                "__type__": "cc.Vec2",
+                "x": 1.05,
+                "y": 1.05
+              }
+            },
+            {
+              "frame": 1,
+              "value": {
+                "__type__": "cc.Vec2",
+                "x": 1,
+                "y": 1
+              }
+            }
+          ],
+          "angle": [
+            {
+              "frame": 0,
+              "value": 0
+            },
+            {
+              "frame": 0.5,
+              "value": -5
+            },
+            {
+              "frame": 1,
+              "value": 0
+            }
+          ]
+        }
+      },
+      "poition": {
+        "props": {
+          "position": [
+            {
+              "frame": 0,
+              "value": [
+                261.145,
+                -140.936,
+                0
+              ],
+              "curve": "linear"
+            },
+            {
+              "frame": 0.5,
+              "value": [
+                261.145,
+                -125.6,
+                0
+              ],
+              "curve": "linear"
+            },
+            {
+              "frame": 1,
+              "value": [
+                261.145,
+                -140.936,
+                0
+              ]
+            }
+          ]
+        }
+      },
+      "char": {
+        "props": {
+          "position": [
+            {
+              "frame": 0,
+              "value": [
+                -16.581,
+                -149.226,
+                0
+              ]
+            },
+            {
+              "frame": 0.5,
+              "value": [
+                -16.581,
+                -153.737,
+                0
+              ]
+            },
+            {
+              "frame": 1,
+              "value": [
+                -16.581,
+                -149.226,
+                0
+              ]
+            }
+          ],
+          "scale": []
+        }
+      },
+      "char/eye": {
+        "props": {
+          "opacity": [
+            {
+              "frame": 0,
+              "value": 255
+            },
+            {
+              "frame": 0.5,
+              "value": 180
+            },
+            {
+              "frame": 1,
+              "value": 255
+            }
+          ]
+        }
+      }
+    }
+  },
+  "events": []
+}
