@@ -65,6 +65,7 @@ export default class GachaManager extends cc.Component {
 
     show(gachaType: number) {
         this._showingGachaType = gachaType;
+        console.log("Show("+this._showingGachaType+")");
         this.animateShow();
     }
 
@@ -72,7 +73,9 @@ export default class GachaManager extends cc.Component {
         showAnimation ? this._showRewardAnimation() : this._showDone();
     }
 
-    protected async animateShow() {
+    protected animateShow() {
+        console.log("[Animate show] ",this._showingGachaType+"{");
+        
         this.node.active = true;
         this.panelContent.scale = 0;
         this.background.opacity = 0;
@@ -85,11 +88,13 @@ export default class GachaManager extends cc.Component {
     }
 
     protected animateHide() {
+        console.log("[Animate hide] ",this._showingGachaType+"{");
         this.TweenHideScalePopup(this.panelContent, 0.3).start();
-        this.TweenHideAlphaBG(this.background, 0.5)
-        .call(()=>{
+        this.TweenHideAlphaBG(this.background, 0.5).start();
+        this.scheduleOnce(()=>{
             this.onHideStart();
-        }).start();
+            this.onHideEnd();
+        },0.5);
     }    
 
     private _requestReward() {
@@ -112,7 +117,6 @@ export default class GachaManager extends cc.Component {
             case 'GC150':
                 cc.game.emit(ENUM_GAME_EVENT.UPDATE_SCORE,150);
                 GameManager.Instance.UIManager.gameLayer.pickUpCoin(midpointOfScreen);
-
                 break;
             case 'GC200':
                 cc.game.emit(ENUM_GAME_EVENT.UPDATE_SCORE,200);
@@ -146,45 +150,52 @@ export default class GachaManager extends cc.Component {
     private _showDone(){
         this.gachaRewardPanel.node.active = false; 
         this.animateHide();
-        this.scheduleOnce(()=>{
-            this.onHideEnd();
-        },0.2)
     }
 
     onShowStart(){
+        console.log("show start: ",this._showingGachaType);
         cc.game.emit(ENUM_GAME_EVENT.UPDATE_GAME_TICK,0)
     }
 
     onShowEnd(){
+        console.log("show end: ",this._showingGachaType);
         let gacha = this.gachas.find((gacha)=>gacha.type === this._showingGachaType)
         gacha.gacha.active = true;
+        console.log("}");
+        
     }
 
     onHideStart(){
+        console.log("hide start: ",this._showingGachaType);
         let gacha = this.gachas.find((gacha)=>gacha.type === this._showingGachaType)
         gacha.gacha.active = false;
     }
 
     onHideEnd(){
+        console.log("hide end: ",this._showingGachaType);
         cc.game.emit(ENUM_GAME_EVENT.UPDATE_GAME_TICK,1)
         this._requestReward();
         this.node.active = false;
+        console.log("}");
+        console.log("===> Gacha : Done");
+        console.log("===> Request reward : Done");
+        console.log("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
     }
 
     protected TweenShowScalePopUp(target: cc.Node, time: number, scale: number): cc.Tween<cc.Node> {
         return cc.tween(target).to(time, { scale: scale }, { easing: 'backOut' })
     }
 
-    protected TweenShowAlphaBG(target: cc.Node, time: number): cc.Tween<cc.Node> {
-        return cc.tween(target.opacity).to(time, { opacity: 255 }, { easing: 'quadOut' })
+    protected TweenShowAlphaBG(target: cc.Node, time: number){
+        return cc.tween(target).to(time, { opacity: 120 }, { easing: 'quadOut' })
     }
 
     protected TweenHideScalePopup(target: cc.Node, time: number): cc.Tween<cc.Node> {
         return cc.tween(target).to(time, { scale: 0 }, { easing: 'quintOut' })
     }
 
-    protected TweenHideAlphaBG(target: cc.Node, time: number): cc.Tween<cc.Node> {
-        return cc.tween(target.opacity).to(time, { opacity: 0 }, { easing: 'quadOut' })
+    protected TweenHideAlphaBG(target: cc.Node, time: number){
+        return cc.tween(target).to(time, { opacity: 0 }, { easing: 'quadOut' })
     }
 
 

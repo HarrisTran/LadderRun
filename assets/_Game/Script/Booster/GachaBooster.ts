@@ -18,7 +18,6 @@ export default class GachaBooster extends cc.Component {
 
     onCollisionEnter(other: cc.Collider, self: cc.Collider) {
         if (other.tag === ENUM_COLLIDER_TAG.PLAYER) {
-            this.gachaType = GachaType.LuckyChain
             GameManager.Instance.gachaManager.show(this.gachaType);
             this.node.removeComponent(cc.Collider);
             this.node.active = false;

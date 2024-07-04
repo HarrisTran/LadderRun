@@ -61,9 +61,20 @@ export default class Block extends cc.Component {
                     code == ITEM_CODE.REVERSE_MOVING_TRAP ||
                     code == ITEM_CODE.TRAMPOLINE ||
                     code == ITEM_CODE.TRAP_SHOT_CELLAR ||
-                    code == ITEM_CODE.BOOSTER_GACHA
+                    code == ITEM_CODE.BOOSTER_GACHA_0 ||
+                    code == ITEM_CODE.BOOSTER_GACHA_1 ||
+                    code == ITEM_CODE.BOOSTER_GACHA_2 ||
+                    code == ITEM_CODE.BOOSTER_GACHA_3
                 ){
-                    PoolManager.instance.getNode(ENUM_ITEM_COLLECTION[code],this.node,this.grid.children[15*i+j].position)
+                    let node = PoolManager.instance.getNode(ENUM_ITEM_COLLECTION[code],this.node,this.grid.children[15*i+j].position)
+                    if (
+                        code == ITEM_CODE.BOOSTER_GACHA_0 ||
+                        code == ITEM_CODE.BOOSTER_GACHA_1 ||
+                        code == ITEM_CODE.BOOSTER_GACHA_2 ||
+                        code == ITEM_CODE.BOOSTER_GACHA_3
+                    ){
+                        node.getComponent('GachaBooster')?.setGachaType(parseInt(code.split('_')[1],10));
+                    }
                 }
             }
         }

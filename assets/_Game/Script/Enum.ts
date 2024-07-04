@@ -209,7 +209,10 @@ export enum ITEM_CODE
     BOOSTER_SHIELD,
     BOOSTER_RANDOM,
     TRAMPOLINE,
-    BOOSTER_GACHA,
+    BOOSTER_GACHA_0 = 'GC_0',
+    BOOSTER_GACHA_1 = 'GC_1',
+    BOOSTER_GACHA_2 = 'GC_2',
+    BOOSTER_GACHA_3 = 'GC_3',
 }
 
 export const ENUM_ITEM_COLLECTION = {
@@ -237,5 +240,8 @@ export const ENUM_ITEM_COLLECTION = {
     [ITEM_CODE.BOOSTER_SHIELD] : 'Booster Shield',
     [ITEM_CODE.BOOSTER_RANDOM] : 'Booster Random',
     [ITEM_CODE.TRAMPOLINE] : 'Trampoline',
-    [ITEM_CODE.BOOSTER_GACHA] : 'Booster Gacha'
+    [ITEM_CODE.BOOSTER_GACHA_0] : 'Booster Gacha',
+    [ITEM_CODE.BOOSTER_GACHA_1] : 'Booster Gacha',
+    [ITEM_CODE.BOOSTER_GACHA_2] : 'Booster Gacha',
+    [ITEM_CODE.BOOSTER_GACHA_3] : 'Booster Gacha'
 }
