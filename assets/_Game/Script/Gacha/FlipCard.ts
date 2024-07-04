@@ -1,5 +1,4 @@
 import GameManager from "../manager/GameManager";
-import GachaManager from "./GachaManager";
 
 const {ccclass, property} = cc._decorator;
 
@@ -40,7 +39,7 @@ export default class FlipCard extends cc.Component {
             this.cards[0].spriteFrame = reward.icon;
             let track = this.animation.setAnimation(0,`card1-active`, false);
             this.animation.setTrackCompleteListener(track,()=>{
-                GameManager.Instance.gachaManager.hide();
+                GameManager.Instance.gachaManager.hide(true);
             })
             return;
         }
@@ -53,7 +52,7 @@ export default class FlipCard extends cc.Component {
             this.cards[1].spriteFrame = reward.icon;
             let track = this.animation.setAnimation(0,`card2-active`, false);
             this.animation.setTrackCompleteListener(track,()=>{
-                GameManager.Instance.gachaManager.hide();
+                GameManager.Instance.gachaManager.hide(true);
             })
             return;
         }
@@ -66,7 +65,7 @@ export default class FlipCard extends cc.Component {
             this.cards[2].spriteFrame = reward.icon;
             let track = this.animation.setAnimation(0,`card3-active`, false);
             this.animation.setTrackCompleteListener(track,()=>{
-                GameManager.Instance.gachaManager.hide();
+                GameManager.Instance.gachaManager.hide(true);
             })
             return;
         }
@@ -79,7 +78,7 @@ export default class FlipCard extends cc.Component {
             this.cards[3].spriteFrame = reward.icon;
             let track = this.animation.setAnimation(0,`card4-active`, false);
             this.animation.setTrackCompleteListener(track,()=>{
-                GameManager.Instance.gachaManager.hide();
+                GameManager.Instance.gachaManager.hide(true);
             })
             return;
         }

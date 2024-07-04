@@ -41,6 +41,8 @@ export default class GachaManager extends cc.Component {
 
     @property(cc.Node) background: cc.Node = null;
     @property(cc.Node) panelContent: cc.Node = null;
+    @property(cc.Animation) gachaRewardPanel: cc.Animation = null;
+    @property(cc.Sprite) gachaRewardSprite : cc.Sprite = null;
 
     @property([Gacha]) gachas: Gacha[] = [];
     @property([RewardConfig]) rewards: RewardConfig[] = [];
@@ -48,9 +50,17 @@ export default class GachaManager extends cc.Component {
     private _reward: RewardConfig;
     private _showingGachaType: number;
 
+    protected onLoad(): void {
+        this.gachaRewardPanel.on('finished',this._showDone,this);
+    }
+
     public getReward(): RewardConfig {
         this._reward = randomInList(this.rewards);
         return this._reward;
+    }
+
+    public setReward(reward: RewardConfig){
+        this._reward = reward;
     }
 
     show(gachaType: number) {
@@ -58,9 +68,8 @@ export default class GachaManager extends cc.Component {
         this.animateShow();
     }
 
-    hide(){
-        this.animateHide();
-        this._requestReward();
+    hide(showAnimation?: boolean){
+        showAnimation ? this._showRewardAnimation() : this._showDone();
     }
 
     protected async animateShow() {
@@ -75,17 +84,17 @@ export default class GachaManager extends cc.Component {
         },0.1)
     }
 
-    protected async animateHide() {
-        this.onHideStart();
-        this.TweenHideScalePopup(this.panelContent, 0.5).start();
-        this.TweenHideAlphaBG(this.background, 0.5).start();
-        this.scheduleOnce(()=>{
-            this.onHideEnd();
-            this.node.active = false;
-        },0.1)
+    protected animateHide() {
+        this.TweenHideScalePopup(this.panelContent, 0.3).start();
+        this.TweenHideAlphaBG(this.background, 0.5)
+        .call(()=>{
+            this.onHideStart();
+        }).start();
     }    
 
     private _requestReward() {
+        let canvasSize = cc.Canvas.instance.designResolution;
+        let midpointOfScreen = cc.v3(canvasSize.width/2, canvasSize.height/2);
         switch (this._reward.id) {
             case 'GMN':
                 cc.game.emit(ENUM_GAME_EVENT.CLAIM_MAGNET_BOOSTER);
@@ -98,33 +107,48 @@ export default class GachaManager extends cc.Component {
                 break;
             case 'GC100':
                 cc.game.emit(ENUM_GAME_EVENT.UPDATE_SCORE,100);
-                GameManager.Instance.UIManager.gameLayer.pickUpCoin(cc.v3(0));
+                GameManager.Instance.UIManager.gameLayer.pickUpCoin(midpointOfScreen);
                 break;
             case 'GC150':
                 cc.game.emit(ENUM_GAME_EVENT.UPDATE_SCORE,150);
-                GameManager.Instance.UIManager.gameLayer.pickUpCoin(cc.v3(0));
+                GameManager.Instance.UIManager.gameLayer.pickUpCoin(midpointOfScreen);
+
                 break;
             case 'GC200':
                 cc.game.emit(ENUM_GAME_EVENT.UPDATE_SCORE,200);
-                GameManager.Instance.UIManager.gameLayer.pickUpCoin(cc.v3(0));
+                GameManager.Instance.UIManager.gameLayer.pickUpCoin(midpointOfScreen);
                 break;
             case 'GC250':
                 cc.game.emit(ENUM_GAME_EVENT.UPDATE_SCORE,250);
-                GameManager.Instance.UIManager.gameLayer.pickUpCoin(cc.v3(0));
+                GameManager.Instance.UIManager.gameLayer.pickUpCoin(midpointOfScreen);
                 break;
             case 'GC300':
                 cc.game.emit(ENUM_GAME_EVENT.UPDATE_SCORE,300);
-                GameManager.Instance.UIManager.gameLayer.pickUpCoin(cc.v3(0));
+                GameManager.Instance.UIManager.gameLayer.pickUpCoin(midpointOfScreen);
                 break;
             case 'GC350':
                 cc.game.emit(ENUM_GAME_EVENT.UPDATE_SCORE,350);
-                GameManager.Instance.UIManager.gameLayer.pickUpCoin(cc.v3(0));
+                GameManager.Instance.UIManager.gameLayer.pickUpCoin(midpointOfScreen);
                 break;
             case 'GC400':
                 cc.game.emit(ENUM_GAME_EVENT.UPDATE_SCORE,400);
-                GameManager.Instance.UIManager.gameLayer.pickUpCoin(cc.v3(0));
+                GameManager.Instance.UIManager.gameLayer.pickUpCoin(midpointOfScreen);
                 break;
         }
+    }
+
+    private _showRewardAnimation(){
+        this.gachaRewardPanel.node.active = true;
+        this.gachaRewardSprite.spriteFrame = this._reward.icon;
+        this.gachaRewardPanel.getComponent(cc.Animation).play();
+    }
+
+    private _showDone(){
+        this.gachaRewardPanel.node.active = false; 
+        this.animateHide();
+        this.scheduleOnce(()=>{
+            this.onHideEnd();
+        },0.2)
     }
 
     onShowStart(){
@@ -143,6 +167,8 @@ export default class GachaManager extends cc.Component {
 
     onHideEnd(){
         cc.game.emit(ENUM_GAME_EVENT.UPDATE_GAME_TICK,1)
+        this._requestReward();
+        this.node.active = false;
     }
 
     protected TweenShowScalePopUp(target: cc.Node, time: number, scale: number): cc.Tween<cc.Node> {
@@ -154,7 +180,7 @@ export default class GachaManager extends cc.Component {
     }
 
     protected TweenHideScalePopup(target: cc.Node, time: number): cc.Tween<cc.Node> {
-        return cc.tween(target).to(time, { scale: 0 }, { easing: 'backOut' })
+        return cc.tween(target).to(time, { scale: 0 }, { easing: 'quintOut' })
     }
 
     protected TweenHideAlphaBG(target: cc.Node, time: number): cc.Tween<cc.Node> {

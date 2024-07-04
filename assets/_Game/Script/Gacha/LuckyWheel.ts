@@ -53,11 +53,7 @@ export default class LuckyWheel extends cc.Component {
             {easing: 'quintOut'}
         )
         .call(()=>{
-            cc.tween(this.items[prizeIndex-1].node)
-            .to(0.2,{scale : 1.25})
-            .to(0.2,{scale: 1})
-            .call(()=> GameManager.Instance.gachaManager.hide())
-            .start();
+            GameManager.Instance.gachaManager.hide(true)
         })
     }
 
