@@ -73,7 +73,7 @@ export default class Block extends cc.Component {
                         code == ITEM_CODE.BOOSTER_GACHA_2 ||
                         code == ITEM_CODE.BOOSTER_GACHA_3
                     ){
-                        node.getComponent('GachaBooster')?.setGachaType(parseInt(code.split('_')[1],10));
+                        node?.getComponent('GachaBooster').setGachaType(parseInt(code.split('_')[1],10));
                     }
                 }
             }
