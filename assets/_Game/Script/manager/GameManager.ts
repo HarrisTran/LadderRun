@@ -181,10 +181,6 @@ export default class GameManager extends cc.Component {
         const canvasHeight = cc.find('Canvas').height;
 
         this._initializeBlockQueue();
-        //this._initializeBlockQueue();
-        
-        
-
         for (let i = 0; i < 6; i++) {
             let block: cc.Node = PoolManager.instance.getNode('block', this.stageNode);
             if (i == 0) {
