@@ -12,14 +12,17 @@ export default class StandTrap extends cc.Component {
 
     onCollisionEnter (other: cc.BoxCollider, self: cc.BoxCollider) {
         if(other.tag == ENUM_COLLIDER_TAG.PLAYER && self.tag == ENUM_COLLIDER_TAG.SPIKE){
-            this.trapAnimation.setAnimation(0,'attack',false);
+            let track = this.trapAnimation.setAnimation(0,'attack',false);
+            this.trapAnimation.setTrackCompleteListener(track,()=>{
+                this.trapAnimation.setAnimation(0,'idle',true);
+            })
             GameManager.Instance.audioManager.playSfx(ENUM_AUDIO_CLIP.TRAP_STAND);
         }
     }
 
     onCollisionExit (other: cc.BoxCollider, self: cc.BoxCollider) {
-        if(other.tag == ENUM_COLLIDER_TAG.PLAYER && self.tag == ENUM_COLLIDER_TAG.SPIKE){
-            this.trapAnimation.setAnimation(0,'idle',true);
-        }
+        // if(other.tag == ENUM_COLLIDER_TAG.PLAYER && self.tag == ENUM_COLLIDER_TAG.SPIKE){
+        //     this.trapAnimation.setAnimation(0,'idle',true);
+        // }
     }
 }

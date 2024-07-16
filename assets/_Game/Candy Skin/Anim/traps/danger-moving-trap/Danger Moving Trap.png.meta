@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "3684aa48-33db-4a27-adf0-ed343ee08fbd",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 884,
+  "height": 884,
+  "platformSettings": {},
+  "subMetas": {
+    "Danger Moving Trap": {
+      "ver": "1.0.6",
+      "uuid": "b5a75ba0-80d5-45b5-808b-a7a34d47894b",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "3684aa48-33db-4a27-adf0-ed343ee08fbd",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -2,
+      "offsetY": -232.5,
+      "trimX": 2,
+      "trimY": 469,
+      "width": 876,
+      "height": 411,
+      "rawWidth": 884,
+      "rawHeight": 884,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}
