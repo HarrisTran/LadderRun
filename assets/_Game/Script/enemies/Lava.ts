@@ -16,11 +16,13 @@ export default class Lava extends cc.Component {
 
     protected onLoad(): void {
         cc.game.on(ENUM_GAME_EVENT.GAME_START,this.startMove,this);
+        this.node.getComponent(cc.BoxCollider).enabled = false;
     }
 
     async startMove(){
-        await delay(5000);
+        await delay(7000);
         this._shouldMove = true;
+        this.node.getComponent(cc.BoxCollider).enabled = true;
     }
    
    

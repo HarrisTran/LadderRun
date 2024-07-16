@@ -4,7 +4,7 @@ import Block from '../Block';
 import PoolManager from "./PoolManager";
 import Player from '../Player';
 import Star from '../Star';
-import { delay, getNextLastElement, Queue } from '../Utils';
+import { delay, getLastElement, getNextLastElement, Queue } from '../Utils';
 import { IManager } from './IManager';
 import ResourceManager from './ResourceManager';
 import UIManager from './UIManager';
@@ -72,7 +72,7 @@ export default class GameManager extends cc.Component {
                     cc.tween(this.lava).by(1, { y: -blockHeight }).start();
                     this.stageNode.getChildByName('player').destroy();
 
-                    let newPosition = cc.v3(this._stayingPosition).addSelf(cc.v3(100, blockHeight));
+                    let newPosition = cc.v3(this._stayingPosition).addSelf(cc.v3(100, 0));
 
                     const player: cc.Node = PoolManager.instance.getNode(`player`, this.stageNode, newPosition)
                     player.zIndex = ENUM_GAME_ZINDEX.PLAYER;
@@ -183,10 +183,6 @@ export default class GameManager extends cc.Component {
         const canvasHeight = cc.find('Canvas').height;
 
         this._initializeBlockQueue();
-        //this._initializeBlockQueue();
-        
-        
-
         for (let i = 0; i < 6; i++) {
             let block: cc.Node = PoolManager.instance.getNode('block', this.stageNode);
             if (i == 0) {

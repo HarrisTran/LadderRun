@@ -1,0 +1,62 @@
+
+Trap Shot Rear.png
+size: 1116,1116
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Liquid 039_01
+  rotate: true
+  xy: 188, 129
+  size: 57, 235
+  orig: 57, 236
+  offset: 0, 1
+  index: -1
+Liquid 039_02
+  rotate: false
+  xy: 493, 233
+  size: 158, 394
+  orig: 158, 394
+  offset: 0, 0
+  index: -1
+Liquid 039_03
+  rotate: true
+  xy: 2, 188
+  size: 262, 477
+  orig: 262, 477
+  offset: 0, 0
+  index: -1
+Liquid 039_04
+  rotate: true
+  xy: 2, 452
+  size: 272, 489
+  orig: 272, 489
+  offset: 0, 0
+  index: -1
+Liquid 039_05
+  rotate: false
+  xy: 522, 739
+  size: 158, 375
+  orig: 159, 375
+  offset: 1, 0
+  index: -1
+move_body
+  rotate: false
+  xy: 2, 629
+  size: 561, 485
+  orig: 561, 485
+  offset: 0, 0
+  index: -1
+move_wheel
+  rotate: false
+  xy: 2, 3
+  size: 184, 183
+  orig: 188, 187
+  offset: 2, 2
+  index: -1
+move_wheel2
+  rotate: true
+  xy: 481, 8
+  size: 223, 213
+  orig: 228, 217
+  offset: 2, 2
+  index: -1

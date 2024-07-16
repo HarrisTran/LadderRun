@@ -2,7 +2,7 @@
 
 import { ENUM_GAME_ZINDEX, ENUM_ITEM_COLLECTION, ITEM_CODE } from './Enum';
 import PoolManager from './manager/PoolManager';
-import { randomInList } from './Utils';
+import { random, randomInList } from './Utils';
 
 const { ccclass, property } = cc._decorator;
 
@@ -45,7 +45,7 @@ export default class Block extends cc.Component {
                     code == ITEM_CODE.BOOSTER_MAGNET ||
                     code == ITEM_CODE.BOOSTER_SHIELD ||
                     code == ITEM_CODE.BOOSTER_SPEED ||
-                    code == ITEM_CODE.BOOSTER_RANDOM ||
+                    //code == ITEM_CODE.BOOSTER_RANDOM ||
                     code == ITEM_CODE.HARD_TRAP_WALL ||
                     code == ITEM_CODE.DANGER_MOVING_TRAP ||
                     code == ITEM_CODE.CIRCLE_MOVING_TRAP ||
@@ -60,10 +60,18 @@ export default class Block extends cc.Component {
                     code == ITEM_CODE.SOFT_TRAP_WALL ||
                     code == ITEM_CODE.REVERSE_MOVING_TRAP ||
                     code == ITEM_CODE.TRAMPOLINE ||
-                    code == ITEM_CODE.TRAP_SHOT_CELLAR ||
-                    code == ITEM_CODE.BOOSTER_GACHA
+                    code == ITEM_CODE.TRAP_SHOT_CELLAR
+                    // code == ITEM_CODE.BOOSTER_GACHA_0 ||
+                    // code == ITEM_CODE.BOOSTER_GACHA_1 ||
+                    // code == ITEM_CODE.BOOSTER_GACHA_2 ||
+                    // code == ITEM_CODE.BOOSTER_GACHA_3
                 ){
-                    PoolManager.instance.getNode(ENUM_ITEM_COLLECTION[code],this.node,this.grid.children[15*i+j].position)
+                    let node = PoolManager.instance.getNode(ENUM_ITEM_COLLECTION[code],this.node,this.grid.children[15*i+j].position)
+                    // if (
+                    //     code == ITEM_CODE.BOOSTER_RANDOM
+                    // ){
+                    //     node?.getComponent('GachaBooster').setGachaType(Math.floor(Math.random()*4));
+                    // }
                 }
             }
         }

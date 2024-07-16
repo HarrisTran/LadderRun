@@ -1,0 +1,69 @@
+
+skeleton.png
+size: 2000,2000
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Trap Stand
+  rotate: false
+  xy: 2, 1225
+  size: 647, 770
+  orig: 647, 770
+  offset: 0, 0
+  index: -1
+fx/Liquid 028_01
+  rotate: false
+  xy: 2, 1302
+  size: 252, 107
+  orig: 252, 107
+  offset: 0, 0
+  index: -1
+fx/Liquid 028_02
+  rotate: true
+  xy: 861, 406
+  size: 583, 215
+  orig: 583, 216
+  offset: 0, 1
+  index: -1
+fx/Liquid 028_03
+  rotate: false
+  xy: 2, 128
+  size: 731, 276
+  orig: 732, 276
+  offset: 1, 0
+  index: -1
+fx/Liquid 028_04
+  rotate: true
+  xy: 543, 711
+  size: 810, 316
+  orig: 810, 316
+  offset: 0, 0
+  index: -1
+fx/Liquid 028_05
+  rotate: false
+  xy: 2, 406
+  size: 833, 303
+  orig: 835, 303
+  offset: 2, 0
+  index: -1
+fx/Liquid 062_01
+  rotate: false
+  xy: 735, 3
+  size: 314, 401
+  orig: 314, 401
+  offset: 0, 0
+  index: -1
+fx/Liquid 062_02
+  rotate: false
+  xy: 651, 1532
+  size: 352, 463
+  orig: 352, 463
+  offset: 0, 0
+  index: -1
+fx/Liquid 062_03
+  rotate: true
+  xy: 2, 711
+  size: 512, 539
+  orig: 512, 539
+  offset: 0, 0
+  index: -1

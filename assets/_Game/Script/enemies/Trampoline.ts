@@ -17,7 +17,7 @@ export default class Trampoline extends cc.Component {
 
     onCollisionEnter (other: cc.BoxCollider, self: cc.BoxCollider) {
         if(other.tag == ENUM_COLLIDER_TAG.PLAYER && self.tag == ENUM_COLLIDER_TAG.TRAMPOLINE){
-            //self.node.getComponent(cc.Animation).play('trampoline')
+            self.node.getComponentInChildren(sp.Skeleton)?.setAnimation(0,'animation',false);
         }
     }
 

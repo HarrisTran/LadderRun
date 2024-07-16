@@ -37,8 +37,9 @@ export default class LuckyChain extends cc.Component {
         this.animation.setAnimation(0,'appear',false);
         this.animation.addAnimation(0,'idle',false);
         let track = this.animation.addAnimation(0,'active',false);
+        GameManager.Instance.gachaManager.setReward(this.getGroupReward(this._luckyChainData, this._currCycleIndex)[0])
         this.animation.setTrackCompleteListener(track,()=>{
-            GameManager.Instance.gachaManager.hide();
+            GameManager.Instance.gachaManager.hide(true);
         })
     }
 

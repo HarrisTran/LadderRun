@@ -201,7 +201,6 @@ export default class BEConnector{
     }
 
     private _getDataEncrypted(data: any): string {
-
         let result = "";
         try {
             result = CryptoES.AES.encrypt(JSON.stringify(data), this.key, {
@@ -228,7 +227,7 @@ export default class BEConnector{
 
 const ENV_CONFIG = {
     development: 'http://192.168.1.144:3009/api',
-    staging: 'https://api.play4promote.com/api',
+    staging: 'https://api.p4p.fun/api',
     production: 'https://api.play4promo.com/api',
 };
 

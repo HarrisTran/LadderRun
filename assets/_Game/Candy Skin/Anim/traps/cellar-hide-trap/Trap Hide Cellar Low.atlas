@@ -1,0 +1,62 @@
+
+Trap Hide Cellar Low.png
+size: 424,424
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+move-body
+  rotate: false
+  xy: 2, 164
+  size: 291, 257
+  orig: 291, 257
+  offset: 0, 0
+  index: -1
+move-brows
+  rotate: true
+  xy: 370, 276
+  size: 88, 42
+  orig: 91, 44
+  offset: 2, 1
+  index: -1
+move-brows2
+  rotate: false
+  xy: 370, 366
+  size: 50, 42
+  orig: 53, 44
+  offset: 2, 1
+  index: -1
+move-front-arm1
+  rotate: 270
+  xy: 291, 275
+  size: 146, 77
+  orig: 146, 77
+  offset: 0, 0
+  index: -1
+move-front-eye
+  rotate: false
+  xy: 340, 187
+  size: 80, 87
+  orig: 97, 90
+  offset: 8, 2
+  index: -1
+move-front-wing2
+  rotate: 270
+  xy: 262, 133
+  size: 142, 76
+  orig: 146, 77
+  offset: 0, 0
+  index: -1
+move-mouth
+  rotate: false
+  xy: 2, 397
+  size: 46, 24
+  orig: 48, 26
+  offset: 1, 1
+  index: -1
+move-rear-eye
+  rotate: true
+  xy: 339, 132
+  size: 53, 81
+  orig: 62, 84
+  offset: 8, 2
+  index: -1

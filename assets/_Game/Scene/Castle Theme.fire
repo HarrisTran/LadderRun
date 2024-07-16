@@ -5534,7 +5534,7 @@
       "ctor": "Float64Array",
       "array": [
         0,
-        -300,
+        -570.087,
         0,
         0,
         0,
@@ -7450,11 +7450,11 @@
       "__id__": 2
     },
     "_enabled": true,
-    "enabledConnectWeb": true,
     "CurrentGameState": 1,
     "UIManager": {
       "__id__": 106
     },
+    "gachaManager": null,
     "audioManager": {
       "__id__": 8
     },

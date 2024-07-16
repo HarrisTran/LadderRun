@@ -1,0 +1,76 @@
+
+Danger Moving Trap.png
+size: 884,884
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Cone
+  rotate: true
+  xy: 724, 724
+  size: 144, 136
+  orig: 146, 138
+  offset: 1, 1
+  index: -1
+Cone2
+  rotate: false
+  xy: 435, 481
+  size: 175, 198
+  orig: 179, 201
+  offset: 1, 2
+  index: -1
+move-body
+  rotate: false
+  xy: 2, 468
+  size: 468, 412
+  orig: 468, 412
+  offset: 0, 0
+  index: -1
+move-front-arm1
+  rotate: true
+  xy: 612, 489
+  size: 234, 159
+  orig: 237, 160
+  offset: 0, 0
+  index: -1
+move-front-arm2
+  rotate: 180
+  xy: 464, 666
+  size: 258, 161
+  orig: 258, 161
+  offset: 0, 0
+  index: -1
+move-front-eye
+  rotate: false
+  xy: 748, 632
+  size: 125, 89
+  orig: 127, 91
+  offset: 1, 1
+  index: -1
+move-front-iris
+  rotate: false
+  xy: 2, 851
+  size: 39, 29
+  orig: 41, 31
+  offset: 1, 1
+  index: -1
+move-rear-eye
+  rotate: false
+  xy: 2, 512
+  size: 61, 69
+  orig: 63, 72
+  offset: 1, 2
+  index: -1
+move-rear-iris
+  rotate: false
+  xy: 2, 834
+  size: 21, 15
+  orig: 23, 18
+  offset: 1, 2
+  index: -1
+right-leg
+  rotate: 180
+  xy: 746, 482
+  size: 133, 149
+  orig: 135, 149
+  offset: 0, 0
+  index: -1
