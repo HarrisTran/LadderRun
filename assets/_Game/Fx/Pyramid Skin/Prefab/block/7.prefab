@@ -101,7 +101,7 @@
         "__id__": 75
       }
     ],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 106
@@ -1707,7 +1707,7 @@
         "__id__": 192
       }
     ],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 223
@@ -3308,7 +3308,7 @@
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
     "_spriteFrame": {
-      "__uuid__": "608cf414-7fe7-42c8-bdc5-e74cbe2c0802"
+      "__uuid__": "2d408078-8ddf-48f1-ab89-6d7bf3bfd352"
     },
     "_type": 0,
     "_sizeMode": 0,
@@ -3321,7 +3321,9 @@
     "_fillStart": 0,
     "_fillRange": 0,
     "_isTrimmedMode": true,
-    "_atlas": null,
+    "_atlas": {
+      "__uuid__": "b360713e-608b-42e4-b3f2-ab97c887ebea"
+    },
     "_id": ""
   },
   {
